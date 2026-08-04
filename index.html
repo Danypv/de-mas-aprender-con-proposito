@@ -68,7 +68,7 @@
     }
 
     .navegacion {
-      min-height: 60px;
+      min-height: 76px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -76,8 +76,8 @@
     }
 
     .marca {
-      width: 42px;
-      height: 42px;
+      width: 50px;
+      height: 50px;
       display: flex;
       align-items: center;
     }
@@ -91,15 +91,29 @@
 
     .menu {
       display: flex;
-      gap: 24px;
-      font-size: 0.7rem;
+      align-items: center;
+      gap: 0;
+      font-size: 15px;
       font-weight: 700;
       letter-spacing: 0.02em;
     }
 
     .menu a {
+      position: relative;
+      padding: 0 18px;
       color: #ececec;
       text-decoration: none;
+    }
+
+    .menu a + a::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 1px;
+      height: 18px;
+      background: var(--amarillo);
+      transform: translateY(-50%);
     }
 
     .menu a:hover {
@@ -119,7 +133,9 @@
     /* PORTADA */
 
     .portada {
-      min-height: 570px;
+      position: relative;
+      min-height: 430px;
+      overflow: hidden;
       display: flex;
       align-items: center;
       color: var(--blanco);
@@ -129,14 +145,30 @@
     }
 
     .portada-contenido {
-      max-width: 740px;
-      padding: 74px 0;
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      padding: 68px 0 72px;
     }
 
-    .logo-portada {
-      display: block;
-      width: min(325px, 72vw);
-      height: auto;
+    .titulo-portada {
+      margin: 0;
+      max-width: 720px;
+      font-size: clamp(3rem, 7vw, 5.4rem);
+      line-height: 1.02;
+      letter-spacing: -0.055em;
+    }
+
+    .simbolo-portada {
+      position: absolute;
+      right: max(-25px, calc((100vw - var(--ancho)) / 2));
+      top: 46%;
+      color: rgba(255, 182, 0, 0.16);
+      font-size: clamp(18rem, 34vw, 31rem);
+      font-weight: 900;
+      line-height: 0.7;
+      transform: translateY(-50%);
+      user-select: none;
     }
 
     .presentacion {
@@ -261,18 +293,25 @@
     }
 
     .tarjeta {
-      min-height: 285px;
+      position: relative;
+      min-height: 235px;
       padding: 29px 32px 29px 0;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       border-bottom: 1px solid var(--linea);
+      border-top: 3px solid var(--amarillo);
     }
 
     .tarjeta:nth-child(even) {
       padding-right: 0;
       padding-left: 32px;
       border-left: 1px solid var(--linea);
+    }
+
+    .tarjeta .subtitulo::before {
+      content: "+ ";
+      color: var(--amarillo);
     }
 
     .tarjeta h3 {
@@ -324,6 +363,7 @@
       color: var(--blanco);
       background: var(--negro-suave);
       text-decoration: none;
+      border-top: 3px solid var(--amarillo);
     }
 
     .coleccion:hover {
@@ -344,9 +384,18 @@
       line-height: 1.18;
     }
 
+    .coleccion p {
+      margin: 18px 0 0;
+      color: #cfcac1;
+      font-size: 0.75rem;
+      line-height: 1.5;
+    }
+
     /* CIERRE */
 
     .cierre {
+      position: relative;
+      overflow: hidden;
       padding: 72px 0;
       background: var(--amarillo);
     }
@@ -369,6 +418,48 @@
     .cierre .enlace {
       border-color: var(--negro);
       color: var(--negro);
+    }
+
+    .cierre-interior {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .principios {
+      padding-left: 36px;
+      border-left: 2px solid rgba(0, 0, 0, 0.72);
+    }
+
+    .principio + .principio {
+      margin-top: 20px;
+    }
+
+    .principio strong,
+    .principio span {
+      display: block;
+    }
+
+    .principio strong {
+      font-size: 1.05rem;
+    }
+
+    .principio span {
+      font-size: 0.83rem;
+    }
+
+    .simbolo-cierre {
+      position: absolute;
+      right: -35px;
+      bottom: -95px;
+      color: rgba(255, 255, 255, 0.24);
+      font-size: 19rem;
+      font-weight: 900;
+      line-height: 1;
+      user-select: none;
     }
 
     footer {
@@ -415,7 +506,7 @@
 
       .menu {
         position: absolute;
-        top: 60px;
+        top: 76px;
         right: 0;
         left: 0;
         display: none;
@@ -425,12 +516,20 @@
         background: var(--negro);
       }
 
+      .menu a {
+        padding: 5px 0;
+      }
+
+      .menu a + a::before {
+        display: none;
+      }
+
       .menu.abierto {
         display: flex;
       }
 
       .portada {
-        min-height: 520px;
+        min-height: 430px;
       }
 
       .portada-contenido {
@@ -442,7 +541,8 @@
       }
 
       .destacado-interior,
-      .rejilla-dos {
+      .rejilla-dos,
+      .cierre-interior {
         grid-template-columns: 1fr;
         gap: 32px;
       }
@@ -458,6 +558,12 @@
       .pie {
         align-items: flex-start;
         flex-direction: column;
+      }
+
+      .principios {
+        padding: 28px 0 0;
+        border-top: 2px solid rgba(0, 0, 0, 0.72);
+        border-left: 0;
       }
 
       .colecciones {
@@ -488,7 +594,7 @@
 
       <nav class="menu" aria-label="Navegación principal">
         <a href="blog/">Blog</a>
-        <a href="#lecturas">Lecturas para crecer</a>
+        <a href="#lecturas">Lecturas selectas</a>
         <a href="#formatos">Podcast y video</a>
         <a href="#sobre">Sobre DE+</a>
       </nav>
@@ -498,11 +604,7 @@
   <main>
     <section class="portada" id="inicio">
       <div class="contenedor portada-contenido">
-        <h1 class="oculto">DE+ · Aprender con propósito</h1>
-
-        <img class="logo-portada"
-          src="assets/DE%2B_LOGO%20PRINCIPAL_BLANCO_AMARILLO_.svg"
-          alt="DE+ · Aprender con propósito">
+        <h1 class="titulo-portada">Aprender con propósito.</h1>
 
         <p class="presentacion">
           Un espacio editorial para leer con atención, pensar con profundidad
@@ -511,13 +613,14 @@
 
         <a class="enlace" href="blog/">Explorar contenidos →</a>
       </div>
+      <span class="simbolo-portada" aria-hidden="true">+</span>
     </section>
 
     <section class="destacado">
       <div class="contenedor destacado-interior">
         <div>
           <p class="subtitulo">Para comenzar</p>
-          <h2>Una casa para las ideas que merecen tiempo.</h2>
+          <h2>Una casa para las ideas.</h2>
         </div>
 
         <article class="ficha">
@@ -537,7 +640,7 @@
           </div>
 
           <p class="nota">
-            Ensayos, textos de divulgación y colaboraciones de autores invitados.
+            Ensayos, divulgación y voces invitadas.
           </p>
         </div>
 
@@ -545,19 +648,17 @@
           <article class="tarjeta">
             <div>
               <p class="subtitulo">Blog</p>
-              <h3>Escribir para abrir preguntas.</h3>
-              <p>Ensayos y reflexiones sobre filosofía, educación, cultura, ética y tecnología.</p>
+              <h3>Filosofía, educación, cultura, ética y tecnología.</h3>
             </div>
-            <a class="enlace" href="blog/">Ver el blog →</a>
+            <a class="enlace" href="blog/">Leer el blog →</a>
           </article>
 
           <article class="tarjeta">
             <div>
               <p class="subtitulo">Divulgación</p>
-              <h3>Comprender mejor lo complejo.</h3>
-              <p>Explicaciones claras y rigurosas sobre asuntos que nos conciernen.</p>
+              <h3>Ideas complejas explicadas con claridad.</h3>
             </div>
-            <a class="enlace" href="#">Explorar divulgación →</a>
+            <a class="enlace" href="#">Explorar →</a>
           </article>
         </div>
       </div>
@@ -565,32 +666,35 @@
 
     <section class="lecturas" id="lecturas">
       <div class="contenedor">
-        <p class="subtitulo">Lecturas para crecer</p>
+        <p class="subtitulo">Lecturas selectas</p>
         <h2>Una biblioteca para leer, detenerse y conversar.</h2>
         <p class="descripcion">
-          Antologías en crecimiento para formar lectores atentos, organizadas
-          en colecciones que podrás recorrer con facilidad.
+          Textos escogidos y organizados en colecciones para recorrerlos con facilidad.
         </p>
 
         <div class="colecciones">
           <a class="coleccion" href="#">
-            <span>Colección</span>
+            <span>01</span>
             <strong>Narrativa</strong>
+            <p>Cuentos y relatos que amplían la mirada.</p>
           </a>
 
           <a class="coleccion" href="#">
-            <span>Colección</span>
+            <span>02</span>
             <strong>Ensayo y pensamiento</strong>
+            <p>Ideas para comprendernos y pensar nuestro tiempo.</p>
           </a>
 
           <a class="coleccion" href="#">
-            <span>Colección</span>
-            <strong>Historia y cultura</strong>
+            <span>03</span>
+            <strong>Historia, cultura y memoria</strong>
+            <p>Sociedades, obras y transformaciones.</p>
           </a>
 
           <a class="coleccion" href="#">
-            <span>Colección</span>
-            <strong>Ciencia y sociedad</strong>
+            <span>04</span>
+            <strong>Ciencia, salud y sociedad</strong>
+            <p>El conocimiento científico y la experiencia humana.</p>
           </a>
         </div>
       </div>
@@ -598,23 +702,22 @@
 
     <section id="formatos">
       <div class="contenedor">
-        <p class="subtitulo">Escuchar y ver</p>
-        <h2>Otras formas de encontrarse con el conocimiento.</h2>
+        <p class="subtitulo">Medios audiovisuales</p>
 
         <div class="rejilla-dos" style="margin-top: 34px;">
           <article class="tarjeta">
             <div>
               <p class="subtitulo">Podcast</p>
-              <h3>Escuchar con atención.</h3>
+              <h3>Para escuchar.</h3>
               <p>Series de audio sobre filosofía, historia, educación, medicina y cultura.</p>
             </div>
-            <a class="enlace" href="#">Ir al podcast →</a>
+            <a class="enlace" href="#">Escuchar el podcast →</a>
           </article>
 
           <article class="tarjeta">
             <div>
               <p class="subtitulo">Video</p>
-              <h3>Ver para comprender.</h3>
+              <h3>Ver y pensar.</h3>
               <p>Conferencias, clases abiertas, conversaciones y piezas audiovisuales.</p>
             </div>
             <a class="enlace" href="#">Ver videos →</a>
@@ -624,14 +727,23 @@
     </section>
 
     <section class="cierre" id="sobre">
-      <div class="contenedor">
-        <p class="subtitulo">Sobre DE+</p>
-        <h2>Aprender también es una manera de habitar mejor el mundo.</h2>
-        <p>
-          DE+ reúne proyectos de pensamiento, lectura y divulgación que buscan
-          acercar el conocimiento a la vida cotidiana con rigor y claridad.
-        </p>
+      <div class="contenedor cierre-interior">
+        <div>
+          <p class="subtitulo">Sobre DE+</p>
+          <h2>Aprender también es una manera de habitar mejor el mundo.</h2>
+          <p>
+            DE+ reúne proyectos de pensamiento, lectura y divulgación que acercan
+            el conocimiento a la vida cotidiana con rigor y claridad.
+          </p>
+          <a class="enlace" href="#">Conocer el proyecto →</a>
+        </div>
+        <div class="principios" aria-label="Principios de DE+">
+          <div class="principio"><strong>Pensar</strong><span>Con profundidad.</span></div>
+          <div class="principio"><strong>Leer</strong><span>Con curiosidad.</span></div>
+          <div class="principio"><strong>Compartir</strong><span>Con claridad.</span></div>
+        </div>
       </div>
+      <span class="simbolo-cierre" aria-hidden="true">+</span>
     </section>
   </main>
 
