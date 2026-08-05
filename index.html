@@ -6,11 +6,31 @@
   <meta name="description" content="DE+ · Aprender con propósito. Pensamiento, lectura, divulgación y cultura.">
   <title>DE+ · Aprender con propósito</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
-
   <style>
+    @font-face {
+      font-family: "Montserrat";
+      src: url("assets/fonts/montserrat-regular.ttf") format("truetype");
+      font-display: swap;
+      font-style: normal;
+      font-weight: 400;
+    }
+
+    @font-face {
+      font-family: "Montserrat";
+      src: url("assets/fonts/montserrat-semibold.ttf") format("truetype");
+      font-display: swap;
+      font-style: normal;
+      font-weight: 600;
+    }
+
+    @font-face {
+      font-family: "Montserrat";
+      src: url("assets/fonts/montserrat-extrabold.ttf") format("truetype");
+      font-display: swap;
+      font-style: normal;
+      font-weight: 800;
+    }
+
     :root {
       --negro: #000000;
       --negro-suave: #181818;
@@ -34,13 +54,25 @@
       margin: 0;
       color: var(--negro);
       background: var(--blanco);
-      font-family: "Roboto", Arial, sans-serif;
+      font-family: "Montserrat", Arial, sans-serif;
       font-size: 16pt;
       line-height: 1.62;
+      text-rendering: optimizeLegibility;
     }
 
     a {
       color: inherit;
+    }
+
+    a,
+    button {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--amarillo);
+      outline-offset: 5px;
     }
 
     .contenedor {
@@ -94,7 +126,7 @@
       align-items: center;
       gap: 0;
       font-size: 15px;
-      font-weight: 700;
+      font-weight: 600;
       letter-spacing: 0.02em;
     }
 
@@ -103,6 +135,7 @@
       padding: 0 18px;
       color: #ececec;
       text-decoration: none;
+      transition: color 160ms ease;
     }
 
     .menu a + a::before {
@@ -134,27 +167,53 @@
 
     .portada {
       position: relative;
-      min-height: 430px;
+      isolation: isolate;
+      min-height: 540px;
       overflow: hidden;
       display: flex;
       align-items: center;
       color: var(--blanco);
+      background: var(--negro);
+    }
+
+    .portada::before,
+    .portada::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .portada::before {
+      z-index: -2;
+      inset: -12px;
+      background-image: url("assets/epidauro-difuminado.webp");
+      background-position: center 20%;
+      background-size: cover;
+      opacity: 0.43;
+      transform: scale(1.035);
+    }
+
+    .portada::after {
+      z-index: -1;
       background:
-        radial-gradient(circle at 84% 20%, rgba(255, 182, 0, 0.18), transparent 26%),
-        linear-gradient(135deg, #000000, #1a1a1a);
+        radial-gradient(circle at 86% 21%, rgba(255, 182, 0, 0.16), transparent 25%),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.96) 0%, rgba(0, 0, 0, 0.88) 44%, rgba(0, 0, 0, 0.52) 75%, rgba(0, 0, 0, 0.74) 100%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.64));
     }
 
     .portada-contenido {
       position: relative;
-      z-index: 1;
+      z-index: 2;
       max-width: 760px;
-      padding: 68px 0 72px;
+      padding: 92px 0 96px;
     }
 
     .titulo-portada {
       margin: 0;
       max-width: 720px;
       font-size: clamp(3rem, 7vw, 5.4rem);
+      font-weight: 800;
       line-height: 1.02;
       letter-spacing: -0.055em;
     }
@@ -165,7 +224,7 @@
       top: 46%;
       color: rgba(255, 182, 0, 0.16);
       font-size: clamp(18rem, 34vw, 31rem);
-      font-weight: 900;
+      font-weight: 800;
       line-height: 0.7;
       transform: translateY(-50%);
       user-select: none;
@@ -186,9 +245,10 @@
       border-bottom: 2px solid var(--amarillo);
       color: inherit;
       font-size: 0.72rem;
-      font-weight: 700;
+      font-weight: 600;
       letter-spacing: 0.02em;
       text-decoration: none;
+      transition: color 160ms ease, border-color 160ms ease;
     }
 
     .enlace:hover {
@@ -204,7 +264,7 @@
     h2,
     h3 {
       margin: 0;
-      font-weight: 700;
+      font-weight: 600;
       letter-spacing: -0.035em;
     }
 
@@ -223,7 +283,7 @@
       margin: 0 0 14px;
       color: #996d00;
       font-size: 0.66rem;
-      font-weight: 900;
+      font-weight: 800;
       letter-spacing: 0.14em;
       text-transform: uppercase;
     }
@@ -249,10 +309,33 @@
     }
 
     .ficha {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
       padding: 30px 34px;
       border-top: 4px solid var(--amarillo);
       color: var(--blanco);
       background: var(--negro);
+    }
+
+    .ficha::before,
+    .ficha::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .ficha::before {
+      inset: -16px -10px;
+      background: url("assets/acropolis-detalle-difuminado.webp") center 56% / cover;
+      opacity: 0.22;
+      transform: scale(1.035);
+    }
+
+    .ficha::after {
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0.96) 0%, rgba(0, 0, 0, 0.82) 66%, rgba(0, 0, 0, 0.68) 100%);
     }
 
     .ficha .subtitulo {
@@ -364,16 +447,18 @@
       background: var(--negro-suave);
       text-decoration: none;
       border-top: 3px solid var(--amarillo);
+      transition: background-color 160ms ease, transform 160ms ease;
     }
 
     .coleccion:hover {
       background: #2b2b2b;
+      transform: translateY(-2px);
     }
 
     .coleccion span {
       color: var(--amarillo);
       font-size: 0.64rem;
-      font-weight: 900;
+      font-weight: 800;
       letter-spacing: 0.12em;
       text-transform: uppercase;
     }
@@ -444,6 +529,7 @@
     }
 
     .principio strong {
+      font-weight: 600;
       font-size: 1.05rem;
     }
 
@@ -457,7 +543,7 @@
       bottom: -95px;
       color: rgba(255, 255, 255, 0.24);
       font-size: 19rem;
-      font-weight: 900;
+      font-weight: 800;
       line-height: 1;
       user-select: none;
     }
@@ -529,11 +615,23 @@
       }
 
       .portada {
-        min-height: 430px;
+        min-height: 500px;
+      }
+
+      .portada::before {
+        background-position: 58% 18%;
+        background-size: auto 145%;
+        opacity: 0.34;
+      }
+
+      .portada::after {
+        background:
+          linear-gradient(90deg, rgba(0, 0, 0, 0.94), rgba(0, 0, 0, 0.68)),
+          linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.74));
       }
 
       .portada-contenido {
-        padding: 65px 0;
+        padding: 76px 0;
       }
 
       section {
@@ -580,6 +678,18 @@
         padding: 27px;
       }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+      }
+    }
   </style>
 </head>
 
@@ -607,7 +717,7 @@
         <h1 class="titulo-portada">Aprender con propósito.</h1>
 
         <p class="presentacion">
-          Un espacio editorial para leer con atención, pensar con profundidad
+          Un espacio para leer con atención, pensar con profundidad
           y compartir ideas que ayuden a comprender mejor nuestro tiempo.
         </p>
 
@@ -760,12 +870,23 @@
   <script>
     const boton = document.querySelector(".boton-menu");
     const menu = document.querySelector(".menu");
+    const enlacesMenu = menu.querySelectorAll("a");
+
+    const cerrarMenu = () => {
+      menu.classList.remove("abierto");
+      boton.setAttribute("aria-expanded", "false");
+      boton.setAttribute("aria-label", "Abrir menú");
+      boton.textContent = "☰";
+    };
 
     boton.addEventListener("click", () => {
       const abierto = menu.classList.toggle("abierto");
       boton.setAttribute("aria-expanded", abierto);
+      boton.setAttribute("aria-label", abierto ? "Cerrar menú" : "Abrir menú");
       boton.textContent = abierto ? "×" : "☰";
     });
+
+    enlacesMenu.forEach((enlace) => enlace.addEventListener("click", cerrarMenu));
   </script>
 </body>
 </html>
