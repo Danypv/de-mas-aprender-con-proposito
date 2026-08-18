@@ -1,0 +1,17 @@
+{
+  "name": "de-mas-aprender-con-proposito",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build:content": "node scripts/build-content.mjs",
+    "check:content": "node scripts/check-content.mjs"
+  },
+  "dependencies": {
+    "gray-matter": "^4.0.3",
+    "markdown-it": "^14.1.0",
+    "turndown": "^7.2.0"
+  },
+  "devDependencies": {
+    "vite": "^7.1.3"
+  }
+}
