@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es" class="sin-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="La ciencia y las humanidades no compiten por el conocimiento: se necesitan para comprender el mundo y aprender a habitarlo con sentido.">
+  <meta name="theme-color" content="#000000">
+  <title>Integrar las humanidades y las ciencias · DE+</title>
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Integrar las humanidades y las ciencias: una clave para el cultivo del ser humano · DE+">
+  <meta property="og:description" content="La ciencia y las humanidades no compiten por el conocimiento: se necesitan para comprender el mundo y aprender a habitarlo con sentido.">
+  <meta property="og:image" content="../../assets/marca/og-imagen.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="../../assets/marca/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../../assets/marca/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../../assets/marca/icono-180.png">
+  <link rel="preload" as="font" type="font/woff2" href="../../assets/fonts/montserrat-semibold.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="../../assets/fonts/roboto-regular.woff2" crossorigin>
+  <style>
+    @font-face { font-family:"Montserrat"; src:url("../../assets/fonts/montserrat-semibold.woff2") format("woff2"); font-weight:600; font-style:normal; font-display:swap; }
+    @font-face { font-family:"Montserrat"; src:url("../../assets/fonts/montserrat-extrabold.woff2") format("woff2"); font-weight:800; font-style:normal; font-display:swap; }
+    @font-face { font-family:"Roboto"; src:url("../../assets/fonts/roboto-regular.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:swap; }
+    @font-face { font-family:"Roboto"; src:url("../../assets/fonts/roboto-medium.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:swap; }
+    @font-face { font-family:"Roboto Condensed"; src:url("../../assets/fonts/robotocondensed-bold.woff2") format("woff2"); font-weight:700; font-style:normal; font-display:swap; }
+
+    :root {
+      --negro:#000000; --negro-suave:#161616; --amarillo:#ffb600; --blanco:#ffffff;
+      --hueso:#f6f4ef; --ocre:#8a5e00; --gris:#57534d; --linea:#dcd8cf;
+      --marca:"Montserrat","Helvetica Neue",Arial,sans-serif;
+      --lectura:"Roboto","Helvetica Neue",Arial,sans-serif;
+      --condensada:"Roboto Condensed","Roboto","Arial Narrow",sans-serif;
+      --ancho:1180px; --margen:48px; --columna:68ch;
+      --signo:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 147.16 147.16'%3E%3Cpolygon points='57.87 0 57.87 57.87 0 57.87 0 89.28 57.87 89.28 57.87 147.16 89.28 147.16 89.28 89.28 147.16 89.28 147.16 57.87 89.28 57.87 89.28 0 57.87 0'/%3E%3C/svg%3E");
+    }
+
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+    body { margin:0; color:var(--negro); background:var(--blanco); font-family:var(--lectura); font-size:1.0625rem; line-height:1.72; -webkit-font-smoothing:antialiased; }
+    a { color:inherit; }
+    a,button { -webkit-tap-highlight-color:transparent; }
+    a:focus-visible,button:focus-visible { outline:3px solid var(--amarillo); outline-offset:4px; border-radius:2px; }
+    .contenedor { width:min(var(--ancho),calc(100% - (var(--margen) * 2))); margin:0 auto; }
+    .salto { position:absolute; top:-100px; left:16px; z-index:100; padding:12px 20px; color:var(--negro); background:var(--amarillo); font-family:var(--marca); font-size:.875rem; font-weight:600; text-decoration:none; }
+    .salto:focus { top:16px; }
+
+    .cabecera { position:sticky; top:0; z-index:20; background:rgba(0,0,0,.92); backdrop-filter:saturate(1.4) blur(10px); -webkit-backdrop-filter:saturate(1.4) blur(10px); border-bottom:1px solid rgba(255,255,255,.1); }
+    .navegacion { min-height:74px; display:flex; align-items:center; justify-content:space-between; gap:28px; }
+    .marca { display:flex; align-items:center; width:62px; flex:none; }
+    .marca img { display:block; width:100%; height:auto; }
+    .menu { display:flex; align-items:center; font-family:var(--marca); font-size:.9375rem; font-weight:600; }
+    .menu a { position:relative; padding:8px 20px; color:#ededec; text-decoration:none; transition:color 160ms ease; }
+    .menu a + a::before { content:""; position:absolute; top:50%; left:0; width:1px; height:16px; background:rgba(255,182,0,.55); transform:translateY(-50%); }
+    .menu a:hover,.menu a[aria-current="page"] { color:var(--amarillo); }
+    .boton-menu { display:none; width:44px; height:44px; padding:0; border:0; background:transparent; cursor:pointer; }
+    .boton-menu .barra { display:block; width:24px; height:2px; margin:5px auto; background:var(--blanco); transition:transform 220ms ease,opacity 180ms ease; }
+    .boton-menu[aria-expanded="true"] .barra:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+    .boton-menu[aria-expanded="true"] .barra:nth-child(2) { opacity:0; }
+    .boton-menu[aria-expanded="true"] .barra:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+    .cabecera-articulo { position:relative; isolation:isolate; overflow:hidden; padding:104px 0 88px; background:var(--hueso); }
+    .cabecera-articulo::after { content:"+"; position:absolute; right:-.03em; bottom:-.42em; z-index:-1; color:rgba(0,0,0,.035); font-family:var(--marca); font-size:clamp(18rem,35vw,34rem); font-weight:800; line-height:1; user-select:none; }
+    .cabecera-articulo .interior { max-width:980px; margin-left:0; }
+    .ruta { margin:0 0 30px; color:var(--gris); font-size:.875rem; }
+    .ruta a { text-decoration:none; }
+    .ruta a:hover { color:var(--ocre); }
+    .ruta span { margin:0 9px; color:var(--amarillo); }
+    .etiqueta { display:block; margin:0 0 17px; color:var(--ocre); font-family:var(--condensada); font-size:.875rem; font-weight:700; letter-spacing:.17em; line-height:1.45; text-transform:uppercase; }
+    .etiqueta::before { content:""; display:inline-block; width:.58em; height:.58em; margin-right:9px; background-color:var(--amarillo); vertical-align:-.02em; -webkit-mask:var(--signo) center/contain no-repeat; mask:var(--signo) center/contain no-repeat; }
+    h1 { max-width:16ch; margin:0; font-family:var(--marca); font-size:clamp(2.65rem,5.6vw,5rem); font-weight:600; letter-spacing:-.038em; line-height:1.04; text-wrap:balance; }
+    .autor { margin:30px 0 0; color:var(--gris); font-size:1rem; }
+    .autor strong { color:var(--negro); font-weight:500; }
+
+    .articulo { width:min(var(--columna),calc(100% - 48px)); margin:0 auto; padding:76px 0 92px; font-size:1.125rem; line-height:1.82; }
+    .articulo p { margin:0 0 1.45em; }
+    .articulo .apertura { margin-bottom:1.65em; font-size:1.25rem; line-height:1.72; }
+    .articulo blockquote { position:relative; margin:2.5em 0; padding:28px 30px 28px 34px; border-left:4px solid var(--amarillo); color:var(--blanco); background:var(--negro-suave); font-size:1.12rem; font-style:normal; line-height:1.72; }
+    .articulo em { font-style:italic; }
+    .lista { margin:1.6em 0 1.9em; padding-left:1.25em; }
+    .lista li { margin:.68em 0; padding-left:.32em; }
+    .lista li::marker { color:var(--ocre); }
+
+    .seguir { padding:58px 0 62px; color:var(--blanco); background:var(--negro); }
+    .seguir-interno { width:min(var(--columna),calc(100% - 48px)); margin:auto; }
+    .seguir .etiqueta { color:var(--amarillo); }
+    .enlace { display:inline-block; position:relative; padding-bottom:6px; font-size:.9375rem; font-weight:500; text-decoration:none; }
+    .enlace::after { content:""; position:absolute; right:0; bottom:0; left:0; height:2px; background:var(--amarillo); transition:transform 220ms ease; transform-origin:left; }
+    .enlace:hover::after { transform:scaleY(2.5); }
+    .flecha { display:inline-block; margin-right:7px; transition:transform 220ms ease; }
+    .enlace:hover .flecha { transform:translateX(-4px); }
+
+    .pie-pagina { padding:34px 0; color:#d8d8d8; background:var(--negro-suave); border-top:1px solid rgba(255,255,255,.1); }
+    .pie { display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    .pie-marca { width:150px; }
+    .pie-marca img { display:block; width:100%; height:auto; }
+    .pie p { margin:0; font-size:.8125rem; }
+
+    @media (max-width:820px) {
+      :root { --margen:24px; }
+      .boton-menu { display:block; }
+      .menu { position:absolute; top:100%; right:0; left:0; display:none; padding:10px 24px 18px; background:rgba(0,0,0,.98); border-top:1px solid rgba(255,255,255,.1); }
+      .menu.abierto { display:block; }
+      .menu a { display:block; padding:12px 0; }
+      .menu a + a::before { top:0; right:0; left:0; width:auto; height:1px; background:rgba(255,255,255,.1); transform:none; }
+      .cabecera-articulo { padding:74px 0 64px; }
+      .ruta { margin-bottom:24px; }
+      .articulo { width:min(var(--columna),calc(100% - 40px)); padding:54px 0 68px; font-size:1.0625rem; line-height:1.78; }
+      .articulo .apertura { font-size:1.16rem; }
+      .articulo blockquote { margin:2.1em -4px; padding:24px 22px 24px 26px; }
+      .seguir-interno { width:calc(100% - 40px); }
+      .pie { flex-direction:column; align-items:flex-start; gap:18px; }
+    }
+
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition-duration:.01ms !important; } }
+    @media print { .cabecera,.seguir,.pie-pagina,.salto { display:none; } .cabecera-articulo { padding:20px 0 28px; } .articulo { width:100%; padding:30px 0; font-size:11pt; } }
+  </style>
+</head>
+<body>
+  <a class="salto" href="#contenido">Saltar al contenido</a>
+
+  <header class="cabecera">
+    <div class="contenedor navegacion">
+      <a class="marca" href="../../" aria-label="DE+, ir al inicio">
+        <img src="../../assets/marca/isotipo-blanco-amarillo.svg" alt="DE+" width="62" height="49">
+      </a>
+      <button class="boton-menu" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal">
+        <span class="barra"></span><span class="barra"></span><span class="barra"></span>
+      </button>
+      <nav class="menu" id="menu-principal" aria-label="Navegación principal">
+        <a href="../" aria-current="page">Blog</a>
+        <a href="../../#lecturas">Lecturas selectas</a>
+        <a href="../../#formatos">Podcast y video</a>
+        <a href="../../#sobre">Sobre DE+</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="cabecera-articulo">
+      <div class="contenedor">
+        <div class="interior">
+          <p class="ruta"><a href="../../">Inicio</a><span aria-hidden="true">/</span><a href="../">Blog</a></p>
+          <p class="etiqueta">Humanidades · Educación</p>
+          <h1>Integrar las humanidades y las ciencias: una clave para el cultivo del ser humano</h1>
+          <p class="autor">Por <strong>Daniel Pérez Valencia</strong> · 4 de agosto de 2026</p>
+        </div>
+      </div>
+    </section>
+  <article class="articulo">
+    <p class="apertura">«¡Qué tarde voy a llegar, oh, Dios mío!», susurraba un gran conejo blanco de ojos rosados y vistiendo un chaleco, al mirar su reloj de bolsillo. Alicia, que estaba sentada y pensativa bajo la sombra de un árbol, sintió mucha curiosidad ante la situación, porque no es normal que los conejos puedan hablar y, mucho menos, que se sientan inquietos por el paso del tiempo.</p>
+<p>Es probable que conozcas el desenlace de esta historia de Lewis Carroll y la manera como Alicia, siguiendo al gran conejo blanco que se metió en una madriguera, consigue el acceso a un mundo desconocido: el país de las maravillas.</p>
+<p>En el mundo real, los conejos no hablan ni tienen un lenguaje articulado. Tampoco lo hacen las piedras, los insectos, los árboles, las estrellas y demás. Pero ¿y si no fuera así? Los científicos encuentran en sus investigaciones cotidianas que todo el cosmos habla. Galileo Galilei (1564–1642) pensaba que el universo se asemejaba a un gran libro escrito en lenguaje matemático, y quien lograra aprenderlo tendría la oportunidad de descubrir y vivir experiencias extraordinarias. Este lenguaje universal también lo pueden conocer filósofos y poetas, literatos y humanistas, quienes interpretan el mundo desde sus estructuras simbólicas y cualitativas.</p>
+<p>A partir de la experiencia de los antiguos griegos sobre la ciencia, podrían destacarse dos formas de aproximarse al conocimiento de la realidad. Por una parte, se encuentra la línea de Prometeo —el titán mítico que le robó el fuego a los dioses y se lo dio a los seres humanos—, enfocada en dominar la naturaleza a partir de las capacidades técnicas y científicas del ser humano. En esta perspectiva, la mecánica y la ciencia experimental han sido predominantes. Por otra parte, se identifica la línea de Orfeo, el hombre que, según el mito, tocaba la lira y, con su música, lograba penetrar los secretos de la naturaleza. En comparación con Prometeo, la propuesta órfica es contemplativa y enfatiza el conocimiento de las dimensiones cualitativas del mundo natural.</p>
+<p>¿Cuál de estas líneas ha tenido mayor primacía: la técnica o la contemplativa, la cuantitativa o la cualitativa? Es un hecho que en ambas dimensiones se han alcanzado grandes logros. La perspectiva prometeica privilegia las ciencias de la naturaleza y, como resultado, se obtiene una tecnociencia poderosa basada en el método experimental. La orientación órfica, en cambio, se expresa en las ciencias del espíritu, que conectan al ser humano con el sentido de la vida y su dimensión simbólica. Ambas líneas representan las dos caras de una misma moneda, la del conocimiento. Con el paso del tiempo, se ha generalizado la idea de que existe incompatibilidad entre estas dos perspectivas del saber.</p>
+<p>La idea sobre la que se funda la escisión entre las ciencias experimentales y las humanas se centra en el calificativo de que las ciencias naturales son efectivas, útiles y prácticas, mientras que las ciencias humanas o del espíritu están revestidas de inutilidad. Por algo, muchos estudiantes universitarios las denominan como el relleno de los programas curriculares. Esta condición obedece al hecho de que, en las sociedades modernas, se aprecia de manera indiscutible el triunfo de lo práctico y aplicable.</p>
+<p>Por ejemplo, un médico trata una enfermedad compleja con un medicamento desarrollado por un químico farmacéutico. Un ingeniero construye un puente o un edificio con base en los planos elaborados por un arquitecto. Un diseñador de experiencias de entretenimiento crea un videojuego que tiene alto impacto en el mundo de los amantes del juego digital. Un desarrollador de software crea programas o aplicaciones que optimizan el uso de aparatos inteligentes o mejoran la experiencia en línea de los usuarios de determinados servicios. El triunfo de lo práctico se vuelca sobre un valor muy demandado: la utilidad.</p>
+<p>En este sentido, cuando se piensa la realidad solo desde la óptica del utilitarismo, es inevitable plantear la pregunta «¿para qué sirve?». Las cosas comienzan a sonar diferentes cuando la pregunta se vierte sobre las asignaturas humanísticas: ¿para qué sirve la filosofía?, ¿para qué sirve la historia de la medicina o la historia del arte?, ¿qué utilidad tiene una clase de ética? Lo particular es que todas estas preguntas están relacionadas con un ideal estrictamente pragmático: ¿qué puedo producir con un discurso de ética o qué tan lejos puedo llegar con una idea sobre los valores?</p>
+<p>Este tipo de cuestionamientos han conducido a las humanidades a tratar de defender su dignidad apoyándose en la tesis aristotélica de la inutilidad. Esta postura se ha convertido en un lugar común desde que Aristóteles (384–322 a. C.) planteó una distinción entre el sentido que tiene un medio y el que tiene un fin. Desde esta concepción, lo útil tiene sentido en cuanto es un instrumento, un medio que permite alcanzar otra cosa. Aquello que aparentemente sería inútil, el fin, tiene un valor en sí mismo. Su dignidad radica en que es algo libre y no es un medio para alcanzar otra cosa.</p>
+<p>Arthur Schopenhauer (1788–1860) ilustró esta perspectiva en <em>El mundo como voluntad y representación</em>. Afirmó que, en muchos casos, aquello que se considera inútil puede tener un gran valor.</p>
+<blockquote>
+<p>«Una obra genial puede ser música, filosofía, pintura o poesía y, sin embargo, no lograr representar una utilidad o un beneficio. Ser inútil y poco beneficioso es una de las características de las obras geniales; es la garantía de su nobleza. Todas las demás obras humanas solo existen para mantener o aliviar nuestra existencia; pero las que discutimos aquí no lo hacen, porque solo existen por sí mismas, y han de considerarse, en este sentido, como la flor o el beneficio neto de la existencia».</p>
+</blockquote>
+<p>Este discurso parece atractivo y romántico, porque hace de las indigentes humanidades algo grande. Incluso conlleva a que entre defensores y detractores exista un acuerdo, al menos en una cosa: que las humanidades son inútiles. La diferencia es que sus defensores subrayan que su grandeza se centra en la inutilidad, sosteniendo la oposición entre medios y fines, como lo planteaban Aristóteles, Schopenhauer o, en la actualidad, el filósofo italiano Nuccio Ordine (1958–2023) en <em>La utilidad de lo inútil</em>.</p>
+<p>Ahora bien, ¿por qué hablar de inutilidad cuando se puede hablar de fecundidad? La fecundidad es el atributo esencial de las humanidades: dan vida, proveen sentido. Lo útil sigue siendo importante, y también lo es aquello que orienta a los seres humanos a vivir mejor, porque promueve la formación de las personas a partir del cultivo de su propia humanidad.</p>
+<p>Superar la división entre ciencias humanas y ciencias naturales es una necesidad de la educación del presente. En la tarea de reunificar lo que parece dividido, la educación debe convertirse en vehículo de equilibrio. Es vital ofrecer una formación integral que reúna la utilidad de la ciencia y la tecnología con la apreciación del valor intrínseco de las humanidades. La belleza, el sentido, la ética, el bienestar y la búsqueda de la verdad son dimensiones fecundas para el ser humano, que no deben ser eclipsadas por la mera utilidad mercantil.</p>
+<p>Es hora de fomentar una formación holística donde la ciencia y las humanidades se entrelacen para ayudar a forjar personas integrales. La educación debe ser un escenario en el que las dos líneas griegas —la de Prometeo y la de Orfeo— converjan. De manera que se capacite a las personas para cambiar el mundo a través de la ciencia y la tecnología, y para dar sentido a ese mundo y a sus propias vidas.</p>
+<p>La filosofía y la metafísica, la ética y la política, la historia y las artes, entre otros, también son componentes esenciales de nuestra racionalidad. El conocimiento del universo simbólico humano, del que se ocupan las humanidades, permite a las personas comprenderse a sí mismas y encontrar su lugar en el mundo. Las humanidades son fecundas en la vida de las personas porque:</p>
+<ul>
+<li>Ayudan a forjar el carácter y la conciencia, en diálogo permanente con el mundo y sus culturas.</li>
+<li>Forman el espíritu crítico y permiten a los profesionales discernir los fines de su vocación y profesión.</li>
+<li>Trazan los principios éticos que acompañan los desarrollos tecnocientíficos.</li>
+<li>Enfatizan la responsabilidad que las personas adquieren consigo mismas, con la naturaleza y con la sociedad.</li>
+<li>Convierten la educación en un proceso de formación y no solo de instrucción.</li>
+<li>Enfatizan el cultivo de la humanidad, ayudando a desarrollar la creatividad, el buen juicio y el buen gusto.</li>
+<li>Alejan al ser humano de la trampa del individualismo y le ayudan a construir una sociedad verdaderamente democrática.</li>
+<li>Nos recuerdan que, además de hacer, hay que ser, vivir y convivir con sentido.</li>
+</ul>
+<p>La imaginación y la creatividad nos permiten crear mundos como el de Alicia y su país de las maravillas, pero también diseñar el mundo en el que vivimos. Tanto la ciencia como las humanidades representan formas diferentes de ver el mundo que convergen en el único universo que habitamos. Ambas visiones son esenciales para apreciar la totalidad. Solo cuando seamos capaces de unificar estas dos visiones en nuestras vidas, lograremos ser seres humanos completos, capaces de vivir a plenitud en el mundo y de darle el sentido que merece.</p>
+  </article></main>
+
+  <section class="seguir">
+    <div class="seguir-interno">
+      <p class="etiqueta">Seguir leyendo</p>
+      <a class="enlace" href="../"><span class="flecha" aria-hidden="true">←</span>Volver al blog</a>
+    </div>
+  </section>
+
+  <footer class="pie-pagina">
+    <div class="contenedor pie">
+      <div class="pie-marca"><img src="../../assets/marca/logo-blanco-amarillo.svg" alt="DE+ · Aprender con propósito" width="150" height="118"></div>
+      <p>© 2026. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.documentElement.classList.remove("sin-js");
+    const boton = document.querySelector(".boton-menu");
+    const menu = document.querySelector(".menu");
+    const cerrarMenu = () => { menu.classList.remove("abierto"); boton.setAttribute("aria-expanded","false"); boton.setAttribute("aria-label","Abrir menú"); };
+    boton.addEventListener("click", () => { const abierto = menu.classList.toggle("abierto"); boton.setAttribute("aria-expanded",String(abierto)); boton.setAttribute("aria-label",abierto ? "Cerrar menú" : "Abrir menú"); });
+    menu.querySelectorAll("a").forEach((enlace) => enlace.addEventListener("click",cerrarMenu));
+    document.addEventListener("keydown", (evento) => { if (evento.key === "Escape" && menu.classList.contains("abierto")) { cerrarMenu(); boton.focus(); } });
+  </script>
+</body>
+</html>
