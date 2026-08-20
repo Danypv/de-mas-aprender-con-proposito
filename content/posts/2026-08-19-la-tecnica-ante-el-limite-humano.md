@@ -3,7 +3,7 @@ title: La técnica ante el límite humano. Inteligencia artificial,
   neurotecnología y la responsabilidad de gobernar aquello que somos capaces
   de crear
 browser_title: La técnica ante el límite humano
-slug: la-tecnica-ante-el-limite-humano
+slug: La-tecnica-ante-el-límite-humano
 author: Daniel Pérez Valencia
 date: 2026-08-19
 categories:
