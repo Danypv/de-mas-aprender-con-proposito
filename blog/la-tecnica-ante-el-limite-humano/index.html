@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es" class="sin-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Una reflexión sobre los desafíos éticos, sociales y ambientales de la inteligencia artificial y la neurotecnología, y sobre la responsabilidad de orientar el desarrollo técnico hacia la dignidad humana y la permanencia del mundo.">
+  <meta name="theme-color" content="#000000">
+  <title>La técnica ante el límite humano · DE+</title>
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="La técnica ante el límite humano. Inteligencia artificial, neurotecnología y la responsabilidad de gobernar aquello que somos capaces de crear · DE+">
+  <meta property="og:description" content="Una reflexión sobre los desafíos éticos, sociales y ambientales de la inteligencia artificial y la neurotecnología, y sobre la responsabilidad de orientar el desarrollo técnico hacia la dignidad humana y la permanencia del mundo.">
+  <meta property="og:image" content="../../assets/marca/og-imagen.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="../../assets/marca/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../assets/marca/icono-180.png">
+  <link rel="preload" as="font" type="font/woff2" href="../../assets/fonts/montserrat-semibold.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="../../assets/fonts/roboto-regular.woff2" crossorigin>
+  <style>
+    @font-face { font-family:"Montserrat"; src:url("../../assets/fonts/montserrat-semibold.woff2") format("woff2"); font-weight:600; font-style:normal; font-display:swap; }
+    @font-face { font-family:"Montserrat"; src:url("../../assets/fonts/montserrat-extrabold.woff2") format("woff2"); font-weight:800; font-style:normal; font-display:swap; }
+    @font-face { font-family:"Roboto"; src:url("../../assets/fonts/roboto-regular.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:swap; }
+    @font-face { font-family:"Roboto"; src:url("../../assets/fonts/roboto-medium.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:swap; }
+    @font-face { font-family:"Roboto Condensed"; src:url("../../assets/fonts/robotocondensed-bold.woff2") format("woff2"); font-weight:700; font-style:normal; font-display:swap; }
+
+    :root {
+      --negro:#000000; --negro-suave:#161616; --amarillo:#ffb600; --blanco:#ffffff;
+      --hueso:#f6f4ef; --ocre:#8a5e00; --gris:#57534d; --linea:#dcd8cf;
+      --marca:"Montserrat","Helvetica Neue",Arial,sans-serif;
+      --lectura:"Roboto","Helvetica Neue",Arial,sans-serif;
+      --condensada:"Roboto Condensed","Roboto","Arial Narrow",sans-serif;
+      --ancho:1180px; --margen:48px; --columna:68ch;
+      --signo:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 147.16 147.16'%3E%3Cpolygon points='57.87 0 57.87 57.87 0 57.87 0 89.28 57.87 89.28 57.87 147.16 89.28 147.16 89.28 89.28 147.16 89.28 147.16 57.87 89.28 57.87 89.28 0 57.87 0'/%3E%3C/svg%3E");
+    }
+
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+    body { margin:0; color:var(--negro); background:var(--blanco); font-family:var(--lectura); font-size:1.0625rem; line-height:1.72; -webkit-font-smoothing:antialiased; }
+    a { color:inherit; }
+    a,button { -webkit-tap-highlight-color:transparent; }
+    a:focus-visible,button:focus-visible { outline:3px solid var(--amarillo); outline-offset:4px; border-radius:2px; }
+    .contenedor { width:min(var(--ancho),calc(100% - (var(--margen) * 2))); margin:0 auto; }
+    .salto { position:absolute; top:-100px; left:16px; z-index:100; padding:12px 20px; color:var(--negro); background:var(--amarillo); font-family:var(--marca); font-size:.875rem; font-weight:600; text-decoration:none; }
+    .salto:focus { top:16px; }
+
+    .cabecera { position:sticky; top:0; z-index:20; background:rgba(0,0,0,.92); backdrop-filter:saturate(1.4) blur(10px); -webkit-backdrop-filter:saturate(1.4) blur(10px); border-bottom:1px solid rgba(255,255,255,.1); }
+    .navegacion { min-height:74px; display:flex; align-items:center; justify-content:space-between; gap:28px; }
+    .marca { display:flex; align-items:center; width:62px; flex:none; }
+    .marca img { display:block; width:100%; height:auto; }
+    .menu { display:flex; align-items:center; font-family:var(--marca); font-size:.9375rem; font-weight:600; }
+    .menu a { position:relative; padding:8px 20px; color:#ededec; text-decoration:none; transition:color 160ms ease; }
+    .menu a + a::before { content:""; position:absolute; top:50%; left:0; width:1px; height:16px; background:rgba(255,182,0,.55); transform:translateY(-50%); }
+    .menu a:hover,.menu a[aria-current="page"] { color:var(--amarillo); }
+    .boton-menu { display:none; width:44px; height:44px; padding:0; border:0; background:transparent; cursor:pointer; }
+    .boton-menu .barra { display:block; width:24px; height:2px; margin:5px auto; background:var(--blanco); transition:transform 220ms ease,opacity 180ms ease; }
+    .boton-menu[aria-expanded="true"] .barra:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+    .boton-menu[aria-expanded="true"] .barra:nth-child(2) { opacity:0; }
+    .boton-menu[aria-expanded="true"] .barra:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+    .cabecera-articulo { position:relative; isolation:isolate; overflow:hidden; padding:104px 0 88px; background:var(--hueso); }
+    .cabecera-articulo::after { content:"+"; position:absolute; right:-.03em; bottom:-.42em; z-index:-1; color:rgba(0,0,0,.035); font-family:var(--marca); font-size:clamp(18rem,35vw,34rem); font-weight:800; line-height:1; user-select:none; }
+    .cabecera-articulo .interior { max-width:980px; margin-left:0; }
+    .ruta { margin:0 0 30px; color:var(--gris); font-size:.875rem; }
+    .ruta a { text-decoration:none; }
+    .ruta a:hover { color:var(--ocre); }
+    .ruta span { margin:0 9px; color:var(--amarillo); }
+    .etiqueta { display:block; margin:0 0 17px; color:var(--ocre); font-family:var(--condensada); font-size:.875rem; font-weight:700; letter-spacing:.17em; line-height:1.45; text-transform:uppercase; }
+    .etiqueta::before { content:""; display:inline-block; width:.58em; height:.58em; margin-right:9px; background-color:var(--amarillo); vertical-align:-.02em; -webkit-mask:var(--signo) center/contain no-repeat; mask:var(--signo) center/contain no-repeat; }
+    h1 { max-width:16ch; margin:0; font-family:var(--marca); font-size:clamp(2.65rem,5.6vw,5rem); font-weight:600; letter-spacing:-.038em; line-height:1.04; text-wrap:balance; }
+    .autor { margin:30px 0 0; color:var(--gris); font-size:1rem; }
+    .autor strong { color:var(--negro); font-weight:500; }
+
+    .articulo { width:min(var(--columna),calc(100% - 48px)); margin:0 auto; padding:76px 0 92px; font-size:1.125rem; line-height:1.82; }
+    .articulo p { margin:0 0 1.45em; }
+    .articulo .apertura { margin-bottom:1.65em; font-size:1.25rem; line-height:1.72; }
+    .articulo blockquote { position:relative; margin:2.5em 0; padding:28px 30px 28px 34px; border-left:4px solid var(--amarillo); color:var(--blanco); background:var(--negro-suave); font-size:1.12rem; font-style:normal; line-height:1.72; }
+    .articulo em { font-style:italic; }
+    .lista { margin:1.6em 0 1.9em; padding-left:1.25em; }
+    .lista li { margin:.68em 0; padding-left:.32em; }
+    .lista li::marker { color:var(--ocre); }
+
+    .seguir { padding:58px 0 62px; color:var(--blanco); background:var(--negro); }
+    .seguir-interno { width:min(var(--columna),calc(100% - 48px)); margin:auto; }
+    .seguir .etiqueta { color:var(--amarillo); }
+    .enlace { display:inline-block; position:relative; padding-bottom:6px; font-size:.9375rem; font-weight:500; text-decoration:none; }
+    .enlace::after { content:""; position:absolute; right:0; bottom:0; left:0; height:2px; background:var(--amarillo); transition:transform 220ms ease; transform-origin:left; }
+    .enlace:hover::after { transform:scaleY(2.5); }
+    .flecha { display:inline-block; margin-right:7px; transition:transform 220ms ease; }
+    .enlace:hover .flecha { transform:translateX(-4px); }
+
+    .pie-pagina { padding:34px 0; color:#d8d8d8; background:var(--negro-suave); border-top:1px solid rgba(255,255,255,.1); }
+    .pie { display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    .pie-marca { width:150px; }
+    .pie-marca img { display:block; width:100%; height:auto; }
+    .pie p { margin:0; font-size:.8125rem; }
+
+    @media (max-width:820px) {
+      :root { --margen:24px; }
+      .boton-menu { display:block; }
+      .menu { position:absolute; top:100%; right:0; left:0; display:none; padding:10px 24px 18px; background:rgba(0,0,0,.98); border-top:1px solid rgba(255,255,255,.1); }
+      .menu.abierto { display:block; }
+      .menu a { display:block; padding:12px 0; }
+      .menu a + a::before { top:0; right:0; left:0; width:auto; height:1px; background:rgba(255,255,255,.1); transform:none; }
+      .cabecera-articulo { padding:74px 0 64px; }
+      .ruta { margin-bottom:24px; }
+      .articulo { width:min(var(--columna),calc(100% - 40px)); padding:54px 0 68px; font-size:1.1875rem; line-height:1.75; }
+      .articulo .apertura { font-size:1.1875rem; line-height:1.75; }
+      .articulo blockquote { margin:2.1em -4px; padding:24px 22px 24px 26px; font-size:1.1875rem; line-height:1.75; }
+      .seguir-interno { width:calc(100% - 40px); }
+      .pie { flex-direction:column; align-items:flex-start; gap:18px; }
+    }
+
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition-duration:.01ms !important; } }
+    @media print { .cabecera,.seguir,.pie-pagina,.salto { display:none; } .cabecera-articulo { padding:20px 0 28px; } .articulo { width:100%; padding:30px 0; font-size:11pt; } }
+  </style>
+</head>
+<body>
+  <a class="salto" href="#contenido">Saltar al contenido</a>
+
+  <header class="cabecera">
+    <div class="contenedor navegacion">
+      <a class="marca" href="../../" aria-label="DE+, ir al inicio">
+        <img src="../../assets/marca/isotipo-blanco-amarillo.svg" alt="DE+" width="62" height="49">
+      </a>
+      <button class="boton-menu" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal">
+        <span class="barra"></span><span class="barra"></span><span class="barra"></span>
+      </button>
+      <nav class="menu" id="menu-principal" aria-label="Navegación principal">
+        <a href="../" aria-current="page">Blog</a>
+        <a href="../../#lecturas">Lecturas selectas</a>
+        <a href="../../#formatos">Podcast y video</a>
+        <a href="../../#sobre">Sobre DE+</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="cabecera-articulo">
+      <div class="contenedor">
+        <div class="interior">
+          <p class="ruta"><a href="../../">Inicio</a><span aria-hidden="true">/</span><a href="../">Blog</a></p>
+          <p class="etiqueta">Ética · Inteligencia Artificial · Neurotecnología</p>
+          <h1>La técnica ante el límite humano. Inteligencia artificial, neurotecnología y la responsabilidad de gobernar aquello que somos capaces de crear</h1>
+          <p class="autor">Por <strong>Daniel Pérez Valencia</strong> · 19 de agosto de 2026</p>
+        </div>
+      </div>
+    </section>
+  <article class="articulo">
+    <p class="apertura">La inteligencia artificial y la neurotecnología suelen presentarse bajo el lenguaje del avance. Se habla de modelos que aprenden, sistemas que predicen, dispositivos que leen señales cerebrales, algoritmos que optimizan procesos y máquinas capaces de acompañar decisiones cada vez más complejas. Ese vocabulario produce fascinación, y con razón. Hay allí posibilidades reales para la medicina, la educación, la investigación científica, la accesibilidad y la comprensión de fenómenos que antes resultaban difíciles de observar. Sin embargo, la pregunta ética no aparece solo cuando una tecnología falla, discrimina o causa daño. Aparece antes, en el momento en que una sociedad decide qué espera de sus herramientas, qué deja en manos de ellas y qué costos está dispuesta a invisibilizar.</p>
+<p>Durante años, lo digital fue presentado como si perteneciera a un espacio inmaterial. La palabra “nube” ayudó a consolidar esa ilusión. Parecía que los datos flotaban en algún lugar abstracto, ajenos al suelo, al agua, a la energía y a los cuerpos. Pero la nube tiene peso. Depende de centros de datos, servidores, sistemas de refrigeración, redes eléctricas, minerales, cables submarinos, fábricas de microchips y cadenas de extracción. Cada consulta, cada imagen generada, cada modelo entrenado y cada dispositivo conectado participa de una infraestructura física. Lo virtual no se opone a lo material: lo presupone.</p>
+<p>Esta constatación cambia el modo de hablar de innovación. No basta con preguntar qué puede hacer una tecnología. También hay que preguntar qué necesita para hacerlo, de dónde provienen sus recursos y qué territorios soportan sus efectos. La inteligencia artificial consume energía y agua; la neurotecnología necesita sensores, chips, baterías y procesamiento de datos. Detrás de esos elementos aparecen minerales como el litio, el cobalto o el coltán, cuya extracción suele ocurrir en regiones marcadas por desigualdad económica, fragilidad ambiental y débil capacidad de negociación frente a las grandes cadenas globales de valor. La tecnología no se sitúa por fuera de la ecología ni por fuera de la política. Está dentro de ambas.</p>
+<p>Hans Jonas, en El principio de responsabilidad, formuló una advertencia que hoy resulta especialmente vigente: la técnica moderna no amplía solo nuestra capacidad de actuar, también amplía el alcance de las consecuencias por las que debemos responder. En las éticas antiguas, muchas acciones humanas tenían efectos relativamente próximos: afectaban a una comunidad, a una generación o a un entorno limitado. La civilización tecnológica modificó esa escala. Ahora una decisión técnica puede comprometer ecosistemas, generaciones futuras, equilibrios sociales y formas de vida que no participaron en la decisión. La responsabilidad deja de ser un asunto privado o inmediato y se convierte en una categoría histórica.</p>
+<p>Jonas no invitaba a desconfiar del conocimiento ni a detener la ciencia. Su preocupación era más fina: cuando el poder de intervención crece, la prudencia deja de ser timidez y se convierte en lucidez moral. Allí donde una innovación puede producir daños irreversibles, la promesa de beneficio no debería anular la pregunta por sus consecuencias. En el caso de la inteligencia artificial y la neurotecnología, esa prudencia resulta decisiva porque ambas operan sobre dimensiones sensibles de la vida humana: decisiones sociales, autonomía, privacidad, salud mental, educación, trabajo, memoria, atención y formas de relación.</p>
+<p>La neurotecnología radicaliza esta discusión porque desplaza la frontera de la intervención. Ya no hablamos únicamente de máquinas externas que usamos para comunicarnos, escribir, calcular o almacenar información. Hablamos de dispositivos capaces de leer, monitorear o modificar señales del sistema nervioso. La pregunta por la intimidad cambia de lugar. Antes se trataba de proteger documentos, conversaciones, fotografías, datos bancarios o historias clínicas. Ahora aparece la posibilidad de registrar estados de atención, emoción, estrés, deseo o intención. La privacidad ya no se juega solo en lo que una persona dice o hace, sino en aquello que podría inferirse de su actividad cerebral.</p>
+<p>La UNESCO, en sus trabajos recientes sobre ética de la inteligencia artificial y neurotecnología, ha insistido en que la dignidad humana debe seguir siendo el criterio central de orientación. Esa afirmación puede sonar evidente, pero en este campo adquiere una gravedad nueva. Si los datos neuronales se convierten en mercancía, la interioridad humana entra en el circuito económico de la extracción. La persona deja de ser únicamente usuaria de una tecnología y puede convertirse en fuente permanente de información. El yo se transforma en dato; el dato, en perfil; el perfil, en predicción; la predicción, en oportunidad de negocio o de control.</p>
+<p>Por eso la protección de datos, aunque indispensable, no agota el problema. El asunto no es solo quién accede a la información, sino qué modelo de sociedad se construye cuando la información íntima se vuelve poder económico, político o institucional. Quien posee grandes volúmenes de datos puede clasificar poblaciones, anticipar comportamientos, orientar narrativas, segmentar deseos y organizar formas de influencia cada vez más precisas. En educación, salud, crédito, justicia, empleo o consumo, un sistema automatizado puede abrir y cerrar oportunidades bajo una apariencia de neutralidad. El algoritmo no necesita tener intención moral para producir efectos morales.</p>
+<p>Hannah Arendt, en La condición humana, ayuda a comprender este riesgo desde otra perspectiva. Su preocupación por la técnica no se limita al artefacto, sino al peligro de que los procesos automáticos sustituyan la acción, el juicio y la deliberación. Una sociedad puede acostumbrarse a obedecer sistemas que clasifican, recomiendan, priorizan y deciden sin detenerse a preguntar quién definió los criterios, qué datos alimentaron el modelo y qué mundo social produce esa automatización. La eficiencia, cuando se separa del juicio, tiende a presentarse como evidencia suficiente. Pero una decisión rápida no es necesariamente justa. Un cálculo preciso no es necesariamente humano.</p>
+<p>En la educación, esta tensión se vuelve visible. La inteligencia artificial puede apoyar el aprendizaje, facilitar el acceso a información, personalizar procesos y liberar tiempo de tareas mecánicas. Sin embargo, también puede erosionar el ejercicio de pensar por cuenta propia si se convierte en sustituto de la lectura, la escritura, la argumentación y la duda. La pregunta educativa no consiste solo en permitir o prohibir herramientas. El asunto de fondo es qué tipo de relación con el conocimiento se forma cuando una máquina redacta, resume, interpreta y responde antes de que el estudiante haya atravesado la dificultad de comprender.</p>
+<p>Adela Cortina, en Ética de la razón cordial, recuerda que la vida moral no se sostiene únicamente en cálculos correctos. También requiere reconocimiento, vínculo, sensibilidad ante el otro y responsabilidad compartida. Esa idea resulta importante porque muchos discursos tecnológicos tienden a reducir la inteligencia a procesamiento de información y la decisión ética a optimización de variables. Pero la justicia no surge solo de ordenar datos. Exige comprender contextos, escuchar voces, reconocer heridas históricas y advertir vulnerabilidades. Un sistema puede encontrar patrones con gran eficacia y, al mismo tiempo, reproducir desigualdades inscritas en los datos con los que fue entrenado.
+La desigualdad atraviesa todo este debate. Si las patentes, los laboratorios, los datos, los centros de cómputo y el capital se concentran en pocos países y corporaciones, la promesa de democratización tecnológica queda debilitada. El riesgo no es solo que algunas poblaciones tengan menos acceso a las herramientas. También pueden ser incorporadas como proveedoras de minerales, datos, trabajo precarizado o territorios de sacrificio ambiental. En el caso de la neurotecnología, la desigualdad puede adquirir una forma todavía más inquietante: la posibilidad de que ciertas mejoras cognitivas, atencionales o sensoriales queden disponibles solo para quienes puedan pagarlas. La brecha dejaría de ser únicamente educativa o económica y podría expresarse incluso en capacidades biológicas intervenidas.</p>
+<p>Josep M. Esquirol, al comentar los problemas filosóficos de la técnica contemporánea, insiste en la relación entre técnica y permanencia del mundo. Esa expresión resulta especialmente sugerente porque desplaza la discusión desde la novedad hacia la habitabilidad. Una tecnología no debería evaluarse solo por su potencia, velocidad o rentabilidad, sino por el tipo de mundo que ayuda a sostener. Hay innovaciones que amplían posibilidades humanas; otras intensifican el consumo, la vigilancia, la distracción o la dependencia. La diferencia no siempre está en el dispositivo, sino en la forma social que lo incorpora.</p>
+<p>Desde esta perspectiva, la bioética tiene que ampliar su campo de intervención. Ya no puede permanecer circunscrita al hospital, al consentimiento informado o al comité clínico tradicional. La vida humana está siendo afectada por arquitecturas digitales, sistemas de recomendación, plataformas de datos, dispositivos biométricos, modelos predictivos y tecnologías capaces de entrar en contacto con la actividad cerebral. La pregunta bioética ya no se limita a cómo proteger un cuerpo enfermo. Incluye cómo proteger una vida humana expuesta a sistemas que la miden, clasifican, predicen, estimulan y monetizan.</p>
+<p>También está en juego la manera como una época comprende la vulnerabilidad. Si toda fragilidad se interpreta como defecto que debe corregirse, la técnica queda sometida al ideal de rendimiento permanente. La lentitud, la dependencia, el cansancio, la enfermedad, el error o la incertidumbre empiezan a verse como fallas del sistema humano. En ese contexto, la promesa de mejoramiento puede deslizarse hacia una forma de desprecio por la condición humana concreta. Jonas veía en la vulnerabilidad una fuente de responsabilidad. Cuidamos porque algo puede ser dañado. Respondemos porque alguien puede quedar expuesto. La fragilidad no es un residuo vergonzoso de lo humano; es una de las razones por las que la ética existe.</p>
+<p>La inteligencia artificial y la neurotecnología no obligan a escoger entre humanidad y técnica. Esa oposición sería demasiado simple. La cuestión es impedir que la técnica se convierta en el criterio último de lo humano. Una herramienta puede contribuir al cuidado, al conocimiento, a la inclusión y a la justicia. Pero también puede reforzar desigualdades, intensificar la vigilancia, capturar la atención, explotar recursos escasos o convertir la interioridad en mercado. La diferencia depende de las decisiones culturales, políticas y económicas que acompañan su desarrollo.</p>
+<p>La pregunta decisiva de nuestro tiempo no es si lograremos construir máquinas más inteligentes o dispositivos más íntimos. Probablemente lo haremos. La pregunta es si tendremos suficiente responsabilidad para gobernar aquello que somos capaces de crear. La técnica ya no está al margen de la existencia; participa en la forma como aprendemos, sentimos, trabajamos, decidimos y nos comprendemos. Precisamente por eso necesita pensamiento. No un pensamiento enemigo de la innovación, sino uno capaz de recordar que ninguna tecnología merece llamarse progreso si debilita la dignidad de la persona, la libertad interior, la justicia entre comunidades y la permanencia de una vida humana auténtica en la Tierra.</p>
+  </article></main>
+
+  <section class="seguir">
+    <div class="seguir-interno">
+      <p class="etiqueta">Seguir leyendo</p>
+      <a class="enlace" href="../"><span class="flecha" aria-hidden="true">←</span>Volver al blog</a>
+    </div>
+  </section>
+
+  <footer class="pie-pagina">
+    <div class="contenedor pie">
+      <div class="pie-marca"><img src="../../assets/marca/logo-blanco-amarillo.svg" alt="DE+ · Aprender con propósito" width="150" height="118"></div>
+      <p>© 2026. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.documentElement.classList.remove("sin-js");
+    const boton = document.querySelector(".boton-menu");
+    const menu = document.querySelector(".menu");
+    const cerrarMenu = () => { menu.classList.remove("abierto"); boton.setAttribute("aria-expanded","false"); boton.setAttribute("aria-label","Abrir menú"); };
+    boton.addEventListener("click", () => { const abierto = menu.classList.toggle("abierto"); boton.setAttribute("aria-expanded",String(abierto)); boton.setAttribute("aria-label",abierto ? "Cerrar menú" : "Abrir menú"); });
+    menu.querySelectorAll("a").forEach((enlace) => enlace.addEventListener("click",cerrarMenu));
+    document.addEventListener("keydown", (evento) => { if (evento.key === "Escape" && menu.classList.contains("abierto")) { cerrarMenu(); boton.focus(); } });
+  </script>
+</body>
+</html>
