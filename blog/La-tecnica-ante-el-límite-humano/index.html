@@ -117,13 +117,8 @@
     .portada-articulo { width:min(980px,calc(100% - 40px)); margin:48px auto 0; }
     .portada-articulo img { display:block; width:100%; max-height:580px; object-fit:cover; }
     figcaption { margin-top:10px; color:var(--gris); font-size:.875rem; }
-    .acciones-lectura { width:min(var(--columna),calc(100% - 40px)); margin:32px auto 0; display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
-    .acciones-lectura button { min-height:44px; padding:9px 14px; background:var(--hueso); border:1px solid var(--linea); border-radius:4px; font:inherit; font-size:.875rem; cursor:pointer; }
-    .acciones-lectura button:hover { border-color:var(--ocre); } #estado-enlace { font-size:.875rem; }
-    .sin-js .acciones-lectura { display:none; }
     .articulo h2,.articulo h3 { font-family:var(--marca); line-height:1.3; margin:2em 0 1em; letter-spacing:-.025em; }
     .articulo img { max-width:100%; height:auto; } .articulo a { text-decoration-color:var(--ocre); text-underline-offset:4px; overflow-wrap:anywhere; }
-    @media print { .acciones-lectura { display:none; } .articulo blockquote { color:black; background:transparent; } }
   </style>
 </head>
 <body>
@@ -159,7 +154,6 @@
       </div>
     </section>
   
-  <div class="acciones-lectura"><button type="button" id="compartir">Copiar enlace</button><span id="estado-enlace" role="status"></span></div>
   <article class="articulo">
     <p class="apertura">La inteligencia artificial y la neurotecnología suelen presentarse bajo el lenguaje del avance. Se habla de modelos que aprenden, sistemas que predicen, dispositivos que leen señales cerebrales, algoritmos que optimizan procesos y máquinas capaces de acompañar decisiones cada vez más complejas. Ese vocabulario produce fascinación, y con razón. Hay allí posibilidades reales para la medicina, la educación, la investigación científica, la accesibilidad y la comprensión de fenómenos que antes resultaban difíciles de observar. Sin embargo, la pregunta ética no aparece solo cuando una tecnología falla, discrimina o causa daño. Aparece antes, en el momento en que una sociedad decide qué espera de sus herramientas, qué deja en manos de ellas y qué costos está dispuesta a invisibilizar.</p>
 <p>Durante años, lo digital fue presentado como si perteneciera a un espacio inmaterial. La palabra “nube” ayudó a consolidar esa ilusión. Parecía que los datos flotaban en algún lugar abstracto, ajenos al suelo, al agua, a la energía y a los cuerpos. Pero la nube tiene peso. Depende de centros de datos, servidores, sistemas de refrigeración, redes eléctricas, minerales, cables submarinos, fábricas de microchips y cadenas de extracción. Cada consulta, cada imagen generada, cada modelo entrenado y cada dispositivo conectado participa de una infraestructura física. Lo virtual no se opone a lo material: lo presupone.</p>
@@ -196,11 +190,6 @@ La desigualdad atraviesa todo este debate. Si las patentes, los laboratorios, lo
 
   <script>
     document.documentElement.classList.remove("sin-js");
-    document.getElementById("compartir").addEventListener("click", async () => {
-      const estado = document.getElementById("estado-enlace");
-      try { await navigator.clipboard.writeText(window.location.href); estado.textContent = "Enlace copiado"; }
-      catch { estado.textContent = "Copia la dirección desde la barra del navegador."; }
-    });
     const boton = document.querySelector(".boton-menu");
     const menu = document.querySelector(".menu");
     const cerrarMenu = () => { menu.classList.remove("abierto"); boton.setAttribute("aria-expanded","false"); boton.setAttribute("aria-label","Abrir menú"); };
