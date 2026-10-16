@@ -542,14 +542,17 @@
     .franja-ideas {
       display: grid;
       grid-template-columns: minmax(0, 0.52fr) minmax(0, 1fr);
-      grid-template-rows: auto 1fr;
       gap: 0 76px;
-      align-items: start;
+      align-items: center;
     }
 
     .franja-ideas .marco {
       grid-column: 1;
-      grid-row: 1 / span 2;
+      grid-row: 1;
+    }
+
+    .ideas-contenido {
+      grid-column: 2;
     }
 
     .ideas-texto {
@@ -950,6 +953,10 @@
     /* Tablet en vertical y celular: una sola columna.
        Orden de lectura: titular, fotografía y entradas. */
     @media (max-width: 900px) {
+      .ideas-contenido {
+        display: contents;
+      }
+
       .franja-ideas {
         grid-template-columns: 1fr;
         gap: 0;
@@ -1262,6 +1269,7 @@
             <figcaption>Sócrates · Academia de Atenas</figcaption>
           </figure>
 
+          <div class="ideas-contenido">
           <div class="ideas-texto">
             <p class="etiqueta">Ideas</p>
             <h2>Para pensar nuestro tiempo.</h2>
@@ -1274,12 +1282,8 @@
               <h3>Textos escritos para acompañar una lectura pausada.</h3>
               <a class="enlace" href="blog/">Leer el blog<span class="flecha" aria-hidden="true">→</span></a>
             </li>
-            <li>
-              <p class="etiqueta">Divulgación</p>
-              <h3>Ideas complejas explicadas con claridad.</h3>
-              <a class="enlace" href="#">Explorar<span class="flecha" aria-hidden="true">→</span></a>
-            </li>
           </ul>
+          </div>
 
         </div>
       </div>
