@@ -1,0 +1,31 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import {execFileSync} from 'node:child_process';
+import matter from 'gray-matter';
+import {readVideos,videoSource} from './videos.mjs';
+const id='M7lc1UVf-VE';
+for(const url of [`https://www.youtube.com/watch?v=${id}`,`https://youtu.be/${id}?si=test`,`https://www.youtube.com/shorts/${id}`,`https://www.youtube.com/live/${id}`,`https://www.youtube-nocookie.com/embed/${id}`])assert.equal(videoSource(url).id,id);
+assert.equal(videoSource('https://www.ted.com/talks/una_charla').embed,'https://embed.ted.com/talks/una_charla');
+assert.equal(videoSource('https://example.org/video').embed,null);
+for(const url of ['javascript:alert(1)','https://www.youtube.com/@canal','https://ted.com/','https://user:pass@example.org/video'])assert.throws(()=>videoSource(url));
+const root=process.cwd();const fixture=fs.mkdtempSync(path.join(os.tmpdir(),'demas-videos-'));
+try{
+ for(const dir of ['scripts','templates'])fs.cpSync(path.join(root,dir),path.join(fixture,dir),{recursive:true});
+ fs.symlinkSync(path.join(root,'node_modules'),path.join(fixture,'node_modules'),'dir');fs.mkdirSync(path.join(fixture,'content/videos'),{recursive:true});
+ const base={title:'Video <especial> $&',slug:'video-prueba',author:'Ponente de prueba',date:'2026-10-16',summary:'Resumen del video',status:'published',format:'conference',categories:['Filosofía'],source_url:`https://youtu.be/${id}`,transcript:'Transcripción de prueba.'};
+ const save=(name,data)=>fs.writeFileSync(path.join(fixture,'content/videos',name),matter.stringify('Notas del video.',data));
+ save('youtube.md',base);save('ted.md',{...base,slug:'ted-prueba',source_url:'https://www.ted.com/talks/una_charla'});save('external.md',{...base,slug:'externo',source_url:'https://example.org/video'});save('no-embed.md',{...base,slug:'sin-insercion',embed:false});save('draft.md',{...base,slug:'borrador-privado',status:'draft'});
+ const build=()=>execFileSync(process.execPath,['scripts/build-videos.mjs'],{cwd:fixture,stdio:'pipe'});build();
+ const page=p=>fs.readFileSync(path.join(fixture,p),'utf8');
+ const youtube=page('videos/video-prueba/index.html');assert(youtube.includes('youtube-nocookie.com/embed/'));assert(youtube.includes('strict-origin-when-cross-origin'));assert(!youtube.includes('autoplay'));assert(youtube.includes('Leer la transcripción'));assert(youtube.includes('Video &lt;especial&gt; $&'));assert(!/\{\{[A-Z_]+\}\}/.test(youtube));
+ assert(page('videos/ted-prueba/index.html').includes('https://embed.ted.com/talks/una_charla'));
+ assert(page('videos/ted-prueba/index.html').includes('Charla de TED.'));
+ assert(!page('videos/externo/index.html').includes('<iframe'));
+ assert(!page('videos/sin-insercion/index.html').includes('<iframe'));
+ assert(!fs.existsSync(path.join(fixture,'videos/borrador-privado')));
+ const before=page('videos/index.html');build();assert.equal(page('videos/index.html'),before);
+ save('bad.md',{...base,slug:'../fuera'});assert.throws(()=>readVideos(fixture));
+ console.log('Pruebas correctas: enlaces YouTube, TED, otras fuentes, opción sin inserción, transcripción, borradores, HTML escapado y generación estable.');
+}finally{fs.rmSync(fixture,{recursive:true,force:true});}

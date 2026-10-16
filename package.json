@@ -10,7 +10,10 @@
     "test:readings": "node scripts/test-readings.mjs",
     "check:podcasts": "node scripts/check-podcasts.mjs",
     "build:podcasts": "node scripts/build-podcasts.mjs",
-    "test:podcasts": "node scripts/test-podcasts.mjs"
+    "test:podcasts": "node scripts/test-podcasts.mjs",
+    "check:videos": "node scripts/check-videos.mjs",
+    "build:videos": "node scripts/build-videos.mjs",
+    "test:videos": "node scripts/test-videos.mjs"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
