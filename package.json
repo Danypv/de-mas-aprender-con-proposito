@@ -7,7 +7,10 @@
     "check:content": "node scripts/check-content.mjs",
     "check:readings": "node scripts/check-readings.mjs",
     "build:readings": "node scripts/build-readings.mjs",
-    "test:readings": "node scripts/test-readings.mjs"
+    "test:readings": "node scripts/test-readings.mjs",
+    "check:podcasts": "node scripts/check-podcasts.mjs",
+    "build:podcasts": "node scripts/build-podcasts.mjs",
+    "test:podcasts": "node scripts/test-podcasts.mjs"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
