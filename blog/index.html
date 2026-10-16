@@ -121,6 +121,18 @@
     }
     @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition-duration:.01ms !important; } }
     @media print { .cabecera,.franja-cierre,.pie-pagina,.salto { display:none; } .introduccion { padding:20px 0 32px; } .publicaciones { padding:34px 0; } }
+    .herramientas { display:flex; flex-wrap:wrap; gap:20px; align-items:end; padding:0 0 28px; }
+    .herramientas label { display:grid; gap:8px; color:var(--gris); font-size:.875rem; flex:1 1 220px; }
+    .herramientas input,.herramientas select { width:100%; min-height:48px; padding:10px 14px; border:1px solid var(--linea); border-radius:4px; background:white; color:var(--negro); font:inherit; font-size:1rem; }
+    input:focus-visible,select:focus-visible { outline:3px solid var(--amarillo); outline-offset:3px; }
+    .sin-js .herramientas { display:none; }
+    .entrada[hidden] { display:none; }
+    .entrada.destacada { padding:36px 24px; background:var(--hueso); border-top:3px solid var(--amarillo); }
+    .distintivo { display:block; margin-bottom:14px; color:var(--negro); letter-spacing:.02em; text-transform:none; font-family:var(--lectura); }
+    .entrada h3 a { text-decoration:none; } .entrada h3 a:hover { text-decoration:underline; text-decoration-color:var(--amarillo); text-underline-offset:5px; }
+    .imagen-entrada { display:block; width:100%; max-height:320px; object-fit:cover; border-radius:3px; margin-bottom:24px; }
+    .vacio { padding:32px 0; color:var(--gris); }
+    @media(max-width:520px) { .entrada.destacada { padding:26px 18px; } }
   </style>
 </head>
 
@@ -159,27 +171,32 @@
       <div class="contenedor">
         <div class="encabezado-lista">
           <h2>Publicaciones</h2>
-          <p class="contador">2 publicaciones</p>
+          <p class="contador" aria-live="polite" aria-atomic="true">2 publicaciones</p>
         </div>
+        <div class="herramientas" role="search" aria-label="Buscar publicaciones">
+          <label for="buscar">Buscar una lectura<input id="buscar" type="search" placeholder="Título, tema o autor" autocomplete="off"></label>
+          <label for="tema">Explorar por tema<select id="tema"><option value="">Todos los temas</option></select></label>
+        </div>
+        <p class="vacio" id="sin-resultados" hidden>No encontramos publicaciones con esa búsqueda. Prueba otro tema o una palabra diferente.</p>
         <div class="lista">
           <!-- POSTS_START -->
-          <article class="entrada">
-            <div class="meta">Ética · Inteligencia Artificial · Neurotecnología<span class="fecha">19 de agosto de 2026</span></div>
+          <article class="entrada destacada" data-categories="[&quot;Humanidades&quot;,&quot;Educación&quot;]">
+            <div class="meta"><span class="distintivo">Lectura destacada</span>Humanidades · Educación<span class="fecha">4 de agosto de 2026</span><span class="fecha">7 min de lectura</span></div>
             <div>
-              <h3>La técnica ante el límite humano. Inteligencia artificial, neurotecnología y la responsabilidad de gobernar aquello que somos capaces de crear</h3>
-              <p class="resumen">Una reflexión sobre los desafíos éticos, sociales y ambientales de la inteligencia artificial y la neurotecnología, y sobre la responsabilidad de orientar el desarrollo técnico hacia la dignidad humana y la permanencia del mundo.</p>
-              <p class="firma">Daniel Pérez Valencia</p>
-            </div>
-            <a class="leer" href="La-tecnica-ante-el-l%C3%ADmite-humano/">Leer artículo <span class="flecha" aria-hidden="true">→</span></a>
-          </article>
-          <article class="entrada">
-            <div class="meta">Humanidades · Educación<span class="fecha">4 de agosto de 2026</span></div>
-            <div>
-              <h3>Integrar las humanidades y las ciencias: una clave para el cultivo del ser humano</h3>
+              <h3><a href="humanidades-y-ciencias/">Integrar las humanidades y las ciencias: una clave para el cultivo del ser humano</a></h3>
               <p class="resumen">La ciencia y las humanidades no compiten por el conocimiento: se necesitan para comprender el mundo y aprender a habitarlo con sentido.</p>
               <p class="firma">Daniel Pérez Valencia</p>
             </div>
             <a class="leer" href="humanidades-y-ciencias/">Leer artículo <span class="flecha" aria-hidden="true">→</span></a>
+          </article>
+          <article class="entrada" data-categories="[&quot;Ética&quot;,&quot;Inteligencia Artificial&quot;,&quot;Neurotecnología&quot;]">
+            <div class="meta">Ética · Inteligencia Artificial · Neurotecnología<span class="fecha">19 de agosto de 2026</span><span class="fecha">8 min de lectura</span></div>
+            <div>
+              <h3><a href="La-tecnica-ante-el-l%C3%ADmite-humano/">La técnica ante el límite humano. Inteligencia artificial, neurotecnología y la responsabilidad de gobernar aquello que somos capaces de crear</a></h3>
+              <p class="resumen">Una reflexión sobre los desafíos éticos, sociales y ambientales de la inteligencia artificial y la neurotecnología, y sobre la responsabilidad de orientar el desarrollo técnico hacia la dignidad humana y la permanencia del mundo.</p>
+              <p class="firma">Daniel Pérez Valencia</p>
+            </div>
+            <a class="leer" href="La-tecnica-ante-el-l%C3%ADmite-humano/">Leer artículo <span class="flecha" aria-hidden="true">→</span></a>
           </article>
           <!-- POSTS_END -->
         </div>
@@ -203,6 +220,25 @@
 
   <script>
     document.documentElement.classList.remove("sin-js");
+    const entradas = Array.from(document.querySelectorAll(".entrada"));
+    const buscar = document.getElementById("buscar");
+    const tema = document.getElementById("tema");
+    const normalizar = texto => texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("es");
+    const categorias = entrada => JSON.parse(entrada.dataset.categories || "[]");
+    [...new Set(entradas.flatMap(categorias))].sort((a,b) => a.localeCompare(b,"es")).forEach(valor => {
+      const opcion = document.createElement("option"); opcion.value = valor; opcion.textContent = valor; tema.append(opcion);
+    });
+    const filtrar = () => {
+      const palabras = normalizar(buscar.value).trim().split(/\s+/).filter(Boolean);
+      let visibles = 0;
+      entradas.forEach(entrada => {
+        entrada.hidden = !palabras.every(palabra => normalizar(entrada.textContent).includes(palabra)) || Boolean(tema.value && !categorias(entrada).includes(tema.value));
+        if (!entrada.hidden) visibles++;
+      });
+      document.querySelector(".contador").textContent = `${visibles} ${visibles === 1 ? "publicación" : "publicaciones"}`;
+      document.getElementById("sin-resultados").hidden = visibles !== 0;
+    };
+    buscar.addEventListener("input", filtrar); tema.addEventListener("change", filtrar);
     const boton = document.querySelector(".boton-menu");
     const menu = document.querySelector(".menu");
     const cerrarMenu = () => { menu.classList.remove("abierto"); boton.setAttribute("aria-expanded","false"); boton.setAttribute("aria-label","Abrir menú"); };
@@ -212,3 +248,4 @@
   </script>
 </body>
 </html>
+

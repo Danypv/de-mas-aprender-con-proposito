@@ -23,6 +23,8 @@ for (const file of fs.readdirSync(postsDir).filter((name) => name.endsWith(".md"
   if (!content.trim()) {
     throw new Error(`${file}: el cuerpo está vacío`);
   }
+  if (!/^[\p{L}\p{N}][\p{L}\p{N}-]*$/u.test(data.slug)) throw new Error(`${file}: identificador no válido`);
+  if (Number.isNaN(new Date(data.date).getTime())) throw new Error(`${file}: fecha no válida`);
   if (slugs.has(data.slug)) {
     throw new Error(`${file}: el identificador ${data.slug} está repetido`);
   }
@@ -30,3 +32,4 @@ for (const file of fs.readdirSync(postsDir).filter((name) => name.endsWith(".md"
 }
 
 console.log("Contenido validado.");
+

@@ -38,7 +38,16 @@ const posts = fs.readdirSync(postsDir)
   })
   .sort((a, b) => new Date(b.date) - new Date(a.date));
 
-const visiblePosts = posts.filter((post) => post.status === "published");
+const visiblePosts = posts.filter((post) => post.status === "published")
+  .sort((a,b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured)) || new Date(b.date) - new Date(a.date));
+const minutes = (post) => Math.max(1, Math.ceil(post.body.trim().split(/\s+/u).length / 220));
+const coverUrl = (post) => {
+  if (!post.cover) return "";
+  if (!/^\/assets\/imagenes\/blog\/[a-zA-Z0-9_./% -]+\.(jpe?g|png|webp)$/i.test(post.cover) || post.cover.includes(".."))
+    throw new Error(`${post.file}: la imagen debe estar en /assets/imagenes/blog/`);
+  if (!String(post.cover_alt || "").trim()) throw new Error(`${post.file}: falta la descripción de la imagen`);
+  return post.cover;
+};
 
 const formatDate = (date) =>
   new Intl.DateTimeFormat("es-CO", {
@@ -49,7 +58,7 @@ const formatDate = (date) =>
   }).format(new Date(date));
 
 const replaceToken = (template, token, value) =>
-  template.replaceAll(`{{${token}}}`, value);
+  template.replaceAll(`{{${token}}}`, () => String(value));
 
 for (const post of visiblePosts) {
   let body = markdown.render(post.body.trim());
@@ -66,6 +75,9 @@ for (const post of visiblePosts) {
     AUTHOR: escapeHtml(post.author),
     DATE: formatDate(post.date),
     BODY: body.trim(),
+    SUMMARY: escapeHtml(post.summary),
+    MINUTES: minutes(post),
+    COVER: coverUrl(post) ? `<figure class="portada-articulo"><img src="${escapeHtml(coverUrl(post))}" alt="${escapeHtml(post.cover_alt)}" decoding="async">${post.cover_caption ? `<figcaption>${escapeHtml(post.cover_caption)}</figcaption>` : ""}</figure>` : "",
   };
   for (const [token, value] of Object.entries(values)) {
     page = replaceToken(page, token, value);
@@ -78,10 +90,10 @@ for (const post of visiblePosts) {
 
 const cards = visiblePosts.map((post) => {
   const categories = post.categories.map(escapeHtml).join(" · ");
-  return `          <article class="entrada">
-            <div class="meta">${categories}<span class="fecha">${formatDate(post.date)}</span></div>
+  return `          <article class="entrada${post.featured ? " destacada" : ""}" data-categories="${escapeHtml(JSON.stringify(post.categories))}">
+            <div class="meta">${post.featured ? '<span class="distintivo">Lectura destacada</span>' : ""}${categories}<span class="fecha">${formatDate(post.date)}</span><span class="fecha">${minutes(post)} min de lectura</span></div>
             <div>
-              <h3>${escapeHtml(post.title)}</h3>
+              ${coverUrl(post) ? `<img class="imagen-entrada" src="${escapeHtml(coverUrl(post))}" alt="${escapeHtml(post.cover_alt)}" loading="lazy" decoding="async">` : ""}<h3><a href="${encodeURIComponent(post.slug)}/">${escapeHtml(post.title)}</a></h3>
               <p class="resumen">${escapeHtml(post.summary)}</p>
               <p class="firma">${escapeHtml(post.author)}</p>
             </div>
@@ -95,9 +107,10 @@ blog = blog.replace(
   `<!-- POSTS_START -->\n${cards}\n          <!-- POSTS_END -->`,
 );
 blog = blog.replace(
-  /<p class="contador">[^<]*<\/p>/,
-  `<p class="contador">${visiblePosts.length} ${visiblePosts.length === 1 ? "publicación" : "publicaciones"}</p>`,
+  /<p class="contador"[^>]*>[^<]*<\/p>/,
+  `<p class="contador" aria-live="polite" aria-atomic="true">${visiblePosts.length} ${visiblePosts.length === 1 ? "publicación" : "publicaciones"}</p>`,
 );
 fs.writeFileSync(blogPath, blog);
 
 console.log(`${visiblePosts.length} publicación(es) generada(s); ${posts.length - visiblePosts.length} pendiente(s).`);
+
