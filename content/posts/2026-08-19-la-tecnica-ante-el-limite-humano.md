@@ -1,16 +1,15 @@
 ---
-title: La técnica ante el límite humano. Inteligencia artificial,
-  neurotecnología y la responsabilidad de gobernar aquello que somos capaces
-  de crear
-browser_title: La técnica ante el límite humano
+title: "La técnica ante el límite\_humano. Inteligencia artificial, neurotecnología y la responsabilidad de gobernar aquello que somos capaces de\_crear"
+browser_title: "La técnica ante el límite\_humano"
 slug: La-tecnica-ante-el-límite-humano
 author: Daniel Pérez Valencia
-date: 2026-08-19
+date: 2026-08-19T00:00:00.000Z
 categories:
   - Ética
   - Inteligencia Artificial
   - Neurotecnología
-summary: Una reflexión sobre los desafíos éticos, sociales y ambientales de la
+summary: >-
+  Una reflexión sobre los desafíos éticos, sociales y ambientales de la
   inteligencia artificial y la neurotecnología, y sobre la responsabilidad de
   orientar el desarrollo técnico hacia la dignidad humana y la permanencia del
   mundo.
