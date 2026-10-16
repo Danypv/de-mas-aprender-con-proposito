@@ -159,7 +159,7 @@
       </div>
     </section>
   {{COVER}}
-  <div class="acciones-lectura"><button type="button" id="compartir">Copiar enlace</button><button type="button" id="imprimir">Imprimir o guardar PDF</button><span id="estado-enlace" role="status"></span></div>
+  <div class="acciones-lectura"><button type="button" id="compartir">Copiar enlace</button><span id="estado-enlace" role="status"></span></div>
   <article class="articulo">
     {{BODY}}
   </article></main>
@@ -180,7 +180,6 @@
 
   <script>
     document.documentElement.classList.remove("sin-js");
-    document.getElementById("imprimir").addEventListener("click", () => window.print());
     document.getElementById("compartir").addEventListener("click", async () => {
       const estado = document.getElementById("estado-enlace");
       try { await navigator.clipboard.writeText(window.location.href); estado.textContent = "Enlace copiado"; }
