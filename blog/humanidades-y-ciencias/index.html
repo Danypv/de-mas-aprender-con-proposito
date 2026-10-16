@@ -159,7 +159,7 @@
       </div>
     </section>
   
-  <div class="acciones-lectura"><button type="button" id="compartir">Copiar enlace</button><button type="button" id="imprimir">Imprimir o guardar PDF</button><span id="estado-enlace" role="status"></span></div>
+  <div class="acciones-lectura"><button type="button" id="compartir">Copiar enlace</button><span id="estado-enlace" role="status"></span></div>
   <article class="articulo">
     <p class="apertura">«¡Qué tarde voy a llegar, oh, Dios mío!», susurraba un gran conejo blanco de ojos rosados y vistiendo un chaleco, al mirar su reloj de bolsillo. Alicia, que estaba sentada y pensativa bajo la sombra de un árbol, sintió mucha curiosidad ante la situación, porque no es normal que los conejos puedan hablar y, mucho menos, que se sientan inquietos por el paso del tiempo.</p>
 <p>Es probable que conozcas el desenlace de esta historia de Lewis Carroll y la manera como Alicia, siguiendo al gran conejo blanco que se metió en una madriguera, consigue el acceso a un mundo desconocido: el país de las maravillas.</p>
@@ -208,7 +208,6 @@
 
   <script>
     document.documentElement.classList.remove("sin-js");
-    document.getElementById("imprimir").addEventListener("click", () => window.print());
     document.getElementById("compartir").addEventListener("click", async () => {
       const estado = document.getElementById("estado-enlace");
       try { await navigator.clipboard.writeText(window.location.href); estado.textContent = "Enlace copiado"; }
