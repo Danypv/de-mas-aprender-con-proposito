@@ -126,7 +126,7 @@
     .herramientas input,.herramientas select { width:100%; min-height:48px; padding:10px 14px; border:1px solid var(--linea); border-radius:4px; background:white; color:var(--negro); font:inherit; font-size:1rem; }
     input:focus-visible,select:focus-visible { outline:3px solid var(--amarillo); outline-offset:3px; }
     .sin-js .herramientas { display:none; }
-    .entrada[hidden] { display:none; }
+    .entrada[hidden],.video-destacado[hidden] { display:none; }
     .entrada.destacada { padding:36px 24px; background:var(--hueso); border-top:3px solid var(--amarillo); }
     .distintivo { display:block; margin-bottom:14px; color:var(--negro); letter-spacing:.02em; text-transform:none; font-family:var(--lectura); }
     .entrada h3 a { text-decoration:none; } .entrada h3 a:hover { text-decoration:underline; text-decoration-color:var(--amarillo); text-underline-offset:5px; }
@@ -187,7 +187,7 @@
       </div>
     </section>
 
-    <section class="video-destacado"><div class="contenedor video-destacado-interior"><a class="enlace-miniatura" href="/videos/conocer-el-cerebro-para-vivir-mejor/" aria-label="Ver Conocer el cerebro para vivir mejor"><div class="miniatura-video"><img src="https://i.ytimg.com/vi/4ebt-yHf3mY/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="ver-indicador" aria-hidden="true">▶</span></div></a><div><p class="etiqueta">Para comenzar</p><h2>Conocer el cerebro para vivir mejor</h2><p class="firma">Facundo Manes</p><p>Una conversación con el neurocientífico Facundo Manes que invita a pensar la relación entre el conocimiento del cerebro y nuestra vida cotidiana.</p><a class="enlace" href="/videos/conocer-el-cerebro-para-vivir-mejor/">Ver video →</a></div></div></section>
+    
     <section class="publicaciones">
       <div class="contenedor">
         <div class="encabezado-lista">
@@ -201,7 +201,7 @@
         </div>
         <p class="vacio" id="sin-resultados" hidden>No encontramos videos con esa búsqueda. Prueba otro tema, nombre o tipo de video.</p>
         <div class="lista videos-rejilla">
-          <article class="entrada video-tarjeta" data-categories="[&quot;Conversaciones&quot;]"><a class="enlace-miniatura" href="/videos/conocer-el-cerebro-para-vivir-mejor/" aria-label="Ver Conocer el cerebro para vivir mejor"><div class="miniatura-video"><img src="https://i.ytimg.com/vi/4ebt-yHf3mY/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="ver-indicador" aria-hidden="true">▶</span></div></a><div class="video-tarjeta-texto"><div class="meta">Conversaciones · YouTube</div><h3><a href="/videos/conocer-el-cerebro-para-vivir-mejor/">Conocer el cerebro para vivir mejor</a></h3><p class="firma">Facundo Manes</p><p class="resumen">Una conversación con el neurocientífico Facundo Manes que invita a pensar la relación entre el conocimiento del cerebro y nuestra vida cotidiana.</p><p class="temas-video">Ciencia y salud</p><a class="leer" href="/videos/conocer-el-cerebro-para-vivir-mejor/">Ver video <span class="flecha" aria-hidden="true">→</span></a></div></article>
+          <article class="entrada video-resultado video-tarjeta" data-categories="[&quot;Conversaciones&quot;]"><a class="enlace-miniatura" href="/videos/conocer-el-cerebro-para-vivir-mejor/" aria-label="Ver Conocer el cerebro para vivir mejor"><div class="miniatura-video"><img src="https://i.ytimg.com/vi/4ebt-yHf3mY/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="ver-indicador" aria-hidden="true">▶</span></div></a><div class="video-tarjeta-texto"><div class="meta">Conversaciones · YouTube</div><h3><a href="/videos/conocer-el-cerebro-para-vivir-mejor/">Conocer el cerebro para vivir mejor</a></h3><p class="firma">Facundo Manes</p><p class="resumen">Una conversación con el neurocientífico Facundo Manes que invita a pensar la relación entre el conocimiento del cerebro y nuestra vida cotidiana.</p><p class="temas-video">Ciencia y salud</p><a class="leer" href="/videos/conocer-el-cerebro-para-vivir-mejor/">Ver video <span class="flecha" aria-hidden="true">→</span></a></div></article>
         </div>
       </div>
     </section>
@@ -223,7 +223,7 @@
 
   <script>
     document.documentElement.classList.remove("sin-js");
-    const entradas = Array.from(document.querySelectorAll(".entrada"));
+    const entradas = Array.from(document.querySelectorAll(".video-resultado"));
     const buscar = document.getElementById("buscar");
     const tema = document.getElementById("tema");
     const normalizar = texto => texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("es");

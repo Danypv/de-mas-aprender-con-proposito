@@ -126,7 +126,7 @@
     .herramientas input,.herramientas select { width:100%; min-height:48px; padding:10px 14px; border:1px solid var(--linea); border-radius:4px; background:white; color:var(--negro); font:inherit; font-size:1rem; }
     input:focus-visible,select:focus-visible { outline:3px solid var(--amarillo); outline-offset:3px; }
     .sin-js .herramientas { display:none; }
-    .entrada[hidden] { display:none; }
+    .entrada[hidden],.video-destacado[hidden] { display:none; }
     .entrada.destacada { padding:36px 24px; background:var(--hueso); border-top:3px solid var(--amarillo); }
     .distintivo { display:block; margin-bottom:14px; color:var(--negro); letter-spacing:.02em; text-transform:none; font-family:var(--lectura); }
     .entrada h3 a { text-decoration:none; } .entrada h3 a:hover { text-decoration:underline; text-decoration-color:var(--amarillo); text-underline-offset:5px; }
@@ -223,7 +223,7 @@
 
   <script>
     document.documentElement.classList.remove("sin-js");
-    const entradas = Array.from(document.querySelectorAll(".entrada"));
+    const entradas = Array.from(document.querySelectorAll(".video-resultado"));
     const buscar = document.getElementById("buscar");
     const tema = document.getElementById("tema");
     const normalizar = texto => texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("es");

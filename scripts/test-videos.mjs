@@ -14,18 +14,19 @@ const root=process.cwd();const fixture=fs.mkdtempSync(path.join(os.tmpdir(),'dem
 try{
  for(const dir of ['scripts','templates'])fs.cpSync(path.join(root,dir),path.join(fixture,dir),{recursive:true});
  fs.symlinkSync(path.join(root,'node_modules'),path.join(fixture,'node_modules'),'dir');fs.mkdirSync(path.join(fixture,'content/videos'),{recursive:true});
- const base={title:'Video <especial> $&',slug:'video-prueba',author:'Ponente de prueba',date:'2026-10-16',summary:'Resumen del video',status:'published',format:'conference',categories:['Filosofía'],source_url:`https://youtu.be/${id}`,transcript:'Transcripción de prueba.'};
+ const base={title:'Video <especial> $&',slug:'video-prueba',author:'Ponente de prueba',source_credit:'Canal <original>',comment_author:'Editor <prueba>',duration:'18 min',date:'2026-10-16',summary:'Resumen del video',status:'published',format:'conference',categories:['Filosofía'],source_url:`https://youtu.be/${id}`,transcript:'Transcripción de prueba.'};
  const save=(name,data)=>fs.writeFileSync(path.join(fixture,'content/videos',name),matter.stringify('Notas del video.',data));
  save('youtube.md',base);save('ted.md',{...base,slug:'ted-prueba',source_url:'https://www.ted.com/talks/una_charla'});save('external.md',{...base,slug:'externo',source_url:'https://example.org/video'});save('no-embed.md',{...base,slug:'sin-insercion',embed:false});save('draft.md',{...base,slug:'borrador-privado',status:'draft'});
  const build=()=>execFileSync(process.execPath,['scripts/build-videos.mjs'],{cwd:fixture,stdio:'pipe'});build();
  const page=p=>fs.readFileSync(path.join(fixture,p),'utf8');
- const youtube=page('videos/video-prueba/index.html');assert(youtube.includes('youtube-nocookie.com/embed/'));assert(youtube.includes('strict-origin-when-cross-origin'));assert(!youtube.includes('autoplay'));assert(youtube.includes('Leer la transcripción'));assert(youtube.includes('Video &lt;especial&gt; $&'));assert(!/\{\{[A-Z_]+\}\}/.test(youtube));
+ const youtube=page('videos/video-prueba/index.html');assert(youtube.includes('youtube-nocookie.com/embed/'));assert(youtube.includes('strict-origin-when-cross-origin'));assert(!youtube.includes('autoplay'));assert(youtube.includes('Leer la transcripción'));assert(youtube.includes('Participa <strong>'));assert(youtube.includes('Canal &lt;original&gt;'));assert(youtube.includes('Selección y comentario de Editor &lt;prueba&gt;'));assert(youtube.includes('Para pensar'));assert(youtube.includes('Seguir explorando'));assert(youtube.includes('18 min'));assert(youtube.includes('Video &lt;especial&gt; $&'));assert(!/\{\{[A-Z_]+\}\}/.test(youtube));
  assert(page('videos/ted-prueba/index.html').includes('https://embed.ted.com/talks/una_charla'));
  assert(page('videos/ted-prueba/index.html').includes('Charla de TED.'));
  assert(!page('videos/externo/index.html').includes('<iframe'));
  assert(!page('videos/sin-insercion/index.html').includes('<iframe'));
  assert(!fs.existsSync(path.join(fixture,'videos/borrador-privado')));
- const before=page('videos/index.html');build();assert.equal(page('videos/index.html'),before);
+ const before=page('videos/index.html');assert.equal((before.match(/class="[^"]*video-resultado/g)||[]).length,4);assert.equal((before.match(/<h[23]>[\s\S]*?<\/h[23]>/g)||[]).filter(h=>h.includes('Video &lt;especial&gt;')).length,4);build();assert.equal(page('videos/index.html'),before);
+ for(const name of ['ted.md','external.md','no-embed.md'])fs.unlinkSync(path.join(fixture,'content/videos',name));build();const single=page('videos/index.html');assert(!single.includes('<section class="video-destacado'));assert.equal((single.match(/class="[^"]*video-resultado/g)||[]).length,1);
  save('bad.md',{...base,slug:'../fuera'});assert.throws(()=>readVideos(fixture));
  console.log('Pruebas correctas: enlaces YouTube, TED, otras fuentes, opción sin inserción, transcripción, borradores, HTML escapado y generación estable.');
 }finally{fs.rmSync(fixture,{recursive:true,force:true});}

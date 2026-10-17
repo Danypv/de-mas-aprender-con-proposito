@@ -2,6 +2,8 @@
 title: Conocer el cerebro para vivir mejor
 slug: conocer-el-cerebro-para-vivir-mejor
 author: Facundo Manes
+source_credit: Aprendemos Juntos 2030 · BBVA
+comment_author: Daniel Pérez Valencia
 date: 2026-10-17T00:00:00.000Z
 format: conversation
 categories:
