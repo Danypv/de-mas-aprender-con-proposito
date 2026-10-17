@@ -13,13 +13,7 @@ source_url: 'https://www.youtube.com/watch?v=WisWde4lZdQ'
 embed: true
 status: published
 featured: false
-transcript: >-
-  ¿Qué depende de nosotros y cómo respondemos a lo que escapa a nuestro control?
-  El estoicismo invita a examinar nuestros juicios, deseos y decisiones. Esta
-  conversación ofrece un punto de partida para preguntarnos cómo la filosofía
-  puede orientar nuestra manera de vivir, nuestras relaciones con los demás y
-  nuestra participación en la vida común.
 source_credit: Aprendemos Juntos
 comment_author: Daniel Pérez Valencia
 ---
-
+¿Qué depende de nosotros y cómo respondemos a lo que escapa a nuestro control? El estoicismo invita a examinar nuestros juicios, deseos y decisiones. Esta conversación ofrece un punto de partida para preguntarnos cómo la filosofía puede orientar nuestra manera de vivir, nuestras relaciones con los demás y nuestra participación en la vida común.
