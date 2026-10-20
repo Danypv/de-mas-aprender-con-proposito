@@ -13,7 +13,8 @@
     "test:podcasts": "node scripts/test-podcasts.mjs",
     "check:videos": "node scripts/check-videos.mjs",
     "build:videos": "node scripts/build-videos.mjs",
-    "test:videos": "node scripts/test-videos.mjs"
+    "test:videos": "node scripts/test-videos.mjs",
+    "build:latest": "node scripts/build-latest.mjs"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
