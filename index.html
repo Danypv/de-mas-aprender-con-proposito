@@ -1176,6 +1176,11 @@
       }
     }
     #ideas, #formatos, #sobre, #lecturas, #contenido { scroll-margin-top: 94px; }
+    /* La sección del blog conserva sus imágenes y las reglas tipográficas. */
+    #ideas .acceso-blog { margin: 24px 0 32px; }
+    @media (max-width: 900px) {
+      #ideas .ficha { grid-column: 1; grid-row: auto; order: 3; margin-top: 32px; }
+    }
   </style>
 </head>
 
@@ -1231,17 +1236,26 @@
 
     </section>
 
-    <!-- ================= DESTACADO ================= -->
-    <section class="seccion seccion-hueso">
-      <div class="contenedor destacado-interior revelar">
-        <div>
-          <p class="etiqueta">Para comenzar</p>
-          <h2>Una casa para las ideas.</h2>
-          <blockquote class="cita">
-            ¿Por qué hablar de inutilidad cuando se puede hablar de fecundidad?
-            La fecundidad es el atributo esencial de las humanidades: dan vida, proveen sentido.
-          </blockquote>
-        </div>
+    <!-- ================= BLOG DESTACADO ================= -->
+    <section class="seccion seccion-hueso" id="ideas">
+      <div class="contenedor">
+        <div class="franja-ideas revelar">
+          <figure class="marco">
+            <img src="assets/imagenes/socrates.webp"
+                 srcset="assets/imagenes/socrates-movil.webp 700w, assets/imagenes/socrates.webp 1100w"
+                 sizes="(max-width: 900px) 78vw, 32vw"
+                 alt="Estatua de Sócrates ante la Academia de Atenas, con la mano en el mentón"
+                 width="1100" height="1356" decoding="async">
+            <figcaption>Sócrates · Academia de Atenas</figcaption>
+          </figure>
+
+          <div class="ideas-contenido">
+            <div class="ideas-texto">
+              <p class="etiqueta">Blog</p>
+              <h2>Para pensar nuestro tiempo.</h2>
+              <p class="nota">Ensayos, divulgación y voces invitadas.</p>
+              <p class="acceso-blog"><a class="enlace" href="blog/">Ver todas las publicaciones<span class="flecha" aria-hidden="true">→</span></a></p>
+            </div>
 
         <article class="ficha">
           <p class="etiqueta">Humanidades · Educación</p>
@@ -1253,39 +1267,7 @@
           <p class="firma">Daniel Pérez Valencia · 4 de agosto de 2026</p>
           <a class="enlace" href="blog/humanidades-y-ciencias/">Leer artículo<span class="flecha" aria-hidden="true">→</span></a>
         </article>
-      </div>
-    </section>
-
-    <!-- ================= IDEAS ================= -->
-    <section class="seccion" id="ideas">
-      <div class="contenedor">
-        <div class="franja-ideas revelar">
-
-          <figure class="marco">
-            <img src="assets/imagenes/socrates.webp"
-                 srcset="assets/imagenes/socrates-movil.webp 700w, assets/imagenes/socrates.webp 1100w"
-                 sizes="(max-width: 900px) 78vw, 32vw"
-                 alt="Estatua de Sócrates ante la Academia de Atenas, con la mano en el mentón"
-                 width="1100" height="1356" decoding="async">
-            <figcaption>Sócrates · Academia de Atenas</figcaption>
-          </figure>
-
-          <div class="ideas-contenido">
-          <div class="ideas-texto">
-            <p class="etiqueta">Ideas</p>
-            <h2>Para pensar nuestro tiempo.</h2>
-            <p class="nota">Ensayos, divulgación y voces invitadas.</p>
           </div>
-
-          <ul class="entradas">
-            <li>
-              <p class="etiqueta">Blog</p>
-              <h3>Textos escritos para acompañar una lectura pausada.</h3>
-              <a class="enlace" href="blog/">Leer el blog<span class="flecha" aria-hidden="true">→</span></a>
-            </li>
-          </ul>
-          </div>
-
         </div>
       </div>
     </section>
