@@ -1176,11 +1176,7 @@
       }
     }
     #ideas, #formatos, #sobre, #lecturas, #contenido { scroll-margin-top: 94px; }
-    /* La sección del blog conserva sus imágenes y las reglas tipográficas. */
-    #ideas .acceso-blog { margin: 24px 0 32px; }
-    @media (max-width: 900px) {
-      #ideas .ficha { grid-column: 1; grid-row: auto; order: 3; margin-top: 32px; }
-    }
+    #ideas .acceso-blog { margin: 32px 0 0; }
   </style>
 </head>
 
@@ -1236,10 +1232,36 @@
 
     </section>
 
-    <!-- ================= BLOG DESTACADO ================= -->
-    <section class="seccion seccion-hueso" id="ideas">
+    <!-- ================= DESTACADO ================= -->
+    <section class="seccion seccion-hueso">
+      <div class="contenedor destacado-interior revelar">
+        <div>
+          <p class="etiqueta">Para comenzar</p>
+          <h2>Una casa para las ideas.</h2>
+          <blockquote class="cita">
+            ¿Por qué hablar de inutilidad cuando se puede hablar de fecundidad?
+            La fecundidad es el atributo esencial de las humanidades: dan vida, proveen sentido.
+          </blockquote>
+        </div>
+
+        <article class="ficha">
+          <p class="etiqueta">Humanidades · Educación</p>
+          <h3>Integrar las humanidades y las ciencias: una clave para el cultivo del ser humano</h3>
+          <p class="sumario">
+            La ciencia y las humanidades no compiten por el conocimiento: se necesitan
+            para comprender el mundo y aprender a habitarlo con sentido.
+          </p>
+          <p class="firma">Daniel Pérez Valencia · 4 de agosto de 2026</p>
+          <a class="enlace" href="blog/humanidades-y-ciencias/">Leer artículo<span class="flecha" aria-hidden="true">→</span></a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================= IDEAS ================= -->
+    <section class="seccion" id="ideas">
       <div class="contenedor">
         <div class="franja-ideas revelar">
+
           <figure class="marco">
             <img src="assets/imagenes/socrates.webp"
                  srcset="assets/imagenes/socrates-movil.webp 700w, assets/imagenes/socrates.webp 1100w"
@@ -1254,20 +1276,10 @@
               <p class="etiqueta">Blog</p>
               <h2>Para pensar nuestro tiempo.</h2>
               <p class="nota">Ensayos, divulgación y voces invitadas.</p>
-              <p class="acceso-blog"><a class="enlace" href="blog/">Ver todas las publicaciones<span class="flecha" aria-hidden="true">→</span></a></p>
+              <p class="acceso-blog"><a class="enlace" href="blog/">Leer el blog<span class="flecha" aria-hidden="true">→</span></a></p>
             </div>
-
-        <article class="ficha">
-          <p class="etiqueta">Humanidades · Educación</p>
-          <h3>Integrar las humanidades y las ciencias: una clave para el cultivo del ser humano</h3>
-          <p class="sumario">
-            La ciencia y las humanidades no compiten por el conocimiento: se necesitan
-            para comprender el mundo y aprender a habitarlo con sentido.
-          </p>
-          <p class="firma">Daniel Pérez Valencia · 4 de agosto de 2026</p>
-          <a class="enlace" href="blog/humanidades-y-ciencias/">Leer artículo<span class="flecha" aria-hidden="true">→</span></a>
-        </article>
           </div>
+
         </div>
       </div>
     </section>
