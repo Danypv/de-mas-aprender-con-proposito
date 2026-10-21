@@ -1180,7 +1180,12 @@
   #sobre.cierre{padding:0}.sobre-nuevo{position:relative;z-index:1;padding-top:64px;padding-bottom:64px}.sobre-nuevo>h2{max-width:24ch;margin:0 0 36px;font-size:clamp(2rem,3.5vw,2.8rem);line-height:1.1;letter-spacing:-.03em}.sobre-columnas{display:grid;grid-template-columns:1.1fr 1fr;gap:70px}.sobre-columnas .descripcion{margin:0;max-width:49ch}.sobre-autoria{border-left:1px solid rgba(0,0,0,.28);padding-left:38px}.sobre-autoria h3{font-family:var(--marca);font-weight:600;font-size:clamp(1.4rem,2.2vw,1.75rem);line-height:1.2;margin:0 0 16px}.sobre-autoria p{font-family:var(--lectura);font-size:1.0625rem;line-height:1.75;margin:0 0 22px}.sobre-autoria .enlace{border-color:var(--negro)}
 .pie-pagina{padding:34px 0 22px}.pie-superior{padding-bottom:28px}.pie-nav{display:flex;gap:26px;flex-wrap:wrap;justify-content:flex-end}.pie-nav a,.pie-inferior a{color:inherit;text-decoration:none}.pie-nav a:hover,.pie-inferior a:hover{color:var(--amarillo)}.pie-nav a{padding:12px 0;border-bottom:1px solid transparent}.pie-nav a:hover{border-color:var(--amarillo)}.pie-inferior{display:flex;justify-content:space-between;gap:20px;border-top:1px solid #3b3b3b;padding-top:22px}.pie-inferior p{margin:0}.pie-nav a:focus-visible,.pie-inferior a:focus-visible{outline:2px solid var(--amarillo);outline-offset:5px}
 @media(max-width:780px){.sobre-nuevo{padding:42px 0}.sobre-columnas{grid-template-columns:1fr;gap:28px}.sobre-autoria{padding:28px 0 0;border-left:0;border-top:1px solid rgba(0,0,0,.28)}.sobre-autoria p{font-size:1.1875rem;line-height:1.75}.pie-superior{align-items:flex-start;flex-direction:column;gap:18px}.pie-nav{justify-content:flex-start;gap:4px 24px}.pie-inferior{font-size:.875rem}.sobre-nuevo>h2{margin-bottom:26px}}
-.pie-nav{gap:0}.pie-nav a+a::before{content:"";position:absolute;left:0;top:50%;height:14px;border-left:1px solid var(--amarillo);transform:translateY(-50%)}.pie-nav a{position:relative;padding:12px 20px}.pie-nav a:first-child{padding-left:0}.pie-nav a:last-child{padding-right:0}@media(max-width:780px){.pie-nav{display:block;line-height:3}.pie-nav a{display:inline;padding:10px 12px;box-decoration-break:clone;-webkit-box-decoration-break:clone}.pie-nav a+a::before{height:12px}}</style>
+.pie-nav{gap:0}.pie-nav a+a::before{content:"";position:absolute;left:0;top:50%;height:14px;border-left:1px solid var(--amarillo);transform:translateY(-50%)}.pie-nav a{position:relative;padding:12px 20px}.pie-nav a:first-child{padding-left:0}.pie-nav a:last-child{padding-right:0}@media(max-width:780px){.pie-nav{display:block;line-height:3}.pie-nav a{display:inline;padding:10px 12px;box-decoration-break:clone;-webkit-box-decoration-break:clone}.pie-nav a+a::before{height:12px}}/* Proposed composition; original brand fonts and type sizes retained. */
+.portada-contenido{max-width:none;padding:88px 0 92px}.titulo-portada{max-width:none}.titulo-linea{display:block}.portada .presentacion{max-width:43ch;margin-top:24px}.portada .acciones{margin-top:32px}.portada .etiqueta{max-width:none}.capa{background-position:right 32%}.capa-difusa{display:none}.capa-velo{background:linear-gradient(90deg,#080a0b 0%,rgba(8,10,11,.98) 27%,rgba(8,10,11,.92) 38%,rgba(8,10,11,.65) 49%,rgba(8,10,11,.16) 65%,rgba(8,10,11,.12) 100%)}
+@media(max-width:1000px) and (min-width:781px){.portada .presentacion{max-width:39ch}.capa-velo{background:linear-gradient(90deg,rgba(8,10,11,.98),rgba(8,10,11,.85) 42%,rgba(8,10,11,.2) 80%)}}
+@media(max-width:780px){.portada-contenido{padding:56px 0 62px}.portada .presentacion{max-width:32ch}.capa-nitida{background-position:68% 30%}.capa-velo{background:linear-gradient(90deg,rgba(8,10,11,.94) 0%,rgba(8,10,11,.84) 46%,rgba(8,10,11,.52) 100%)}.portada .etiqueta{max-width:36ch}.portada .acciones{gap:22px}.titulo-linea{white-space:nowrap}}
+@media(max-width:374px){.titulo-linea{white-space:normal}}
+</style>
   <link rel="stylesheet" href="assets/latest.css">
 </head>
 
@@ -1221,7 +1226,7 @@
       <div class="contenedor portada-contenido">
         <p class="etiqueta">Filosofía · Educación · Cultura · Ética y tecnología</p>
 
-        <h1 class="titulo-portada">Aprender con propósito<span class="punto">.</span></h1>
+        <h1 class="titulo-portada"><span class="titulo-linea">Aprender</span><span class="titulo-linea">con propósito<span class="punto">.</span></span></h1>
 
         <p class="presentacion">
           Un espacio para leer con atención, pensar con profundidad
@@ -1229,7 +1234,7 @@
         </p>
 
         <div class="acciones">
-          <a class="boton" href="#ideas">Explorar contenidos</a>
+          <a class="boton" href="#novedades">Explorar contenidos</a>
           <a class="enlace" href="#sobre">Conocer el proyecto<span class="flecha" aria-hidden="true">→</span></a>
         </div>
       </div>
@@ -1416,6 +1421,7 @@
   <script src="assets/latest.js" defer></script>
 </body>
 </html>
+
 
 
 
