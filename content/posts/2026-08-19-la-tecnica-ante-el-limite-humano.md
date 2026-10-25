@@ -1,7 +1,7 @@
 ---
 title: Gobernar lo que creamos
 browser_title: Gobernar lo que creamos
-slug: La-tecnica-ante-el-límite-humano
+slug: la-tecnica-ante-el-limite-humano
 author: Daniel Pérez Valencia
 date: 2026-08-19T00:00:00.000Z
 categories:
