@@ -29,7 +29,7 @@ Hablar de innovación exige mirar esa historia. Interesa lo que una tecnología 
 
 Hans Jonas ofreció una clave para pensar este problema en El principio de responsabilidad. El crecimiento del poder técnico amplía el alcance de nuestras obligaciones. Una decisión puede afectar a personas que viven lejos, alterar un ecosistema o dejar consecuencias para generaciones que todavía no existen. Quienes recibirán esos efectos carecen de voz en las decisiones del presente.
 
-Responder por ellos demanda prudencia. A veces tendremos que esperar, revisar una aplicación o aceptar que una promesa de beneficio resulta insuficiente para justificar un riesgo. Es una exigencia difícil en una cultura que premia llegar primero. También es una forma de reconocer que nuestra capacidad de intervenir puede avanzar más rápido que nuestra comprensión de las consecuencias.
+> Responder por ellos demanda prudencia. A veces tendremos que esperar, revisar una aplicación o aceptar que una promesa de beneficio resulta insuficiente para justificar un riesgo. Es una exigencia difícil en una cultura que premia llegar primero. También es una forma de reconocer que nuestra capacidad de intervenir puede avanzar más rápido que nuestra comprensión de las consecuencias.
 
 La neurotecnología lleva esta inquietud a un terreno íntimo. Los dispositivos que registran o estimulan la actividad del sistema nervioso abren posibilidades valiosas para la atención de la salud. A su alrededor surgen preguntas sobre el consentimiento, el uso de los datos y la libertad de las personas.
 
