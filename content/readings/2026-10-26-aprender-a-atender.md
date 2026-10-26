@@ -2,7 +2,7 @@
 title: Aprender a atender
 browser_title: Aprender a atender
 slug: aprender-a-atender
-author: Diana María Henao Sierra y Juan Fernando García-Castro
+author: Daniel Pérez Valencia
 date: 2026-10-26T00:00:00.000Z
 collections:
   - etica-e-inteligencia-artificial
