@@ -84,6 +84,7 @@
     .articulo p { margin:0 0 1.45em; }
     .articulo .apertura { margin-bottom:1.65em; font-size:1.25rem; line-height:1.72; }
     .articulo blockquote { position:relative; margin:2.5em 0; padding:28px 30px 28px 34px; border-left:4px solid var(--amarillo); color:var(--blanco); background:var(--negro-suave); font-size:1.12rem; font-style:normal; line-height:1.72; }
+    .articulo .destacado-editorial { margin:2.1em 0; padding:12px 0 12px 26px; border-left:4px solid var(--amarillo); color:var(--negro); font-family:var(--lectura); font-size:1.25rem; font-weight:500; line-height:1.65; }
     .articulo em { font-style:italic; }
     .lista { margin:1.6em 0 1.9em; padding-left:1.25em; }
     .lista li { margin:.68em 0; padding-left:.32em; }
@@ -115,6 +116,7 @@
       .ruta { margin-bottom:24px; }
       .articulo { width:min(var(--columna),calc(100% - 40px)); padding:54px 0 68px; font-size:1.1875rem; line-height:1.75; }
       .articulo .apertura { font-size:1.1875rem; line-height:1.75; }
+      .articulo .destacado-editorial { margin:1.8em 0; padding:8px 0 8px 20px; font-size:1.1875rem; line-height:1.7; }
       .articulo blockquote { margin:2.1em -4px; padding:24px 22px 24px 26px; font-size:1.1875rem; line-height:1.75; }
       .seguir-interno { width:calc(100% - 40px); }
       .pie { flex-direction:column; align-items:flex-start; gap:18px; }
@@ -128,7 +130,11 @@
     figcaption { margin-top:10px; color:var(--gris); font-size:.875rem; }
     .articulo h2,.articulo h3 { font-family:var(--marca); line-height:1.3; margin:2em 0 1em; letter-spacing:-.025em; }
     .articulo img { max-width:100%; height:auto; } .articulo a { text-decoration-color:var(--ocre); text-underline-offset:4px; overflow-wrap:anywhere; }
-      .fuente-lectura { padding:24px; margin-bottom:36px; background:var(--hueso); border-left:3px solid var(--amarillo); }
+      .fuente-lectura { margin:54px 0 0; padding:30px 32px; background:var(--hueso); border-left:4px solid var(--amarillo); }
+    .fuente-lectura .fuente-etiqueta { margin:0 0 8px; font-family:var(--condensada); font-size:.875rem; font-weight:700; letter-spacing:.11em; text-transform:uppercase; color:var(--ocre); }
+    .fuente-lectura .fuente-nombre { margin:0 0 18px; color:var(--negro); font-family:var(--marca); font-size:1.15rem; font-weight:600; line-height:1.4; }
+    .fuente-lectura .enlace { display:inline-flex; align-items:center; gap:12px; padding:12px 0 7px; min-height:44px; color:var(--negro); font-family:var(--lectura); font-size:1.0625rem; font-weight:500; line-height:1.5; }
+    @media(max-width:820px) { .fuente-lectura { margin-top:40px; padding:24px 22px; } .fuente-lectura .fuente-nombre { font-size:1.0625rem; } }
     .fuente-lectura p { margin:0 0 12px; }
     .fuente-lectura .nota-fuente { margin:12px 0 0; font-size:.875rem; color:var(--gris); }
 
@@ -182,10 +188,10 @@
     </section>
   <figure class="portada-articulo"><img src="/assets/imagenes/blog/ignacio-brosa-zxsbuioeszs-unsplash.jpg" alt="Vista desde arriba de un grupo de personas reunidas en círculo sobre un piso gris." decoding="async"><figcaption>Foto de Ignacio Brosa en Unsplash</figcaption></figure>
   <article class="articulo">
-    <aside class="fuente-lectura"><p>Revista Escritos, vol. 34, n.º 72, 2026</p><a class="enlace" href="https://doi.org/10.18566/v34n72.a12" target="_blank" rel="noopener noreferrer">Leer en la fuente original <span aria-hidden="true">↗</span></a><p class="nota-fuente">Se abre en una nueva pestaña.</p></aside>
+
     <p class="apertura">Hay conversaciones en las que uno empieza a preparar la respuesta antes de que la otra persona termine de hablar. Las palabras llegan, se entienden, incluso se recuerdan. Aun así, algo puede faltar: la disposición a dejar que esa presencia nos importe. Atender quizá consista en eso, en conceder al otro un lugar antes de decidir qué pensamos de él o qué vamos a contestarle.</p>
 <p>Esa diferencia entre oír y atender conduce a una pregunta ética. ¿En qué momento empieza el reconocimiento? Solemos asociarlo con el diálogo, con la posibilidad de exponer razones y llegar a acuerdos. Diana María Henao Sierra y Juan Fernando García-Castro llevan la pregunta a una experiencia anterior. En su reflexión sobre la atención y el vínculo ético, sostienen que para escuchar a alguien como interlocutor primero tenemos que percibirlo como una presencia que merece ser escuchada.</p>
-<p>La idea cambia el punto de partida. El diálogo requiere palabras, argumentos y reglas compartidas. También requiere que alguien esté dispuesto a recibir la palabra del otro. La atención hace posible esa apertura. El lenguaje permite expresarla, examinarla y extenderla a la vida común. Así entendida, la atención no es una habilidad secundaria que mejora la conversación. Es una condición para que el encuentro llegue a ocurrir.</p>
+<p class="destacado-editorial">La idea cambia el punto de partida. El diálogo requiere palabras, argumentos y reglas compartidas. También requiere que alguien esté dispuesto a recibir la palabra del otro. La atención hace posible esa apertura. El lenguaje permite expresarla, examinarla y extenderla a la vida común. Así entendida, la atención no es una habilidad secundaria que mejora la conversación. Es una condición para que el encuentro llegue a ocurrir.</p>
 <p>El camino que proponen los autores pasa por Simone Weil, John Dewey e Iris Murdoch. Sus pensamientos conservan diferencias, y en ellos aparece una preocupación compartida por el descentramiento del yo. Weil comprende la atención como una disposición a hacer espacio para el otro. Dewey muestra que percibir puede transformar a quien percibe. Murdoch vincula la vida moral con una mirada capaz de corregir las imágenes que el ego proyecta sobre la realidad. En estas perspectivas, atender supone permitir que algo ajeno a nosotros altere la forma en que vemos.</p>
 <p>La reflexión también encuentra una dimensión corporal en Merleau-Ponty. El otro no se presenta primero como una idea que luego confirmamos en la experiencia. Lo encontramos en un mundo compartido, mediante gestos, miradas, silencios y palabras. Esa presencia nos afecta antes de que podamos ordenarla en conceptos. La atención surge en ese contacto con una realidad que siempre guarda algo más de lo que alcanzamos a comprender.</p>
 <p>Esta perspectiva me lleva a pensar en el aula. Un estudiante puede hablar para responder una pregunta y, al mismo tiempo, intentar comunicar una inquietud que no cabe en la respuesta esperada. Atenderlo exige escuchar el contenido y percibir algo del modo en que se acerca a él. Algo semejante ocurre en una consulta, una conversación familiar o una discusión pública. El reconocimiento se expresa en normas y decisiones, aunque empieza también en la calidad de nuestra disposición ante quien tenemos enfrente.</p>
@@ -194,6 +200,7 @@
 <p>Atender no ofrece una solución automática a los conflictos ni reemplaza la necesidad de argumentar. Nos recuerda algo más elemental. Antes de responder, hace falta advertir que alguien está ahí. El diálogo comienza con esa pausa en la que dejamos de ocupar todo el espacio con nuestras propias ideas. Tal vez por eso una pregunta filosófica sobre la atención termina siendo también una pregunta cotidiana: ¿qué cambia en nuestros encuentros cuando escuchamos con tiempo suficiente para que el otro pueda aparecer?</p>
 <p><em>Lectura de referencia:</em> Diana María Henao Sierra y Juan Fernando García-Castro, “La atención y el reconocimiento como condiciones previas del vínculo ético”, <em>Escritos</em> 34, n.º 72 (2026).</p>
 
+      <aside class="fuente-lectura" aria-label="Artículo de referencia"><p class="fuente-etiqueta">Fuente original</p><p class="fuente-nombre">Revista Escritos, vol. 34, n.º 72, 2026</p><a class="enlace" href="https://doi.org/10.18566/v34n72.a12" target="_blank" rel="noopener noreferrer">Leer en la fuente original <span aria-hidden="true">↗</span></a><p class="nota-fuente">Se abre en una nueva pestaña.</p></aside>
   </article></main>
 
   <section class="seguir">
