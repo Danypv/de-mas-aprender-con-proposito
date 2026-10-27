@@ -27,8 +27,15 @@ for (const collection of [{slug:'',title:'Leer, pensar y conversar.',summary:'Te
   write(`lecturas/${collection.slug ? collection.slug+'/' : ''}index.html`,page);
 }
 for (const reading of readings) {
-  const source = reading.source_url ? `<aside class="fuente-lectura"><p>${reading.source_name ? e(reading.source_name) : 'Fuente de la lectura'}</p><a class="enlace" href="${e(reading.source_url)}" target="_blank" rel="noopener noreferrer">${reading.type==='link' ? 'Leer en la fuente original' : 'Consultar la fuente'} <span aria-hidden="true">↗</span></a><p class="nota-fuente">Se abre en una nueva pestaña.</p></aside>` : '';
-  const body=markdown.render(reading.body.trim()).replace('<p>','<p class="apertura">');
+  const source = reading.source_url ? `<aside class="fuente-lectura" aria-label="Artículo de referencia"><p class="fuente-etiqueta">Fuente original</p><p class="fuente-nombre">${reading.source_name ? e(reading.source_name) : 'Fuente de la lectura'}</p><a class="enlace" href="${e(reading.source_url)}" target="_blank" rel="noopener noreferrer">${reading.type==='link' ? 'Leer en la fuente original' : 'Consultar la fuente'} <span aria-hidden="true">↗</span></a><p class="nota-fuente">Se abre en una nueva pestaña.</p></aside>` : '';
+  const bodyBlocks = reading.body.trim().split(/\n\s*\n/u).map(value => value.trim()).filter(Boolean);
+  const regularParagraphs = bodyBlocks.filter(value => !/^(#|>|-|\*Lectura de referencia:)/u.test(value) && value.split(/\s+/u).length >= 24);
+  const chosen = regularParagraphs[Math.floor((regularParagraphs.length - 1) / 3)];
+  let body = markdown.render(reading.body.trim()).replace('<p>','<p class="apertura">');
+  if (chosen && regularParagraphs.length >= 3) {
+    const paragraph = '<p>' + markdown.renderInline(chosen) + '</p>';
+    if (body.includes(paragraph)) body = body.replace(paragraph, '<p class="destacado-editorial">' + markdown.renderInline(chosen) + '</p>');
+  }
   write(`lecturas/textos/${reading.slug}/index.html`,fill(articleTemplate,{
     PAGE_TITLE:`${e(reading.browser_title || reading.title)} · DE+`, META_DESCRIPTION:e(reading.summary), OG_TITLE:`${e(reading.title)} · DE+`,
     TITLE:e(reading.title), AUTHOR:e(reading.author), DATE:formatDate(reading.date), SUMMARY:e(reading.summary),
