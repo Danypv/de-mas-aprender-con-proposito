@@ -38,4 +38,4 @@ for (const reading of readings) {
     BODY:body, SOURCE:source,
   }));
 }
-console.log(`${readings.length} lectura(s) publicada(s); cuatro colecciones e índice generados.`);
+console.log(`${readings.length} lectura(s) publicada(s); seis colecciones e índice generados.`);
