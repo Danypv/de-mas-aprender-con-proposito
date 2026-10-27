@@ -3,10 +3,36 @@ import path from 'node:path';
 import matter from 'gray-matter';
 
 export const collections = [
-  { slug: 'filosofia', title: 'Filosofía', summary: 'Ideas que amplían la mirada.' },
-  { slug: 'etica-e-inteligencia-artificial', title: 'Ética e inteligencia artificial', summary: 'Disrupción tecnológica y humanismo.' },
-  { slug: 'historia-y-cultura', title: 'Historia y cultura', summary: 'Sociedades, obras y transformaciones.' },
-  { slug: 'ciencia-y-salud', title: 'Ciencia y salud', summary: 'El conocimiento científico y la experiencia humana.' },
+  {
+    "slug": "filosofia",
+    "title": "Filosofía y ética",
+    "summary": "Preguntas sobre la vida, nuestras decisiones y los valores que las orientan."
+  },
+  {
+    "slug": "etica-e-inteligencia-artificial",
+    "title": "Ciencia y tecnología",
+    "summary": "Conocimiento y desarrollos que transforman nuestra manera de comprender el mundo."
+  },
+  {
+    "slug": "empresa-cultura-y-liderazgo",
+    "title": "Empresa, cultura y liderazgo",
+    "summary": "Organizaciones, trabajo y liderazgo desde una mirada humana."
+  },
+  {
+    "slug": "ciencia-y-salud",
+    "title": "Medicina y salud",
+    "summary": "El cuidado, la salud, la enfermedad y la experiencia humana."
+  },
+  {
+    "slug": "historia-y-cultura",
+    "title": "Historia, cultura y literatura",
+    "summary": "Sociedades, obras y relatos que ayudan a comprender otras épocas."
+  },
+  {
+    "slug": "teologia-y-espiritualidad",
+    "title": "Teología y espiritualidad",
+    "summary": "Tradiciones y preguntas sobre el sentido de la vida."
+  }
 ];
 export const escapeHtml = value => String(value ?? '').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 export const formatDate = date => new Intl.DateTimeFormat('es-CO', { day:'numeric', month:'long', year:'numeric', timeZone:'UTC' }).format(new Date(date));
