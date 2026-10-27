@@ -5,7 +5,7 @@ slug: aprender-a-atender
 author: Daniel Pérez Valencia
 date: 2026-10-26T00:00:00.000Z
 collections:
-  - etica-e-inteligencia-artificial
+  - filosofia
 type: link
 publication_type: academic_article
 summary: >-
