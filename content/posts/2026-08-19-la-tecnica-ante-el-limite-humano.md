@@ -9,9 +9,10 @@ categories:
   - Inteligencia Artificial
   - Neurotecnología
 summary: >-
-  La inteligencia artificial y la neurotecnología amplían nuestra capacidad de
-  intervenir en el mundo y en nosotros mismos. ¿Cómo orientar ese poder hacia el
-  cuidado de la vida, la libertad y la dignidad humana?
+  Una reflexión sobre la responsabilidad de orientar la inteligencia artificial
+  y la neurotecnología hacia el cuidado de la vida, con atención a sus efectos
+  sobre la autonomía de las personas y las condiciones del mundo que
+  compartimos.
 status: published
 featured: false
 ---
