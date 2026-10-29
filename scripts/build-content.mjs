@@ -60,8 +60,44 @@ const formatDate = (date) =>
 const replaceToken = (template, token, value) =>
   template.replaceAll(`{{${token}}}`, () => String(value));
 
+
+// Selección estable por artículo entre los párrafos de la zona central.
+const renderPostBody = (source, slug) => {
+  const env = {};
+  const tokens = markdown.parse(source.trim(), env);
+  const hasHighlight = tokens.some((token) =>
+    token.type === "blockquote_open" ||
+    (token.type.startsWith("html_") && /<blockquote\b/i.test(token.content)));
+  if (!hasHighlight) {
+    const paragraphs = [];
+    for (let i = 0; i < tokens.length - 2; i++) {
+      if (tokens[i].type === "paragraph_open" && tokens[i].level === 0 &&
+          tokens[i + 1].type === "inline" && tokens[i + 2].type === "paragraph_close" &&
+          tokens[i + 1].content.trim() &&
+          !tokens[i + 1].children?.some((token) => token.type === "image")) {
+        paragraphs.push(i);
+      }
+    }
+    // Los textos muy cortos conservan su formato.
+    if (paragraphs.length >= 5) {
+      const start = Math.max(1, Math.floor(paragraphs.length * 0.35));
+      const end = Math.min(paragraphs.length - 2, Math.ceil(paragraphs.length * 0.65) - 1);
+      let hash = 2166136261;
+      for (const char of String(slug)) hash = Math.imul(hash ^ char.codePointAt(0), 16777619) >>> 0;
+      const index = paragraphs[start + hash % (end - start + 1)];
+      const Token = tokens[index].constructor;
+      const open = new Token("blockquote_open", "blockquote", 1);
+      const close = new Token("blockquote_close", "blockquote", -1);
+      open.block = close.block = true;
+      tokens.splice(index + 3, 0, close);
+      tokens.splice(index, 0, open);
+    }
+  }
+  return markdown.renderer.render(tokens, markdown.options, env);
+};
+
 for (const post of visiblePosts) {
-  let body = markdown.render(post.body.trim());
+  let body = renderPostBody(post.body, post.slug);
   body = body.replace("<p>", '<p class="apertura">');
 
   let page = postTemplate;
