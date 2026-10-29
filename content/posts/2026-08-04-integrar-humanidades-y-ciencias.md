@@ -9,7 +9,7 @@ categories:
   - Educación
 summary: "La ciencia y las humanidades no compiten por el conocimiento: se necesitan para comprender el mundo y aprender a habitarlo con sentido."
 status: published
-featured: true
+featured: false
 ---
 
 «¡Qué tarde voy a llegar, oh, Dios mío!», susurraba un gran conejo blanco de ojos rosados y vistiendo un chaleco, al mirar su reloj de bolsillo. Alicia, que estaba sentada y pensativa bajo la sombra de un árbol, sintió mucha curiosidad ante la situación, porque no es normal que los conejos puedan hablar y, mucho menos, que se sientan inquietos por el paso del tiempo.
