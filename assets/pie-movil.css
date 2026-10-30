@@ -1,0 +1,12 @@
+/* Centrado compartido del pie de las páginas internas.
+   Las plantillas mantienen esta hoja al generar nuevas publicaciones. */
+@media screen and (max-width: 820px) {
+  .pie-pagina > .contenedor.pie {
+    align-items: center;
+    text-align: center;
+  }
+
+  .pie-pagina > .contenedor.pie > .pie-instagram-enlace {
+    justify-content: center;
+  }
+}
