@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es" class="sin-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="¿Como pueden dialogar la fe y la razón en una sociedad que organiza su vida pública desde criterios seculares? El artículo invita a pensar el lugar de las convicciones religiosas en una conversación democrática plural.">
+  <meta name="theme-color" content="#000000">
+  <title>Razón y fe en la sociedad postsecular · DE+</title>
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="La razón y la fe en una sociedad que busca conversar · DE+">
+  <meta property="og:description" content="¿Como pueden dialogar la fe y la razón en una sociedad que organiza su vida pública desde criterios seculares? El artículo invita a pensar el lugar de las convicciones religiosas en una conversación democrática plural.">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image" content="https://somosdemas.com/assets/marca/de-mas-compartir.png">
+  <meta property="og:image:secure_url" content="https://somosdemas.com/assets/marca/de-mas-compartir.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="DE+ · Aprender con propósito. Logo completo sobre fondo negro.">
+  <meta name="twitter:image" content="https://somosdemas.com/assets/marca/de-mas-compartir.png">
+  <meta name="twitter:image:alt" content="DE+ · Aprender con propósito">
+
+  <link rel="icon" href="/assets/marca/favicon.svg?v=de-mas-completo" type="image/svg+xml">
+  <link rel="icon" href="/assets/marca/icono-512.png?v=de-mas-completo" type="image/png" sizes="512x512">
+  <link rel="apple-touch-icon" href="/assets/marca/icono-180.png?v=de-mas-completo">
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/montserrat-semibold.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/roboto-regular.woff2" crossorigin>
+  <style>
+    @font-face { font-family:"Montserrat"; src:url("/assets/fonts/montserrat-semibold.woff2") format("woff2"); font-weight:600; font-style:normal; font-display:swap; }
+    @font-face { font-family:"Montserrat"; src:url("/assets/fonts/montserrat-extrabold.woff2") format("woff2"); font-weight:800; font-style:normal; font-display:swap; }
+    @font-face { font-family:"Roboto"; src:url("/assets/fonts/roboto-regular.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:swap; }
+    @font-face { font-family:"Roboto"; src:url("/assets/fonts/roboto-medium.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:swap; }
+    @font-face { font-family:"Roboto Condensed"; src:url("/assets/fonts/robotocondensed-bold.woff2") format("woff2"); font-weight:700; font-style:normal; font-display:swap; }
+
+    :root {
+      --negro:#000000; --negro-suave:#161616; --amarillo:#ffb600; --blanco:#ffffff;
+      --hueso:#f6f4ef; --ocre:#8a5e00; --gris:#57534d; --linea:#dcd8cf;
+      --marca:"Montserrat","Helvetica Neue",Arial,sans-serif;
+      --lectura:"Roboto","Helvetica Neue",Arial,sans-serif;
+      --condensada:"Roboto Condensed","Roboto","Arial Narrow",sans-serif;
+      --ancho:1180px; --margen:48px; --columna:68ch;
+      --signo:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 147.16 147.16'%3E%3Cpolygon points='57.87 0 57.87 57.87 0 57.87 0 89.28 57.87 89.28 57.87 147.16 89.28 147.16 89.28 89.28 147.16 89.28 147.16 57.87 89.28 57.87 89.28 0 57.87 0'/%3E%3C/svg%3E");
+    }
+
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+    body { margin:0; color:var(--negro); background:var(--blanco); font-family:var(--lectura); font-size:1.0625rem; line-height:1.72; -webkit-font-smoothing:antialiased; }
+    a { color:inherit; }
+    a,button { -webkit-tap-highlight-color:transparent; }
+    a:focus-visible,button:focus-visible { outline:3px solid var(--amarillo); outline-offset:4px; border-radius:2px; }
+    .contenedor { width:min(var(--ancho),calc(100% - (var(--margen) * 2))); margin:0 auto; }
+    .salto { position:absolute; top:-100px; left:16px; z-index:100; padding:12px 20px; color:var(--negro); background:var(--amarillo); font-family:var(--marca); font-size:.875rem; font-weight:600; text-decoration:none; }
+    .salto:focus { top:16px; }
+
+    .cabecera { position:sticky; top:0; z-index:20; background:rgba(0,0,0,.92); backdrop-filter:saturate(1.4) blur(10px); -webkit-backdrop-filter:saturate(1.4) blur(10px); border-bottom:1px solid rgba(255,255,255,.1); }
+    .navegacion { min-height:74px; display:flex; align-items:center; justify-content:space-between; gap:28px; }
+    .marca { display:flex; align-items:center; width:62px; flex:none; }
+    .marca img { display:block; width:100%; height:auto; }
+    .menu { display:flex; align-items:center; font-family:var(--marca); font-size:.9375rem; font-weight:600; }
+    .menu a { position:relative; padding:8px 20px; color:#ededec; text-decoration:none; transition:color 160ms ease; }
+    .menu a + a::before { content:""; position:absolute; top:50%; left:0; width:1px; height:16px; background:rgba(255,182,0,.55); transform:translateY(-50%); }
+    .menu a:hover,.menu a[aria-current="page"] { color:var(--amarillo); }
+    .boton-menu { display:none; width:44px; height:44px; padding:0; border:0; background:transparent; cursor:pointer; }
+    .boton-menu .barra { display:block; width:24px; height:2px; margin:5px auto; background:var(--blanco); transition:transform 220ms ease,opacity 180ms ease; }
+    .boton-menu[aria-expanded="true"] .barra:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+    .boton-menu[aria-expanded="true"] .barra:nth-child(2) { opacity:0; }
+    .boton-menu[aria-expanded="true"] .barra:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+    .cabecera-articulo { position:relative; isolation:isolate; overflow:hidden; padding:104px 0 88px; background:var(--hueso); }
+    .cabecera-articulo::after { content:"+"; position:absolute; right:-.03em; bottom:-.42em; z-index:-1; color:rgba(0,0,0,.035); font-family:var(--marca); font-size:clamp(18rem,35vw,34rem); font-weight:800; line-height:1; user-select:none; }
+    .cabecera-articulo .interior { max-width:980px; margin-left:0; }
+    .ruta { margin:0 0 30px; color:var(--gris); font-size:.875rem; }
+    .ruta a { text-decoration:none; }
+    .ruta a:hover { color:var(--ocre); }
+    .ruta span { margin:0 9px; color:var(--amarillo); }
+    .etiqueta { display:block; margin:0 0 17px; color:var(--ocre); font-family:var(--condensada); font-size:.875rem; font-weight:700; letter-spacing:.17em; line-height:1.45; text-transform:uppercase; }
+    .etiqueta::before { content:""; display:inline-block; width:.58em; height:.58em; margin-right:9px; background-color:var(--amarillo); vertical-align:-.02em; -webkit-mask:var(--signo) center/contain no-repeat; mask:var(--signo) center/contain no-repeat; }
+    h1 { max-width:16ch; margin:0; font-family:var(--marca); font-size:clamp(2.65rem,5.6vw,5rem); font-weight:600; letter-spacing:-.038em; line-height:1.04; text-wrap:balance; }
+    .autor { margin:30px 0 0; color:var(--gris); font-size:1rem; }
+    .autor strong { color:var(--negro); font-weight:500; }
+
+    .articulo { width:min(var(--columna),calc(100% - 48px)); margin:0 auto; padding:76px 0 92px; font-size:1.125rem; line-height:1.82; }
+    .articulo p { margin:0 0 1.45em; }
+    .articulo .apertura { margin-bottom:1.65em; font-size:1.25rem; line-height:1.72; }
+    .articulo blockquote { position:relative; margin:2.5em 0; padding:28px 30px 28px 34px; border-left:4px solid var(--amarillo); color:var(--blanco); background:var(--negro-suave); font-size:1.12rem; font-style:normal; line-height:1.72; }
+    .articulo .destacado-editorial { margin:2.1em 0; padding:12px 0 12px 26px; border-left:4px solid var(--amarillo); color:var(--negro); font-family:var(--lectura); font-size:1.25rem; font-weight:500; line-height:1.65; }
+    .articulo em { font-style:italic; }
+    .lista { margin:1.6em 0 1.9em; padding-left:1.25em; }
+    .lista li { margin:.68em 0; padding-left:.32em; }
+    .lista li::marker { color:var(--ocre); }
+
+    .seguir { padding:58px 0 62px; color:var(--blanco); background:var(--negro); }
+    .seguir-interno { width:min(var(--columna),calc(100% - 48px)); margin:auto; }
+    .seguir .etiqueta { color:var(--amarillo); }
+    .enlace { display:inline-block; position:relative; padding-bottom:6px; font-size:.9375rem; font-weight:500; text-decoration:none; }
+    .enlace::after { content:""; position:absolute; right:0; bottom:0; left:0; height:2px; background:var(--amarillo); transition:transform 220ms ease; transform-origin:left; }
+    .enlace:hover::after { transform:scaleY(2.5); }
+    .flecha { display:inline-block; margin-right:7px; transition:transform 220ms ease; }
+    .enlace:hover .flecha { transform:translateX(-4px); }
+
+    .pie-pagina { padding:34px 0; color:#d8d8d8; background:var(--negro-suave); border-top:1px solid rgba(255,255,255,.1); }
+    .pie { display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    .pie-marca { width:150px; }
+    .pie-marca img { display:block; width:100%; height:auto; }
+    .pie p { margin:0; font-size:.8125rem; }
+
+    @media (max-width:820px) {
+      :root { --margen:24px; }
+      .boton-menu { display:block; }
+      .menu { position:absolute; top:100%; right:0; left:0; display:none; padding:10px 24px 18px; background:rgba(0,0,0,.98); border-top:1px solid rgba(255,255,255,.1); }
+      .menu.abierto { display:block; }
+      .menu a { display:block; padding:12px 0; }
+      .menu a + a::before { top:0; right:0; left:0; width:auto; height:1px; background:rgba(255,255,255,.1); transform:none; }
+      .cabecera-articulo { padding:74px 0 64px; }
+      .ruta { margin-bottom:24px; }
+      .articulo { width:min(var(--columna),calc(100% - 40px)); padding:54px 0 68px; font-size:1.1875rem; line-height:1.75; }
+      .articulo .apertura { font-size:1.1875rem; line-height:1.75; }
+      .articulo .destacado-editorial { margin:1.8em 0; padding:8px 0 8px 20px; font-size:1.1875rem; line-height:1.7; }
+      .articulo blockquote { margin:2.1em -4px; padding:24px 22px 24px 26px; font-size:1.1875rem; line-height:1.75; }
+      .seguir-interno { width:calc(100% - 40px); }
+      .pie { flex-direction:column; align-items:flex-start; gap:18px; }
+    }
+
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition-duration:.01ms !important; } }
+    @media print { .cabecera,.seguir,.pie-pagina,.salto { display:none; } .cabecera-articulo { padding:20px 0 28px; } .articulo { width:100%; padding:30px 0; font-size:11pt; } }
+    .entradilla { max-width:60ch; margin:26px 0 0; color:var(--gris); font-size:clamp(1.125rem,2vw,1.4rem); line-height:1.6; }
+    .portada-articulo { width:min(980px,calc(100% - 40px)); margin:48px auto 0; }
+    .portada-articulo img { display:block; width:100%; max-height:580px; object-fit:cover; }
+    figcaption { margin-top:10px; color:var(--gris); font-size:.875rem; }
+    .articulo h2,.articulo h3 { font-family:var(--marca); line-height:1.3; margin:2em 0 1em; letter-spacing:-.025em; }
+    .articulo img { max-width:100%; height:auto; } .articulo a { text-decoration-color:var(--ocre); text-underline-offset:4px; overflow-wrap:anywhere; }
+      .fuente-lectura { margin:54px 0 0; padding:30px 32px; background:var(--hueso); border-left:4px solid var(--amarillo); }
+    .fuente-lectura .fuente-etiqueta { margin:0 0 8px; font-family:var(--condensada); font-size:.875rem; font-weight:700; letter-spacing:.11em; text-transform:uppercase; color:var(--ocre); }
+    .fuente-lectura .fuente-nombre { margin:0 0 18px; color:var(--negro); font-family:var(--marca); font-size:1.15rem; font-weight:600; line-height:1.4; }
+    .fuente-lectura .enlace { display:inline-flex; align-items:center; gap:12px; padding:12px 0 7px; min-height:44px; color:var(--negro); font-family:var(--lectura); font-size:1.0625rem; font-weight:500; line-height:1.5; }
+    @media(max-width:820px) { .fuente-lectura { margin-top:40px; padding:24px 22px; } .fuente-lectura .fuente-nombre { font-size:1.0625rem; } }
+    .fuente-lectura p { margin:0 0 12px; }
+    .fuente-lectura .nota-fuente { margin:12px 0 0; font-size:.875rem; color:var(--gris); }
+
+    /* Instagram integrado en el pie existente */
+    .pie-instagram-enlace{display:inline-flex;align-items:center;gap:9px;min-height:44px;color:inherit;text-decoration:none;font-family:var(--lectura,"Roboto",Arial,sans-serif);font-size:.9375rem;font-weight:500;line-height:1.5;white-space:nowrap;transition:color 160ms ease}
+    .pie-instagram-enlace:hover,.pie-instagram-enlace:focus-visible{color:#ffb600}
+    .pie-instagram-enlace:focus-visible{outline:2px solid #ffb600;outline-offset:5px}
+    .pie-instagram-enlace svg{display:block;width:20px;height:20px;flex:none}
+    .pie-inferior{align-items:center;flex-wrap:wrap}
+  </style>
+</head>
+<body>
+  <a class="salto" href="#contenido">Saltar al contenido</a>
+
+  <header class="cabecera">
+    <div class="contenedor navegacion">
+      <a class="marca" href="/" aria-label="DE+, ir al inicio">
+        <img src="/assets/marca/isotipo-blanco-amarillo.svg" alt="DE+" width="62" height="49">
+      </a>
+      <button class="boton-menu" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal">
+        <span class="barra"></span><span class="barra"></span><span class="barra"></span>
+      </button>
+      <nav class="menu" id="menu-principal" aria-label="Navegación principal">
+        <a href="/blog/">Blog</a>
+        <a href="/lecturas/" aria-current="page">Lecturas selectas</a>
+        <a href="/#formatos">Podcast y video</a>
+        <a href="/#sobre">Sobre DE+</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="cabecera-articulo">
+      <div class="contenedor">
+        <div class="interior">
+          <p class="ruta"><a href="/">Inicio</a><span aria-hidden="true">/</span><a href="/lecturas/">Lecturas selectas</a></p>
+          <p class="etiqueta">Teología y espiritualidad</p>
+          <h1>La razón y la fe en una sociedad que busca conversar</h1>
+          <p class="entradilla">¿Como pueden dialogar la fe y la razón en una sociedad que organiza su vida pública desde criterios seculares? El artículo invita a pensar el lugar de las convicciones religiosas en una conversación democrática plural.</p>
+          <p class="autor">Por <strong>Daniel Perez Valencia</strong> · 30 de octubre de 2026 · Lectura recomendada</p>
+        </div>
+      </div>
+    </section>
+  <figure class="portada-articulo"><img src="/assets/imagenes/blog/alex-shute-6n3hwssdleq-unsplash.jpg" alt="Bloque de madera flores azules palabra fe" decoding="async"><figcaption>Foto de Alex Shute en Unsplash</figcaption></figure>
+  <article class="articulo">
+    <p class="apertura">¿Cómo pueden dialogar la fe y la razón en una sociedad que organiza su vida pública desde criterios seculares? Esa pregunta recorre “El humanismo ante el reto del diálogo fe y razón en la sociedad postsecular”, artículo que escribí junto con Guillermo L. Herrera Gil y que fue publicado en 2013 en <em>Cuestiones Teológicas</em>. El texto entiende el humanismo como una pregunta por lo humano que atraviesa tradiciones religiosas y seculares.</p>
+<p class="destacado-editorial">El artículo revisa cómo la modernidad impulsó la autonomía de la razón frente a la autoridad religiosa y relegó la fe al ámbito privado. Para analizar ese proceso, recurre a Jürgen Habermas y a su concepto de sociedad postsecular. En este marco, la presencia pública de las comunidades religiosas lleva a reconsiderar la idea de que la secularización desplazaría las convicciones religiosas de la vida común. La pregunta se vuelve política y teológica: ¿cómo participan creyentes y ciudadanos seculares en la deliberación democrática?</p>
+<p>Esa conversación plantea una dificultad. Habermas propone que los creyentes traduzcan sus convicciones a un lenguaje accesible para todos cuando intervienen en el debate público. El artículo valora la búsqueda de un lenguaje compartido y examina la asimetría de la propuesta cuando solo las convicciones religiosas deben traducirse a categorías seculares. La respuesta que desarrolla desde Benedicto XVI consiste en ampliar la idea de racionalidad y reconocer que las tradiciones religiosas pueden intervenir en el debate público desde su propia comprensión del mundo.</p>
+<p>El aporte teológico aparece en la relación que el artículo establece entre el ser, el logos y el ágape. La fe cristiana reconoce a Dios como fundamento del ser, razón creadora y amor que entra en la historia. Desde esa comprensión, razón y revelación quedan vinculadas. El artículo conecta esa visión con una vida moral compartida y con la búsqueda humana de sentido. Así, la teología entra en una discusión pública sobre lo humano y sobre la posibilidad de orientar la vida común.</p>
+<p>Al releerlo, me interesa la forma en que propone el diálogo como respuesta a dos riesgos. El secularismo puede excluir la voz religiosa de la vida común; el integrismo puede intentar imponer una tradición a toda la sociedad. La deliberación democrática requiere reconocimiento de la pluralidad y respeto por la autonomía recíproca. El artículo recuerda que esos principios deben acompañarse de una crítica a las patologías que pueden aparecer tanto en las religiones como en los Estados.</p>
+<p>Publicado en 2013, el artículo pertenece a un debate que conserva actualidad cuando discutimos el sentido de las normas o el fundamento de la justicia. Su lectura deja abierta una pregunta: ¿cómo construir acuerdos públicos en una sociedad donde creyentes y no creyentes puedan expresar sus convicciones y escucharse? La propuesta humanista del texto comienza en esa disposición a conversar.</p>
+
+    <aside class="fuente-lectura" aria-label="Artículo de referencia"><p class="fuente-etiqueta">Fuente original</p><p class="fuente-nombre">Cuestiones Teológicas vol. 40, núm. 93 (2013), pp. 75–95.</p><a class="enlace" href="https://revistas.upb.edu.co/index.php/cuestiones/article/view/5102" target="_blank" rel="noopener noreferrer">Leer en la fuente original <span aria-hidden="true">↗</span></a><p class="nota-fuente">Se abre en una nueva pestaña.</p></aside>
+  </article></main>
+
+  <section class="seguir">
+    <div class="seguir-interno">
+      <p class="etiqueta">Seguir leyendo</p>
+      <a class="enlace" href="/lecturas/"><span class="flecha" aria-hidden="true">←</span>Volver a las lecturas</a>
+    </div>
+  </section>
+
+  <footer class="pie-pagina">
+    <div class="contenedor pie">
+      <div class="pie-marca"><img src="/assets/marca/logo-blanco-amarillo.svg" alt="DE+ · Aprender con propósito" width="150" height="118"></div>
+      <a class="pie-instagram-enlace" href="https://www.instagram.com/somosdemas.co/" target="_blank" rel="noopener noreferrer" aria-label="Visitar @somosdemas.co en Instagram (se abre en una pestaña nueva)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><span>@somosdemas.co</span><span aria-hidden="true">↗</span></a>
+      <p>© 2026. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.documentElement.classList.remove("sin-js");
+    const boton = document.querySelector(".boton-menu");
+    const menu = document.querySelector(".menu");
+    const cerrarMenu = () => { menu.classList.remove("abierto"); boton.setAttribute("aria-expanded","false"); boton.setAttribute("aria-label","Abrir menú"); };
+    boton.addEventListener("click", () => { const abierto = menu.classList.toggle("abierto"); boton.setAttribute("aria-expanded",String(abierto)); boton.setAttribute("aria-label",abierto ? "Cerrar menú" : "Abrir menú"); });
+    menu.querySelectorAll("a").forEach((enlace) => enlace.addEventListener("click",cerrarMenu));
+    document.addEventListener("keydown", (evento) => { if (evento.key === "Escape" && menu.classList.contains("abierto")) { cerrarMenu(); boton.focus(); } });
+  </script>
+</body>
+</html>
+
+
