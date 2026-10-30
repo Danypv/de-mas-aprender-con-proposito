@@ -51,7 +51,7 @@ La presentación de un resultado numérico puede inspirar confianza. Su validez 
 
 En el ensayo *El pensar y las reflexiones morales*, recogido en *Responsabilidad y juicio*, Hannah Arendt examina la relación entre la actividad de pensar y la capacidad de juzgar situaciones particulares. Esa reflexión ofrece un punto de partida para preguntar qué ocurre cuando aceptamos una recomendación sin examinar las razones que la sostienen. 
 
-> La pregunta adquiere una forma concreta cuando una institución adopta una recomendación porque el sistema la produjo. ¿Quién revisa el criterio? ¿Quién responde por sus efectos? La existencia de un procedimiento puede facilitar el trabajo y, al mismo tiempo, volver menos visible la responsabilidad de quienes lo utilizan.
+La pregunta adquiere una forma concreta cuando una institución adopta una recomendación porque el sistema la produjo. ¿Quién revisa el criterio? ¿Quién responde por sus efectos? La existencia de un procedimiento puede facilitar el trabajo y, al mismo tiempo, volver menos visible la responsabilidad de quienes lo utilizan.
 
 En la educación encontramos una situación cercana. La inteligencia artificial puede ayudar a un estudiante a comprender un concepto o a examinar una objeción a su argumento. También puede producir un trabajo que el estudiante entregue sin comprender cómo fue elaborado. 
 
