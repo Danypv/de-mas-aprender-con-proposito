@@ -18,6 +18,7 @@ featured: false
 cover_alt: Cerebro rojo abstracto con persona
 cover_caption: Foto de Markus Kammermann en Unsplash
 cover: /assets/imagenes/blog/markus-kammermann-pnpwc-pffuk-unsplash.jpg
+cms_source: content/posts/gobernar-lo-que-creamos.md
 ---
 La inteligencia artificial y la neurotecnología amplían nuestra capacidad de intervenir en el mundo y en nosotros mismos. ¿Cómo orientar ese poder hacia el cuidado de la vida y el respeto por la dignidad humana?
 

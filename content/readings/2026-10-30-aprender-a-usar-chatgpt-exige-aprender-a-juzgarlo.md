@@ -22,6 +22,7 @@ featured: false
 cover: /assets/imagenes/blog/numan-ali-llntovr7ctk-unsplash.jpg
 cover_alt: Letras IA en la placa de circuito
 cover_caption: Foto de Numan Ali en Unsplash
+cms_source: content/readings/aprender-a-usar-chatgpt-tambien-exige-aprender-a-juzgarlo.md
 ---
 En el primer semestre de 2024, cuando ChatGPT comenzaba a incorporarse a las rutinas universitarias, una encuesta a 381 estudiantes de una universidad colombiana permitió observar sus prácticas de uso y explorar cómo percibían los límites de la herramienta. En la investigación, en la que participé junto con Federico Vásquez Cardona y Valentina Carmona García, esa doble mirada sigue siendo pertinente. En educación, la disponibilidad de una respuesta rápida cambia el trabajo intelectual que una tarea propone.
 
