@@ -1,0 +1,19 @@
+/* Enlace opcional junto a la firma, con las tipografías y colores de DE+. */
+a.perfil-autor {
+  display: inline-flex;
+  align-items: baseline;
+  gap: .25em;
+  margin-inline-start: .55em;
+  padding-block: .12em;
+  border-bottom: 1px solid var(--amarillo, #ffb600);
+  color: inherit;
+  font-family: var(--lectura, "Roboto", Arial, sans-serif);
+  font-size: .875em;
+  font-weight: 500;
+  line-height: 1.4;
+  text-decoration: none;
+  white-space: nowrap;
+}
+a.perfil-autor:hover { border-bottom-color: currentColor; }
+a.perfil-autor:focus-visible { outline: 2px solid var(--amarillo, #ffb600); outline-offset: 4px; }
+.articulo .firma-comentario { margin: 0 0 20px; color: var(--gris, #57534d); font-size: .875rem; line-height: 1.6; }

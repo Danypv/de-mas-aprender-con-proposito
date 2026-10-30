@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import MarkdownIt from 'markdown-it';
 import {readPodcasts,e,dateLabel,spotifyId} from './podcasts.mjs';
+import {authorProfile,episodeAuthor} from './authors.mjs';
 const {series:allSeries,episodes:allEpisodes}=readPodcasts();
 const series=allSeries.filter(s=>s.status==='published');const episodes=allEpisodes.filter(s=>s.status==='published');
 const md=new MarkdownIt({html:false,typographer:true});
@@ -23,12 +24,13 @@ function renderPage(relative,{title,summary,featured='',seriesSection='',list,ex
 renderPage('podcast/index.html',{title:'Para escuchar.',summary:'Series de audio sobre filosofía, historia, educación, medicina y cultura.',featured:feature,seriesSection:series.length?`<section class="series-podcast"><div class="contenedor"><p class="etiqueta">Explorar</p><h2>Nuestras series.</h2><div class="series-rejilla">${seriesCards}</div></div></section>`:'',list:episodes});
 for(const s of series){
  const list=episodes.filter(ep=>ep.series===s.slug);
- renderPage(`podcast/series/${s.slug}/index.html`,{title:s.title,summary:s.summary,list,extras:`<div class="contenedor serie-presentacion"><a class="enlace" href="/podcast/">← Todos los podcast</a><p>Con ${e(s.presenter)}</p>${platforms(s)}${s.body?`<div class="serie-descripcion">${md.render(s.body)}</div>`:''}</div>`});
+ renderPage(`podcast/series/${s.slug}/index.html`,{title:s.title,summary:s.summary,list,extras:`<div class="contenedor serie-presentacion"><a class="enlace" href="/podcast/">← Todos los podcast</a><p>Con ${e(s.presenter)}${authorProfile(s.author_url,s.presenter)}</p>${platforms(s)}${s.body?`<div class="serie-descripcion">${md.render(s.body)}</div>`:''}</div>`});
 }
 for(const ep of episodes){
  const parent=series.find(s=>s.slug===ep.series);
+ const author=episodeAuthor(ep,parent);
  const id=ep.spotify_url?spotifyId(ep.spotify_url,'episode'):null;
  const player=ep.audio_url?`<div class="reproductor-audio"><p>Escuchar el episodio</p><audio controls preload="none" aria-label="${e(ep.title)}" src="${e(ep.audio_url)}"></audio><a href="${e(ep.audio_url)}" target="_blank" rel="noopener noreferrer">Abrir el audio ↗</a></div>`:id?`<iframe class="spotify-player" title="Escuchar ${e(ep.title)} en Spotify" src="https://open.spotify.com/embed/episode/${id}" height="232" loading="lazy" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>`:'<p class="escucha-externa">Escucha este episodio mediante el enlace de Apple Podcasts.</p>';
- write(`podcast/episodios/${ep.slug}/index.html`,fill(episodeTemplate,{PAGE_TITLE:`${e(ep.title)} · Podcast DE+`,META_DESCRIPTION:e(ep.summary),OG_TITLE:`${e(ep.title)} · DE+`,TITLE:e(ep.title),CATEGORIES:e(parent.title),AUTHOR:e(parent.presenter),DATE:dateLabel(ep.date),SUMMARY:e(ep.summary),EPISODE_META:ep.duration?` · ${e(ep.duration)}`:'',COVER:cover(ep.cover?ep:parent,'podcast-portada'),PLAYER:player,PLATFORMS:platforms(ep),SERIES_LINK:`<a class="enlace" href="/podcast/series/${parent.slug}/">← ${e(parent.title)}</a>`,BODY:md.render(ep.body),TRANSCRIPT:ep.transcript?`<details class="transcripcion"><summary>Leer la transcripción</summary>${md.render(ep.transcript)}</details>`:'',MORE:rows(episodes.filter(x=>x.series===ep.series&&x.slug!==ep.slug).slice(0,3))}));
+ write(`podcast/episodios/${ep.slug}/index.html`,fill(episodeTemplate,{PAGE_TITLE:`${e(ep.title)} · Podcast DE+`,META_DESCRIPTION:e(ep.summary),OG_TITLE:`${e(ep.title)} · DE+`,TITLE:e(ep.title),CATEGORIES:e(parent.title),AUTHOR:e(author.name),AUTHOR_PROFILE:authorProfile(author.url,author.name),DATE:dateLabel(ep.date),SUMMARY:e(ep.summary),EPISODE_META:ep.duration?` · ${e(ep.duration)}`:'',COVER:cover(ep.cover?ep:parent,'podcast-portada'),PLAYER:player,PLATFORMS:platforms(ep),SERIES_LINK:`<a class="enlace" href="/podcast/series/${parent.slug}/">← ${e(parent.title)}</a>`,BODY:md.render(ep.body),TRANSCRIPT:ep.transcript?`<details class="transcripcion"><summary>Leer la transcripción</summary>${md.render(ep.transcript)}</details>`:'',MORE:rows(episodes.filter(x=>x.series===ep.series&&x.slug!==ep.slug).slice(0,3))}));
 }
 console.log(`${series.length} serie(s) y ${episodes.length} episodio(s) publicados; portada del podcast generada.`);

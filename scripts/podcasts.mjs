@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import matter from 'gray-matter';
+import { profileUrl } from './authors.mjs';
 export const e = value => String(value ?? '').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 export const dateLabel = date => new Intl.DateTimeFormat('es-CO',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(date));
 export function secureUrl(value,field) {
@@ -20,6 +21,7 @@ function load(root,folder) {
  const seen=new Set();
  return fs.readdirSync(dir).filter(f=>f.endsWith('.md')).map(file=>{
   const {data,content}=matter.read(path.join(dir,file));
+  profileUrl(data.author_url, `${file}: perfil del autor o voz`);
   for(const key of ['title','slug','summary','status'])if(!String(data[key]??'').trim())throw Error(`${file}: falta ${key}`);
   if(!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(data.slug)||seen.has(data.slug))throw Error(`${file}: dirección no válida o repetida`);
   seen.add(data.slug);

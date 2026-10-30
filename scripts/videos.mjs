@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import matter from 'gray-matter';
+import { profileUrl } from './authors.mjs';
 export const formats={conference:'Conferencias',class:'Clases abiertas',conversation:'Conversaciones',audiovisual:'Piezas audiovisuales'};
 export const e=value=>String(value??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 export const dateLabel=date=>new Intl.DateTimeFormat('es-CO',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(date));
@@ -25,6 +26,9 @@ export function readVideos(root=process.cwd()){
  const seen=new Set();
  return fs.readdirSync(folder).filter(f=>f.endsWith('.md')).map(file=>{
   const {data,content}=matter.read(path.join(folder,file));
+  profileUrl(data.author_url, `${file}: perfil del participante`);
+  const commentProfile = profileUrl(data.comment_author_url, `${file}: perfil de quien firma el comentario`);
+  if (commentProfile && !String(data.comment_author || '').trim()) throw Error(`${file}: añade el nombre de quien firma el comentario antes de su perfil`);
   for(const key of ['title','slug','author','summary','date','format','status','source_url'])if(!String(data[key]??'').trim())throw Error(`${file}: falta ${key}`);
   if(!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(data.slug)||seen.has(data.slug))throw Error(`${file}: dirección no válida o repetida`);seen.add(data.slug);
   if(!['draft','review','published'].includes(data.status)||!Object.hasOwn(formats,data.format))throw Error(`${file}: estado o formato no válido`);

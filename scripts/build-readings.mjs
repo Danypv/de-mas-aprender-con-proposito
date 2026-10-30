@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import MarkdownIt from 'markdown-it';
+import { authorProfile } from './authors.mjs';
 import { collections, readReadings, escapeHtml as e, formatDate, typeLabel } from './readings.mjs';
 
 const root = process.cwd();
@@ -38,7 +39,7 @@ for (const reading of readings) {
   }
   write(`lecturas/textos/${reading.slug}/index.html`,fill(articleTemplate,{
     PAGE_TITLE:`${e(reading.browser_title || reading.title)} · DE+`, META_DESCRIPTION:e(reading.summary), OG_TITLE:`${e(reading.title)} · DE+`,
-    TITLE:e(reading.title), AUTHOR:e(reading.author), DATE:formatDate(reading.date), SUMMARY:e(reading.summary),
+    TITLE:e(reading.title), AUTHOR:e(reading.author), AUTHOR_PROFILE:authorProfile(reading.author_url, reading.author), DATE:formatDate(reading.date), SUMMARY:e(reading.summary),
     CATEGORIES:reading.collections.map(key=>e(collections.find(c=>c.slug===key).title)).join(' · '),
     READING_META:reading.type==='full' ? `${Math.max(1,Math.ceil(reading.body.trim().split(/\s+/u).length/220))} min de lectura` : 'Lectura recomendada',
     COVER:reading.cover ? `<figure class="portada-articulo"><img src="${e(reading.cover)}" alt="${e(reading.cover_alt)}" decoding="async">${reading.cover_caption ? `<figcaption>${e(reading.cover_caption)}</figcaption>` : ''}</figure>` : '',

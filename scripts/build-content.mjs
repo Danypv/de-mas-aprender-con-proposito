@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 import MarkdownIt from "markdown-it";
+import { authorProfile, profileUrl } from './authors.mjs';
 
 const root = process.cwd();
 const postsDir = path.join(root, "content", "posts");
@@ -34,6 +35,7 @@ const posts = fs.readdirSync(postsDir)
     if (!Array.isArray(parsed.data.categories) || parsed.data.categories.length === 0) {
       throw new Error(`${file}: categories debe contener al menos una categoría`);
     }
+    profileUrl(parsed.data.author_url, `${file}: perfil del autor`);
     return { file, ...parsed.data, body: parsed.content };
   })
   .sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -109,6 +111,7 @@ for (const post of visiblePosts) {
     CATEGORIES: categories,
     TITLE: escapeHtml(post.title),
     AUTHOR: escapeHtml(post.author),
+    AUTHOR_PROFILE: authorProfile(post.author_url, post.author),
     DATE: formatDate(post.date),
     BODY: body.trim(),
     SUMMARY: escapeHtml(post.summary),

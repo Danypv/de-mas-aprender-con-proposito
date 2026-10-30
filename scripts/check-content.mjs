@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
+import { profileUrl } from './authors.mjs';
 
 const postsDir = path.join(process.cwd(), "content", "posts");
 const required = ["title", "slug", "author", "date", "categories", "summary", "status"];
@@ -9,6 +10,7 @@ const slugs = new Set();
 
 for (const file of fs.readdirSync(postsDir).filter((name) => name.endsWith(".md"))) {
   const { data, content } = matter.read(path.join(postsDir, file));
+  profileUrl(data.author_url, `${file}: perfil del autor`);
   for (const field of required) {
     if (data[field] === undefined || data[field] === "") {
       throw new Error(`${file}: falta el campo ${field}`);

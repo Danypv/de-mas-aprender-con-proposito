@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import matter from 'gray-matter';
+import { profileUrl } from './authors.mjs';
 
 export const collections = [
   {
@@ -43,6 +44,7 @@ export function readReadings(root = process.cwd()) {
   const seen = new Set();
   return fs.readdirSync(directory).filter(file => file.endsWith('.md')).map(file => {
     const { data, content } = matter.read(path.join(directory,file));
+    profileUrl(data.author_url, `${file}: perfil de quien firma la reseña`);
     const fail = message => { throw Error(`${file}: ${message}`); };
     for (const key of ['title','slug','author','date','summary','status','type']) if (!String(data[key] ?? '').trim()) fail(`falta ${key}`);
     if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(data.slug)) fail('la dirección debe usar minúsculas, números y guiones');
