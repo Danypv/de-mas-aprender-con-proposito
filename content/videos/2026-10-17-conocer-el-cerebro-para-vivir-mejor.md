@@ -15,5 +15,6 @@ source_url: 'https://www.youtube.com/watch?v=4ebt-yHf3mY'
 embed: true
 status: published
 featured: false
+cms_source: content/videos/conocer-el-cerebro-para-vivir-mejor.md
 ---
 Comprender el cerebro abre preguntas que también interesan a las humanidades. ¿Cómo aprendemos? ¿Qué relación existe entre lo que sentimos, pensamos y decidimos? Comparto esta conversación como una invitación a explorar esos vínculos y a seguir pensando nuestra vida cotidiana.
