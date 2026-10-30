@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import MarkdownIt from 'markdown-it';
 import { authorProfile } from './authors.mjs';
+import { articleData, collectionData, contentPath } from './structured-data.mjs';
 import { collections, readReadings, escapeHtml as e, formatDate, typeLabel } from './readings.mjs';
 
 const root = process.cwd();
@@ -24,6 +25,11 @@ for (const collection of [{slug:'',title:'Leer, pensar y conversar.',summary:'Te
     COLLECTION_NAV:collectionNav(collection.slug), COUNT:`${selected.length} ${selected.length===1 ? 'lectura' : 'lecturas'}`,
     CARDS:cards(selected), EMPTY:selected.length ? '' : '<p class="vacio">Esta colección está en preparación. Aquí encontrarás las lecturas seleccionadas cuando se publiquen.</p>',
     FILTER_HIDDEN:selected.length ? '' : 'hidden',
+    STRUCTURED_DATA:collectionData({
+      path: `/lecturas/${collection.slug ? collection.slug+'/' : ''}`, title: collection.slug ? collection.title : 'Lecturas selectas', description: collection.summary,
+      parents: collection.slug ? [{ name:'Lecturas selectas', path:'/lecturas/' }] : [],
+      items:selected.map(reading=>({ title:reading.title, path:contentPath('/lecturas/textos/',reading.slug) })),
+    }),
   });
   write(`lecturas/${collection.slug ? collection.slug+'/' : ''}index.html`,page);
 }
@@ -44,6 +50,7 @@ for (const reading of readings) {
     READING_META:reading.type==='full' ? `${Math.max(1,Math.ceil(reading.body.trim().split(/\s+/u).length/220))} min de lectura` : 'Lectura recomendada',
     COVER:reading.cover ? `<figure class="portada-articulo"><img src="${e(reading.cover)}" alt="${e(reading.cover_alt)}" decoding="async">${reading.cover_caption ? `<figcaption>${e(reading.cover_caption)}</figcaption>` : ''}</figure>` : '',
     BODY:body, SOURCE:source,
+    STRUCTURED_DATA:articleData(reading, { section:'/lecturas/', label:'Lecturas selectas', categories:reading.collections.map(key=>collections.find(c=>c.slug===key).title), contentSection:'/lecturas/textos/' }),
   }));
 }
 console.log(`${readings.length} lectura(s) publicada(s); seis colecciones e índice generados.`);

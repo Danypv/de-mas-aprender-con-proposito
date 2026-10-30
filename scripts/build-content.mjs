@@ -3,6 +3,7 @@ import path from "node:path";
 import matter from "gray-matter";
 import MarkdownIt from "markdown-it";
 import { authorProfile, profileUrl } from './authors.mjs';
+import { articleData, collectionData, contentPath, setStructuredData } from './structured-data.mjs';
 
 const root = process.cwd();
 const postsDir = path.join(root, "content", "posts");
@@ -117,6 +118,7 @@ for (const post of visiblePosts) {
     SUMMARY: escapeHtml(post.summary),
     MINUTES: minutes(post),
     COVER: coverUrl(post) ? `<figure class="portada-articulo"><img src="${escapeHtml(coverUrl(post))}" alt="${escapeHtml(post.cover_alt)}" decoding="async">${post.cover_caption ? `<figcaption>${escapeHtml(post.cover_caption)}</figcaption>` : ""}</figure>` : "",
+    STRUCTURED_DATA: articleData(post, { section: '/blog/', label: 'Blog', type: 'BlogPosting', categories: post.categories }),
   };
   for (const [token, value] of Object.entries(values)) {
     page = replaceToken(page, token, value);
@@ -143,13 +145,16 @@ const cards = visiblePosts.map((post) => {
 let blog = fs.readFileSync(blogPath, "utf8");
 blog = blog.replace(
   /<!-- POSTS_START -->[\s\S]*?<!-- POSTS_END -->/,
-  `<!-- POSTS_START -->\n${cards}\n          <!-- POSTS_END -->`,
+  () => `<!-- POSTS_START -->\n${cards}\n          <!-- POSTS_END -->`,
 );
 blog = blog.replace(
   /<p class="contador"[^>]*>[^<]*<\/p>/,
-  `<p class="contador" aria-live="polite" aria-atomic="true">${visiblePosts.length} ${visiblePosts.length === 1 ? "publicación" : "publicaciones"}</p>`,
+  () => `<p class="contador" aria-live="polite" aria-atomic="true">${visiblePosts.length} ${visiblePosts.length === 1 ? "publicación" : "publicaciones"}</p>`,
 );
-fs.writeFileSync(blogPath, blog);
+fs.writeFileSync(blogPath, setStructuredData(blog, collectionData({
+  path: '/blog/', title: 'Blog', description: 'Ideas y reflexiones de DE+ · Aprender con propósito.',
+  items: visiblePosts.map(post => ({ title: post.title, path: contentPath('/blog/', post.slug) })),
+})));
 
 console.log(`${visiblePosts.length} publicación(es) generada(s); ${posts.length - visiblePosts.length} pendiente(s).`);
 

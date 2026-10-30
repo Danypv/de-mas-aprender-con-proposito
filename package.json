@@ -15,7 +15,8 @@
     "build:videos": "node scripts/build-videos.mjs",
     "test:videos": "node scripts/test-videos.mjs",
     "build:latest": "node scripts/build-latest.mjs",
-    "build:sitemap": "node scripts/build-sitemap.mjs"
+    "build:sitemap": "node scripts/build-sitemap.mjs",
+    "test:structured-data": "node scripts/test-structured-data.mjs"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

@@ -1,0 +1,155 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import { execFileSync } from 'node:child_process';
+import matter from 'gray-matter';
+import { schemaDate, schemaDuration } from './structured-data.mjs';
+
+assert.equal(schemaDate('2024-02-29'), '2024-02-29');
+assert.equal(schemaDate('2026-10-30T12:34:00-05:00'), '2026-10-30T12:34:00-05:00');
+assert.equal(schemaDate(new Date('2026-10-30')), '2026-10-30T00:00:00.000Z');
+for (const value of [undefined, null, '', ' ']) assert.equal(schemaDate(value), undefined);
+for (const value of ['2026-02-30', '2026-13-01', '2026-10-30T12:00:00', 'hoy', {}, 123, new Date('bad')]) assert.throws(() => schemaDate(value));
+for (const [input, expected] of [['24 min', 'PT24M'], ['1 h 05 min', 'PT1H5M'], ['24:10', 'PT24M10S'], ['1:05:30', 'PT1H5M30S'], ['90 minutos', 'PT1H30M'], ['30 seg', 'PT30S'], ['PT12M5S', 'PT12M5S']]) assert.equal(schemaDuration(input), expected);
+for (const value of ['', 'aprox. media hora', '24:99']) assert.equal(schemaDuration(value), undefined);
+
+const root = process.cwd();
+const fixture = fs.mkdtempSync(path.join(os.tmpdir(), 'demas-schema-'));
+try {
+  for (const folder of ['scripts', 'templates']) fs.cpSync(path.join(root, folder), path.join(fixture, folder), { recursive: true });
+  fs.symlinkSync(path.join(root, 'node_modules'), path.join(fixture, 'node_modules'), 'dir');
+  fs.mkdirSync(path.join(fixture, 'blog'));
+  fs.copyFileSync(path.join(root, 'blog/index.html'), path.join(fixture, 'blog/index.html'));
+  for (const folder of ['posts', 'readings', 'videos', 'podcast-series', 'podcast-episodes']) fs.mkdirSync(path.join(fixture, 'content', folder), { recursive: true });
+  const image = '/assets/imagenes/blog/portada de prueba.webp';
+  fs.mkdirSync(path.join(fixture, 'assets/imagenes/blog'), { recursive: true });
+  fs.writeFileSync(path.join(fixture, image), 'imagen de prueba');
+  const save = (folder, file, data, body = 'Texto propio de DE+.') => fs.writeFileSync(path.join(fixture, 'content', folder, `${file}.md`), matter.stringify(body, data));
+  const build = () => {
+    for (const builder of ['content', 'readings', 'videos', 'podcasts']) execFileSync(process.execPath, [`scripts/build-${builder}.mjs`], { cwd: fixture, stdio: 'pipe' });
+  };
+  const read = relative => {
+    const html = fs.readFileSync(path.join(fixture, relative, 'index.html'), 'utf8');
+    const scripts = [...html.matchAll(/<script type="application\/ld\+json">\s*([\s\S]*?)\s*<\/script>/g)];
+    assert.equal(scripts.length, 1, `${relative}: bloque JSON-LD único`);
+    assert(!html.includes('{{STRUCTURED_DATA}}'));
+    const data = JSON.parse(scripts[0][1]);
+    assert.equal(data['@context'], 'https://schema.org');
+    const crumbs = data['@graph'].find(node => node['@type'] === 'BreadcrumbList');
+    assert(crumbs.itemListElement.length >= 2);
+    crumbs.itemListElement.forEach((crumb, index) => {
+      assert.equal(crumb.position, index + 1);
+      assert(crumb.item.startsWith('https://somosdemas.com/'));
+    });
+    const page = data['@graph'][0];
+    assert.equal(crumbs.itemListElement.at(-1).item, page.url);
+    assert.equal(page.breadcrumb['@id'], crumbs['@id']);
+    return { html, graph: data['@graph'], page, crumbs, entity: data['@graph'][2], raw: scripts[0][1] };
+  };
+  const base = { title: 'Texto de prueba', slug: 'prueba', author: 'Firma de DE+', date: '2026-10-30', summary: 'Resumen con & y $&.', status: 'published' };
+  const unsafe = '</script><script>alert(1)</script> $& {{TITLE}}';
+  const post = { ...base, title: unsafe, categories: ['Ética'], author_url: 'https://orcid.org/0000-0000-0000-0000' };
+  save('posts', 'articulo', post);
+  save('posts', 'borrador', { ...post, slug: 'borrador-privado', status: 'draft' });
+  const review = { ...base, title: 'Reseña propia', slug: 'resena', type: 'full', collections: ['filosofia', 'historia-y-cultura'], source_url: 'https://example.org/articulo-original', source_name: 'Revista de referencia' };
+  save('readings', 'resena', review);
+  save('readings', 'enlace', { ...review, title: 'Lectura recomendada', slug: 'solo-enlace', type: 'link' }, '');
+  const video = { ...base, slug: 'video', title: 'Video recomendado', format: 'conference', categories: ['Filosofía'], source_url: 'https://youtu.be/WisWde4lZdQ', duration: '1 h 05 min', comment_author: 'Editor de DE+' };
+  save('videos', 'video', video);
+  save('videos', 'ted', { ...video, slug: 'ted', source_url: 'https://www.ted.com/talks/una_charla', upload_date: '2020-01-02' });
+  save('videos', 'externo', { ...video, slug: 'externo', source_url: 'https://example.org/video', upload_date: '2020-01-02', cover: image, cover_alt: 'Imagen del video' });
+  const series = { title: 'Serie de prueba', slug: 'serie', presenter: 'Voz de la serie', author_url: 'https://example.org/voz', summary: 'Una serie de DE+.', status: 'published', rss_url: 'https://example.org/feed.xml', cover: image, cover_alt: 'Portada de la serie' };
+  save('podcast-series', 'serie', series);
+  const episode = { ...base, slug: 'episodio', title: 'Episodio de prueba', series: 'serie', duration: '24:10', audio_url: 'https://example.org/audio.mp3' };
+  delete episode.author;
+  save('podcast-episodes', 'audio', episode);
+  const spotify = { ...base, slug: 'spotify', title: 'Otra voz', author: 'Persona invitada', series: 'serie', spotify_url: 'https://open.spotify.com/episode/123abc' };
+  save('podcast-episodes', 'spotify', spotify);
+  save('podcast-episodes', 'borrador', { ...episode, slug: 'audio-privado', status: 'draft' });
+  build();
+
+  let result = read('blog/prueba');
+  assert.equal(result.entity['@type'], 'BlogPosting');
+  assert.equal(result.entity.headline, unsafe);
+  assert(!result.raw.includes('</script>'));
+  assert(!result.html.includes('<script>alert(1)</script>'));
+  assert.equal(result.entity.author.url, post.author_url);
+  assert.equal(result.entity.datePublished, '2026-10-30');
+  assert(!Object.hasOwn(result.entity, 'dateModified'));
+  assert(!Object.hasOwn(result.entity, 'image'));
+  assert.equal(result.page.url, 'https://somosdemas.com/blog/prueba/');
+  assert.equal(read('blog').page.mainEntity.numberOfItems, 1);
+  assert(!fs.existsSync(path.join(fixture, 'blog/borrador-privado')));
+
+  result = read('lecturas/textos/resena');
+  assert.equal(result.entity['@type'], 'Article');
+  assert.equal(result.entity.author.name, review.author);
+  assert(!Object.hasOwn(result.entity.author, 'url'));
+  assert.equal(result.entity.citation.url, review.source_url);
+  assert(!Object.hasOwn(result.entity.citation, 'author'));
+  assert.equal(result.page.url, 'https://somosdemas.com/lecturas/textos/resena/');
+  assert.equal(read('lecturas/textos/solo-enlace').entity, undefined);
+  assert.equal(read('lecturas/textos/solo-enlace').page.about.url, review.source_url);
+  assert.equal(read('lecturas').page.mainEntity.numberOfItems, 2);
+  assert.equal(read('lecturas/filosofia').page.mainEntity.numberOfItems, 2);
+  assert.equal(read('lecturas/ciencia-y-salud').page.mainEntity.numberOfItems, 0);
+
+  assert.equal(read('videos/video').entity, undefined, 'No se inventa la fecha original del video');
+  assert.equal(read('videos/video').page.author.name, video.comment_author);
+  assert.equal(read('videos/video').page.about.contributor.name, video.author);
+  assert.equal(read('videos/ted').entity, undefined, 'TED necesita una miniatura real');
+  assert.equal(read('videos/externo').entity, undefined, 'No se declara un reproductor que no está en DE+');
+  assert.equal(read('videos').page.mainEntity.numberOfItems, 3);
+
+  result = read('podcast/episodios/episodio');
+  assert.equal(result.entity['@type'], 'PodcastEpisode');
+  assert.equal(result.entity.author.name, series.presenter);
+  assert.equal(result.entity.author.url, series.author_url);
+  assert.equal(result.entity.associatedMedia.contentUrl, episode.audio_url);
+  assert.equal(result.entity.duration, 'PT24M10S');
+  assert.equal(result.entity.image, 'https://somosdemas.com/assets/imagenes/blog/portada%20de%20prueba.webp');
+  assert.equal(result.crumbs.itemListElement[2].item, 'https://somosdemas.com/podcast/series/serie/');
+  const parent = read('podcast/series/serie').entity;
+  assert.equal(parent['@type'], 'PodcastSeries');
+  assert.equal(parent.webFeed, series.rss_url);
+  assert.equal(parent.hasPart.length, 2);
+  assert.equal(result.entity.partOfSeries['@id'], parent['@id']);
+  result = read('podcast/episodios/spotify');
+  assert.equal(result.entity.author.name, spotify.author);
+  assert(!Object.hasOwn(result.entity.author, 'url'), 'La firma invitada no hereda el perfil de otra persona');
+  assert(!Object.hasOwn(result.entity, 'associatedMedia'), 'Spotify no es un enlace directo al audio');
+  assert.deepEqual(result.entity.sameAs, [spotify.spotify_url]);
+  assert.equal(read('podcast').page.mainEntity.numberOfItems, 3);
+  assert(!fs.existsSync(path.join(fixture, 'podcast/episodios/audio-privado')));
+
+  save('videos', 'video', { ...video, upload_date: '2019-05-06', author_url: 'https://example.org/ponente' });
+  save('videos', 'ted', { ...video, slug: 'ted', source_url: 'https://www.ted.com/talks/una_charla', upload_date: '2020-01-02', cover: image, cover_alt: 'Imagen del video' });
+  save('posts', 'articulo', { ...post, title: 'Título actualizado', author_url: '' });
+  build();
+  result = read('videos/video');
+  assert.equal(result.entity['@type'], 'VideoObject');
+  assert.equal(result.entity.uploadDate, '2019-05-06');
+  assert.equal(result.page.datePublished, video.date);
+  assert.equal(result.entity.duration, 'PT1H5M');
+  assert.equal(result.entity.actor.name, video.author);
+  assert.equal(result.entity.actor.url, 'https://example.org/ponente');
+  assert.equal(result.entity.thumbnailUrl[0], 'https://i.ytimg.com/vi/WisWde4lZdQ/hqdefault.jpg');
+  assert(result.html.includes(`src="${result.entity.embedUrl.replaceAll('&', '&amp;')}"`));
+  assert.equal(read('videos/ted').entity['@type'], 'VideoObject');
+  assert.equal(read('blog/prueba').entity.headline, 'Título actualizado');
+  assert(!Object.hasOwn(read('blog/prueba').entity.author, 'url'));
+  const snapshot = read('blog').html;
+  build();
+  assert.equal(read('blog').html, snapshot, 'La generación repetida conserva un solo bloque estable');
+
+  save('videos', 'video', { ...video, upload_date: '2019-05-06', embed: false });
+  build(); assert.equal(read('videos/video').entity, undefined);
+  save('videos', 'video', { ...video, upload_date: '' });
+  build(); assert.equal(read('videos/video').entity, undefined);
+  save('videos', 'video', { ...video, upload_date: '2026-02-30' });
+  assert.throws(build, 'Las fechas imposibles bloquean la publicación');
+  console.log('Datos estructurados correctos: artículos, reseñas y fuentes, navegación, videos completos sin fechas inventadas, series y episodios, perfiles, audio, borradores, escape seguro y actualizaciones estables.');
+} finally {
+  fs.rmSync(fixture, { recursive: true, force: true });
+}
