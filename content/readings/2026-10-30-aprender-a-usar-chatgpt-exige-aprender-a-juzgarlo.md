@@ -1,5 +1,5 @@
 ---
-title: Aprender a usar ChatGPT también exige aprender a juzgarlo
+title: Usar ChatGPT exige aprender a juzgarlo
 browser_title: Aprender a usar ChatGPT también exige aprender a juzgarlo
 slug: aprender-a-usar-chatgpt-exige-aprender-a-juzgarlo
 author: Daniel Perez Valencia
