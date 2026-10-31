@@ -31,4 +31,3 @@ export function shareBlock(title, pagePath) {
       <input class="compartir-enlace" type="text" value="${escape(url)}" aria-label="Enlace de esta publicación" readonly hidden>
     </section>`;
 }
-
