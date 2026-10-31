@@ -25,7 +25,7 @@ for (const collection of [{slug:'',title:'Leer, pensar y conversar.',summary:'Te
     COLLECTION_TITLE:e(collection.title), COLLECTION_SUMMARY:e(collection.summary),
     COLLECTION_NAV:collectionNav(collection.slug), COUNT:`${selected.length} ${selected.length===1 ? 'lectura' : 'lecturas'}`,
     CARDS:cards(selected), EMPTY:selected.length ? '' : '<p class="vacio">Esta colección está en preparación. Aquí encontrarás las lecturas seleccionadas cuando se publiquen.</p>',
-    FILTER_HIDDEN:selected.length ? '' : 'hidden',
+    FILTER_HIDDEN:new Set(selected.map(reading=>reading.type)).size > 1 ? '' : 'hidden',
     STRUCTURED_DATA:collectionData({
       path: `/lecturas/${collection.slug ? collection.slug+'/' : ''}`, title: collection.slug ? collection.title : 'Lecturas selectas', description: collection.summary,
       parents: collection.slug ? [{ name:'Lecturas selectas', path:'/lecturas/' }] : [],

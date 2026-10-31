@@ -146,6 +146,10 @@ const cards = visiblePosts.map((post) => {
 
 let blog = fs.readFileSync(blogPath, "utf8");
 blog = blog.replace(
+  /<div(?: hidden)? class="herramientas"/,
+  () => `<div${new Set(visiblePosts.flatMap(post => post.categories)).size > 1 ? '' : ' hidden'} class="herramientas"`,
+);
+blog = blog.replace(
   /<!-- POSTS_START -->[\s\S]*?<!-- POSTS_END -->/,
   () => `<!-- POSTS_START -->\n${cards}\n          <!-- POSTS_END -->`,
 );

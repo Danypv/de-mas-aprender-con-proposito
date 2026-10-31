@@ -130,11 +130,11 @@
     }
     @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition-duration:.01ms !important; } }
     @media print { .cabecera,.franja-cierre,.pie-pagina,.salto { display:none; } .introduccion { padding:20px 0 32px; } .publicaciones { padding:34px 0; } }
-    .herramientas { display:flex; flex-wrap:wrap; gap:20px; align-items:end; padding:0 0 28px; }
+    .herramientas { display:flex; flex-wrap:wrap; gap:20px; align-items:end; max-width:380px; padding:0 0 28px; }
     .herramientas label { display:grid; gap:8px; color:var(--gris); font-size:.875rem; flex:1 1 220px; }
-    .herramientas input,.herramientas select { width:100%; min-height:48px; padding:10px 14px; border:1px solid var(--linea); border-radius:4px; background:white; color:var(--negro); font:inherit; font-size:1rem; }
-    input:focus-visible,select:focus-visible { outline:3px solid var(--amarillo); outline-offset:3px; }
-    .sin-js .herramientas { display:none; }
+    .herramientas select { width:100%; min-height:48px; padding:10px 14px; border:1px solid var(--linea); border-radius:4px; background:white; color:var(--negro); font:inherit; font-size:1rem; }
+    select:focus-visible { outline:3px solid var(--amarillo); outline-offset:3px; }
+    .herramientas[hidden],.sin-js .herramientas { display:none; }
     .entrada[hidden] { display:none; }
     .entrada.destacada { padding:36px 24px; background:var(--hueso); border-top:3px solid var(--amarillo); }
     .distintivo { display:block; margin-bottom:14px; color:var(--negro); letter-spacing:.02em; text-transform:none; font-family:var(--lectura); }
@@ -199,11 +199,10 @@
         </div>
         {{COLLECTION_NAV}}
         {{EMPTY}}
-        <div {{FILTER_HIDDEN}} class="herramientas" role="search" aria-label="Buscar lecturas">
-          <label for="buscar">Buscar una lectura<input id="buscar" type="search" placeholder="Título, colección o autor" autocomplete="off"></label>
+        <div {{FILTER_HIDDEN}} class="herramientas" role="group" aria-label="Filtrar lecturas por tipo">
           <label for="tema">Tipo de lectura<select id="tema"><option value="">Todos los tipos</option></select></label>
         </div>
-        <p class="vacio" id="sin-resultados" hidden>No encontramos lecturas con esa búsqueda. Prueba otra palabra o tipo de lectura.</p>
+        <p class="vacio" id="sin-resultados" hidden>No hay lecturas de ese tipo en esta colección.</p>
         <div class="lista">
           {{CARDS}}
         </div>
@@ -229,24 +228,21 @@
   <script>
     document.documentElement.classList.remove("sin-js");
     const entradas = Array.from(document.querySelectorAll(".entrada"));
-    const buscar = document.getElementById("buscar");
     const tema = document.getElementById("tema");
-    const normalizar = texto => texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("es");
     const categorias = entrada => JSON.parse(entrada.dataset.categories || "[]");
     [...new Set(entradas.flatMap(categorias))].sort((a,b) => a.localeCompare(b,"es")).forEach(valor => {
       const opcion = document.createElement("option"); opcion.value = valor; opcion.textContent = valor; tema.append(opcion);
     });
     const filtrar = () => {
-      const palabras = normalizar(buscar.value).trim().split(/\s+/).filter(Boolean);
       let visibles = 0;
       entradas.forEach(entrada => {
-        entrada.hidden = !palabras.every(palabra => normalizar(entrada.textContent).includes(palabra)) || Boolean(tema.value && !categorias(entrada).includes(tema.value));
+        entrada.hidden = Boolean(tema.value && !categorias(entrada).includes(tema.value));
         if (!entrada.hidden) visibles++;
       });
       document.querySelector(".contador").textContent = `${visibles} ${visibles === 1 ? "lectura" : "lecturas"}`;
       document.getElementById("sin-resultados").hidden = visibles !== 0;
     };
-    buscar.addEventListener("input", filtrar); tema.addEventListener("change", filtrar);
+    tema.addEventListener("change", filtrar);
     const boton = document.querySelector(".boton-menu");
     const menu = document.querySelector(".menu");
     const cerrarMenu = () => { menu.classList.remove("abierto"); boton.setAttribute("aria-expanded","false"); boton.setAttribute("aria-label","Abrir menú"); };

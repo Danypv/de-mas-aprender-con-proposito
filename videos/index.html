@@ -130,11 +130,11 @@
     }
     @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition-duration:.01ms !important; } }
     @media print { .cabecera,.franja-cierre,.pie-pagina,.salto { display:none; } .introduccion { padding:20px 0 32px; } .publicaciones { padding:34px 0; } }
-    .herramientas { display:flex; flex-wrap:wrap; gap:20px; align-items:end; padding:0 0 28px; }
+    .herramientas { display:flex; flex-wrap:wrap; gap:20px; align-items:end; max-width:380px; padding:0 0 28px; }
     .herramientas label { display:grid; gap:8px; color:var(--gris); font-size:.875rem; flex:1 1 220px; }
-    .herramientas input,.herramientas select { width:100%; min-height:48px; padding:10px 14px; border:1px solid var(--linea); border-radius:4px; background:white; color:var(--negro); font:inherit; font-size:1rem; }
-    input:focus-visible,select:focus-visible { outline:3px solid var(--amarillo); outline-offset:3px; }
-    .sin-js .herramientas { display:none; }
+    .herramientas select { width:100%; min-height:48px; padding:10px 14px; border:1px solid var(--linea); border-radius:4px; background:white; color:var(--negro); font:inherit; font-size:1rem; }
+    select:focus-visible { outline:3px solid var(--amarillo); outline-offset:3px; }
+    .herramientas[hidden],.sin-js .herramientas { display:none; }
     .entrada[hidden],.video-destacado[hidden] { display:none; }
     .entrada.destacada { padding:36px 24px; background:var(--hueso); border-top:3px solid var(--amarillo); }
     .distintivo { display:block; margin-bottom:14px; color:var(--negro); letter-spacing:.02em; text-transform:none; font-family:var(--lectura); }
@@ -276,11 +276,10 @@
           <p class="contador" aria-live="polite" aria-atomic="true">2 videos</p>
         </div>
         
-        <div  class="herramientas" role="search" aria-label="Buscar videos">
-          <label for="buscar">Buscar un video<input id="buscar" type="search" placeholder="Título, tema o ponente" autocomplete="off"></label>
+        <div hidden class="herramientas" role="group" aria-label="Filtrar videos por tipo">
           <label for="tema">Tipo de video<select id="tema"><option value="">Todos los tipos</option></select></label>
         </div>
-        <p class="vacio" id="sin-resultados" hidden>No encontramos videos con esa búsqueda. Prueba otro tema, nombre o tipo de video.</p>
+        <p class="vacio" id="sin-resultados" hidden>No hay videos de ese tipo.</p>
         <div class="lista videos-rejilla">
           <article class="entrada video-resultado video-tarjeta" data-categories="[&quot;Conversaciones&quot;]"><a class="enlace-miniatura" href="/videos/estoicismo-una-filosofia-de-vida/" aria-label="Ver Estoicismo, una filosofía de vida"><div class="miniatura-video"><img src="https://i.ytimg.com/vi/WisWde4lZdQ/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="ver-indicador" aria-hidden="true">▶</span></div></a><div class="video-tarjeta-texto"><div class="meta">Conversaciones · YouTube</div><h3><a href="/videos/estoicismo-una-filosofia-de-vida/">Estoicismo, una filosofía de vida</a></h3><p class="firma">Massimo Pigliucci</p><p class="resumen">Una conversación con el filósofo Massimo Pigliucci para acercarse al estoicismo y preguntarse por su lugar en la vida cotidiana.</p><p class="temas-video">Filosofía</p><a class="leer" href="/videos/estoicismo-una-filosofia-de-vida/">Ver video <span class="flecha" aria-hidden="true">→</span></a></div></article>
         </div>
@@ -306,24 +305,21 @@
   <script>
     document.documentElement.classList.remove("sin-js");
     const entradas = Array.from(document.querySelectorAll(".video-resultado"));
-    const buscar = document.getElementById("buscar");
     const tema = document.getElementById("tema");
-    const normalizar = texto => texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("es");
     const categorias = entrada => JSON.parse(entrada.dataset.categories || "[]");
     [...new Set(entradas.flatMap(categorias))].sort((a,b) => a.localeCompare(b,"es")).forEach(valor => {
       const opcion = document.createElement("option"); opcion.value = valor; opcion.textContent = valor; tema.append(opcion);
     });
     const filtrar = () => {
-      const palabras = normalizar(buscar.value).trim().split(/\s+/).filter(Boolean);
       let visibles = 0;
       entradas.forEach(entrada => {
-        entrada.hidden = !palabras.every(palabra => normalizar(entrada.textContent).includes(palabra)) || Boolean(tema.value && !categorias(entrada).includes(tema.value));
+        entrada.hidden = Boolean(tema.value && !categorias(entrada).includes(tema.value));
         if (!entrada.hidden) visibles++;
       });
       document.querySelector(".contador").textContent = `${visibles} ${visibles === 1 ? "video" : "videos"}`;
       document.getElementById("sin-resultados").hidden = visibles !== 0;
     };
-    buscar.addEventListener("input", filtrar); tema.addEventListener("change", filtrar);
+    tema.addEventListener("change", filtrar);
     const boton = document.querySelector(".boton-menu");
     const menu = document.querySelector(".menu");
     const cerrarMenu = () => { menu.classList.remove("abierto"); boton.setAttribute("aria-expanded","false"); boton.setAttribute("aria-label","Abrir menú"); };

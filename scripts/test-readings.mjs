@@ -29,6 +29,13 @@ try {
   assert(page('lecturas/textos/lectura-completa/index.html').includes('Una lectura &lt;especial&gt; $&'));
   assert(!page('lecturas/textos/lectura-completa/index.html').match(/\{\{[A-Z_]+\}\}/));
   const first=page('lecturas/index.html');build();assert.equal(page('lecturas/index.html'),first);
+  assert(!first.includes('id="buscar"'),'Las lecturas usan el buscador global');
+  assert(first.includes('class="herramientas" role="group"'));
+  assert(!/<div hidden class="herramientas"/.test(first),'Dos tipos permiten filtrar');
+  assert(/<div hidden class="herramientas"/.test(page('lecturas/filosofia/index.html')),'Un solo tipo no muestra un filtro redundante');
+  assert(/<div hidden class="herramientas"/.test(page('lecturas/etica-e-inteligencia-artificial/index.html')),'Una colección vacía no muestra filtros');
+  fs.unlinkSync(path.join(posts,'link.md'));build();
+  assert(/<div hidden class="herramientas"/.test(page('lecturas/index.html')),'Retirar un tipo vuelve a ocultar su filtro');
   save('bad.md',{...base,slug:'../escape'});assert.throws(()=>readReadings(fixture));fs.unlinkSync(path.join(posts,'bad.md'));
   save('bad.md',{...base,slug:'invalid-link',type:'link',source_url:'javascript:alert(1)'});assert.throws(()=>readReadings(fixture));
   console.log('Pruebas correctas: colecciones múltiples, exclusión de borradores, fuentes, HTML escapado, páginas vacías, generación estable y validación de rutas/enlaces.');

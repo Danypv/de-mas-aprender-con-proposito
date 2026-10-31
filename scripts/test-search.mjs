@@ -53,6 +53,12 @@ try {
   build();
   assert.equal(manifest().publicationCount,5,'Las cuatro secciones y la serie entran en el índice');
   assert.equal(manifest().count,17);
+  for(const item of manifest().entries) {
+    const page=fs.readFileSync(path.join(fixture,decodeURIComponent(item.url.split('#')[0].slice(1)),'index.html'),'utf8');
+    assert(!page.includes('id="buscar"'),`No reaparece un buscador local en ${item.url}`);
+    assert(page.includes('src="/assets/buscar.js"'),`La lupa global permanece en ${item.url}`);
+  }
+  assert(/<div hidden class="herramientas"/.test(fs.readFileSync(path.join(fixture,'blog/index.html'),'utf8')),'Un solo tema no muestra un filtro redundante');
   await load();
   assert.equal((await find('juiciocompartido')).length,4,'Se busca en el texto completo');
   for(const section of ['Blog','Lecturas selectas','Videos','Podcast']) {
@@ -75,8 +81,9 @@ try {
   run('build-search');
   assert.equal(manifest().revision,stable,'Generación estable');
 
-  save('posts',{...post,title:'Un título actualizado'},'La inteligencia artificial y juiciocompartido. Ahora aparece cromaticanueva.');
+  save('posts',{...post,title:'Un título actualizado',categories:['Ética','Educación']},'La inteligencia artificial y juiciocompartido. Ahora aparece cromaticanueva.');
   build(); await load();
+  assert(!/<div hidden class="herramientas"/.test(fs.readFileSync(path.join(fixture,'blog/index.html'),'utf8')),'Un tema nuevo habilita la exploración del blog');
   assert.notEqual(manifest().revision,stable,'Las ediciones renuevan el índice');
   assert.equal((await find('"cromaticaantigua"')).length,0);
   assert.equal((await find('cromaticanueva'))[0].meta.title,'Un título actualizado');
@@ -84,6 +91,7 @@ try {
   save('posts',{...post,status:'draft'},'La inteligencia artificial y juiciocompartido. cromaticanueva.');
   build(); await load();
   assert(fs.existsSync(path.join(fixture,'videos/prueba/index.html')),'La prueba conserva una página antigua a propósito');
+  assert(/<div hidden class="herramientas"/.test(fs.readFileSync(path.join(fixture,'blog/index.html'),'utf8')),'Un blog vacío no muestra filtros');
   assert.equal((await find('"transcripcionvisual"')).length,0,'Los archivos antiguos no vuelven a entrar en el buscador');
   assert.equal((await find('"cromaticanueva"')).length,0,'Retirar una publicación también la retira del índice');
   assert.equal(manifest().publicationCount,3);

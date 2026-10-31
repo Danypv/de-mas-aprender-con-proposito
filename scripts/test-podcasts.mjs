@@ -30,6 +30,14 @@ try{
  assert(page('podcast/episodios/spotify-prueba/index.html').includes('https://open.spotify.com/embed/episode/123abc'));
  assert(!fs.existsSync(path.join(fixture,'podcast/episodios/borrador-privado')));
  const before=page('podcast/index.html');build();assert.equal(page('podcast/index.html'),before);
+  assert(!before.includes('id="buscar"'),'El podcast usa el buscador global');
+  assert(/<div hidden class="herramientas"/.test(before),'Una sola serie no muestra un filtro redundante');
+  save('podcast-series','otra.md',{...series,title:'Otra serie',slug:'otra-serie'});
+  save('podcast-episodes','otro.md',{...episode,slug:'otro-episodio',series:'otra-serie'});build();
+  assert(!/<div hidden class="herramientas"/.test(page('podcast/index.html')),'Dos series con episodios permiten filtrar');
+  assert(/<div hidden class="herramientas"/.test(page('podcast/series/serie-prueba/index.html')),'Dentro de una serie no se repite el filtro');
+  fs.unlinkSync(path.join(fixture,'content/podcast-episodes/otro.md'));build();
+  assert(/<div hidden class="herramientas"/.test(page('podcast/index.html')),'Una serie vacía no crea opciones de filtro');
  save('podcast-episodes','bad.md',{...episode,slug:'malo',audio_url:undefined});assert.throws(()=>readPodcasts(fixture));
  save('podcast-episodes','bad.md',{...episode,slug:'malo',audio_url:undefined,spotify_url:'https://example.org/episode/123abc'});assert.throws(()=>readPodcasts(fixture));
  save('podcast-episodes','bad.md',{...episode,slug:'malo',series:'no-existe'});assert.throws(()=>readPodcasts(fixture));

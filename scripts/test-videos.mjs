@@ -26,7 +26,12 @@ try{
  assert(!page('videos/sin-insercion/index.html').includes('<iframe'));
  assert(!fs.existsSync(path.join(fixture,'videos/borrador-privado')));
  const before=page('videos/index.html');assert.equal((before.match(/class="[^"]*video-resultado/g)||[]).length,4);assert.equal((before.match(/<h[23]>[\s\S]*?<\/h[23]>/g)||[]).filter(h=>h.includes('Video &lt;especial&gt;')).length,4);build();assert.equal(page('videos/index.html'),before);
+ assert(!before.includes('id="buscar"'),'Los videos usan el buscador global');
+ assert(/<div hidden class="herramientas"/.test(before),'Un solo formato no muestra un filtro redundante');
+ save('ted.md',{...base,slug:'ted-prueba',format:'class',source_url:'https://www.ted.com/talks/una_charla'});build();
+ assert(!/<div hidden class="herramientas"/.test(page('videos/index.html')),'Publicar otro formato habilita el filtro');
  for(const name of ['ted.md','external.md','no-embed.md'])fs.unlinkSync(path.join(fixture,'content/videos',name));build();const single=page('videos/index.html');assert(!single.includes('<section class="video-destacado'));assert.equal((single.match(/class="[^"]*video-resultado/g)||[]).length,1);
+ assert(/<div hidden class="herramientas"/.test(single),'Retirar un formato vuelve a ocultar su filtro');
  save('bad.md',{...base,slug:'../fuera'});assert.throws(()=>readVideos(fixture));
  console.log('Pruebas correctas: enlaces YouTube, TED, otras fuentes, opción sin inserción, transcripción, borradores, HTML escapado y generación estable.');
 }finally{fs.rmSync(fixture,{recursive:true,force:true});}
