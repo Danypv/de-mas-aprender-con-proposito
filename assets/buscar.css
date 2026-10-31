@@ -19,6 +19,7 @@
   box-shadow:0 12px 42px rgba(0,0,0,.18);
   font-family:var(--lectura,"Roboto",Arial,sans-serif); font-size:17px; line-height:1.65;
 }
+#buscador-global:not([open]) { display:none; }
 #buscador-global::backdrop { background:linear-gradient(to bottom,transparent 74px,rgba(0,0,0,.58) 74px); }
 #buscador-global [hidden] { display:none !important; }
 #buscador-global .busqueda-cabecera { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:18px; }
