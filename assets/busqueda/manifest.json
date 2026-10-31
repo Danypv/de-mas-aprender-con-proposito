@@ -1,0 +1,247 @@
+{
+  "version": 1,
+  "revision": "62af7fe20028db48",
+  "bundle": "/assets/busqueda/62af7fe20028db48/pagefind.js",
+  "count": 20,
+  "publicationCount": 8,
+  "entries": [
+    {
+      "url": "/blog/humanidades-y-ciencias/",
+      "title": "Integrar las humanidades y las ciencias: una clave para el cultivo del ser humano",
+      "section": "Blog",
+      "kind": "publication"
+    },
+    {
+      "url": "/blog/gobernar-lo-que-creamos/",
+      "title": "Gobernar lo que creamos",
+      "section": "Blog",
+      "kind": "publication"
+    },
+    {
+      "url": "/lecturas/textos/la-razon-y-la-fe-en-una-sociedad-que-busca-conversar/",
+      "title": "La razón y la fe en una sociedad que busca conversar",
+      "section": "Lecturas selectas",
+      "kind": "publication"
+    },
+    {
+      "url": "/lecturas/textos/aprender-a-usar-chatgpt-exige-aprender-a-juzgarlo/",
+      "title": "Usar la IA generativa exige aprender a juzgarla",
+      "section": "Lecturas selectas",
+      "kind": "publication"
+    },
+    {
+      "url": "/lecturas/textos/darnos-tiempo-para-pensar/",
+      "title": "Darnos tiempo para pensar",
+      "section": "Lecturas selectas",
+      "kind": "publication"
+    },
+    {
+      "url": "/lecturas/textos/aprender-a-atender/",
+      "title": "Aprender a atender",
+      "section": "Lecturas selectas",
+      "kind": "publication"
+    },
+    {
+      "url": "/videos/conocer-el-cerebro-para-vivir-mejor/",
+      "title": "Conocer el cerebro para vivir mejor",
+      "section": "Videos",
+      "kind": "publication"
+    },
+    {
+      "url": "/videos/estoicismo-una-filosofia-de-vida/",
+      "title": "Estoicismo, una filosofía de vida",
+      "section": "Videos",
+      "kind": "publication"
+    },
+    {
+      "url": "/",
+      "title": "DE+ · Aprender con propósito",
+      "section": "Proyecto",
+      "kind": "page"
+    },
+    {
+      "url": "/blog/",
+      "title": "Blog",
+      "section": "Blog",
+      "kind": "catalog"
+    },
+    {
+      "url": "/lecturas/",
+      "title": "Lecturas selectas",
+      "section": "Lecturas selectas",
+      "kind": "catalog"
+    },
+    {
+      "url": "/videos/",
+      "title": "Videos",
+      "section": "Videos",
+      "kind": "catalog"
+    },
+    {
+      "url": "/podcast/",
+      "title": "Podcast",
+      "section": "Podcast",
+      "kind": "catalog"
+    },
+    {
+      "url": "/lecturas/filosofia/",
+      "title": "Filosofía y ética",
+      "section": "Lecturas selectas",
+      "kind": "catalog"
+    },
+    {
+      "url": "/lecturas/etica-e-inteligencia-artificial/",
+      "title": "Ciencia y tecnología",
+      "section": "Lecturas selectas",
+      "kind": "catalog"
+    },
+    {
+      "url": "/lecturas/empresa-cultura-y-liderazgo/",
+      "title": "Empresa, cultura y liderazgo",
+      "section": "Lecturas selectas",
+      "kind": "catalog"
+    },
+    {
+      "url": "/lecturas/ciencia-y-salud/",
+      "title": "Medicina y salud",
+      "section": "Lecturas selectas",
+      "kind": "catalog"
+    },
+    {
+      "url": "/lecturas/historia-y-cultura/",
+      "title": "Historia, cultura y literatura",
+      "section": "Lecturas selectas",
+      "kind": "catalog"
+    },
+    {
+      "url": "/lecturas/teologia-y-espiritualidad/",
+      "title": "Teología y espiritualidad",
+      "section": "Lecturas selectas",
+      "kind": "catalog"
+    },
+    {
+      "url": "/#sobre",
+      "title": "Sobre DE+",
+      "section": "Proyecto",
+      "kind": "page"
+    }
+  ],
+  "files": [
+    {
+      "path": "filter/es_1338e2f.pf_filter",
+      "sha256": "375aa607090943b25a31ef1d0ab857c6ee17ffbef3a6b78a73631652f92c2e17"
+    },
+    {
+      "path": "fragment/es_1574f3f.pf_fragment",
+      "sha256": "1d1d65bd747119a4187e552dc0edeb2a19625d956bbd09a155ee6996a90ea0a9"
+    },
+    {
+      "path": "fragment/es_1d8230f.pf_fragment",
+      "sha256": "81d3eeb9128e7ea30c8e67181048df88985396e81a978e00d77f6cc7dc523fea"
+    },
+    {
+      "path": "fragment/es_203166a.pf_fragment",
+      "sha256": "1076e0c0d265523813df1efeaffba48ac9695fa5c9c22bef4ccf8ab8731188f6"
+    },
+    {
+      "path": "fragment/es_237461d.pf_fragment",
+      "sha256": "f13ce6feb231549073d8382c49ea0e59e0b58933bcc5882221a87034f4f27441"
+    },
+    {
+      "path": "fragment/es_27ee183.pf_fragment",
+      "sha256": "3be783e1b798bbbb579752b3e1a753f07c6d45d47c731a234d8f8c947e1889a9"
+    },
+    {
+      "path": "fragment/es_33142dc.pf_fragment",
+      "sha256": "8255d60bf9254e02e42d80f5fc2125f67621324d72d2f8e62138ba5200c574aa"
+    },
+    {
+      "path": "fragment/es_5402630.pf_fragment",
+      "sha256": "182bbb700ce02edb99e6935118cfb0fd0a48e181c66e6f986e4f837e487ad11f"
+    },
+    {
+      "path": "fragment/es_5433f9f.pf_fragment",
+      "sha256": "88555db17c566aaba60be3e07d02c202ad40c05c9235b3f0c057b245649f87f9"
+    },
+    {
+      "path": "fragment/es_6582a29.pf_fragment",
+      "sha256": "30c96aa6e6f897680c2ceeca1df46535caf58cf9309cc0e5a9734f72cb4e1359"
+    },
+    {
+      "path": "fragment/es_6edb58e.pf_fragment",
+      "sha256": "8008bf61632e5d6bcc0ffdbea8c06e0d4369231d3788645b759a261f70e4f213"
+    },
+    {
+      "path": "fragment/es_72b39b3.pf_fragment",
+      "sha256": "6acd950166ae2c0ff795762bb4caca43fcf3681a5c691f029adb7b122e897751"
+    },
+    {
+      "path": "fragment/es_7db2bf9.pf_fragment",
+      "sha256": "1b822c6832f5de989912cdd2fbd558384b8efc792b7650b9fb0f4f846a241fe6"
+    },
+    {
+      "path": "fragment/es_9c25e52.pf_fragment",
+      "sha256": "4438389192c603305629e1914984919408cbc658bafb640aaad55cba85e52720"
+    },
+    {
+      "path": "fragment/es_a650786.pf_fragment",
+      "sha256": "e06ac6d73147e5210fd5fe6dfa2410e34a91fb7dda3ae0a63e6b974acfda77c7"
+    },
+    {
+      "path": "fragment/es_abbd857.pf_fragment",
+      "sha256": "67acf52caa0f882672ce9165afa44267e686b79cac8389d9ae8e865245c26329"
+    },
+    {
+      "path": "fragment/es_aebe59c.pf_fragment",
+      "sha256": "3294ef4daff9c1f9cee8c4eb320f4a777e2286e78a446b17c0045e8e5e0888da"
+    },
+    {
+      "path": "fragment/es_b27daf9.pf_fragment",
+      "sha256": "8c745b0ca5b53789b04ab160739dcf2ffaa39f76b2c1d06cf62c1d44c342a907"
+    },
+    {
+      "path": "fragment/es_b53482b.pf_fragment",
+      "sha256": "d6164dbbe45765dec6fa4bb22df8716c69a00958c9cabdf1a6af2fb4aa3a5422"
+    },
+    {
+      "path": "fragment/es_d73e534.pf_fragment",
+      "sha256": "ed43bda2be9d819ffec40317f1090697dff850592163c12b763fc641aa1f3363"
+    },
+    {
+      "path": "fragment/es_f2d28d0.pf_fragment",
+      "sha256": "f34c96cad425f66320d15a0d9509ade89a227b3cf7b1cca77af64f94b6de0e17"
+    },
+    {
+      "path": "index/es_78afe7d.pf_index",
+      "sha256": "41d91951a2f0a86c7979e3db1533a1734163d4772c59358389d1c5fbb52860b7"
+    },
+    {
+      "path": "pagefind-entry.json",
+      "sha256": "f427cd1e2e72776a8f3c480b7a27c4abf2d0c3650090d73b9c3abb0cd5cfdbdf"
+    },
+    {
+      "path": "pagefind-highlight.js",
+      "sha256": "04741266a86911636cefc41c8b407e380dda99b7d208724f700f94cdf57e37b5"
+    },
+    {
+      "path": "pagefind-worker.js",
+      "sha256": "4ca50d25bcab9e1c3afbc00ab5f7761114e83c8fc1b83d38655af1558b650c2a"
+    },
+    {
+      "path": "pagefind.es_9b8f33717c.pf_meta",
+      "sha256": "933004903ffddbd25df983998172c0976fba39b8e9af43c8c9c43e4812109033"
+    },
+    {
+      "path": "pagefind.js",
+      "sha256": "252d272bd34d483d19a752060f6a065114d15ab12c42d8f905ca565e2768a009"
+    },
+    {
+      "path": "wasm.es.pagefind",
+      "sha256": "c00d45e7242a60fc25bea534ddacea609cff5fd6138fb9f84194f7b68ed3ecfa"
+    },
+    {
+      "path": "wasm.unknown.pagefind",
+      "sha256": "3a74cefceacd066e8d3bc8c52e7bc1c869544ca3d9031b44a9b7136356d5d7f4"
+    }
+  ]
+}

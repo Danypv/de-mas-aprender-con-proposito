@@ -17,7 +17,10 @@
     "build:latest": "node scripts/build-latest.mjs",
     "build:sitemap": "node scripts/build-sitemap.mjs",
     "test:structured-data": "node scripts/test-structured-data.mjs",
-    "test:sharing": "node scripts/test-sharing.mjs"
+    "test:sharing": "node scripts/test-sharing.mjs",
+    "build:search": "node scripts/build-search.mjs",
+    "test:search": "node --no-warnings scripts/test-search.mjs",
+    "check:search": "node scripts/check-search.mjs"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
@@ -25,6 +28,7 @@
     "turndown": "^7.2.0"
   },
   "devDependencies": {
+    "pagefind": "1.5.2",
     "vite": "^7.1.3"
   }
 }

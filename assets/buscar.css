@@ -1,0 +1,71 @@
+.has-global-search .navegacion { gap:24px; }
+.has-global-search .menu { margin-left:auto; }
+.has-global-search .buscar-abrir {
+  display:inline-flex; align-items:center; justify-content:center; flex:none;
+  width:44px; min-height:44px; margin:0; padding:10px; border:0;
+  color:#ededec; background:transparent; cursor:pointer;
+}
+.has-global-search .buscar-abrir svg { display:block; width:22px; height:22px; }
+.has-global-search .buscar-abrir:hover,
+.has-global-search .buscar-abrir[aria-expanded="true"] { color:var(--amarillo,#ffb600); }
+
+#buscador-global {
+  box-sizing:border-box; position:fixed; inset:100px auto auto 50%; transform:translateX(-50%);
+  width:min(820px,calc(100% - 64px)); max-width:none; margin:0;
+  max-height:calc(100vh - 128px); max-height:calc(100dvh - 128px);
+  overflow:auto; overscroll-behavior:contain; padding:28px 36px 24px;
+  border:0; border-top:3px solid var(--amarillo,#ffb600);
+  color:var(--negro,#000); background:var(--blanco,#fff);
+  box-shadow:0 12px 42px rgba(0,0,0,.18);
+  font-family:var(--lectura,"Roboto",Arial,sans-serif); font-size:17px; line-height:1.65;
+}
+#buscador-global::backdrop { background:linear-gradient(to bottom,transparent 74px,rgba(0,0,0,.58) 74px); }
+#buscador-global [hidden] { display:none !important; }
+#buscador-global .busqueda-cabecera { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:18px; }
+#buscador-global h2 { margin:0; font-family:var(--marca,"Montserrat",Arial,sans-serif); font-size:28px; font-weight:600; letter-spacing:-.025em; line-height:1.3; }
+#buscador-global .busqueda-cerrar { display:inline-flex; justify-content:center; align-items:center; flex:none; width:44px; min-height:44px; margin-right:-10px; padding:10px; border:0; color:inherit; background:transparent; cursor:pointer; }
+#buscador-global .busqueda-cerrar svg { width:22px; height:22px; }
+#buscador-global .busqueda-campo { display:flex; align-items:center; gap:14px; padding:2px 0 10px; border-bottom:2px solid var(--negro,#000); }
+#buscador-global .busqueda-campo > svg { width:22px; height:22px; flex:none; }
+#buscador-global .busqueda-campo:focus-within { border-color:var(--amarillo,#ffb600); }
+#buscador-global input { box-sizing:border-box; min-width:0; width:100%; min-height:44px; padding:5px 4px; border:0; border-radius:0; color:inherit; background:#fff; font:inherit; font-size:22px; line-height:1.4; }
+#buscador-global .busqueda-filtros { display:flex; flex-wrap:wrap; gap:0 18px; margin:0 0 16px; padding:14px 0 0; }
+#buscador-global .busqueda-filtros button { min-height:44px; margin:0; padding:6px 0; border:0; border-bottom:2px solid transparent; color:var(--gris,#57534d); background:transparent; font:inherit; font-size:14px; line-height:1.4; cursor:pointer; }
+#buscador-global .busqueda-filtros button[aria-pressed="true"] { color:var(--negro,#000); border-color:var(--amarillo,#ffb600); font-weight:500; }
+#buscador-global .busqueda-estado { min-height:20px; margin:0 0 4px; color:var(--gris,#57534d); font-size:13px; line-height:1.5; }
+#buscador-global .busqueda-resultado { margin:0; border-bottom:1px solid var(--linea,#dcd8cf); }
+#buscador-global .busqueda-resultado:last-child { border-bottom:0; }
+#buscador-global .busqueda-enlace { position:relative; display:block; padding:22px 30px 22px 0; color:inherit; text-decoration:none; overflow-wrap:anywhere; }
+#buscador-global .busqueda-meta { display:flex; align-items:center; flex-wrap:wrap; gap:8px; margin:0 0 8px; color:var(--gris,#57534d); font-size:12px; line-height:1.5; }
+#buscador-global .busqueda-seccion { color:var(--ocre,#8a5e00); font-weight:500; }
+#buscador-global h3 { margin:0 0 10px; font-family:var(--marca,"Montserrat",Arial,sans-serif); font-size:20px; font-weight:600; letter-spacing:-.02em; line-height:1.4; }
+#buscador-global .busqueda-enlace:hover h3 { text-decoration:underline; text-decoration-color:var(--amarillo,#ffb600); text-underline-offset:4px; }
+#buscador-global .busqueda-extracto { margin:0; color:var(--gris,#57534d); font-size:16px; line-height:1.7; }
+#buscador-global mark { padding:0 1px; color:var(--negro,#000); background:rgba(255,182,0,.22); }
+#buscador-global .busqueda-flecha { position:absolute; top:50px; right:0; font-size:22px; line-height:1; }
+#buscador-global .busqueda-accion { min-height:44px; margin:18px 0 0; padding:10px 14px; border:1px solid var(--linea,#dcd8cf); color:inherit; background:#fff; font:inherit; font-size:15px; cursor:pointer; }
+#buscador-global .busqueda-accion:hover { border-color:var(--amarillo,#ffb600); }
+#buscador-global .busqueda-campo input:focus-visible,
+#buscador-global button:focus-visible,
+#buscador-global a:focus-visible { outline:3px solid var(--amarillo,#ffb600); outline-offset:4px; }
+#buscador-global .busqueda-solo-lector { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; border:0; }
+
+@media (max-width:1000px) {
+  .has-global-search .navegacion { gap:12px; }
+  .has-global-search .boton-menu { display:block; margin-left:auto; }
+  .has-global-search .menu { position:absolute; top:100%; right:0; left:0; display:none; margin:0; padding:12px 24px 22px; background:rgba(0,0,0,.98); border-top:1px solid rgba(255,255,255,.1); }
+  .has-global-search .menu.abierto { display:block; }
+  .has-global-search .menu a { display:block; padding:13px 0; }
+  .has-global-search .menu a+a::before { display:none; }
+}
+@media (max-width:640px) {
+  #buscador-global { inset:74px 0 0; transform:none; width:100%; height:calc(100vh - 74px); height:calc(100dvh - 74px); max-height:calc(100vh - 74px); max-height:calc(100dvh - 74px); padding:23px 20px calc(24px + env(safe-area-inset-bottom)); box-shadow:none; }
+  #buscador-global .busqueda-cabecera { gap:8px; margin-bottom:12px; }
+  #buscador-global h2 { font-size:24px; }
+  #buscador-global .busqueda-campo { gap:10px; padding-bottom:7px; }
+  #buscador-global input { font-size:19px; }
+  #buscador-global .busqueda-filtros { gap:0 17px; margin-bottom:20px; }
+  #buscador-global .busqueda-enlace { padding-right:24px; }
+  #buscador-global h3 { font-size:18px; line-height:1.45; }
+}
+@media print { .has-global-search .buscar-abrir,#buscador-global { display:none !important; } }
