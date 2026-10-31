@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
+import { shareBlock } from './share.mjs';
 import MarkdownIt from "markdown-it";
 import { authorProfile, profileUrl } from './authors.mjs';
 import { articleData, collectionData, contentPath, setStructuredData } from './structured-data.mjs';
@@ -115,6 +116,7 @@ for (const post of visiblePosts) {
     AUTHOR_PROFILE: authorProfile(post.author_url, post.author),
     DATE: formatDate(post.date),
     BODY: body.trim(),
+    SHARE: shareBlock(post.title, contentPath('/blog/', post.slug)),
     SUMMARY: escapeHtml(post.summary),
     MINUTES: minutes(post),
     COVER: coverUrl(post) ? `<figure class="portada-articulo"><img src="${escapeHtml(coverUrl(post))}" alt="${escapeHtml(post.cover_alt)}" decoding="async">${post.cover_caption ? `<figcaption>${escapeHtml(post.cover_caption)}</figcaption>` : ""}</figure>` : "",
