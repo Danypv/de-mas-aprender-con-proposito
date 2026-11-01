@@ -15,7 +15,8 @@ export const collections = [
     "summary": "Lecturas para pensar la enseñanza, el aprendizaje y la formación humana."
   },
   {
-    "slug": "etica-e-inteligencia-artificial",
+    "slug": "ciencia-y-tecnologia",
+    "previousSlugs": ["etica-e-inteligencia-artificial"],
     "title": "Ciencia y tecnología",
     "summary": "Conocimiento y desarrollos que transforman nuestra manera de comprender el mundo."
   },
@@ -25,12 +26,14 @@ export const collections = [
     "summary": "Organizaciones, trabajo y liderazgo desde una mirada humana."
   },
   {
-    "slug": "ciencia-y-salud",
+    "slug": "medicina-y-salud",
+    "previousSlugs": ["ciencia-y-salud"],
     "title": "Medicina y salud",
     "summary": "El cuidado, la salud, la enfermedad y la experiencia humana."
   },
   {
-    "slug": "historia-y-cultura",
+    "slug": "historia-cultura-y-literatura",
+    "previousSlugs": ["historia-y-cultura"],
     "title": "Historia, cultura y literatura",
     "summary": "Sociedades, obras y relatos que ayudan a comprender otras épocas."
   },
@@ -63,6 +66,7 @@ export function readReadings(root = process.cwd()) {
     if (!['draft','review','published'].includes(data.status)) fail('estado no válido');
     if (!['full','link'].includes(data.type)) fail('tipo no válido');
     if (Number.isNaN(new Date(data.date).getTime())) fail('fecha no válida');
+    if (Array.isArray(data.collections)) data.collections = data.collections.map(key => collections.find(c => c.previousSlugs?.includes(key))?.slug || key);
     if (!Array.isArray(data.collections) || !data.collections.length || data.collections.some(key => !collections.some(c => c.slug === key))) fail('selecciona al menos una colección válida');
     if (data.type === 'full' && !content.trim()) fail('el texto completo está vacío');
     if (data.type === 'link' && !data.source_url) fail('la lectura recomendada necesita un enlace a la fuente');

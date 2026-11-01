@@ -52,7 +52,7 @@ try {
   const post = { ...base, title: unsafe, categories: ['Ética'], author_url: 'https://orcid.org/0000-0000-0000-0000' };
   save('posts', 'articulo', post);
   save('posts', 'borrador', { ...post, slug: 'borrador-privado', status: 'draft' });
-  const review = { ...base, title: 'Reseña propia', slug: 'resena', type: 'full', collections: ['filosofia', 'historia-y-cultura'], source_url: 'https://example.org/articulo-original', source_name: 'Revista de referencia' };
+  const review = { ...base, title: 'Reseña propia', slug: 'resena', type: 'full', collections: ['filosofia', 'historia-cultura-y-literatura'], source_url: 'https://example.org/articulo-original', source_name: 'Revista de referencia' };
   save('readings', 'resena', review);
   save('readings', 'enlace', { ...review, title: 'Lectura recomendada', slug: 'solo-enlace', type: 'link' }, '');
   const video = { ...base, slug: 'video', title: 'Video recomendado', format: 'conference', categories: ['Filosofía'], source_url: 'https://youtu.be/WisWde4lZdQ', duration: '1 h 05 min', comment_author: 'Editor de DE+' };
@@ -93,7 +93,7 @@ try {
   assert.equal(read('lecturas/textos/solo-enlace').page.about.url, review.source_url);
   assert.equal(read('lecturas').page.mainEntity.numberOfItems, 2);
   assert.equal(read('lecturas/filosofia').page.mainEntity.numberOfItems, 2);
-  assert.equal(read('lecturas/ciencia-y-salud').page.mainEntity.numberOfItems, 0);
+  assert.equal(read('lecturas/medicina-y-salud').page.mainEntity.numberOfItems, 0);
 
   assert.equal(read('videos/video').entity, undefined, 'No se inventa la fecha original del video');
   assert.equal(read('videos/video').page.author.name, video.comment_author);

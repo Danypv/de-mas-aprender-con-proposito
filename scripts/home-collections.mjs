@@ -1,6 +1,6 @@
 import {collections,readReadings,escapeHtml as e} from './readings.mjs';
 
-const themes={filosofia:'grafito',educacion:'amarillo','etica-e-inteligencia-artificial':'blanco','empresa-cultura-y-liderazgo':'grafito','ciencia-y-salud':'contorno','historia-y-cultura':'crema','teologia-y-espiritualidad':'blanco',cine:'grafito'};
+const themes={filosofia:'grafito',educacion:'amarillo','ciencia-y-tecnologia':'blanco','empresa-cultura-y-liderazgo':'grafito','medicina-y-salud':'contorno','historia-cultura-y-literatura':'crema','teologia-y-espiritualidad':'blanco',cine:'grafito'};
 export function updateHomeCollections(home,root){
   if(!home.includes('<!-- COLLECTIONS_START -->'))return home;
   const readings=readReadings(root).filter(item=>item.status==='published');

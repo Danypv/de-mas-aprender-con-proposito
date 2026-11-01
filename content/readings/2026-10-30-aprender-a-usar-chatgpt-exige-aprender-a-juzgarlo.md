@@ -5,7 +5,7 @@ slug: aprender-a-usar-chatgpt-exige-aprender-a-juzgarlo
 author: Daniel Pérez Valencia
 date: 2026-10-30T00:00:00.000Z
 collections:
-  - etica-e-inteligencia-artificial
+  - ciencia-y-tecnologia
   - filosofia
 type: link
 publication_type: academic_article
