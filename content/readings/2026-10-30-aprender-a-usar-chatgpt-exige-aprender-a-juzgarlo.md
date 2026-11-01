@@ -12,7 +12,7 @@ publication_type: academic_article
 summary: >-
   El uso de la inteligencia artificial generativa en la universidad plantea una
   pregunta decisiva: ¿qué aprende el estudiante cuando incorpora respuestas
-  generadas por IA a sus tareas? Hya que pensar cómo la formación puede ayudar a
+  generadas por IA a sus tareas? Hay que pensar cómo la formación puede ayudar a
   reconocer los límites de estas herramientas y a cuidar la integridad
   académica.
 source_url: 'https://doi.org/10.1344/rbd2025.65.49416'
