@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "revision": "62af7fe20028db48",
-  "bundle": "/assets/busqueda/62af7fe20028db48/pagefind.js",
-  "count": 20,
+  "revision": "c6d88098fc9e3c54",
+  "bundle": "/assets/busqueda/c6d88098fc9e3c54/pagefind.js",
+  "count": 22,
   "publicationCount": 8,
   "entries": [
     {
@@ -90,6 +90,12 @@
       "kind": "catalog"
     },
     {
+      "url": "/lecturas/educacion/",
+      "title": "Educación",
+      "section": "Lecturas selectas",
+      "kind": "catalog"
+    },
+    {
       "url": "/lecturas/etica-e-inteligencia-artificial/",
       "title": "Ciencia y tecnología",
       "section": "Lecturas selectas",
@@ -120,6 +126,12 @@
       "kind": "catalog"
     },
     {
+      "url": "/lecturas/cine/",
+      "title": "Cine",
+      "section": "Lecturas selectas",
+      "kind": "catalog"
+    },
+    {
       "url": "/#sobre",
       "title": "Sobre DE+",
       "section": "Proyecto",
@@ -128,8 +140,8 @@
   ],
   "files": [
     {
-      "path": "filter/es_1338e2f.pf_filter",
-      "sha256": "375aa607090943b25a31ef1d0ab857c6ee17ffbef3a6b78a73631652f92c2e17"
+      "path": "filter/es_18feb56.pf_filter",
+      "sha256": "93d442857e7e7619fb5c96dc478016ac565bd7a7189137a13a98092d9950c1c8"
     },
     {
       "path": "fragment/es_1574f3f.pf_fragment",
@@ -138,6 +150,10 @@
     {
       "path": "fragment/es_1d8230f.pf_fragment",
       "sha256": "81d3eeb9128e7ea30c8e67181048df88985396e81a978e00d77f6cc7dc523fea"
+    },
+    {
+      "path": "fragment/es_1d82618.pf_fragment",
+      "sha256": "f019c0eb623f58a3d3caa8fc75abfd15438264ecb6ef72f7a0ed5900ae029379"
     },
     {
       "path": "fragment/es_203166a.pf_fragment",
@@ -162,6 +178,10 @@
     {
       "path": "fragment/es_5433f9f.pf_fragment",
       "sha256": "88555db17c566aaba60be3e07d02c202ad40c05c9235b3f0c057b245649f87f9"
+    },
+    {
+      "path": "fragment/es_5938deb.pf_fragment",
+      "sha256": "3157551e8dd6ac28971c069f454480d87733d51ff4b5b9b287edc8ea1b3f7a3e"
     },
     {
       "path": "fragment/es_6582a29.pf_fragment",
@@ -212,12 +232,12 @@
       "sha256": "f34c96cad425f66320d15a0d9509ade89a227b3cf7b1cca77af64f94b6de0e17"
     },
     {
-      "path": "index/es_78afe7d.pf_index",
-      "sha256": "41d91951a2f0a86c7979e3db1533a1734163d4772c59358389d1c5fbb52860b7"
+      "path": "index/es_83a6167.pf_index",
+      "sha256": "91df71aa8634bc4726c321a80934d82c6cbc45271c4e23bff2b275430356a70a"
     },
     {
       "path": "pagefind-entry.json",
-      "sha256": "f427cd1e2e72776a8f3c480b7a27c4abf2d0c3650090d73b9c3abb0cd5cfdbdf"
+      "sha256": "4e9f0f1a7c166bab73049bc3e4223a2a05a4e013c9035bdbd51fc7da9122a74c"
     },
     {
       "path": "pagefind-highlight.js",
@@ -228,8 +248,8 @@
       "sha256": "4ca50d25bcab9e1c3afbc00ab5f7761114e83c8fc1b83d38655af1558b650c2a"
     },
     {
-      "path": "pagefind.es_9b8f33717c.pf_meta",
-      "sha256": "933004903ffddbd25df983998172c0976fba39b8e9af43c8c9c43e4812109033"
+      "path": "pagefind.es_5c1cf3e551.pf_meta",
+      "sha256": "9e2ce5f5da6b7185a98e5f290530fab3f2d123ab386468e239158a65da4ecd5b"
     },
     {
       "path": "pagefind.js",

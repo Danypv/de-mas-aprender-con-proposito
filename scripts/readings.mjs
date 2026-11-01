@@ -10,6 +10,11 @@ export const collections = [
     "summary": "Preguntas sobre la vida, nuestras decisiones y los valores que las orientan."
   },
   {
+    "slug": "educacion",
+    "title": "Educación",
+    "summary": "Lecturas para pensar la enseñanza, el aprendizaje y la formación humana."
+  },
+  {
     "slug": "etica-e-inteligencia-artificial",
     "title": "Ciencia y tecnología",
     "summary": "Conocimiento y desarrollos que transforman nuestra manera de comprender el mundo."
@@ -33,6 +38,11 @@ export const collections = [
     "slug": "teologia-y-espiritualidad",
     "title": "Teología y espiritualidad",
     "summary": "Tradiciones y preguntas sobre el sentido de la vida."
+  },
+  {
+    "slug": "cine",
+    "title": "Cine",
+    "summary": "Películas y miradas sobre el cine para pensar nuestra experiencia del mundo."
   }
 ];
 export const escapeHtml = value => String(value ?? '').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');

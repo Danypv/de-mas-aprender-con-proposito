@@ -20,7 +20,8 @@
     "test:sharing": "node scripts/test-sharing.mjs",
     "build:search": "node scripts/build-search.mjs",
     "test:search": "node --no-warnings scripts/test-search.mjs",
-    "check:search": "node scripts/check-search.mjs"
+    "check:search": "node scripts/check-search.mjs",
+    "test:collections": "node scripts/test-home-collections.mjs"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

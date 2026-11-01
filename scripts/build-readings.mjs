@@ -55,4 +55,4 @@ for (const reading of readings) {
     STRUCTURED_DATA:articleData(reading, { section:'/lecturas/', label:'Lecturas selectas', categories:reading.collections.map(key=>collections.find(c=>c.slug===key).title), contentSection:'/lecturas/textos/' }),
   }));
 }
-console.log(`${readings.length} lectura(s) publicada(s); seis colecciones e índice generados.`);
+console.log(`${readings.length} lectura(s) publicada(s); ${collections.length} colecciones e índice generados.`);

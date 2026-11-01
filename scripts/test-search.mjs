@@ -22,7 +22,7 @@ try {
   const save=(folder,data,body='En el centro del texto aparece juiciocompartido.')=>fs.writeFileSync(path.join(fixture,'content',folder,'prueba.md'),matter.stringify(body,data));
   const post={...base,title:'Atención con <etiquetas> & criterio',categories:['Ética']};
   save('posts',post,'La inteligencia artificial requiere juicio. En el centro aparece juiciocompartido y cromaticaantigua.');
-  save('readings',{...base,title:'Leer filosofía',type:'full',collections:['filosofia'],source_url:'https://example.org/fuente',source_name:'Cuadernos Boreales'},'La inteligencia artificial y juiciocompartido invitan a la lectura.');
+  save('readings',{...base,title:'Leer filosofía',type:'full',collections:['filosofia','educacion','cine'],source_url:'https://example.org/fuente',source_name:'Cuadernos Boreales'},'La inteligencia artificial y juiciocompartido invitan a la lectura.');
   save('videos',{...base,title:'Un video para pensar',categories:['Educación'],format:'conference',source_url:'https://youtu.be/WisWde4lZdQ',transcript:'El término transcripcionvisual aparece en el video.'});
   save('podcast-series',{title:'Conversaciones',slug:'serie',presenter:'Voz Austral',summary:'Una serie de DE+.',status:'published'},'La presentación contiene presentacionaustral.');
   save('podcast-episodes',{...base,title:'El episodio del juicio',series:'serie',audio_url:'https://example.org/audio.mp3',transcript:'La palabra transcripcionaudio aparece en el episodio.'});
@@ -52,7 +52,7 @@ try {
   };
   build();
   assert.equal(manifest().publicationCount,5,'Las cuatro secciones y la serie entran en el índice');
-  assert.equal(manifest().count,17);
+  assert.equal(manifest().count,19);
   for(const item of manifest().entries) {
     const page=fs.readFileSync(path.join(fixture,decodeURIComponent(item.url.split('#')[0].slice(1)),'index.html'),'utf8');
     assert(!page.includes('id="buscar"'),`No reaparece un buscador local en ${item.url}`);
@@ -73,6 +73,7 @@ try {
   assert.equal((await find('presentacionaustral'))[0].url,'/podcast/series/serie/');
   assert.equal((await find('Elizabeth'))[0].url,'/#sobre','También se busca en Sobre DE+');
   assert((await find('Cuadernos Boreales')).some(item=>item.url==='/lecturas/textos/prueba/'));
+  for(const term of ['Educación','Cine']) assert((await find(term,'Lecturas selectas')).some(item=>item.url==='/lecturas/textos/prueba/'),'Las nuevas colecciones participan en la búsqueda');
   assert.equal((await find('"secretoborrador"')).length,0,'Un borrador no se indexa; la coincidencia exacta evita sugerencias por prefijo');
   assert.equal((await find('"Facebook"')).length,0,'Los botones de compartir quedan fuera del texto de búsqueda');
   const unsafe=(await find('etiquetas'))[0];

@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import matter from 'gray-matter';
+import {updateHomeCollections} from './home-collections.mjs';
 const root=path.resolve(process.argv[2]||process.cwd());
 const homePath=path.join(root,'index.html');let home=fs.readFileSync(homePath,'utf8');
 const esc=v=>String(v??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
@@ -36,4 +37,5 @@ const slides=latest.map((item,i)=>`<article class="novedad-slide" data-slide${i?
 const banner=latest.length?`<section class="novedades" id="novedades" aria-labelledby="titulo-novedades"><div class="contenedor"><div class="novedades-cabecera"><div><p class="etiqueta">Novedades de DE+</p><h2 id="titulo-novedades">Lo más reciente.</h2></div><span class="novedades-cuenta" data-count aria-live="off">1 / ${latest.length}</span></div><div class="novedades-carrusel" data-carousel data-interval="7000" role="region" aria-roledescription="carrusel" aria-label="Últimas publicaciones de DE+"><div class="novedades-escenario" data-stage>${slides}</div><div class="novedades-progreso" aria-hidden="true"><span data-progress></span></div><div class="novedades-controles"${latest.length<2?' hidden':''}><button type="button" class="novedad-control" data-prev aria-label="Publicación anterior">←</button><div class="novedades-puntos">${latest.map((v,i)=>`<button type="button" data-dot="${i}" class="novedad-punto" aria-label="Mostrar publicación ${i+1}: ${esc(v.title)}"${!i?' aria-current="true"':''}><span aria-hidden="true"></span></button>`).join('')}</div><button type="button" class="novedad-control novedad-pausa" data-pause aria-pressed="false" aria-label="Pausar el avance automático">Pausar</button><button type="button" class="novedad-control" data-next aria-label="Siguiente publicación">→</button></div><p class="novedades-estado" data-status role="status" aria-live="polite"></p></div></div></section>`:'';
 if(!home.includes('<!-- LATEST_START -->'))throw Error('Falta el punto de inserción del banner');
 home=home.replace(/<!-- LATEST_START -->[\s\S]*?<!-- LATEST_END -->/,()=>`<!-- LATEST_START -->\n${banner}\n<!-- LATEST_END -->`);
+home=updateHomeCollections(home,root);
 fs.writeFileSync(homePath,home);console.log(`${latest.length} novedades generadas; solo contenidos publicados.`);
