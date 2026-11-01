@@ -43,10 +43,13 @@ export function schemaDuration(value) {
 }
 
 function script(graph) {
+  const url = graph.find(node => ['WebPage','CollectionPage'].includes(node['@type']))?.url;
+  if (!url) throw Error('Falta la dirección de la página para generar su enlace canónico');
+  const escapedUrl = url.replaceAll('&', '&amp;').replaceAll('"', '&quot;');
   const json = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }, null, 2)
     .replaceAll('<', '\\u003c').replaceAll('>', '\\u003e').replaceAll('&', '\\u0026')
     .replaceAll('\u2028', '\\u2028').replaceAll('\u2029', '\\u2029');
-  return `<!-- STRUCTURED_DATA_START -->\n<script type="application/ld+json">\n${json}\n</script>\n<!-- STRUCTURED_DATA_END -->`;
+  return `<!-- STRUCTURED_DATA_START -->\n<link rel="canonical" href="${escapedUrl}">\n<meta property="og:url" content="${escapedUrl}">\n<script type="application/ld+json">\n${json}\n</script>\n<!-- STRUCTURED_DATA_END -->`;
 }
 
 function pageSchema({ path, title, description, parents = [], entity, page = {} }) {

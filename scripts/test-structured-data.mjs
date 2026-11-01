@@ -43,6 +43,9 @@ try {
       assert(crumb.item.startsWith('https://somosdemas.com/'));
     });
     const page = data['@graph'][0];
+    assert.equal((html.match(/rel="canonical"/g)||[]).length, 1);
+    assert(html.includes(`rel="canonical" href="${page.url}"`));
+    assert(html.includes(`property="og:url" content="${page.url}"`));
     assert.equal(crumbs.itemListElement.at(-1).item, page.url);
     assert.equal(page.breadcrumb['@id'], crumbs['@id']);
     return { html, graph: data['@graph'], page, crumbs, entity: data['@graph'][2], raw: scripts[0][1] };

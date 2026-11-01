@@ -9,7 +9,7 @@ collections:
 type: link
 publication_type: academic_article
 summary: >-
-  ¿Como pueden dialogar la fe y la razón en una sociedad que organiza su vida
+  ¿Cómo pueden dialogar la fe y la razón en una sociedad que organiza su vida
   pública desde criterios seculares? El artículo invita a pensar el lugar de las
   convicciones religiosas en una conversación democrática plural.
 source_url: 'https://revistas.upb.edu.co/index.php/cuestiones/article/view/5102'
