@@ -1,6 +1,10 @@
 ---
 title: Usar la IA generativa exige aprender a juzgarla
 browser_title: Aprender a usar ChatGPT también exige aprender a juzgarlo
+topics:
+  - inteligencia-artificial
+  - educacion
+  - etica
 slug: aprender-a-usar-chatgpt-exige-aprender-a-juzgarlo
 author: Daniel Pérez Valencia
 date: 2026-10-30T00:00:00.000Z

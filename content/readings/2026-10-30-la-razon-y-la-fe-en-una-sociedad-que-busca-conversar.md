@@ -1,6 +1,9 @@
 ---
 title: La razón y la fe en una sociedad que busca conversar
 browser_title: Razón y fe en la sociedad postsecular
+topics:
+  - teologia
+  - filosofia
 slug: la-razon-y-la-fe-en-una-sociedad-que-busca-conversar
 author: Daniel Pérez Valencia
 date: 2026-10-30T00:00:00.000Z

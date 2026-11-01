@@ -1,6 +1,9 @@
 ---
 title: Aprender a atender
 browser_title: Aprender a atender
+topics:
+  - filosofia
+  - etica
 slug: aprender-a-atender
 author: Daniel Pérez Valencia
 date: 2026-10-26T00:00:00.000Z

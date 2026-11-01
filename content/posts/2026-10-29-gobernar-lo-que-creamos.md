@@ -1,6 +1,11 @@
 ---
 title: Gobernar lo que creamos
 browser_title: Gobernar lo que creamos
+topics:
+  - inteligencia-artificial
+  - neurociencia
+  - etica
+  - tecnologia
 slug: gobernar-lo-que-creamos
 author: Daniel Pérez Valencia
 date: 2026-10-29T00:00:00.000Z

@@ -1,6 +1,11 @@
 ---
 title: "Integrar las humanidades y las ciencias: una clave para el cultivo del ser humano"
 browser_title: "Integrar las humanidades y las ciencias"
+topics:
+  - filosofia
+  - educacion
+  - ciencia
+  - cultura
 slug: humanidades-y-ciencias
 author: Daniel Pérez Valencia
 date: 2026-08-04

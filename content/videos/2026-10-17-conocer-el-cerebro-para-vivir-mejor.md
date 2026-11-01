@@ -1,5 +1,8 @@
 ---
 title: Conocer el cerebro para vivir mejor
+topics:
+  - neurociencia
+  - salud
 slug: conocer-el-cerebro-para-vivir-mejor
 author: Facundo Manes
 source_credit: Aprendemos Juntos 2030 · BBVA

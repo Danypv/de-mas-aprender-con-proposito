@@ -24,7 +24,8 @@
     "test:collections": "node scripts/test-home-collections.mjs",
     "test:redirects": "node scripts/test-redirects.mjs",
     "check:site": "node scripts/check-site.mjs",
-    "test:carousel": "node scripts/test-carousel.mjs"
+    "test:carousel": "node scripts/test-carousel.mjs",
+    "test:related": "node scripts/test-related.mjs"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

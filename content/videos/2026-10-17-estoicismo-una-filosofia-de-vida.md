@@ -1,5 +1,8 @@
 ---
 title: 'Estoicismo, una filosofía de vida'
+topics:
+  - filosofia
+  - etica
 slug: estoicismo-una-filosofia-de-vida
 author: Massimo Pigliucci
 date: 2026-10-17T00:00:00.000Z

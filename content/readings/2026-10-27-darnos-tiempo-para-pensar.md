@@ -1,6 +1,8 @@
 ---
 title: Darnos tiempo para pensar
 browser_title: Darnos tiempo para pensar
+topics:
+  - filosofia
 slug: darnos-tiempo-para-pensar
 author: Daniel Pérez Valencia
 date: 2026-10-27T00:00:00.000Z

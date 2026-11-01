@@ -1,3 +1,4 @@
+import {buildRelated} from './related.mjs';
 import {buildRedirects} from './redirects.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -42,3 +43,6 @@ home=updateHomeCollections(home,root);
 fs.writeFileSync(homePath,home);console.log(`${latest.length} novedades generadas; solo contenidos publicados.`);
 
 console.log(`${buildRedirects(root)} redirecciones generadas.`);
+
+const related=buildRelated(root);
+console.log(`${related.blocks} bloques de recomendaciones entre ${related.publications} publicaciones.`);
