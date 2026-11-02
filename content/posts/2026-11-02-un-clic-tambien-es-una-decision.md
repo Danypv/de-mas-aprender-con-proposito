@@ -14,7 +14,8 @@ summary: >-
 status: published
 featured: false
 cover_alt: Persona contemplando una pintura en museo
-cover_caption: Foto de Mauro Lima en Unsplash
+cover_caption: Foto de mia rauffer en Unsplash
+cover: /assets/imagenes/blog/mia-rauffer-qfzc8d33py-unsplash.jpg
 cms_source: content/posts/un-clic-tambien-es-una-decision.md
 ---
 Desde una mesa de nuestra casa podemos recorrer las salas de un museo que está al otro lado del océano. Nos detenemos ante una pintura, ampliamos un detalle y buscamos la historia de quienes aparecen en ella. Tal vez esa curiosidad nos lleve a un libro que desconocíamos. El viaje comenzó con un clic y puede continuar durante semanas, si encontramos en aquella imagen una pregunta que merece nuestra atención.
