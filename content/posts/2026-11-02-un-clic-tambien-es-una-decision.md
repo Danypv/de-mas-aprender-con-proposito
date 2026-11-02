@@ -55,6 +55,6 @@ Quizá regresemos entonces a la pintura del comienzo. Al ampliar un detalle desc
 
 **Textos citados**
 
-Foro Económico Mundial. *[Informe de riesgos globales 2026](https://www.weforum.org/publications/global-risks-report-2026/?utm_source=chatgpt.com)*.
+Foro Económico Mundial. *[Informe de riesgos globales 2026](https://www.weforum.org/publications/global-risks-report-2026/?utm_source=)*.
 
-Foro Económico Mundial. *[Informe sobre el futuro del empleo 2025](https://www.weforum.org/publications/the-future-of-jobs-report-2025/?utm_source=chatgpt.com)*.
+Foro Económico Mundial. *[Informe sobre el futuro del empleo 2025](https://www.weforum.org/publications/the-future-of-jobs-report-2025/?utm_source=)*.
