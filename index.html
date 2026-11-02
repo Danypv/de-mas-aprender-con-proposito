@@ -1227,6 +1227,7 @@
   </style>
   <link rel="stylesheet" href="assets/latest.css">
   <link rel="stylesheet" href="/assets/colecciones.css">
+  <link rel="stylesheet" href="/assets/audiovisuales.css">
   <link rel="stylesheet" href="/assets/buscar.css">
   <script src="/assets/buscar.js" type="module"></script>
 </head>
@@ -1346,31 +1347,26 @@
     </section>
 
     <!-- ================= PODCAST Y VIDEO ================= -->
-    <section class="seccion" id="formatos">
-      <div class="contenedor">
-        <div class="encabezado-seccion revelar">
-          <p class="etiqueta">Medios audiovisuales</p>
-        </div>
-
-        <div class="rejilla-dos revelar">
-          <article class="tarjeta">
-            <div>
-              <p class="etiqueta">Podcast</p>
-              <h3>Para escuchar.</h3>
-              <p>Series de audio sobre filosofía, historia, educación, medicina y cultura.</p>
-            </div>
-            <a class="enlace" href="podcast/">Escuchar el podcast<span class="flecha" aria-hidden="true">→</span></a>
-          </article>
-
-          <article class="tarjeta">
-            <div>
-              <p class="etiqueta">Video</p>
-              <h3>Ver y pensar.</h3>
-              <p>Conferencias, clases abiertas, conversaciones y piezas audiovisuales.</p>
-            </div>
-            <a class="enlace" href="videos/">Ver videos<span class="flecha" aria-hidden="true">→</span></a>
-          </article>
-        </div>
+    <section class="seccion" id="formatos" aria-label="Podcast y video">
+      <div class="contenedor audiovisuales-accesos">
+        <a class="audiovisual-acceso" href="podcast/" aria-labelledby="titulo-podcast">
+          <span class="audiovisual-icono" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false"><path d="M4 14v-3a8 8 0 0 1 16 0v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="2" y="11" width="5" height="10" rx="2" fill="currentColor"/><rect x="17" y="11" width="5" height="10" rx="2" fill="currentColor"/></svg>
+          </span>
+          <div class="audiovisual-texto">
+            <h3 id="titulo-podcast">Para escuchar.</h3>
+            <span class="enlace">Podcast<span class="flecha" aria-hidden="true">→</span></span>
+          </div>
+        </a>
+        <a class="audiovisual-acceso" href="videos/" aria-labelledby="titulo-video">
+          <span class="audiovisual-icono" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false"><path d="M7 3.5 21 12 7 20.5Z" fill="currentColor"/></svg>
+          </span>
+          <div class="audiovisual-texto">
+            <h3 id="titulo-video">Ver y pensar.</h3>
+            <span class="enlace">Video<span class="flecha" aria-hidden="true">→</span></span>
+          </div>
+        </a>
       </div>
     </section>
 
