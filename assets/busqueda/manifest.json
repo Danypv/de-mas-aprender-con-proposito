@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "revision": "b9468a603e6bdf6e",
-  "bundle": "/assets/busqueda/b9468a603e6bdf6e/pagefind.js",
-  "count": 22,
-  "publicationCount": 8,
+  "revision": "80c4ebe59edf85af",
+  "bundle": "/assets/busqueda/80c4ebe59edf85af/pagefind.js",
+  "count": 23,
+  "publicationCount": 9,
   "entries": [
     {
       "url": "/blog/humanidades-y-ciencias/",
@@ -14,6 +14,12 @@
     {
       "url": "/blog/gobernar-lo-que-creamos/",
       "title": "Gobernar lo que creamos",
+      "section": "Blog",
+      "kind": "publication"
+    },
+    {
+      "url": "/blog/un-clic-tambien-es-una-decision/",
+      "title": "Un clic también es una decisión",
       "section": "Blog",
       "kind": "publication"
     },
@@ -140,8 +146,8 @@
   ],
   "files": [
     {
-      "path": "filter/es_cf51da1.pf_filter",
-      "sha256": "227ff028cf4d21e59410f6fb4aa6bf3586dd84195a7be9a04adabab7228babdf"
+      "path": "filter/es_4b228a5.pf_filter",
+      "sha256": "8b7d0f4c74ddcd3f76ce90fdcd091ad3818c8f4a96e7abb9eeda945ac0df8e38"
     },
     {
       "path": "fragment/es_1574f3f.pf_fragment",
@@ -208,6 +214,10 @@
       "sha256": "263a8f1f69b564a58c8d132fe56731458ef4e4829ec93d1a4e05f1ccf7445bbc"
     },
     {
+      "path": "fragment/es_aa94e18.pf_fragment",
+      "sha256": "c3b975e5d32ea1cf77f456c4e84fde4b203c715344f8a8a98e4695b4a55c5dc3"
+    },
+    {
       "path": "fragment/es_abbd857.pf_fragment",
       "sha256": "67acf52caa0f882672ce9165afa44267e686b79cac8389d9ae8e865245c26329"
     },
@@ -232,12 +242,12 @@
       "sha256": "f34c96cad425f66320d15a0d9509ade89a227b3cf7b1cca77af64f94b6de0e17"
     },
     {
-      "path": "index/es_4297e1a.pf_index",
-      "sha256": "a6a80d01e8ee5e96ce922131178d758cb49ca167218c04bdffe1b4524cd93e7d"
+      "path": "index/es_e6ea30f.pf_index",
+      "sha256": "985f924548796abf091cb1d600c7b1ee152d00d1c3508e3d551838b682e88154"
     },
     {
       "path": "pagefind-entry.json",
-      "sha256": "198141837e39a9d88f023478e67cd83dea9deb7aaaa5503045dfe97e7655fcc0"
+      "sha256": "bac6625f51cac21666b8ca363548072837b945ba6ae47505a2088c10272132a4"
     },
     {
       "path": "pagefind-highlight.js",
@@ -248,8 +258,8 @@
       "sha256": "4ca50d25bcab9e1c3afbc00ab5f7761114e83c8fc1b83d38655af1558b650c2a"
     },
     {
-      "path": "pagefind.es_7ad38e1617.pf_meta",
-      "sha256": "0b5870f0dee4196bf2dbcc2179792b633d8a96c5c5ed9690617572abff155ac9"
+      "path": "pagefind.es_b6ff2fa719.pf_meta",
+      "sha256": "10311845c52f174bbf3f71e91406347306c081772bcbb30cf2a59097eb586c1e"
     },
     {
       "path": "pagefind.js",
