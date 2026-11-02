@@ -1,0 +1,8 @@
+#sobre .sobre-columnas{align-items:start}
+#sobre .sobre-presentacion h2{max-width:18ch;margin:0 0 32px;font-size:clamp(2rem,3.5vw,2.8rem);line-height:1.1;letter-spacing:-.03em}
+#sobre .sobre-presentacion .descripcion{margin:0;max-width:49ch}
+#sobre .sobre-autoria h3{margin-bottom:44px}
+#sobre .sobre-creador{margin:0 0 48px;padding:0;border:0}
+#sobre .sobre-creador:last-child{margin-bottom:0}
+#sobre .sobre-creador p{margin:0 0 18px;font-family:var(--marca);font-size:clamp(1.15rem,1.7vw,1.4rem);font-weight:600;line-height:1.25;overflow-wrap:anywhere}
+@media(max-width:780px){#sobre .sobre-presentacion h2{margin-bottom:26px}#sobre .sobre-autoria h3{margin-bottom:32px}#sobre .sobre-creador{margin-bottom:36px}#sobre .sobre-creador p{font-size:1.25rem}}
