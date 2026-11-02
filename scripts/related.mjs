@@ -39,9 +39,12 @@ export function relatedSelections(items){
       if(candidate.url===current.url)continue;
       scores.set(candidate,(scores.get(candidate)||0)+(weights.get(topic)||1));
     }
-    // Specific shared subjects outrank broad ones. Within equal relevance,
-    // newest publications come first; URLs provide a stable final tie-break.
-    const selected=[...scores].sort(([a,sa],[b,sb])=>sb-sa||b.date-a.date||a.url.localeCompare(b.url,'es')).slice(0,2).map(([item])=>item);
+    // Keep the strongest thematic match, then the newest remaining related
+    // publication. Relevance and URL break date ties without repeating a card.
+    const ranked=[...scores].sort(([a,sa],[b,sb])=>sb-sa||b.date-a.date||a.url.localeCompare(b.url,'es'));
+    const selected=ranked.length?[ranked[0][0]]:[];
+    const newest=ranked.slice(1).sort(([a,sa],[b,sb])=>b.date-a.date||sb-sa||a.url.localeCompare(b.url,'es'))[0];
+    if(newest)selected.push(newest[0]);
     return [current.url,selected];
   }));
 }

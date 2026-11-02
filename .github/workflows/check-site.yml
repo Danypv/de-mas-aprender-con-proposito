@@ -1,0 +1,55 @@
+name: Comprobar sitio y recomendaciones
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: comprobar-sitio-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Leer sitio
+        uses: actions/checkout@v4
+      - name: Preparar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Instalar generador
+        run: npm ci --ignore-scripts
+      - name: Comprobar comportamiento con contenido temporal
+        run: |
+          npm run test:related
+          npm run test:readings
+          npm run test:videos
+          npm run test:podcasts
+          npm run test:structured-data
+          npm run test:sharing
+          npm run test:collections
+          npm run test:redirects
+          npm run test:carousel
+          npm run test:search
+      - name: Validar y generar las cuatro secciones
+        run: |
+          npm run check:content
+          npm run build:content
+          npm run check:readings
+          npm run build:readings
+          npm run check:podcasts
+          npm run build:podcasts
+          npm run check:videos
+          npm run build:videos
+          npm run build:latest
+          npm run build:sitemap
+          npm run build:search
+          npm run check:search
+          npm run check:site
