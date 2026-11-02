@@ -3,13 +3,8 @@
 #lecturas .lecturas-todas{display:inline-flex;align-items:center;gap:12px;min-height:44px;flex-shrink:0;text-decoration:none;border-bottom:1px solid var(--amarillo);font-size:1rem}
 #lecturas .lecturas-todas span{color:var(--amarillo)}
 #lecturas .lecturas-colecciones{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
-#lecturas .lectura-coleccion{--superficie:#1a1a1a;--tinta:#fff;--secundario:#cfcac1;--acento:#ffb600;--borde:#3c3c3c;--boton:#ffb600;--boton-tinta:#000;display:flex;flex-direction:column;justify-content:space-between;gap:28px;min-width:0;min-height:176px;padding:28px;border:1px solid var(--borde);border-radius:24px;background:var(--superficie);color:var(--tinta);text-decoration:none;box-shadow:0 12px 28px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.045);transition:transform .18s ease,box-shadow .18s ease}
+#lecturas .lectura-coleccion{--superficie:#fff;--tinta:#171717;--secundario:#444;--acento:#171717;--borde:#fff;--boton:#ffb600;--boton-tinta:#000;display:flex;flex-direction:column;justify-content:space-between;gap:28px;min-width:0;min-height:176px;padding:28px;border:1px solid var(--borde);border-radius:24px;background:var(--superficie);color:var(--tinta);text-decoration:none;box-shadow:0 12px 28px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.045);transition:transform .18s ease,box-shadow .18s ease}
 #lecturas .lectura-coleccion h3{max-width:none;margin:0;color:var(--tinta);font-size:1.4rem;line-height:1.3;overflow-wrap:anywhere}
-#lecturas .lectura-coleccion h3::before{content:"";display:block;width:30px;height:3px;margin-bottom:18px;border-radius:2px;background:var(--acento)}
-#lecturas .lectura-amarillo{--superficie:#ffb600;--tinta:#101010;--secundario:#292000;--acento:#101010;--borde:#ffb600;--boton:#000;--boton-tinta:#ffb600}
-#lecturas .lectura-blanco{--superficie:#fff;--tinta:#171717;--secundario:#444;--acento:#8a5e00;--borde:#fff}
-#lecturas .lectura-crema{--superficie:#fff6e0;--tinta:#1a1a1a;--secundario:#494139;--acento:#8a5e00;--borde:#fff6e0;--boton:#1a1a1a;--boton-tinta:#fff6e0}
-#lecturas .lectura-contorno{--superficie:#000;--borde:#ffb600;border-width:2px}
 #lecturas .lectura-coleccion-pie{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
 #lecturas .lectura-cantidad{color:var(--secundario);font-size:1rem;white-space:nowrap}
 #lecturas .lectura-cantidad strong{color:var(--acento);font-family:var(--marca);font-size:1.45rem;font-weight:600;margin-right:5px}
