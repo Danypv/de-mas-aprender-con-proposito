@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "revision": "56879064f7de2cb5",
-  "bundle": "/assets/busqueda/56879064f7de2cb5/pagefind.js",
+  "revision": "72019203a284d85b",
+  "bundle": "/assets/busqueda/72019203a284d85b/pagefind.js",
   "count": 22,
   "publicationCount": 8,
   "entries": [
@@ -140,8 +140,8 @@
   ],
   "files": [
     {
-      "path": "filter/es_8f5f294.pf_filter",
-      "sha256": "c6d39b2db6839450bf30641281c5152fa68ab2c33c6c9ab7117a0761f96a7cf9"
+      "path": "filter/es_6841a0c.pf_filter",
+      "sha256": "8771a3d08351271f9147b5d05a3170090ca62a151cea30d01aac0181cb3dfa88"
     },
     {
       "path": "fragment/es_1574f3f.pf_fragment",
@@ -208,6 +208,10 @@
       "sha256": "e06ac6d73147e5210fd5fe6dfa2410e34a91fb7dda3ae0a63e6b974acfda77c7"
     },
     {
+      "path": "fragment/es_a985755.pf_fragment",
+      "sha256": "263a8f1f69b564a58c8d132fe56731458ef4e4829ec93d1a4e05f1ccf7445bbc"
+    },
+    {
       "path": "fragment/es_abbd857.pf_fragment",
       "sha256": "67acf52caa0f882672ce9165afa44267e686b79cac8389d9ae8e865245c26329"
     },
@@ -220,10 +224,6 @@
       "sha256": "d7ddb6d920733b2b73e43ffc60f2a4f921c5906e6e25d7923fdba3884369bdd3"
     },
     {
-      "path": "fragment/es_d211fa3.pf_fragment",
-      "sha256": "210b77d5371087a6156423db206962be533489e36c9b95206c0ba0af289563e6"
-    },
-    {
       "path": "fragment/es_ea47cfb.pf_fragment",
       "sha256": "3562771b6f8c99572d37c1af6c8cd3a4708921cdd6c5c7f69953ebef7e5f5738"
     },
@@ -232,12 +232,12 @@
       "sha256": "f34c96cad425f66320d15a0d9509ade89a227b3cf7b1cca77af64f94b6de0e17"
     },
     {
-      "path": "index/es_3abb7d3.pf_index",
-      "sha256": "6faa3a993882d248dcdc3000b78da422a9d0fcab7dd43b76a4fe5629ca10005a"
+      "path": "index/es_ec47e23.pf_index",
+      "sha256": "c2c83858ae80e54f8e00e914c834fe669c995ea29eebce88ba0e940c7262c1ab"
     },
     {
       "path": "pagefind-entry.json",
-      "sha256": "8172a3e410cb9c77a47fbf7a74f084e1b0bf3dd085c05d26aa0903eeea91824f"
+      "sha256": "51accade7fe5591867051776a1cf6eb01d797c1f73c9512ce9f7144c1444c42f"
     },
     {
       "path": "pagefind-highlight.js",
@@ -248,8 +248,8 @@
       "sha256": "4ca50d25bcab9e1c3afbc00ab5f7761114e83c8fc1b83d38655af1558b650c2a"
     },
     {
-      "path": "pagefind.es_ad5fb6dcfd.pf_meta",
-      "sha256": "a90feb0a81da4bd4b35a9d7d16583448d6a31a065b64f3917f3aa7cd54995ba2"
+      "path": "pagefind.es_e9724518bb.pf_meta",
+      "sha256": "9d4b1b1fd2ba15c5007817ec4fdaecafdf6e2bd58898416356decab4247f0c0b"
     },
     {
       "path": "pagefind.js",
