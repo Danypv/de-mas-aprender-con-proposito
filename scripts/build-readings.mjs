@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { shareBlock } from './share.mjs';
+import { referencesBlock } from './references.mjs';
 import MarkdownIt from 'markdown-it';
 import { authorProfile } from './authors.mjs';
 import { articleData, collectionData, contentPath } from './structured-data.mjs';
@@ -54,7 +55,7 @@ for (const reading of readings) {
     CATEGORIES:reading.collections.map(key=>e(collections.find(c=>c.slug===key).title)).join(' · '),
     READING_META:reading.type==='full' ? `${Math.max(1,Math.ceil(reading.body.trim().split(/\s+/u).length/220))} min de lectura` : 'Lectura recomendada',
     COVER:reading.cover ? `<figure class="portada-articulo"><img src="${e(reading.cover)}" alt="${e(reading.cover_alt)}" decoding="async">${reading.cover_caption ? `<figcaption>${e(reading.cover_caption)}</figcaption>` : ''}</figure>` : '',
-    BODY:body, SOURCE:source,
+    BODY:body, SOURCE:source, REFERENCES:referencesBlock(reading.references),
     SHARE:shareBlock(reading.title, contentPath('/lecturas/textos/', reading.slug)),
     STRUCTURED_DATA:articleData(reading, { section:'/lecturas/', label:'Lecturas selectas', categories:reading.collections.map(key=>collections.find(c=>c.slug===key).title), contentSection:'/lecturas/textos/' }),
   }));

@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 import { shareBlock } from './share.mjs';
+import { referencesBlock } from './references.mjs';
 import MarkdownIt from "markdown-it";
 import { authorProfile, profileUrl } from './authors.mjs';
 import { articleData, collectionData, contentPath, setStructuredData } from './structured-data.mjs';
@@ -116,6 +117,7 @@ for (const post of visiblePosts) {
     AUTHOR_PROFILE: authorProfile(post.author_url, post.author),
     DATE: formatDate(post.date),
     BODY: body.trim(),
+    REFERENCES: referencesBlock(post.references),
     SHARE: shareBlock(post.title, contentPath('/blog/', post.slug)),
     SUMMARY: escapeHtml(post.summary),
     MINUTES: minutes(post),

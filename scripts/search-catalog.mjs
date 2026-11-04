@@ -8,6 +8,7 @@ import { readPodcasts } from './podcasts.mjs';
 import { episodeAuthor } from './authors.mjs';
 import {readEssays,categoryLabels} from './essays.mjs';
 import { contentPath, origin } from './structured-data.mjs';
+import { referencesBlock } from './references.mjs';
 
 const escape = value => String(value ?? '').replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 const textOnly = value => String(value).replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
@@ -20,7 +21,7 @@ export function searchDocuments(root = process.cwd()) {
   const sources = new Map();
   const add = (url, item, label, kind = 'publication') => {
     if (sources.has(url)) throw Error(`Búsqueda: dirección repetida ${url}`);
-    sources.set(url, { url, title: item.title, summary: item.summary || '', author: item.author || item.presenter || '', date: item.date ? new Date(item.date).toISOString().slice(0,10) : '', keywords: [...(item.categories || []), ...(item.collections || []).map(key => collections.find(c => c.slug === key)?.title || key), item.source_name || ''].join(' · '), seriesBody:kind === 'series' ? item.body : '', section: label, kind });
+    sources.set(url, { url, title: item.title, summary: item.summary || '', author: item.author || item.presenter || '', date: item.date ? new Date(item.date).toISOString().slice(0,10) : '', keywords: [...(item.categories || []), ...(item.collections || []).map(key => collections.find(c => c.slug === key)?.title || key), item.source_name || ''].join(' · '), seriesBody:kind === 'series' ? item.body : '', seriesReferences:kind === 'series' ? item.references : '', section: label, kind });
   };
   const posts = path.join(root, 'content/posts');
   if (fs.existsSync(posts)) for (const file of fs.readdirSync(posts).filter(file => file.endsWith('.md'))) {
@@ -69,7 +70,7 @@ export function searchDocuments(root = process.cwd()) {
     if (record.url === '/#sobre') body = `<h1>${escape(record.title)}</h1>${about}`;
     else if (record.url === '/') body = section(home, 'inicio');
     else if (record.kind === 'catalog') body = intro(html);
-    else if (record.kind === 'series') body = `${intro(html) || ''}<p>${escape(record.author)}</p>${markdown.render(record.seriesBody || '')}`;
+    else if (record.kind === 'series') body = `${intro(html) || ''}<p>${escape(record.author)}</p>${markdown.render(record.seriesBody || '')}${referencesBlock(record.seriesReferences)}`;
     else {
       body = html.match(/<main\b[^>]*id="contenido"[^>]*>([\s\S]*?)<\/main>/)?.[1];
     }

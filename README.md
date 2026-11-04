@@ -22,3 +22,9 @@ El ciclo completo se ejecuta en el publicador privado de Pages CMS: aprobación,
 
 `npm run test:essays` comprueba el ciclo editorial con contenido temporal. `test:search` comprueba consultas reales de Pagefind, incluyendo altas, cambios y retirada de ensayos. El publicador privado incorpora una prueba adicional de eliminación con cambio previo de dirección.
 
+
+## Referencias opcionales
+
+Las seis colecciones admiten `references` como texto Markdown opcional en el front matter. `scripts/references.mjs` genera un desplegable nativo cerrado después del contenido, solo cuando hay referencias. Conserva cursivas y enlaces; convierte URL y DOI completos en enlaces y aplica sangría francesa con `assets/referencias.css`. Las entradas se preparan en APA 7 y se pegan en orden alfabético, una por párrafo; no se generan ni se corrigen datos bibliográficos automáticamente.
+
+El buscador incluye el texto de las referencias aunque el desplegable esté cerrado. Editar o vaciar el campo renueva la página y el índice; eliminar la publicación desde Pages retira también sus referencias. `test:references`, `test:search` y el publicador privado comprueban estas rutas con contenido temporal. Los destacados y tiempos de lectura siguen calculándose solo sobre el cuerpo principal.
