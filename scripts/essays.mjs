@@ -7,11 +7,11 @@ import {escapeHtml as e} from './readings.mjs';
 import {contentPath, schemaDate} from './structured-data.mjs';
 
 export const essayCategories = [
-  ['arte','Arte'], ['bioetica','Bioética'], ['cultura','Cultura'],
+  ['arte','Arte'], ['bioetica','Bioética'], ['ciencia','Ciencia'], ['cultura','Cultura'],
   ['empresa','Empresa'], ['etica','Ética'], ['filosofia','Filosofía'],
   ['historia','Historia'], ['inteligencia-artificial','Inteligencia Artificial'],
   ['literatura','Literatura'], ['medicina','Medicina'], ['politica','Política'],
-  ['salud','Salud'], ['tecnologia','Tecnología'],
+  ['salud','Salud'], ['tecnologia','Tecnología'], ['teologia','Teología'],
 ].map(([slug,title])=>({slug,title}));
 export const categoryLabels = item => item.categories.map(slug=>essayCategories.find(c=>c.slug===slug).title);
 export const essayPath = item => contentPath('/ensayos/',item.slug);

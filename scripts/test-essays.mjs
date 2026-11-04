@@ -5,6 +5,7 @@ import assert from 'node:assert/strict';
 import {execFileSync} from 'node:child_process';
 import matter from 'gray-matter';
 import {essayCategories,renderEssayBody,readEssays} from './essays.mjs';
+import {relatedInventory} from './related.mjs';
 
 const source=process.cwd(),root=fs.mkdtempSync(path.join(os.tmpdir(),'demas-essays-'));
 const text=Array.from({length:12},(_,i)=>`Párrafo ${i+1}. Esta reflexión desarrolla una idea sobre el deseo y la responsabilidad de juzgar con razones propias.`).join('\n\n');
@@ -24,7 +25,7 @@ try{
   for(const dir of ['essays','posts'])fs.mkdirSync(path.join(root,'content',dir),{recursive:true});
   const labels=essayCategories.map(c=>c.title);
   assert.deepEqual(labels,[...labels].sort((a,b)=>a.localeCompare(b,'es',{sensitivity:'base'})));
-  assert.equal(labels.length,13);assert(labels.includes('Empresa')&&labels.includes('Cultura'));
+  assert.equal(labels.length,15);for(const label of ['Empresa','Cultura','Ciencia','Teología'])assert(labels.includes(label));
   const rendered=renderEssayBody(text,base.slug);
   assert.equal((rendered.match(/class="destacado-editorial"/g)||[]).length,2);
   assert.equal(renderEssayBody(text,base.slug),rendered);
@@ -64,6 +65,11 @@ try{
   assert(!html('sitemap.xml').includes('/ensayos/platon-y-el-eros/'));
   assert(!html('blog/articulo-afin/index.html').includes('class="relacionado" href="/ensayos/platon-y-el-eros/"'));
   manifest=JSON.parse(html('assets/busqueda/manifest.json'));assert(!manifest.entries.some(item=>item.url==='/ensayos/platon-y-el-eros/'));
+  save('nuevos-temas',{...base,slug:'ciencia-y-teologia',categories:['ciencia','teologia']});build();
+  assert(home().includes('<option value="ciencia">Ciencia</option>'));
+  assert(home().includes('<option value="teologia">Teología</option>'));
+  const themes=relatedInventory(root).find(item=>item.url==='/ensayos/ciencia-y-teologia/').topics;
+  assert(themes.includes('ciencia')&&themes.includes('teologia'),'Los temas nuevos conectan con las recomendaciones');
   save('invalid',{...base,categories:['inexistente']});assert.throws(()=>readEssays(root),/tema válido/);
   console.log('Ensayos: vacío inicial, categorías, autor opcional, destacados estables, novedades, edición, privacidad, búsqueda, recomendaciones, retirada y regreso al estado vacío verificados.');
 }finally{fs.rmSync(root,{recursive:true,force:true})}

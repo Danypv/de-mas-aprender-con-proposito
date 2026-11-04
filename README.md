@@ -16,7 +16,7 @@ Ensayos reúne textos que desarrollan ideas y abren preguntas. El Blog se presen
 
 La colección `content/essays` genera `/ensayos/` y las páginas individuales. `npm run build:essays` valida y genera el catálogo; `build:latest` actualiza la franja entre Lecturas selectas y Podcast y video. La portada elige la fecha de publicación más reciente, sin depender de una marca manual de destacado. Sin publicaciones muestra un aviso breve.
 
-Los temas se seleccionan de una lista alfabética de trece opciones. La plantilla conserva las fuentes y los colores de DE+, presenta las portadas en 16:9 y admite un enlace HTTPS opcional junto a la firma. Dos párrafos centrales se destacan con una selección estable por dirección cuando el texto tiene al menos cinco párrafos elegibles; los textos más breves conservan su estructura.
+Los temas se seleccionan de una lista alfabética de quince opciones, incluidas Ciencia y Teología. La plantilla conserva las fuentes y los colores de DE+, presenta las portadas en 16:9 y admite un enlace HTTPS opcional junto a la firma. Dos párrafos centrales se destacan con una selección estable por dirección cuando el texto tiene al menos cinco párrafos elegibles; los textos más breves conservan su estructura.
 
 El ciclo completo se ejecuta en el publicador privado de Pages CMS: aprobación, edición y eliminación actualizan páginas, portada, novedades, recomendaciones, redirecciones, sitemap y buscador global. El borrado se basa en `cms_source`, conserva publicaciones ajenas a Pages y retira también las direcciones anteriores del ensayo. Las imágenes compartidas se conservan para evitar afectar otras publicaciones.
 

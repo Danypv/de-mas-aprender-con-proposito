@@ -26,7 +26,7 @@ try {
   save('videos',{...base,title:'Un video para pensar',categories:['Educación'],format:'conference',source_url:'https://youtu.be/WisWde4lZdQ',transcript:'El término transcripcionvisual aparece en el video.'});
   save('podcast-series',{title:'Conversaciones',slug:'serie',presenter:'Voz Austral',summary:'Una serie de DE+.',status:'published'},'La presentación contiene presentacionaustral.');
   save('podcast-episodes',{...base,title:'El episodio del juicio',series:'serie',audio_url:'https://example.org/audio.mp3',transcript:'La palabra transcripcionaudio aparece en el episodio.'});
-  save('essays',{...base,title:'Un ensayo sobre Platón',categories:['filosofia']},'El eros y juiciocompartido con textopropioensayo.');
+  save('essays',{...base,title:'Un ensayo sobre Platón',categories:['filosofia','ciencia','teologia']},'El eros y juiciocompartido con textopropioensayo.');
   fs.writeFileSync(path.join(fixture,'content/posts/privado.md'),matter.stringify('secretoborrador',{...base,slug:'privado',categories:['Ética'],status:'draft'}));
   const run=script=>execFileSync(process.execPath,[`scripts/${script}.mjs`],{cwd:fixture,stdio:'pipe'});
   const build=()=>{ for(const step of ['build-essays','build-content','build-readings','build-videos','build-podcasts','build-latest','build-sitemap','build-search','check-search']) run(step); };
@@ -68,6 +68,7 @@ try {
     assert.equal(results[0].meta.section,section);
   }
   assert((await find('filosofia')).some(item=>item.url==='/lecturas/textos/prueba/'),'Búsqueda sin tildes');
+  for(const theme of ['Ciencia','Teología'])assert((await find(theme,'Ensayos')).some(item=>item.url==='/ensayos/prueba/'),'Los temas nuevos de Ensayos se indexan');
   assert.equal((await find('IA')).length,2,'Equivalencia entre IA e inteligencia artificial');
   assert.equal((await find('transcripcionvisual'))[0].url,'/videos/prueba/');
   assert.equal((await find('transcripcionaudio'))[0].url,'/podcast/episodios/prueba/');
