@@ -1,3 +1,6 @@
 /* The Blog reuses the approved Ensayos components, fonts and brand tokens. */
 .blog-franja h2{max-width:16ch}
-@media(max-width:720px){.blog-franja{padding:60px 0}.blog-franja .contenedor{width:calc(100% - 40px)}.blog-franja h2{max-width:none}}
+.blog-encabezado{display:flex;align-items:flex-end;justify-content:space-between;gap:32px}
+.blog-encabezado>div{min-width:0}
+.blog-encabezado>.enlace{flex-shrink:0}
+@media(max-width:720px){.blog-franja{padding:60px 0}.blog-franja .contenedor{width:calc(100% - 40px)}.blog-franja h2{max-width:none}.blog-encabezado{flex-direction:column;align-items:flex-start;gap:20px}}

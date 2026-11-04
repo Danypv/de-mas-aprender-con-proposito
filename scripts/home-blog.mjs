@@ -4,7 +4,6 @@ import matter from 'gray-matter';
 import {escapeHtml as e} from './readings.mjs';
 import {contentPath} from './structured-data.mjs';
 
-export const categoryKey=value=>String(value).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('es').replace(/\s+/g,' ').trim();
 export function readHomeBlog(root){
   const folder=path.join(root,'content/posts');
   if(!fs.existsSync(folder))return [];
@@ -13,9 +12,7 @@ export function readHomeBlog(root){
     .sort((a,b)=>new Date(b.date)-new Date(a.date)||a.slug.localeCompare(b.slug,'es'));
 }
 export function updateHomeBlog(home,root){
-  const posts=readHomeBlog(root),post=posts[0],categories=new Map();
-  for(const item of posts)for(const label of item.categories||[])if(!categories.has(categoryKey(label)))categories.set(categoryKey(label),String(label).trim());
-  const options='<option value="">Todos los temas</option>'+[...categories].sort((a,b)=>a[1].localeCompare(b[1],'es',{sensitivity:'base'})).map(([key,label])=>`<option value="${e(key)}">${e(label)}</option>`).join('');
+  const posts=readHomeBlog(root),post=posts[0];
   let feature='<p class="ensayos-vacio">Próximamente encontrarás aquí nuevas publicaciones.</p>';
   if(post){
     const url=contentPath('/blog/',post.slug);
@@ -24,7 +21,7 @@ export function updateHomeBlog(home,root){
     const summary=String(post.summary||'').replace(/\s+/g,' ').trim().split(/(?<=[.!?])\s/)[0];
     feature=`<article class="ensayos-portada blog-portada"><a class="ensayos-imagen" href="${e(url)}"><img src="${e(image)}" alt="${e(post.cover?post.cover_alt:'DE+ · Aprender con propósito')}" width="960" height="540" loading="lazy" decoding="async"></a><div><p class="ensayos-tema">${e((post.categories||[]).join(' · '))}</p><h3><a href="${e(url)}">${e(post.title)}</a></h3><p class="ensayos-resumen">${e(summary)}</p><a class="enlace" href="${e(url)}">Leer publicación <span class="flecha" aria-hidden="true">→</span></a></div></article>`;
   }
-  const section=`<section class="seccion seccion-hueso blog-franja" id="ideas" aria-labelledby="titulo-blog"><div class="contenedor"><div class="ensayos-encabezado"><div><p class="etiqueta">Blog</p><h2 id="titulo-blog">Para pensar nuestro tiempo</h2><p class="ensayos-descripcion">Reflexiones breves sobre asuntos del presente.</p></div><form class="ensayos-form" action="/blog/" method="get"><label for="blog-tema-portada">Explorar por tema</label><select id="blog-tema-portada" name="tema"${posts.length?'':' disabled'}>${options}</select><button type="submit" class="enlace">Ver todas las publicaciones <span class="flecha" aria-hidden="true">→</span></button></form></div>${feature}</div></section>`;
+  const section=`<section class="seccion seccion-hueso blog-franja" id="ideas" aria-labelledby="titulo-blog"><div class="contenedor"><div class="blog-encabezado"><div><p class="etiqueta">Blog</p><h2 id="titulo-blog">Para pensar nuestro tiempo</h2><p class="ensayos-descripcion">Reflexiones breves sobre asuntos del presente.</p></div><a class="enlace" href="/blog/">Ver todas las publicaciones <span class="flecha" aria-hidden="true">→</span></a></div>${feature}</div></section>`;
   if(!home.includes('<!-- BLOG_HOME_START -->'))throw Error('Falta el espacio de la franja del Blog');
   return home.replace(/<!-- BLOG_HOME_START -->[\s\S]*?<!-- BLOG_HOME_END -->/,()=>`<!-- BLOG_HOME_START -->\n${section}\n<!-- BLOG_HOME_END -->`);
 }

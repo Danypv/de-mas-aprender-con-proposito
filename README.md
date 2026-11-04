@@ -10,7 +10,7 @@ Las recomendaciones de «Para seguir pensando» se recalculan con `npm run build
 `npm run test:related` comprueba esta selección y la integración de Blog, Lecturas selectas, Video y Podcast con sus plantillas reales, incluidos los temas heredados, la retirada de episodios y los destinos o marcadores ausentes. El flujo `Comprobar sitio y recomendaciones` ejecuta las pruebas y la generación completa en cada push a `main` y en cada pull request. Este flujo valida el sitio sin publicar cambios.
 # Ensayos
 
-La franja del Blog también se genera automáticamente desde las publicaciones de `content/posts`. Reutiliza los componentes visuales de Ensayos y muestra la publicación más reciente por fecha, con su imagen horizontal, título y una presentación breve. Sus temas se ordenan alfabéticamente y las variantes de mayúsculas o tildes se agrupan. El selector enlaza con el catálogo filtrado del Blog. Editar o eliminar una publicación actualiza esta franja durante `build:latest`; `npm run test:home-blog` comprueba esos comportamientos.
+La franja del Blog también se genera automáticamente desde las publicaciones de `content/posts`. Reutiliza los componentes visuales de Ensayos y muestra la publicación más reciente por fecha, con su imagen horizontal, título y una presentación breve. El enlace a todas las publicaciones conduce al catálogo interno del Blog, donde se conserva el selector alfabético de temas y se agrupan variantes de mayúsculas o tildes. Editar o eliminar una publicación actualiza esta franja durante `build:latest`; `npm run test:home-blog` comprueba esos comportamientos.
 
 Ensayos reúne textos que desarrollan ideas y abren preguntas. El Blog se presenta como un espacio de reflexiones breves sobre asuntos del presente.
 

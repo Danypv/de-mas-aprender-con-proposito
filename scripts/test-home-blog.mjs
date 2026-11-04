@@ -24,7 +24,8 @@ try{
   assert(html.includes('/blog/reciente/'));assert(!html.includes('/blog/anterior/'));
   assert(!html.includes('Texto privado'));
   assert(!html.includes('Segunda frase que queda'));
-  assert.equal((html.match(/value="inteligencia artificial"/g)||[]).length,1);
+  assert(!html.includes('Explorar por tema')&&!html.includes('<select')&&!html.includes('<form'),'El filtro se presenta solo dentro del Blog');
+  assert(html.includes('href="/blog/">Ver todas las publicaciones'));
   assert.equal(outside(html),outside(home));
   assert.equal(updateHomeBlog(html,root),html,'La regeneración es estable');
   save('nuevo',{...base,slug:'reciente',title:'Título corregido',date:'2026-11-02',categories:['Historia']});
@@ -34,7 +35,7 @@ try{
   console.log('Franja del Blog: última publicación por fecha, imagen y texto, edición, borradores, eliminación, categorías normalizadas y conservación del resto de la portada.');
 }finally{fs.rmSync(root,{recursive:true,force:true})}
 
-// Exercise the actual catalogue script with the query emitted by the home form.
+// The internal catalogue retains its filter and accepts bookmarked theme URLs.
 const entries=[['Ética digital','Inteligencia Artificial'],['inteligencia artificial','Ética'],['Historia']].map(categories=>({dataset:{categories:JSON.stringify(categories)},hidden:false}));
 const select={value:'',options:[],append(option){this.options.push(option)},addEventListener(event,callback){this.change=callback}};
 const counter={},empty={},history=[];
