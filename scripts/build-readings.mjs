@@ -18,7 +18,11 @@ const cards = list => list.map(reading => `<article class="entrada${reading.feat
   <div>${reading.cover ? `<img class="imagen-entrada" src="${e(reading.cover)}" alt="${e(reading.cover_alt)}" loading="lazy" decoding="async">` : ''}<h3><a href="/lecturas/textos/${reading.slug}/">${e(reading.title)}</a></h3><p class="resumen">${e(reading.summary)}</p><p class="firma">${e(reading.author)}</p><p class="firma">${reading.collections.map(key => e(collections.find(c=>c.slug===key).title)).join(' · ')}</p></div>
   <a class="leer" href="/lecturas/textos/${reading.slug}/">${reading.type==='full' ? 'Leer texto' : 'Ver recomendación'} <span class="flecha" aria-hidden="true">→</span></a>
 </article>`).join('\n');
-const collectionNav = active => `<nav class="colecciones-nav" aria-label="Colecciones de lectura"><a href="/lecturas/"${active==='' ? ' aria-current="page"' : ''}>Todas las lecturas</a>${collections.map(c=>`<a href="/lecturas/${c.slug}/"${active===c.slug ? ' aria-current="page"' : ''}>${e(c.title)}</a>`).join('')}</nav>`;
+const collectionNav = active => {
+  const choices=[{slug:'',title:'Todas las lecturas'},...[...collections].sort((a,b)=>a.title.localeCompare(b.title,'es',{sensitivity:'base'}))];
+  const url=c=>`/lecturas/${c.slug?c.slug+'/':''}`;
+  return `<form class="coleccion-selector" action="/lecturas/" method="get"><label for="coleccion">Explorar por categoría<select id="coleccion" name="coleccion">${choices.map(c=>`<option value="${url(c)}"${active===c.slug?' selected':''}>${e(c.title)}</option>`).join('')}</select></label><button type="submit">Ver lecturas <span aria-hidden="true">→</span></button></form><noscript><nav class="colecciones-nav" aria-label="Colecciones de lectura">${choices.map(c=>`<a href="${url(c)}"${active===c.slug?' aria-current="page"':''}>${e(c.title)}</a>`).join('')}</nav></noscript>`;
+};
 for (const collection of [{slug:'',title:'Leer, pensar y conversar.',summary:'Textos escogidos para ampliar la mirada.'},...collections]) {
   const selected = collection.slug ? readings.filter(r=>r.collections.includes(collection.slug)) : readings;
   const page=fill(template, {

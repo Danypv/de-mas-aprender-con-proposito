@@ -4,7 +4,8 @@ import os from 'node:os';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import matter from 'gray-matter';
-import { readReadings } from './readings.mjs';
+import { collections, readReadings } from './readings.mjs';
+import vm from 'node:vm';
 
 const project=process.cwd();
 const fixture=fs.mkdtempSync(path.join(os.tmpdir(),'demas-readings-'));
@@ -29,6 +30,16 @@ try {
   assert(page('lecturas/textos/lectura-completa/index.html').includes('Una lectura &lt;especial&gt; $&'));
   assert(!page('lecturas/textos/lectura-completa/index.html').match(/\{\{[A-Z_]+\}\}/));
   const first=page('lecturas/index.html');build();assert.equal(page('lecturas/index.html'),first);
+  const titles=html=>[...html.matchAll(/<option value="\/lecturas\/[^\"]*"(?: selected)?>([^<]+)<\/option>/g)].map(m=>m[1]);
+  assert.deepEqual(titles(first),['Todas las lecturas',...collections.map(c=>c.title).sort((a,b)=>a.localeCompare(b,'es',{sensitivity:'base'}))]);
+  for(const active of ['',...collections.map(c=>c.slug)]){
+    const current=page(`lecturas/${active?active+'/':''}index.html`);
+    assert.equal((current.match(/id="coleccion"/g)||[]).length,1);
+    assert(current.includes(`<option value="/lecturas/${active?active+'/':''}" selected>`),'La categoría actual aparece seleccionada');
+    assert(current.includes('src="/assets/lecturas-categorias.js"'));
+    assert(current.includes('<noscript><nav'),'Navegación disponible sin JavaScript');
+    for(const [,url] of current.matchAll(/<option value="(\/lecturas\/[^\"]*)"/g))assert(fs.existsSync(path.join(fixture,url,'index.html')),'El desplegable conserva las direcciones de las colecciones');
+  }
   assert(!first.includes('id="buscar"'),'Las lecturas usan el buscador global');
   assert(first.includes('class="herramientas" role="group"'));
   assert(!/<div hidden class="herramientas"/.test(first),'Dos tipos permiten filtrar');
@@ -40,3 +51,12 @@ try {
   save('bad.md',{...base,slug:'invalid-link',type:'link',source_url:'javascript:alert(1)'});assert.throws(()=>readReadings(fixture));
   console.log('Pruebas correctas: colecciones múltiples, exclusión de borradores, fuentes, HTML escapado, páginas vacías, generación estable y validación de rutas/enlaces.');
 } finally { fs.rmSync(fixture,{recursive:true,force:true}); }
+
+const select={value:'/lecturas/filosofia/',options:[{value:'/lecturas/'},{value:'/lecturas/filosofia/'}]};
+const form={querySelector:()=>select,addEventListener(_event,callback){this.submit=callback}};
+let navigated='';
+vm.runInNewContext(fs.readFileSync(new URL('../assets/lecturas-categorias.js',import.meta.url),'utf8'),{document:{querySelector:()=>form},location:{assign(url){navigated=url}}});
+form.submit({preventDefault(){}});assert.equal(navigated,'/lecturas/filosofia/');
+select.value='/lecturas/';form.submit({preventDefault(){}});assert.equal(navigated,'/lecturas/');
+select.value='https://example.org/';form.submit({preventDefault(){}});assert.equal(navigated,'/lecturas/');
+console.log('Desplegable de colecciones verificado: orden alfabético, selección actual, páginas existentes y navegación.');
