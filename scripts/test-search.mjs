@@ -17,7 +17,7 @@ try {
   fs.mkdirSync(path.join(fixture,'blog'));
   fs.copyFileSync(path.join(root,'index.html'),path.join(fixture,'index.html'));
   fs.copyFileSync(path.join(root,'blog/index.html'),path.join(fixture,'blog/index.html'));
-  for (const folder of ['posts','readings','videos','podcast-series','podcast-episodes']) fs.mkdirSync(path.join(fixture,'content',folder),{recursive:true});
+  for (const folder of ['essays','posts','readings','videos','podcast-series','podcast-episodes']) fs.mkdirSync(path.join(fixture,'content',folder),{recursive:true});
   const base={title:'Juicio y filosofía',slug:'prueba',author:'Autora Boreal',date:'2026-10-31',summary:'Una investigación para conversar.',status:'published'};
   const save=(folder,data,body='En el centro del texto aparece juiciocompartido.')=>fs.writeFileSync(path.join(fixture,'content',folder,'prueba.md'),matter.stringify(body,data));
   const post={...base,title:'Atención con <etiquetas> & criterio',categories:['Ética']};
@@ -26,9 +26,10 @@ try {
   save('videos',{...base,title:'Un video para pensar',categories:['Educación'],format:'conference',source_url:'https://youtu.be/WisWde4lZdQ',transcript:'El término transcripcionvisual aparece en el video.'});
   save('podcast-series',{title:'Conversaciones',slug:'serie',presenter:'Voz Austral',summary:'Una serie de DE+.',status:'published'},'La presentación contiene presentacionaustral.');
   save('podcast-episodes',{...base,title:'El episodio del juicio',series:'serie',audio_url:'https://example.org/audio.mp3',transcript:'La palabra transcripcionaudio aparece en el episodio.'});
+  save('essays',{...base,title:'Un ensayo sobre Platón',categories:['filosofia']},'El eros y juiciocompartido con textopropioensayo.');
   fs.writeFileSync(path.join(fixture,'content/posts/privado.md'),matter.stringify('secretoborrador',{...base,slug:'privado',categories:['Ética'],status:'draft'}));
   const run=script=>execFileSync(process.execPath,[`scripts/${script}.mjs`],{cwd:fixture,stdio:'pipe'});
-  const build=()=>{ for(const step of ['build-content','build-readings','build-videos','build-podcasts','build-latest','build-sitemap','build-search','check-search']) run(step); };
+  const build=()=>{ for(const step of ['build-essays','build-content','build-readings','build-videos','build-podcasts','build-latest','build-sitemap','build-search','check-search']) run(step); };
   const manifest=()=>JSON.parse(fs.readFileSync(path.join(fixture,'assets/busqueda/manifest.json'),'utf8'));
 
   globalThis.document={currentScript:null,querySelector:()=>({getAttribute:()=> 'es'})};
@@ -51,8 +52,8 @@ try {
     return Promise.all(result.results.map(item=>item.data()));
   };
   build();
-  assert.equal(manifest().publicationCount,5,'Las cuatro secciones y la serie entran en el índice');
-  assert.equal(manifest().count,19);
+  assert.equal(manifest().publicationCount,6,'Las cinco secciones y la serie entran en el índice');
+  assert.equal(manifest().count,21);
   for(const item of manifest().entries) {
     const page=fs.readFileSync(path.join(fixture,decodeURIComponent(item.url.split('#')[0].slice(1)),'index.html'),'utf8');
     assert(!page.includes('id="buscar"'),`No reaparece un buscador local en ${item.url}`);
@@ -60,8 +61,8 @@ try {
   }
   assert(/<div hidden class="herramientas"/.test(fs.readFileSync(path.join(fixture,'blog/index.html'),'utf8')),'Un solo tema no muestra un filtro redundante');
   await load();
-  assert.equal((await find('juiciocompartido')).length,4,'Se busca en el texto completo');
-  for(const section of ['Blog','Lecturas selectas','Videos','Podcast']) {
+  assert.equal((await find('juiciocompartido')).length,5,'Se busca en el texto completo');
+  for(const section of ['Blog','Ensayos','Lecturas selectas','Videos','Podcast']) {
     const results=await find('juiciocompartido',section);
     assert.equal(results.length,1);
     assert.equal(results[0].meta.section,section);
@@ -95,14 +96,20 @@ try {
   assert(/<div hidden class="herramientas"/.test(fs.readFileSync(path.join(fixture,'blog/index.html'),'utf8')),'Un blog vacío no muestra filtros');
   assert.equal((await find('"transcripcionvisual"')).length,0,'Los archivos antiguos no vuelven a entrar en el buscador');
   assert.equal((await find('"cromaticanueva"')).length,0,'Retirar una publicación también la retira del índice');
-  assert.equal(manifest().publicationCount,3);
+  assert.equal(manifest().publicationCount,4);
 
   save('posts',{...post,slug:'publicacion-futura'},'Una publicación nueva con incorporacionfutura.');
   build(); await load();
   assert.equal((await find('incorporacionfutura'))[0].url,'/blog/publicacion-futura/','La siguiente publicación se incorpora sin campos nuevos');
+  save('essays',{...base,title:'Ensayo corregido',categories:['etica']},'Texto actualizado textocorregidoensayo.');
+  build();await load();assert.equal((await find('textocorregidoensayo','Ensayos'))[0].meta.title,'Ensayo corregido');
+  assert.equal((await find('"textopropioensayo"')).length,0);
+  fs.unlinkSync(path.join(fixture,'content/essays/prueba.md'));
+  build();await load();assert.equal((await find('"textocorregidoensayo"')).length,0);
+  assert(!fs.existsSync(path.join(fixture,'ensayos/prueba/index.html')));
   fs.unlinkSync(path.join(fixture,'lecturas/textos/prueba/index.html'));
   assert.throws(()=>run('build-search'),'Una página ausente bloquea la publicación');
-  console.log('Buscador verificado con Pagefind: cuatro secciones, series, texto completo, transcripciones, filtros, tildes, IA, nuevas publicaciones, ediciones, retiradas, borradores y cobertura.');
+  console.log('Buscador verificado con Pagefind: cinco secciones, series, texto completo, transcripciones, filtros, tildes, IA, nuevas publicaciones, ediciones, retiradas, borradores y cobertura.');
 } finally {
   if(engine) await engine.destroy();
   for(const [key,value] of Object.entries(original)) { if(value===undefined)delete globalThis[key]; else globalThis[key]=value; }

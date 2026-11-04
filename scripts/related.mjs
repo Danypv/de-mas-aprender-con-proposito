@@ -6,6 +6,7 @@ import {readVideos} from './videos.mjs';
 import {readPodcasts} from './podcasts.mjs';
 import {contentPath} from './structured-data.mjs';
 import {identifyTopics,topics} from './topics.mjs';
+import {readEssays,categoryLabels} from './essays.mjs';
 
 const start='<!-- RELATED_START -->',end='<!-- RELATED_END -->';
 const pattern=/<!-- RELATED_START -->[\s\S]*?<!-- RELATED_END -->/;
@@ -20,6 +21,7 @@ export function relatedInventory(root){
   const dir=path.join(root,'content/posts');
   if(fs.existsSync(dir))for(const file of fs.readdirSync(dir).filter(file=>file.endsWith('.md')))add(matter.read(path.join(dir,file)).data,'/blog/','Blog','Leer el artículo');
   for(const item of readReadings(root))add(item,'/lecturas/textos/','Lecturas selectas','Leer la reseña');
+  for(const item of readEssays(root))add({...item,categories:categoryLabels(item)},'/ensayos/','Ensayos','Leer el ensayo');
   for(const item of readVideos(root))add(item,'/videos/','Video','Ver el video');
   const {series,episodes}=readPodcasts(root);
   for(const item of episodes){

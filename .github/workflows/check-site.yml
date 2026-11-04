@@ -28,6 +28,7 @@ jobs:
         run: npm ci --ignore-scripts
       - name: Comprobar comportamiento con contenido temporal
         run: |
+          npm run test:essays
           npm run test:related
           npm run test:readings
           npm run test:videos
@@ -38,7 +39,7 @@ jobs:
           npm run test:redirects
           npm run test:carousel
           npm run test:search
-      - name: Validar y generar las cuatro secciones
+      - name: Validar y generar las secciones
         run: |
           npm run check:content
           npm run build:content
@@ -48,6 +49,7 @@ jobs:
           npm run build:podcasts
           npm run check:videos
           npm run build:videos
+          npm run build:essays
           npm run build:latest
           npm run build:sitemap
           npm run build:search

@@ -1187,7 +1187,7 @@
         font-size: 11pt;
       }
     }
-    #ideas, #formatos, #sobre, #lecturas, #contenido { scroll-margin-top: 94px; }
+    #ideas, #ensayos, #formatos, #sobre, #lecturas, #contenido { scroll-margin-top: 94px; }
     #ideas .acceso-blog { margin:32px 0 0; }
   #sobre.cierre{padding:0}.sobre-nuevo{position:relative;z-index:1;padding-top:64px;padding-bottom:64px}.sobre-nuevo>h2{max-width:24ch;margin:0 0 36px;font-size:clamp(2rem,3.5vw,2.8rem);line-height:1.1;letter-spacing:-.03em}.sobre-columnas{display:grid;grid-template-columns:1.1fr 1fr;gap:70px}.sobre-columnas .descripcion{margin:0;max-width:49ch}.sobre-autoria{border-left:1px solid rgba(0,0,0,.28);padding-left:38px}.sobre-autoria h3{font-family:var(--marca);font-weight:600;font-size:clamp(1.4rem,2.2vw,1.75rem);line-height:1.2;margin:0 0 16px}.sobre-autoria p{font-family:var(--lectura);font-size:1.0625rem;line-height:1.75;margin:0 0 22px}.sobre-autoria .enlace{border-color:var(--negro)}
 .sobre-creador{margin:0 0 18px;padding:0 0 14px;border-bottom:1px solid rgba(0,0,0,.24)}
@@ -1231,6 +1231,7 @@
   <link rel="stylesheet" href="/assets/sobre.css?v=creadores-20261102">
   <link rel="stylesheet" href="/assets/buscar.css">
   <script src="/assets/buscar.js" type="module"></script>
+  <link rel="stylesheet" href="/assets/ensayos.css">
 </head>
 
 <body>
@@ -1250,6 +1251,7 @@
 
       <nav class="menu" id="menu-principal" aria-label="Navegación principal">
         <a href="blog/">Blog</a>
+        <a href="/ensayos/">Ensayos</a>
         <a href="lecturas/">Lecturas selectas</a>
         <a href="#formatos">Podcast y video</a>
         <a href="#sobre">Sobre DE+</a>
@@ -1320,7 +1322,7 @@
             <div class="ideas-texto">
               <p class="etiqueta">Blog</p>
               <h2>Para pensar nuestro tiempo.</h2>
-              <p class="nota">Ensayos, divulgación y voces invitadas.</p>
+              <p class="nota">Reflexiones breves sobre asuntos del presente.</p>
               <p class="acceso-blog"><a class="enlace" href="blog/">Leer el blog<span class="flecha" aria-hidden="true">→</span></a></p>
             </div>
           </div>
@@ -1346,6 +1348,10 @@
     </section>
 
     <!-- ================= PODCAST Y VIDEO ================= -->
+    <!-- ESSAYS_START -->
+<section class="seccion seccion-hueso ensayos-franja" id="ensayos" aria-labelledby="titulo-ensayos"><div class="contenedor"><div class="ensayos-encabezado"><div><p class="etiqueta">Ensayos</p><h2 id="titulo-ensayos">Pensar a fondo</h2><p class="ensayos-descripcion">Textos que desarrollan ideas y abren preguntas.</p></div><form class="ensayos-form" action="/ensayos/" method="get"><label for="ensayos-tema-portada">Explorar por tema</label><select id="ensayos-tema-portada" name="tema" disabled><option value="">Todos los temas</option><option value="arte" disabled>Arte</option><option value="bioetica" disabled>Bioética</option><option value="cultura" disabled>Cultura</option><option value="empresa" disabled>Empresa</option><option value="etica" disabled>Ética</option><option value="filosofia" disabled>Filosofía</option><option value="historia" disabled>Historia</option><option value="inteligencia-artificial" disabled>Inteligencia Artificial</option><option value="literatura" disabled>Literatura</option><option value="medicina" disabled>Medicina</option><option value="politica" disabled>Política</option><option value="salud" disabled>Salud</option><option value="tecnologia" disabled>Tecnología</option></select><button type="submit" class="enlace">Ver todos los ensayos <span class="flecha" aria-hidden="true">→</span></button></form></div><p class="ensayos-vacio">Próximamente encontrarás aquí los primeros ensayos.</p></div></section>
+<!-- ESSAYS_END -->
+
     <section class="seccion" id="formatos" aria-label="Podcast y video">
       <div class="contenedor audiovisuales-accesos">
         <a class="audiovisual-acceso" href="podcast/" aria-labelledby="titulo-podcast">
@@ -1395,7 +1401,7 @@
     <div class="contenedor">
       <div class="pie pie-superior">
         <div class="pie-marca"><img src="assets/marca/logo-blanco-amarillo.svg" alt="DE+ · Aprender con propósito" width="150" height="118"></div>
-        <nav class="pie-nav" aria-label="Navegación al pie"><a href="/blog/">Blog</a><a href="/lecturas/">Lecturas selectas</a><a href="/podcast/">Podcast</a><a href="/videos/">Video</a><a href="#sobre">Sobre DE+</a></nav>
+        <nav class="pie-nav" aria-label="Navegación al pie"><a href="/blog/">Blog</a><a href="/ensayos/">Ensayos</a><a href="/lecturas/">Lecturas selectas</a><a href="/podcast/">Podcast</a><a href="/videos/">Video</a><a href="#sobre">Sobre DE+</a></nav>
       </div>
       <div class="pie-inferior"><p>© 2026 DE+</p><a class="pie-instagram-enlace" href="https://www.instagram.com/somosdemas.co/" target="_blank" rel="noopener noreferrer" aria-label="Visitar @somosdemas.co en Instagram (se abre en una pestaña nueva)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><span>@somosdemas.co</span><span aria-hidden="true">↗</span></a><a href="#inicio">Volver al inicio <span aria-hidden="true">↑</span></a></div>
     </div>

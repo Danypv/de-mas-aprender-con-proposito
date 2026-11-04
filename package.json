@@ -25,7 +25,9 @@
     "test:redirects": "node scripts/test-redirects.mjs",
     "check:site": "node scripts/check-site.mjs",
     "test:carousel": "node scripts/test-carousel.mjs",
-    "test:related": "node scripts/test-related.mjs"
+    "test:related": "node scripts/test-related.mjs",
+    "build:essays": "node scripts/build-essays.mjs",
+    "test:essays": "node --no-warnings scripts/test-essays.mjs"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

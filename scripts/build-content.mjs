@@ -158,7 +158,7 @@ blog = blog.replace(
   () => `<p class="contador" aria-live="polite" aria-atomic="true">${visiblePosts.length} ${visiblePosts.length === 1 ? "publicación" : "publicaciones"}</p>`,
 );
 fs.writeFileSync(blogPath, setStructuredData(blog, collectionData({
-  path: '/blog/', title: 'Blog', description: 'Ideas y reflexiones de DE+ · Aprender con propósito.',
+  path: '/blog/', title: 'Blog', description: 'Reflexiones breves sobre los asuntos y dilemas de nuestro tiempo.',
   items: visiblePosts.map(post => ({ title: post.title, path: contentPath('/blog/', post.slug) })),
 })));
 

@@ -4,12 +4,13 @@ import fs from 'node:fs';
 import path from 'node:path';
 import matter from 'gray-matter';
 import {updateHomeCollections} from './home-collections.mjs';
+import {updateHomeEssays} from './essays.mjs';
 const root=path.resolve(process.argv[2]||process.cwd());
 const homePath=path.join(root,'index.html');let home=fs.readFileSync(homePath,'utf8');
 const esc=v=>String(v??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 const featured=home.match(/class="ficha"[\s\S]*?href="([^"#]+)"/)?.[1];
 const canonical=v=>decodeURIComponent(v).replace(/^https?:\/\/somosdemas\.com\//,'/').replace(/^\/?/,'/').replace(/\/$/,'');
-const sources=[['posts','Blog','blog','Leer'],['readings','Lecturas selectas','lecturas/textos','Leer'],['podcast-episodes','Podcast','podcast/episodios','Escuchar'],['videos','Video','videos','Ver']];
+const sources=[['posts','Blog','blog','Leer'],['essays','Ensayos','ensayos','Leer'],['readings','Lecturas selectas','lecturas/textos','Leer'],['podcast-episodes','Podcast','podcast/episodios','Escuchar'],['videos','Video','videos','Ver']];
 const items=[];const seen=new Set();
 for(const [folder,section,prefix,action]of sources){
  const dir=path.join(root,'content',folder);if(!fs.existsSync(dir))continue;
@@ -24,7 +25,7 @@ for(const [folder,section,prefix,action]of sources){
    'La-tecnica-ante-el-límite-humano': ['Pensar\nel límite.','Una reflexión sobre la responsabilidad de crear tecnología.'],
    'humanidades-y-ciencias': ['Saberes\nen diálogo.','Ciencia y humanidades para comprender y habitar el mundo.','Integrar las humanidades y las ciencias']
   }[data.slug];
-  const fallback={posts:'Ideas para\npensar.',readings:'Leer para\ncomprender.',videos:'Mirar y\npensar.','podcast-episodes':'Escuchar con\natención.'};
+  const fallback={posts:'Ideas para\npensar.',essays:'Pensar\na fondo',readings:'Leer para\ncomprender.',videos:'Mirar y\npensar.','podcast-episodes':'Escuchar con\natención.'};
   const summary=data.banner_summary||approved?.[1]||String(data.summary||'').split(/(?<=[.!?])\s/)[0];
   const coverTitle=data.banner_title||approved?.[0]||fallback[folder];
   items.push({url,key,section,action,coverTitle,title:data.banner_heading||approved?.[2]||data.browser_title||data.title,fullTitle:data.title,summary,author:data.author||data.presenter||'',date:new Date(data.date),name});
@@ -40,6 +41,7 @@ const banner=latest.length?`<section class="novedades" id="novedades" aria-label
 if(!home.includes('<!-- LATEST_START -->'))throw Error('Falta el punto de inserción del banner');
 home=home.replace(/<!-- LATEST_START -->[\s\S]*?<!-- LATEST_END -->/,()=>`<!-- LATEST_START -->\n${banner}\n<!-- LATEST_END -->`);
 home=updateHomeCollections(home,root);
+home=updateHomeEssays(home,root);
 fs.writeFileSync(homePath,home);console.log(`${latest.length} novedades generadas; solo contenidos publicados.`);
 
 console.log(`${buildRedirects(root)} redirecciones generadas.`);

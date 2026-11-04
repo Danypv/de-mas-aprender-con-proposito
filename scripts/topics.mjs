@@ -6,6 +6,7 @@ export const topics=[
   {slug:'neurociencia',label:'Neurociencia',weight:3,terms:['neurociencia','neurotecnologia','neuroetica','cerebro','cerebral','sistema nervioso']},
   {slug:'filosofia',label:'Filosofía',weight:1,terms:['filosofia','filosofico','estoicismo','ortega y gasset']},
   {slug:'etica',label:'Ética',weight:1,terms:['etica','etico','bioetica','juicio moral']},
+  {slug:'politica',label:'Política',weight:2,terms:['politica','politico','democracia','ciudadania']},
   {slug:'educacion',label:'Educación',weight:2,terms:['educacion','educativo','docencia','docente','ensenanza','aprendizaje','universidad','estudiantes']},
   {slug:'ciencia',label:'Ciencia',weight:1,terms:['ciencia','cientifico','ciencias']},
   {slug:'tecnologia',label:'Tecnología',weight:1,terms:['tecnologia','tecnologico','tecnociencia']},

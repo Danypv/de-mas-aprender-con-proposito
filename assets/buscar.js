@@ -22,7 +22,7 @@ function initializeSearch() {
   dialog.setAttribute('aria-labelledby','busqueda-titulo');
   dialog.innerHTML = `<div class="busqueda-cabecera"><h2 id="busqueda-titulo">Buscar en DE+</h2><button class="busqueda-cerrar" type="button" aria-label="Cerrar búsqueda"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
     <form role="search" aria-label="Buscar en todo DE+"><label class="busqueda-solo-lector" for="busqueda-consulta">Buscar un tema, una palabra o un autor</label><div class="busqueda-campo">${searchIcon}<input id="busqueda-consulta" type="search" placeholder="¿Qué te gustaría encontrar?" autocomplete="off" spellcheck="false"></div></form>
-    <div class="busqueda-filtros" role="group" aria-label="Filtrar resultados por sección">${['Todo','Blog','Lecturas selectas','Videos','Podcast'].map((label,i)=>`<button type="button" data-section="${i ? label : ''}" aria-pressed="${!i}">${label}</button>`).join('')}</div>
+    <div class="busqueda-filtros" role="group" aria-label="Filtrar resultados por sección">${['Todo','Blog','Ensayos','Lecturas selectas','Videos','Podcast'].map((label,i)=>`<button type="button" data-section="${i ? label : ''}" aria-pressed="${!i}">${label}</button>`).join('')}</div>
     <p class="busqueda-estado" role="status" aria-live="polite" aria-atomic="true">Busca por tema, título o autor.</p>
     <div class="busqueda-resultados"></div>
     <button class="busqueda-accion busqueda-mas" type="button" hidden>Mostrar más resultados</button>

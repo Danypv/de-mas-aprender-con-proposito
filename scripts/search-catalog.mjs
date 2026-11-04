@@ -6,6 +6,7 @@ import { collections, readReadings } from './readings.mjs';
 import { readVideos } from './videos.mjs';
 import { readPodcasts } from './podcasts.mjs';
 import { episodeAuthor } from './authors.mjs';
+import {readEssays,categoryLabels} from './essays.mjs';
 import { contentPath, origin } from './structured-data.mjs';
 
 const escape = value => String(value ?? '').replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
@@ -27,6 +28,7 @@ export function searchDocuments(root = process.cwd()) {
     if (data.status === 'published') add(contentPath('/blog/', data.slug), data, 'Blog');
   }
   for (const item of published(readReadings(root))) add(contentPath('/lecturas/textos/', item.slug), item, 'Lecturas selectas');
+  for (const item of published(readEssays(root))) add(contentPath('/ensayos/', item.slug), {...item,categories:categoryLabels(item)}, 'Ensayos');
   for (const item of published(readVideos(root))) add(contentPath('/videos/', item.slug), item, 'Videos');
   const podcasts = readPodcasts(root);
   for (const item of published(podcasts.series)) add(contentPath('/podcast/series/', item.slug), item, 'Podcast', 'series');
@@ -37,6 +39,7 @@ export function searchDocuments(root = process.cwd()) {
   const publications = [...sources.keys()];
   add('/', { title: 'DE+ · Aprender con propósito' }, 'Proyecto', 'page');
   add('/blog/', { title: 'Blog' }, 'Blog', 'catalog');
+  if(fs.existsSync(path.join(root,'ensayos/index.html'))) add('/ensayos/', {title:'Ensayos',summary:'Textos que desarrollan ideas y abren preguntas.'}, 'Ensayos', 'catalog');
   add('/lecturas/', { title: 'Lecturas selectas' }, 'Lecturas selectas', 'catalog');
   add('/videos/', { title: 'Videos' }, 'Videos', 'catalog');
   add('/podcast/', { title: 'Podcast' }, 'Podcast', 'catalog');

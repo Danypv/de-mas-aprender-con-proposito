@@ -4,10 +4,12 @@ import matter from 'gray-matter';
 import { collections, readReadings } from './readings.mjs';
 import { readPodcasts } from './podcasts.mjs';
 import { readVideos } from './videos.mjs';
+import {readEssays} from './essays.mjs';
 
 const root = process.cwd();
 const origin = 'https://somosdemas.com';
 const routes = new Set(['/', '/blog/', '/lecturas/', '/podcast/', '/videos/']);
+if(fs.existsSync(path.join(root,'ensayos/index.html'))) routes.add('/ensayos/');
 const add = (prefix, slug) => {
   if (typeof slug !== 'string' || !/^[\p{L}\p{N}][\p{L}\p{N}-]*$/u.test(slug)) throw Error(`Sitemap: identificador no válido en ${prefix}`);
   routes.add(`/${prefix}/${encodeURIComponent(slug)}/`);
@@ -28,6 +30,7 @@ if (fs.existsSync(posts)) {
   }
 }
 for (const reading of readReadings(root).filter(item => item.status === 'published')) add('lecturas/textos', reading.slug);
+for (const essay of readEssays(root).filter(item=>item.status==='published')) add('ensayos',essay.slug);
 for (const video of readVideos(root).filter(item => item.status === 'published')) add('videos', video.slug);
 const { series, episodes } = readPodcasts(root);
 for (const item of series.filter(item => item.status === 'published')) add('podcast/series', item.slug);

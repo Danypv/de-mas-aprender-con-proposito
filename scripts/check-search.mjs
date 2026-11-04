@@ -16,7 +16,7 @@ for (const file of files) {
   const html=fs.readFileSync(file,'utf8');
   if (!html.includes('href="/assets/buscar.css"') || !html.includes('src="/assets/buscar.js" type="module"')) throw Error(`Falta el acceso al buscador en ${file}`);
 }
-for (const name of ['post','reading','video','episode','collection','podcast','videos']) {
+for (const name of ['post','essay','essays','reading','video','episode','collection','podcast','videos']) {
   const html=fs.readFileSync(path.join(root,'templates',name+'.html'),'utf8');
   if (!html.includes('src="/assets/buscar.js" type="module"')) throw Error(`La plantilla ${name} no incluye el buscador`);
 }

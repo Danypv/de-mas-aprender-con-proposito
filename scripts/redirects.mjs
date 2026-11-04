@@ -4,10 +4,10 @@ import matter from 'gray-matter';
 import {collections, escapeHtml as escape} from './readings.mjs';
 
 const marker='<!-- DE+ GENERATED REDIRECT -->';
-const routes={posts:'/blog/',readings:'/lecturas/textos/','podcast-series':'/podcast/series/','podcast-episodes':'/podcast/episodios/',videos:'/videos/'};
+const routes={posts:'/blog/',essays:'/ensayos/',readings:'/lecturas/textos/','podcast-series':'/podcast/series/','podcast-episodes':'/podcast/episodios/',videos:'/videos/'};
 const valid=slug=>typeof slug==='string'&&/^[\p{L}\p{N}][\p{L}\p{N}-]*$/u.test(slug);
 export function buildRedirects(root){
-  const active=new Set(['/','/blog/','/lecturas/','/podcast/','/videos/']);
+  const active=new Set(['/','/blog/','/ensayos/','/lecturas/','/podcast/','/videos/']);
   const aliases=new Map();
   const add=(from,to)=>{
     if(from===to)return;
@@ -41,7 +41,7 @@ export function buildRedirects(root){
   const manifest=path.join(root,'assets/redirecciones.json');
   const previous=fs.existsSync(manifest)?JSON.parse(fs.readFileSync(manifest,'utf8')):[];
   for(const {from} of previous){
-    if(typeof from!=='string'||!/^\/(blog|lecturas|podcast|videos)\/[\p{L}\p{N}/%-]+\/$/u.test(from)||from.includes('..'))throw Error('Historial de redirecciones no válido');
+    if(typeof from!=='string'||!/^\/(blog|ensayos|lecturas|podcast|videos)\/[\p{L}\p{N}/%-]+\/$/u.test(from)||from.includes('..'))throw Error('Historial de redirecciones no válido');
     const file=output(from);
     if(!aliases.has(from)&&!active.has(from)&&fs.existsSync(file)&&fs.readFileSync(file,'utf8').includes(marker))fs.rmSync(file);
   }
