@@ -16,6 +16,7 @@ featured: false
 cover_alt: Persona contemplando una pintura en museo
 cover_caption: Foto de mia rauffer en Unsplash
 cover: /assets/imagenes/blog/mia-rauffer-qfzc8d33py-unsplash.jpg
+references: "World Economic Forum. (2025).\_*The future of jobs report 2025*\_[Informe sobre el futuro del empleo 2025].\_++[https://www.weforum.org/publications/the-future-of-jobs-report-2025/](https://www.weforum.org/publications/the-future-of-jobs-report-2025/)++\n\nWorld Economic Forum. (2026).\_*The global risks report 2026*\_[Informe de riesgos globales 2026].\_++[https://www.weforum.org/publications/global-risks-report-2026/](https://www.weforum.org/publications/global-risks-report-2026/)++"
 cms_source: content/posts/un-clic-tambien-es-una-decision.md
 ---
 Desde una mesa de nuestra casa podemos recorrer las salas de un museo que está al otro lado del océano. Nos detenemos ante una pintura, ampliamos un detalle y buscamos la historia de quienes aparecen en ella. Tal vez esa curiosidad nos lleve a un libro que desconocíamos. El viaje comenzó con un clic y puede continuar durante semanas, si encontramos en aquella imagen una pregunta que merece nuestra atención.
@@ -53,9 +54,3 @@ La misma atención merece la infraestructura que sostiene nuestros accesos. Cada
 La ética permite mantener juntas estas preguntas. Nos ayuda a examinar qué buscamos al conectarnos y cómo nuestras elecciones afectan a quienes participan de ese entorno. Las oportunidades del ciberespacio adquieren sentido en los usos que hacemos de ellas y en las condiciones que permiten compartir sus beneficios.
 
 Quizá regresemos entonces a la pintura del comienzo. Al ampliar un detalle descubrimos una figura que había pasado inadvertida y sentimos el deseo de saber más. Podemos cerrar la ventana o dedicarle tiempo a esa curiosidad. Si seguimos la búsqueda, tal vez encontremos una historia que cambie nuestra manera de mirar. Un clic hizo posible el encuentro. La decisión de atenderlo empieza a darle un lugar en nuestra vida.
-
-**Textos citados**
-
-Foro Económico Mundial. *[Informe de riesgos globales 2026](https://www.weforum.org/publications/global-risks-report-2026/?utm_source=)*.
-
-Foro Económico Mundial. *[Informe sobre el futuro del empleo 2025](https://www.weforum.org/publications/the-future-of-jobs-report-2025/?utm_source=)*.
