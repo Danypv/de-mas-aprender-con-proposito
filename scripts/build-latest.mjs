@@ -5,6 +5,7 @@ import path from 'node:path';
 import matter from 'gray-matter';
 import {updateHomeCollections} from './home-collections.mjs';
 import {updateHomeEssays} from './essays.mjs';
+import {updateHomeBlog} from './home-blog.mjs';
 const root=path.resolve(process.argv[2]||process.cwd());
 const homePath=path.join(root,'index.html');let home=fs.readFileSync(homePath,'utf8');
 const esc=v=>String(v??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
@@ -42,6 +43,7 @@ if(!home.includes('<!-- LATEST_START -->'))throw Error('Falta el punto de inserc
 home=home.replace(/<!-- LATEST_START -->[\s\S]*?<!-- LATEST_END -->/,()=>`<!-- LATEST_START -->\n${banner}\n<!-- LATEST_END -->`);
 home=updateHomeCollections(home,root);
 home=updateHomeEssays(home,root);
+home=updateHomeBlog(home,root);
 fs.writeFileSync(homePath,home);console.log(`${latest.length} novedades generadas; solo contenidos publicados.`);
 
 console.log(`${buildRedirects(root)} redirecciones generadas.`);

@@ -1232,6 +1232,7 @@
   <link rel="stylesheet" href="/assets/buscar.css">
   <script src="/assets/buscar.js" type="module"></script>
   <link rel="stylesheet" href="/assets/ensayos.css">
+  <link rel="stylesheet" href="/assets/blog.css">
 </head>
 
 <body>
@@ -1305,31 +1306,9 @@
 <!-- LATEST_END -->
 
     <!-- ================= IDEAS ================= -->
-    <section class="seccion seccion-hueso" id="ideas">
-      <div class="contenedor">
-        <div class="franja-ideas revelar">
-
-          <figure class="marco">
-            <img src="assets/imagenes/socrates.webp"
-                 srcset="assets/imagenes/socrates-movil.webp 700w, assets/imagenes/socrates.webp 1100w"
-                 sizes="(max-width: 900px) 78vw, 32vw"
-                 alt="Estatua de Sócrates ante la Academia de Atenas, con la mano en el mentón"
-                 width="1100" height="1356" decoding="async">
-            <figcaption>Sócrates · Academia de Atenas</figcaption>
-          </figure>
-
-          <div class="ideas-contenido">
-            <div class="ideas-texto">
-              <p class="etiqueta">Blog</p>
-              <h2>Para pensar nuestro tiempo.</h2>
-              <p class="nota">Reflexiones breves sobre asuntos del presente.</p>
-              <p class="acceso-blog"><a class="enlace" href="blog/">Leer el blog<span class="flecha" aria-hidden="true">→</span></a></p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
+    <!-- BLOG_HOME_START -->
+<section class="seccion seccion-hueso blog-franja" id="ideas" aria-labelledby="titulo-blog"><div class="contenedor"><div class="ensayos-encabezado"><div><p class="etiqueta">Blog</p><h2 id="titulo-blog">Para pensar nuestro tiempo</h2><p class="ensayos-descripcion">Reflexiones breves sobre asuntos del presente.</p></div><form class="ensayos-form" action="/blog/" method="get"><label for="blog-tema-portada">Explorar por tema</label><select id="blog-tema-portada" name="tema"><option value="">Todos los temas</option><option value="educacion">Educación</option><option value="etica">Ética</option><option value="etica digital">Ética digital</option><option value="humanidades">Humanidades</option><option value="inteligencia artificial">Inteligencia Artificial</option><option value="neurotecnologia">Neurotecnología</option></select><button type="submit" class="enlace">Ver todas las publicaciones <span class="flecha" aria-hidden="true">→</span></button></form></div><article class="ensayos-portada blog-portada"><a class="ensayos-imagen" href="/blog/un-clic-tambien-es-una-decision/"><img src="/assets/imagenes/blog/mia-rauffer-qfzc8d33py-unsplash.jpg" alt="Persona contemplando una pintura en museo" width="960" height="540" loading="lazy" decoding="async"></a><div><p class="ensayos-tema">Ética digital · Inteligencia Artificial</p><h3><a href="/blog/un-clic-tambien-es-una-decision/">Un clic también es una decisión</a></h3><p class="ensayos-resumen">A un clic podemos visitar un museo, aprender algo nuevo o compartir una información que afecte a otra persona.</p><a class="enlace" href="/blog/un-clic-tambien-es-una-decision/">Leer publicación <span class="flecha" aria-hidden="true">→</span></a></div></article></div></section>
+<!-- BLOG_HOME_END -->
 
     <!-- ================= LECTURAS SELECTAS ================= -->
     <section class="seccion seccion-oscura" id="lecturas">

@@ -1,0 +1,3 @@
+/* The Blog reuses the approved Ensayos components, fonts and brand tokens. */
+.blog-franja h2{max-width:16ch}
+@media(max-width:720px){.blog-franja{padding:60px 0}.blog-franja .contenedor{width:calc(100% - 40px)}.blog-franja h2{max-width:none}}

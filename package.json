@@ -27,7 +27,8 @@
     "test:carousel": "node scripts/test-carousel.mjs",
     "test:related": "node scripts/test-related.mjs",
     "build:essays": "node scripts/build-essays.mjs",
-    "test:essays": "node --no-warnings scripts/test-essays.mjs"
+    "test:essays": "node --no-warnings scripts/test-essays.mjs",
+    "test:home-blog": "node scripts/test-home-blog.mjs"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

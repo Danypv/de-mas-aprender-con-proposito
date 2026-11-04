@@ -231,6 +231,7 @@
 <!-- STRUCTURED_DATA_END -->
   <link rel="stylesheet" href="/assets/buscar.css">
   <script src="/assets/buscar.js" type="module"></script>
+  <script src="/assets/blog.js" type="module"></script>
 </head>
 
 <body>
@@ -327,22 +328,6 @@
 
   <script>
     document.documentElement.classList.remove("sin-js");
-    const entradas = Array.from(document.querySelectorAll(".entrada"));
-    const tema = document.getElementById("tema");
-    const categorias = entrada => JSON.parse(entrada.dataset.categories || "[]");
-    [...new Set(entradas.flatMap(categorias))].sort((a,b) => a.localeCompare(b,"es")).forEach(valor => {
-      const opcion = document.createElement("option"); opcion.value = valor; opcion.textContent = valor; tema.append(opcion);
-    });
-    const filtrar = () => {
-      let visibles = 0;
-      entradas.forEach(entrada => {
-        entrada.hidden = Boolean(tema.value && !categorias(entrada).includes(tema.value));
-        if (!entrada.hidden) visibles++;
-      });
-      document.querySelector(".contador").textContent = `${visibles} ${visibles === 1 ? "publicación" : "publicaciones"}`;
-      document.getElementById("sin-resultados").hidden = visibles !== 0;
-    };
-    tema.addEventListener("change", filtrar);
     const boton = document.querySelector(".boton-menu");
     const menu = document.querySelector(".menu");
     const cerrarMenu = () => { menu.classList.remove("abierto"); boton.setAttribute("aria-expanded","false"); boton.setAttribute("aria-label","Abrir menú"); };

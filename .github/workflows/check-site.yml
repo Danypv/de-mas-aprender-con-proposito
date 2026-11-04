@@ -28,6 +28,7 @@ jobs:
         run: npm ci --ignore-scripts
       - name: Comprobar comportamiento con contenido temporal
         run: |
+          npm run test:home-blog
           npm run test:essays
           npm run test:related
           npm run test:readings
