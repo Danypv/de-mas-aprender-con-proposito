@@ -17,6 +17,8 @@ summary: >-
   importe?
 source_url: 'https://doi.org/10.18566/v34n72.a12'
 source_name: 'Revista Escritos, vol. 34, n.º 72, 2026'
+source_title: La atención y el reconocimiento como condiciones previas del vínculo ético
+source_author: D. M. Henao Sierra y J. F. García-Castro
 status: published
 featured: false
 cover: /assets/imagenes/blog/ignacio-brosa-zxsbuioeszs-unsplash.jpg

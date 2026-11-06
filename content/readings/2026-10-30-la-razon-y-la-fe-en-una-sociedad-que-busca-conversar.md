@@ -17,6 +17,8 @@ summary: >-
   convicciones religiosas en una conversación democrática plural.
 source_url: 'https://revistas.upb.edu.co/index.php/cuestiones/article/view/5102'
 source_name: 'Cuestiones Teológicas vol. 40, núm. 93 (2013), pp. 75–95.'
+source_title: El humanismo ante el reto del diálogo fe y razón en la sociedad postsecular
+source_author: G. L. Herrera Gil y D. Pérez Valencia
 status: published
 featured: false
 cover: /assets/imagenes/blog/alex-shute-6n3hwssdleq-unsplash.jpg

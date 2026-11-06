@@ -15,6 +15,8 @@ summary: >-
   formar un criterio propio ante el ruido del entorno digital.
 source_url: 'https://doi.org/10.18566/escr.v27n59.a09'
 source_name: 'Escritos, volumen 27, número 59, 2019, pp. 366–385'
+source_title: Del ensimismamiento al acto personalizante
+source_author: J. R. Ramírez-Valencia
 status: published
 featured: false
 cover_alt: Silueta hombre de pie cerca del agua

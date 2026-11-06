@@ -21,6 +21,10 @@ summary: >-
   académica.
 source_url: 'https://doi.org/10.1344/rbd2025.65.49416'
 source_name: 'Revista de Bioética y Derecho, núm. 65 (2025), pp. 101–119'
+source_title: >-
+  ChatGPT in higher education: A cross-sectional study of student usage, ethical
+  perceptions, and implications for academic integrity
+source_author: 'F. Vásquez Cardona, V. Carmona García y D. Pérez Valencia'
 status: published
 featured: false
 cover: /assets/imagenes/blog/numan-ali-llntovr7ctk-unsplash.jpg
