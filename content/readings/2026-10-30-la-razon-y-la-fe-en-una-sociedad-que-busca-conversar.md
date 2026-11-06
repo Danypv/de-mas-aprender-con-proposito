@@ -5,7 +5,9 @@ topics:
   - teologia
   - filosofia
 slug: la-razon-y-la-fe-en-una-sociedad-que-busca-conversar
-author: Daniel Pérez Valencia
+authors:
+  - given: Daniel
+    family: Pérez Valencia
 date: 2026-10-30T00:00:00.000Z
 collections:
   - teologia-y-espiritualidad
@@ -24,6 +26,9 @@ featured: false
 cover: /assets/imagenes/blog/alex-shute-6n3hwssdleq-unsplash.jpg
 cover_alt: Bloque de madera flores azules palabra fe
 cover_caption: Foto de Alex Shute en Unsplash
+author: Daniel Pérez Valencia
+author_url: ''
+citation_author: 'Pérez Valencia, D.'
 cms_source: content/readings/razon-y-fe-en-una-sociedad-que-busca-conversar.md
 ---
 ¿Cómo pueden dialogar la fe y la razón en una sociedad que organiza su vida pública desde criterios seculares? Esa pregunta recorre "El humanismo ante el reto del diálogo fe y razón en la sociedad postsecular", artículo que escribí junto con Guillermo L. Herrera Gil y que fue publicado en 2013 en *Cuestiones Teológicas*. El texto entiende el humanismo como una pregunta por lo humano que atraviesa tradiciones religiosas y seculares.

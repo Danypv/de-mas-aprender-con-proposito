@@ -2,7 +2,9 @@
 title: Ante el sufrimiento del otro
 browser_title: Ante el sufrimiento del otro
 slug: ante-el-sufrimiento-del-otro
-author: Daniel Pérez Valencia
+authors:
+  - given: Daniel
+    family: Pérez Valencia
 date: 2026-11-03T00:00:00.000Z
 collections:
   - medicina-y-salud
@@ -22,6 +24,9 @@ status: published
 featured: false
 cover: /assets/imagenes/blog/portada-editorial-en-fondo-claro.png
 cover_alt: Libro sobre fondo blanco
+author: Daniel Pérez Valencia
+author_url: ''
+citation_author: 'Pérez Valencia, D.'
 cms_source: content/readings/ante-el-sufrimiento-del-otro.md
 ---
 Hay un momento difícil en la práctica médica que llega cuando el conocimiento ha ofrecido cuanto podía, el tratamiento alcanza sus límites y la persona continúa sufriendo. Este es un punto en el que la indagación clínica comienza a transformarse. A la pregunta por la enfermedad y las posibilidades de intervención se añaden otras, quizás más existenciales: ¿Quién es esa persona? ¿Qué es lo que ha perdido? ¿Qué forma de presencia o acompañamiento necesita?

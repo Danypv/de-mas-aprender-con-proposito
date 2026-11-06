@@ -2,7 +2,9 @@
 title: Un clic también es una decisión
 browser_title: 'Un clic, una decisión'
 slug: un-clic-tambien-es-una-decision
-author: Daniel Pérez Valencia
+authors:
+  - given: Daniel
+    family: Pérez Valencia
 date: 2026-11-02T00:00:00.000Z
 categories:
   - Ética digital
@@ -17,6 +19,9 @@ cover_alt: Persona contemplando una pintura en museo
 cover_caption: Foto de mia rauffer en Unsplash
 cover: /assets/imagenes/blog/mia-rauffer-qfzc8d33py-unsplash.jpg
 references: "World Economic Forum. (2025).\_*The future of jobs report 2025*\_[Informe sobre el futuro del empleo 2025].\_++[https://www.weforum.org/publications/the-future-of-jobs-report-2025/](https://www.weforum.org/publications/the-future-of-jobs-report-2025/)++\n\nWorld Economic Forum. (2026).\_*The global risks report 2026*\_[Informe de riesgos globales 2026].\_++[https://www.weforum.org/publications/global-risks-report-2026/](https://www.weforum.org/publications/global-risks-report-2026/)++"
+author: Daniel Pérez Valencia
+author_url: ''
+citation_author: 'Pérez Valencia, D.'
 cms_source: content/posts/un-clic-tambien-es-una-decision.md
 ---
 Desde una mesa de nuestra casa podemos recorrer las salas de un museo que está al otro lado del océano. Nos detenemos ante una pintura, ampliamos un detalle y buscamos la historia de quienes aparecen en ella. Tal vez esa curiosidad nos lleve a un libro que desconocíamos. El viaje comenzó con un clic y puede continuar durante semanas, si encontramos en aquella imagen una pregunta que merece nuestra atención.

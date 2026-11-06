@@ -4,7 +4,9 @@ browser_title: Darnos tiempo para pensar
 topics:
   - filosofia
 slug: darnos-tiempo-para-pensar
-author: Daniel Pérez Valencia
+authors:
+  - given: Daniel
+    family: Pérez Valencia
 date: 2026-10-27T00:00:00.000Z
 collections:
   - filosofia
@@ -22,6 +24,9 @@ featured: false
 cover_alt: Silueta hombre de pie cerca del agua
 cover_caption: Lukas Rychvalsky en Unsplash.
 cover: /assets/imagenes/blog/lukas-rychvalsky-o0ghpkxe5gm-unsplash.jpg
+author: Daniel Pérez Valencia
+author_url: ''
+citation_author: 'Pérez Valencia, D.'
 cms_source: content/readings/arnos-tiempo-para-pensar.md
 ---
 En el escenario digital es recurrente que leamos una noticia y sintamos el impulso de compartirla; que cuando una afirmación nos indigna busquemos la manera de responder antes de averiguar de dónde proviene. En esas pequeñas escenas se juega una pregunta por nuestra autonomía. ¿Cuánto de lo que decimos ha pasado por una reflexión propia?

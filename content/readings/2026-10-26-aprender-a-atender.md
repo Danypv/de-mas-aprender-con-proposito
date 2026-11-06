@@ -5,7 +5,9 @@ topics:
   - filosofia
   - etica
 slug: aprender-a-atender
-author: Daniel Pérez Valencia
+authors:
+  - given: Daniel
+    family: Pérez Valencia
 date: 2026-10-26T00:00:00.000Z
 collections:
   - filosofia
@@ -26,6 +28,9 @@ cover_alt: >-
   Vista desde arriba de un grupo de personas reunidas en círculo sobre un piso
   gris.
 cover_caption: Foto de Ignacio Brosa en Unsplash
+author: Daniel Pérez Valencia
+author_url: ''
+citation_author: 'Pérez Valencia, D.'
 cms_source: content/readings/aprender-a-atender.md
 ---
 Hay conversaciones en las que uno empieza a preparar la respuesta antes de que la otra persona termine de hablar. Las palabras llegan, se entienden, incluso se recuerdan. Aun así, algo puede faltar: la disposición a dejar que esa presencia nos importe. Atender quizá consista en eso, en conceder al otro un lugar antes de decidir qué pensamos de él o qué vamos a contestarle.
