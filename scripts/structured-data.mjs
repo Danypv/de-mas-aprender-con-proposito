@@ -1,4 +1,4 @@
-import { episodeAuthor, profileUrl } from './authors.mjs';
+import { episodeAuthor, profileUrl, publicationAuthors } from './authors.mjs';
 
 export const origin = 'https://somosdemas.com';
 const publisher = { '@type': 'Organization', name: 'DE+ · Aprender con propósito', url: `${origin}/` };
@@ -90,7 +90,7 @@ export function articleData(article, { section, contentSection = section, label,
   const entity = hasArticle ? {
     '@type': type, '@id': `${url}#article`, url, mainEntityOfPage: { '@id': `${url}#webpage` },
     headline: article.title, description: article.summary, inLanguage: 'es',
-    author: person(article.author, article.author_url), publisher,
+    author: publicationAuthors(article)?.map(a => person(a.name, a.url)) || person(article.author, article.author_url), publisher,
     datePublished: schemaDate(article.date),
     ...(article.cover ? { image: [siteUrl(article.cover)] } : {}),
     ...(categories.length ? { articleSection: categories } : {}),

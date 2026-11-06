@@ -1,3 +1,4 @@
+import { normalizePublicationAuthors } from './authors.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
@@ -7,6 +8,15 @@ import { execFileSync } from 'node:child_process';
 import matter from 'gray-matter';
 import { citationBlock } from './citation.mjs';
 
+const people = [{given:'Ana María',family:'Pérez Gómez'}, {given:'Jean-Paul',family:'García Ruiz'}];
+const normalized = normalizePublicationAuthors({authors:people, author:'Firma anterior', citation_author:'Cita anterior'});
+assert.equal(normalized.author,'Ana María Pérez Gómez y Jean-Paul García Ruiz');
+assert.equal(normalized.citation_author,'Pérez Gómez, A. M., & García Ruiz, J.-P.');
+assert.equal(normalized.author_url,'');
+assert.throws(()=>normalizePublicationAuthors({authors:[]}));
+assert.throws(()=>normalizePublicationAuthors({authors:[{given:'Ana'}]}));
+assert.throws(()=>normalizePublicationAuthors({authors:[{...people[0],url:'javascript:alert(1)'}]}));
+assert(normalizePublicationAuthors({authors:Array.from({length:21},()=>people[0])}).citation_author.includes(', … '));
 const root = process.cwd();
 const fixture = fs.mkdtempSync(path.join(os.tmpdir(), 'demas-sharing-'));
 const title = 'Café & «razón» <juicio> "$&" 🧠';

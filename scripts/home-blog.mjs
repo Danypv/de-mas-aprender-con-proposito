@@ -1,3 +1,4 @@
+import { normalizePublicationAuthors } from './authors.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import matter from 'gray-matter';
@@ -7,7 +8,7 @@ import {contentPath} from './structured-data.mjs';
 export function readHomeBlog(root){
   const folder=path.join(root,'content/posts');
   if(!fs.existsSync(folder))return [];
-  return fs.readdirSync(folder).filter(file=>file.endsWith('.md')).map(file=>matter.read(path.join(folder,file)).data)
+  return fs.readdirSync(folder).filter(file=>file.endsWith('.md')).map(file=>normalizePublicationAuthors(matter.read(path.join(folder,file)).data))
     .filter(post=>post.status==='published')
     .sort((a,b)=>new Date(b.date)-new Date(a.date)||a.slug.localeCompare(b.slug,'es'));
 }

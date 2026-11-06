@@ -1,3 +1,4 @@
+import { normalizePublicationAuthors } from './authors.mjs';
 import { escapeHtml as escape } from './readings.mjs';
 import { siteUrl } from './structured-data.mjs';
 
@@ -43,6 +44,7 @@ function reviewDescription(article) {
 }
 
 export function citationBlock(article, pagePath, section) {
+  article = normalizePublicationAuthors(article);
   if (article.hide_citation === true) return '';
   const date = article.date == null || article.date === '' ? null : new Date(article.date);
   const published = date ? `${date.getUTCFullYear()}, ${dayAndMonth.format(date)}` : 's. f.';
