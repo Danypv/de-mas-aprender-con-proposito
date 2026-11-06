@@ -1,3 +1,4 @@
+import { normalizePublicationAuthors } from './authors.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import matter from 'gray-matter';
@@ -26,6 +27,7 @@ export function searchDocuments(root = process.cwd()) {
   const posts = path.join(root, 'content/posts');
   if (fs.existsSync(posts)) for (const file of fs.readdirSync(posts).filter(file => file.endsWith('.md'))) {
     const { data } = matter.read(path.join(posts, file));
+    Object.assign(data, normalizePublicationAuthors(data));
     if (data.status === 'published') add(contentPath('/blog/', data.slug), data, 'Blog');
   }
   for (const item of published(readReadings(root))) add(contentPath('/lecturas/textos/', item.slug), item, 'Lecturas selectas');

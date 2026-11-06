@@ -1,3 +1,4 @@
+import { normalizePublicationAuthors } from './authors.mjs';
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
@@ -10,6 +11,7 @@ const slugs = new Set();
 
 for (const file of fs.readdirSync(postsDir).filter((name) => name.endsWith(".md"))) {
   const { data, content } = matter.read(path.join(postsDir, file));
+    Object.assign(data, normalizePublicationAuthors(data));
   profileUrl(data.author_url, `${file}: perfil del autor`);
   for (const field of required) {
     if (data[field] === undefined || data[field] === "") {

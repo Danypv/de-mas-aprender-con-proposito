@@ -27,3 +27,28 @@ export function episodeAuthor(episode, series) {
   const samePerson = !customName || customName === String(series.presenter).trim();
   return { name, url: ownUrl || (samePerson ? profileUrl(series.author_url) : '') };
 }
+
+// Structured authors are authoritative; legacy signatures remain supported.
+export function publicationAuthors(data) {
+  if (!Object.hasOwn(data, 'authors')) return null;
+  if (!Array.isArray(data.authors) || !data.authors.length) throw Error('Añade al menos un autor con nombres y apellidos.');
+  return data.authors.map((author, index) => {
+    const given = typeof author?.given === 'string' ? author.given.trim().replace(/\s+/gu, ' ') : '';
+    const family = typeof author?.family === 'string' ? author.family.trim().replace(/\s+/gu, ' ') : '';
+    if (!given || !family) throw Error(`Autor ${index + 1}: completa nombres y apellidos.`);
+    return { given, family, name: `${given} ${family}`, url: profileUrl(author.url, `Perfil del autor ${index + 1}`) };
+  });
+}
+
+export function normalizePublicationAuthors(data) {
+  const authors = publicationAuthors(data);
+  if (!authors) return data;
+  const apa = authors.map(({given, family}) => `${family}, ${given.split(' ').map(part => part.split('-').map(piece => `${[...piece][0].toUpperCase()}.`).join('-')).join(' ')}`);
+  const citation = apa.length === 1 ? apa[0] : apa.length <= 20 ? `${apa.slice(0, -1).join(', ')}, & ${apa.at(-1)}` : `${apa.slice(0, 19).join(', ')}, … ${apa.at(-1)}`;
+  return { ...data, author: new Intl.ListFormat('es').format(authors.map(a => a.name)), author_url: authors.length === 1 ? authors[0].url : '', citation_author: citation };
+}
+
+export function publicationProfiles(data) {
+  const authors = publicationAuthors(data);
+  return authors ? authors.map(a => authorProfile(a.url, a.name)).join('') : authorProfile(data.author_url, data.author);
+}

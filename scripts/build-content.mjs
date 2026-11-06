@@ -1,3 +1,4 @@
+import { normalizePublicationAuthors } from './authors.mjs';
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
@@ -5,7 +6,7 @@ import { shareBlock } from './share.mjs';
 import { referencesBlock } from './references.mjs';
 import { citationBlock } from './citation.mjs';
 import MarkdownIt from "markdown-it";
-import { authorProfile, profileUrl } from './authors.mjs';
+import { publicationProfiles, authorProfile, profileUrl } from './authors.mjs';
 import { articleData, collectionData, contentPath, setStructuredData } from './structured-data.mjs';
 
 const root = process.cwd();
@@ -28,6 +29,7 @@ const posts = fs.readdirSync(postsDir)
   .filter((file) => file.endsWith(".md"))
   .map((file) => {
     const parsed = matter.read(path.join(postsDir, file));
+    parsed.data = normalizePublicationAuthors(parsed.data);
     for (const field of required) {
       if (parsed.data[field] === undefined || parsed.data[field] === "") {
         throw new Error(`${file}: falta el campo ${field}`);
@@ -116,7 +118,7 @@ for (const post of visiblePosts) {
     CATEGORIES: categories,
     TITLE: escapeHtml(post.title),
     AUTHOR: escapeHtml(post.author),
-    AUTHOR_PROFILE: authorProfile(post.author_url, post.author),
+    AUTHOR_PROFILE: publicationProfiles(post),
     DATE: formatDate(post.date),
     BODY: body.trim(),
     REFERENCES: referencesBlock(post.references),

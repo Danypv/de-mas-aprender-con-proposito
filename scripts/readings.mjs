@@ -1,3 +1,4 @@
+import { normalizePublicationAuthors } from './authors.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import matter from 'gray-matter';
@@ -57,6 +58,7 @@ export function readReadings(root = process.cwd()) {
   const seen = new Set();
   return fs.readdirSync(directory).filter(file => file.endsWith('.md')).map(file => {
     const { data, content } = matter.read(path.join(directory,file));
+    Object.assign(data, normalizePublicationAuthors(data));
     profileUrl(data.author_url, `${file}: perfil de quien firma la reseña`);
     const fail = message => { throw Error(`${file}: ${message}`); };
     for (const key of ['title','slug','author','date','summary','status','type']) if (!String(data[key] ?? '').trim()) fail(`falta ${key}`);

@@ -1,3 +1,4 @@
+import { normalizePublicationAuthors } from './authors.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import matter from 'gray-matter';
@@ -19,7 +20,7 @@ export function relatedInventory(root){
     items.push({url:contentPath(prefix,item.slug),title:item.title,summary:item.summary||'',topics:identifyTopics(item,inherited),date,section,action});
   };
   const dir=path.join(root,'content/posts');
-  if(fs.existsSync(dir))for(const file of fs.readdirSync(dir).filter(file=>file.endsWith('.md')))add(matter.read(path.join(dir,file)).data,'/blog/','Blog','Leer el artículo');
+  if(fs.existsSync(dir))for(const file of fs.readdirSync(dir).filter(file=>file.endsWith('.md')))add(normalizePublicationAuthors(matter.read(path.join(dir,file)).data),'/blog/','Blog','Leer el artículo');
   for(const item of readReadings(root))add(item,'/lecturas/textos/','Lecturas selectas','Leer la reseña');
   for(const item of readEssays(root))add({...item,categories:categoryLabels(item)},'/ensayos/','Ensayos','Leer el ensayo');
   for(const item of readVideos(root))add(item,'/videos/','Video','Ver el video');

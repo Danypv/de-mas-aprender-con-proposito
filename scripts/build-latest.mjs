@@ -1,3 +1,4 @@
+import { normalizePublicationAuthors } from './authors.mjs';
 import {buildRelated} from './related.mjs';
 import {buildRedirects} from './redirects.mjs';
 import fs from 'node:fs';
@@ -16,7 +17,8 @@ const items=[];const seen=new Set();
 for(const [folder,section,prefix,action]of sources){
  const dir=path.join(root,'content',folder);if(!fs.existsSync(dir))continue;
  for(const name of fs.readdirSync(dir).filter(f=>f.endsWith('.md'))){
-  const {data}=matter.read(path.join(dir,name));if(data.status!=='published')continue;
+  const {data}=matter.read(path.join(dir,name));
+    Object.assign(data, normalizePublicationAuthors(data));if(data.status!=='published')continue;
   if(!data.slug||!data.title||Number.isNaN(new Date(data.date).getTime()))continue;
   const url=`/${prefix}/${encodeURIComponent(data.slug)}/`;const key=canonical(url);
   if(seen.has(key)||(featured&&key===canonical(featured)))continue;seen.add(key);
