@@ -6,6 +6,7 @@ import {authorProfile} from './authors.mjs';
 import {articleData,collectionData,origin} from './structured-data.mjs';
 import {shareBlock} from './share.mjs';
 import {referencesBlock} from './references.mjs';
+import {citationBlock} from './citation.mjs';
 
 const root=process.cwd(),items=readEssays(root).filter(item=>item.status==='published');
 const load=file=>fs.readFileSync(path.join(root,'templates',file),'utf8');
@@ -15,12 +16,14 @@ const marker='<!-- DE+ GENERATED ESSAY -->';
 const html=load('essay.html');
 for(const item of items){
   const image=item.cover?origin+item.cover:origin+'/assets/marca/de-mas-compartir.png';
+  const pagePath=essayPath(item);
   write(`ensayos/${item.slug}/index.html`,marker+'\n'+fill(html,{
     PAGE_TITLE:`${e(item.browser_title||item.title)} · DE+`,META_DESCRIPTION:e(item.summary),OG_TITLE:`${e(item.title)} · DE+`,
     OG_IMAGE:e(image),OG_IMAGE_ALT:e(item.cover_alt||'DE+ · Aprender con propósito'),
     TITLE:e(item.title),SUMMARY:e(item.summary),CATEGORIES:e(categoryLabels(item).join(' · ')),AUTHOR:e(item.author),AUTHOR_PROFILE:authorProfile(item.author_url,item.author),DATE:formatDate(item.date),MINUTES:essayMinutes(item),
     COVER:item.cover?`<figure class="portada-articulo"><img src="${e(item.cover)}" alt="${e(item.cover_alt)}" decoding="async" width="1200" height="675">${item.cover_caption?`<figcaption>${e(item.cover_caption)}</figcaption>`:''}</figure>`:'',
-    BODY:renderEssayBody(item.body,item.slug),REFERENCES:referencesBlock(item.references),SHARE:shareBlock(item.title,essayPath(item)),
+    BODY:renderEssayBody(item.body,item.slug),REFERENCES:referencesBlock(item.references),SHARE:shareBlock(item.title,pagePath),
+    CITATION:citationBlock(item,pagePath,'essay'),
     STRUCTURED_DATA:articleData(item,{section:'/ensayos/',label:'Ensayos',categories:categoryLabels(item)}),
   }));
 }

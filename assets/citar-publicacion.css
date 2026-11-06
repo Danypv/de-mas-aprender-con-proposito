@@ -1,0 +1,72 @@
+.citar-publicacion {
+  border-top: 1px solid var(--linea, #dcd8cf);
+  color: var(--negro, #000);
+  font-family: var(--lectura, "Roboto", Arial, sans-serif);
+  font-size: .9375rem;
+  line-height: 1.65;
+}
+.citar-publicacion > summary {
+  display: flex;
+  align-items: center;
+  gap: .85rem;
+  min-height: 44px;
+  padding: .65rem 0;
+  font-family: var(--marca, "Montserrat", Arial, sans-serif);
+  font-weight: 600;
+  list-style: none;
+  cursor: pointer;
+}
+.citar-publicacion > summary::-webkit-details-marker { display: none; }
+.citar-publicacion > summary::before {
+  content: "";
+  flex: none;
+  width: .4rem;
+  height: .4rem;
+  margin-inline-start: .15rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg);
+}
+.citar-publicacion[open] > summary::before { transform: rotate(45deg); }
+.citar-publicacion :is(summary, a, button):focus-visible {
+  outline: 2px solid var(--amarillo, #ffb600);
+  outline-offset: 3px;
+}
+.citar-publicacion .cita-etiqueta {
+  margin: .5rem 0 .25rem;
+  color: var(--gris, #57534d);
+  font-size: .875rem;
+  font-weight: 600;
+}
+.citar-publicacion .cita-referencia {
+  margin: 0 0 .65rem;
+  overflow-wrap: anywhere;
+  text-align: left;
+}
+.citar-publicacion .cita-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .35rem .75rem;
+}
+.citar-publicacion button {
+  min-height: 44px;
+  padding: .5rem .75rem;
+  border: 1px solid var(--linea, #dcd8cf);
+  border-radius: 2px;
+  color: inherit;
+  background: var(--blanco, #fff);
+  font: inherit;
+  cursor: pointer;
+}
+.citar-publicacion button:hover {
+  border-color: var(--amarillo, #ffb600);
+  background: var(--hueso, #f6f4ef);
+}
+.cita-estado {
+  color: var(--gris, #57534d);
+  font-size: .875rem;
+}
+@media print {
+  .citar-publicacion .cita-acciones { display: none; }
+}

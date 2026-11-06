@@ -3,6 +3,7 @@ import path from "node:path";
 import matter from "gray-matter";
 import { shareBlock } from './share.mjs';
 import { referencesBlock } from './references.mjs';
+import { citationBlock } from './citation.mjs';
 import MarkdownIt from "markdown-it";
 import { authorProfile, profileUrl } from './authors.mjs';
 import { articleData, collectionData, contentPath, setStructuredData } from './structured-data.mjs';
@@ -107,6 +108,7 @@ for (const post of visiblePosts) {
 
   let page = postTemplate;
   const categories = post.categories.map(escapeHtml).join(" · ");
+  const pagePath = contentPath('/blog/', post.slug);
   const values = {
     PAGE_TITLE: `${escapeHtml(post.browser_title || post.title)} · DE+`,
     META_DESCRIPTION: escapeHtml(post.summary),
@@ -118,11 +120,12 @@ for (const post of visiblePosts) {
     DATE: formatDate(post.date),
     BODY: body.trim(),
     REFERENCES: referencesBlock(post.references),
-    SHARE: shareBlock(post.title, contentPath('/blog/', post.slug)),
+    SHARE: shareBlock(post.title, pagePath),
     SUMMARY: escapeHtml(post.summary),
     MINUTES: minutes(post),
     COVER: coverUrl(post) ? `<figure class="portada-articulo"><img src="${escapeHtml(coverUrl(post))}" alt="${escapeHtml(post.cover_alt)}" decoding="async">${post.cover_caption ? `<figcaption>${escapeHtml(post.cover_caption)}</figcaption>` : ""}</figure>` : "",
     STRUCTURED_DATA: articleData(post, { section: '/blog/', label: 'Blog', type: 'BlogPosting', categories: post.categories }),
+    CITATION: citationBlock(post, pagePath, 'blog'),
   };
   for (const [token, value] of Object.entries(values)) {
     page = replaceToken(page, token, value);
