@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { shareBlock } from './share.mjs';
 import { referencesBlock } from './references.mjs';
+import { citationBlock } from './citation.mjs';
 import MarkdownIt from 'markdown-it';
 import { authorProfile } from './authors.mjs';
 import { articleData, collectionData, contentPath } from './structured-data.mjs';
@@ -40,6 +41,7 @@ for (const collection of [{slug:'',title:'Leer, pensar y conversar.',summary:'Te
   write(`lecturas/${collection.slug ? collection.slug+'/' : ''}index.html`,page);
 }
 for (const reading of readings) {
+  const pagePath = contentPath('/lecturas/textos/', reading.slug);
   const source = reading.source_url ? `<aside class="fuente-lectura" aria-label="Artículo de referencia"><p class="fuente-etiqueta">Fuente original</p><p class="fuente-nombre">${reading.source_name ? e(reading.source_name) : 'Fuente de la lectura'}</p><a class="enlace" href="${e(reading.source_url)}" target="_blank" rel="noopener noreferrer">${reading.type==='link' ? 'Leer en la fuente original' : 'Consultar la fuente'} <span aria-hidden="true">↗</span></a><p class="nota-fuente">Se abre en una nueva pestaña.</p></aside>` : '';
   const bodyBlocks = reading.body.trim().split(/\n\s*\n/u).map(value => value.trim()).filter(Boolean);
   const regularParagraphs = bodyBlocks.filter(value => !/^(#|>|-|\*Lectura de referencia:)/u.test(value) && value.split(/\s+/u).length >= 24);
@@ -56,7 +58,7 @@ for (const reading of readings) {
     READING_META:reading.type==='full' ? `${Math.max(1,Math.ceil(reading.body.trim().split(/\s+/u).length/220))} min de lectura` : 'Lectura recomendada',
     COVER:reading.cover ? `<figure class="portada-articulo"><img src="${e(reading.cover)}" alt="${e(reading.cover_alt)}" decoding="async">${reading.cover_caption ? `<figcaption>${e(reading.cover_caption)}</figcaption>` : ''}</figure>` : '',
     BODY:body, SOURCE:source, REFERENCES:referencesBlock(reading.references),
-    SHARE:shareBlock(reading.title, contentPath('/lecturas/textos/', reading.slug)),
+    SHARE:shareBlock(reading.title, pagePath), CITATION:citationBlock(reading, pagePath, 'reading'),
     STRUCTURED_DATA:articleData(reading, { section:'/lecturas/', label:'Lecturas selectas', categories:reading.collections.map(key=>collections.find(c=>c.slug===key).title), contentSection:'/lecturas/textos/' }),
   }));
 }

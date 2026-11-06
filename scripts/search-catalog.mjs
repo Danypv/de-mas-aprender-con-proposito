@@ -75,7 +75,8 @@ export function searchDocuments(root = process.cwd()) {
       body = html.match(/<main\b[^>]*id="contenido"[^>]*>([\s\S]*?)<\/main>/)?.[1];
     }
     if (!body?.trim()) throw Error(`Búsqueda: no se encuentra el contenido de ${record.url}`);
-    body = body.replace(/<section class="compartir"/g, '<section data-pagefind-ignore="all" class="compartir"')
+    body = body.replace(/<details class="citar-publicacion">[\s\S]*?<\/details>/g, '')
+      .replace(/<section class="compartir"/g, '<section data-pagefind-ignore="all" class="compartir"')
       .replace(/<h1\b/g, '<h1 data-pagefind-weight="8"')
       .replace(/<p class="ruta"/g, '<p data-pagefind-ignore="all" class="ruta"')
       .replace(/<div class="acciones"/g, '<div data-pagefind-ignore="all" class="acciones"');

@@ -16,6 +16,8 @@ summary: >-
 source_url: >-
   https://tiendauniversitaria.ces.edu.co/product/el-sufrimiento-humano-un-enfoque-hacia-la-formacion-y-el-quehacer-medico/
 source_name: Editorial CES
+source_title: 'El sufrimiento humano: un enfoque hacia la formación y el quehacer médico'
+source_author: 'C. A. Gallo Orjuela, C. Posada Giraldo y M. M. Massaro Ceballos'
 status: published
 featured: false
 cover: /assets/imagenes/blog/portada-editorial-en-fondo-claro.png
