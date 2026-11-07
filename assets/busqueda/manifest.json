@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "revision": "d69f29c9f1a81399",
-  "bundle": "/assets/busqueda/d69f29c9f1a81399/pagefind.js",
+  "revision": "718a3db1228a7140",
+  "bundle": "/assets/busqueda/718a3db1228a7140/pagefind.js",
   "count": 25,
   "publicationCount": 10,
   "entries": [
@@ -145,7 +145,7 @@
     },
     {
       "url": "/lecturas/cine/",
-      "title": "Cine",
+      "title": "Arte y Cine",
       "section": "Lecturas selectas",
       "kind": "catalog"
     },
@@ -158,8 +158,8 @@
   ],
   "files": [
     {
-      "path": "filter/es_ea8a888.pf_filter",
-      "sha256": "59d949b7c8b974dfcaff5174c7bb3b6890adcf6fc25ff6d0edd330f7a6a3c8ac"
+      "path": "filter/es_46ed9d4.pf_filter",
+      "sha256": "ddd892f91fa859a8de7a722ad94ca8167e9bc4613fc0d30be8238185dffb45be"
     },
     {
       "path": "fragment/es_1574f3f.pf_fragment",
@@ -172,10 +172,6 @@
     {
       "path": "fragment/es_1d8230f.pf_fragment",
       "sha256": "81d3eeb9128e7ea30c8e67181048df88985396e81a978e00d77f6cc7dc523fea"
-    },
-    {
-      "path": "fragment/es_1d82618.pf_fragment",
-      "sha256": "f019c0eb623f58a3d3caa8fc75abfd15438264ecb6ef72f7a0ed5900ae029379"
     },
     {
       "path": "fragment/es_1f93d46.pf_fragment",
@@ -234,6 +230,10 @@
       "sha256": "4274c5e1b671c34b17652caf7ccaa36bb0b1296eebf2679cce454935ceafb97c"
     },
     {
+      "path": "fragment/es_a8c74e5.pf_fragment",
+      "sha256": "7003d7d5d204c9658f9ca51ebdbe9dc99be028e1a66c10101c9ada611c9d9a0b"
+    },
+    {
       "path": "fragment/es_a985755.pf_fragment",
       "sha256": "263a8f1f69b564a58c8d132fe56731458ef4e4829ec93d1a4e05f1ccf7445bbc"
     },
@@ -262,12 +262,12 @@
       "sha256": "3562771b6f8c99572d37c1af6c8cd3a4708921cdd6c5c7f69953ebef7e5f5738"
     },
     {
-      "path": "index/es_5a214bf.pf_index",
-      "sha256": "e72f1dcb27cc37864a90486b769b9e7162a1f4560075910e9eafb14e75d4094d"
+      "path": "index/es_c5259c4.pf_index",
+      "sha256": "616cfb6e8629096f1b46c286cb91afa932af0b567ccd9f154fe744ca6081fd70"
     },
     {
       "path": "pagefind-entry.json",
-      "sha256": "d362ae1e70778578fc88e12d88385fcbc214edd548d33eeedf179c2ca3657dcd"
+      "sha256": "36de9bde3c7c53539f6c8a3f67d6e90f020494b683645fad336a392629ef22d8"
     },
     {
       "path": "pagefind-highlight.js",
@@ -278,8 +278,8 @@
       "sha256": "4ca50d25bcab9e1c3afbc00ab5f7761114e83c8fc1b83d38655af1558b650c2a"
     },
     {
-      "path": "pagefind.es_313e642be8.pf_meta",
-      "sha256": "9ea41ee934772839dbfee0b27c90c4646cbdd91f5910a6614eeb6f099dfa7380"
+      "path": "pagefind.es_ed316bf0ee.pf_meta",
+      "sha256": "588cb8bb55eaea7707cd5511b2eab015245e4ef0c355e9f866444e4b65026125"
     },
     {
       "path": "pagefind.js",
