@@ -45,8 +45,8 @@ export const collections = [
   },
   {
     "slug": "cine",
-    "title": "Cine",
-    "summary": "Películas y miradas sobre el cine para pensar nuestra experiencia del mundo."
+    "title": "Arte y Cine",
+    "summary": "Obras de arte, películas y lecturas sobre la creación artística para pensar nuestra experiencia del mundo."
   }
 ];
 export const escapeHtml = value => String(value ?? '').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
