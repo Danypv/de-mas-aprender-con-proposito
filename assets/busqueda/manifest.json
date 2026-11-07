@@ -1,16 +1,10 @@
 {
   "version": 1,
-  "revision": "117dd69c4c70b70d",
-  "bundle": "/assets/busqueda/117dd69c4c70b70d/pagefind.js",
-  "count": 25,
-  "publicationCount": 10,
+  "revision": "0b3ae8ffd73f8d8a",
+  "bundle": "/assets/busqueda/0b3ae8ffd73f8d8a/pagefind.js",
+  "count": 24,
+  "publicationCount": 9,
   "entries": [
-    {
-      "url": "/blog/humanidades-y-ciencias/",
-      "title": "Integrar las humanidades y las ciencias: una clave para el cultivo del ser humano",
-      "section": "Blog",
-      "kind": "publication"
-    },
     {
       "url": "/blog/gobernar-lo-que-creamos/",
       "title": "Gobernar lo que creamos",
@@ -158,8 +152,8 @@
   ],
   "files": [
     {
-      "path": "filter/es_835c9ae.pf_filter",
-      "sha256": "1326be3755fbffef1b3d08372e5d453f3ffe1851f2dc26b851b7689cd247fafe"
+      "path": "filter/es_392352a.pf_filter",
+      "sha256": "c1c6faa0f758924f3d13a9268fc92835be20660976c92b6e8d2de17b2e4888bd"
     },
     {
       "path": "fragment/es_1574f3f.pf_fragment",
@@ -258,16 +252,12 @@
       "sha256": "3562771b6f8c99572d37c1af6c8cd3a4708921cdd6c5c7f69953ebef7e5f5738"
     },
     {
-      "path": "fragment/es_f2d28d0.pf_fragment",
-      "sha256": "f34c96cad425f66320d15a0d9509ade89a227b3cf7b1cca77af64f94b6de0e17"
-    },
-    {
-      "path": "index/es_e2705a8.pf_index",
-      "sha256": "de5ef1efd15f7fd5121b9b0bcc7b9c057a79faa4aa9b381a7c66f9bbcce25310"
+      "path": "index/es_ebd4f62.pf_index",
+      "sha256": "fb20f9766d689c7cf068ab73239dd0b2ffacb6b9d1217bfbe7048f054a486e36"
     },
     {
       "path": "pagefind-entry.json",
-      "sha256": "18bcfa5b8bafb4979e65f33ff26ebdfb9c9bf791289895da8908bd01bc2837ed"
+      "sha256": "3ba356caea32d18909b53b8c0f35787c140d02249c276a5d57db576a570920a6"
     },
     {
       "path": "pagefind-highlight.js",
@@ -278,8 +268,8 @@
       "sha256": "4ca50d25bcab9e1c3afbc00ab5f7761114e83c8fc1b83d38655af1558b650c2a"
     },
     {
-      "path": "pagefind.es_97aafcf110.pf_meta",
-      "sha256": "7557b184e8abd796832a785c3e577a8c70239c08283d65b62e2a6129b1a11f5b"
+      "path": "pagefind.es_fea1fc9780.pf_meta",
+      "sha256": "4285e12c48c24a1d56a45c7cb390545e71e455297acc6b653338e48eb257bdcc"
     },
     {
       "path": "pagefind.js",

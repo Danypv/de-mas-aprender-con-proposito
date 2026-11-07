@@ -25,8 +25,7 @@ for(const [folder,section,prefix,action]of sources){
   const approved={
    'estoicismo-una-filosofia-de-vida': ['Vivir\ncon sentido.','Filosofía práctica para afrontar las decisiones de cada día.'],
    'conocer-el-cerebro-para-vivir-mejor': ['Comprender\nla mente.','Una mirada a la relación entre el cerebro y nuestra vida cotidiana.'],
-   'La-tecnica-ante-el-límite-humano': ['Pensar\nel límite.','Una reflexión sobre la responsabilidad de crear tecnología.'],
-   'humanidades-y-ciencias': ['Saberes\nen diálogo.','Ciencia y humanidades para comprender y habitar el mundo.','Integrar las humanidades y las ciencias']
+   'La-tecnica-ante-el-límite-humano': ['Pensar\nel límite.','Una reflexión sobre la responsabilidad de crear tecnología.']
   }[data.slug];
   const fallback={posts:'Ideas para\npensar.',essays:'Pensar\na fondo',readings:'Leer para\ncomprender.',videos:'Mirar y\npensar.','podcast-episodes':'Escuchar con\natención.'};
   const summary=data.banner_summary||approved?.[1]||String(data.summary||'').split(/(?<=[.!?])\s/)[0];
