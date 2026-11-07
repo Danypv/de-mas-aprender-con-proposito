@@ -59,21 +59,14 @@ La educación debe ser un escenario en el que las actitudes de Prometeo y Orfeo 
 
 La filosofía y la historia, junto con las artes y las demás disciplinas humanísticas, son componentes esenciales de nuestra racionalidad. El estudio del universo simbólico humano permite a las personas comprenderse a sí mismas y examinar su lugar en el mundo. Siguiendo los aportes que señala Cortina (2018), podemos reconocer varias formas en que las humanidades contribuyen a la formación de las personas.
 
-·       Contribuyen a la formación del carácter y de la conciencia, en diálogo con el mundo y sus culturas.
-
-·       Cultivan el espíritu crítico y permiten a los profesionales discernir los fines de su vocación y de su profesión.
-
-·       Aportan perspectivas éticas para examinar los desarrollos tecnocientíficos y sus consecuencias.
-
-·       Profundizan la comprensión de la responsabilidad que las personas adquieren consigo mismas y con el mundo que comparten.
-
-·       Ayudan a que la educación sea un proceso de formación que vaya más allá de la instrucción.
-
-·       Favorecen el desarrollo de la sensibilidad y del juicio, así como la capacidad de reconocer experiencias distintas de la propia.
-
-·       Ofrecen recursos para cuestionar el individualismo y participar en la construcción de una sociedad democrática.
-
-·       Nos recuerdan que la capacidad de hacer adquiere sentido en relación con la vida que queremos llevar.
+- Contribuyen a la formación del carácter y de la conciencia, en diálogo con el mundo y sus culturas.
+- Cultivan el espíritu crítico y permiten a los profesionales discernir los fines de su vocación y de su profesión.
+- Aportan perspectivas éticas para examinar los desarrollos tecnocientíficos y sus consecuencias.
+- Profundizan la comprensión de la responsabilidad que las personas adquieren consigo mismas y con el mundo que comparten.
+- Ayudan a que la educación sea un proceso de formación que vaya más allá de la instrucción.
+- Favorecen el desarrollo de la sensibilidad y del juicio, así como la capacidad de reconocer experiencias distintas de la propia.
+- Ofrecen recursos para cuestionar el individualismo y participar en la construcción de una sociedad democrática.
+- Nos recuerdan que la capacidad de hacer adquiere sentido en relación con la vida que queremos llevar.
 
 Ninguno de estos alcances está garantizado por la sola presencia de una asignatura en un currículo. Su fecundidad depende de cómo se enseñan y se estudian, de las preguntas que suscitan y de la disposición a dejar que esas preguntas tengan un lugar en la propia vida.
 
