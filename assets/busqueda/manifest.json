@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "revision": "0b3ae8ffd73f8d8a",
-  "bundle": "/assets/busqueda/0b3ae8ffd73f8d8a/pagefind.js",
-  "count": 24,
-  "publicationCount": 9,
+  "revision": "7b999b4e9ca74c0a",
+  "bundle": "/assets/busqueda/7b999b4e9ca74c0a/pagefind.js",
+  "count": 25,
+  "publicationCount": 10,
   "entries": [
     {
       "url": "/blog/gobernar-lo-que-creamos/",
@@ -45,6 +45,12 @@
       "url": "/lecturas/textos/aprender-a-atender/",
       "title": "Aprender a atender",
       "section": "Lecturas selectas",
+      "kind": "publication"
+    },
+    {
+      "url": "/ensayos/lo-que-hace-fecundo-el-saber/",
+      "title": "Lo que hace fecundo el saber",
+      "section": "Ensayos",
       "kind": "publication"
     },
     {
@@ -152,8 +158,8 @@
   ],
   "files": [
     {
-      "path": "filter/es_392352a.pf_filter",
-      "sha256": "c1c6faa0f758924f3d13a9268fc92835be20660976c92b6e8d2de17b2e4888bd"
+      "path": "filter/es_78a498c.pf_filter",
+      "sha256": "5b481134e1dde450b852f51ba0265138472416be3c3907807c3217711ba1f370"
     },
     {
       "path": "fragment/es_1574f3f.pf_fragment",
@@ -240,6 +246,10 @@
       "sha256": "8c745b0ca5b53789b04ab160739dcf2ffaa39f76b2c1d06cf62c1d44c342a907"
     },
     {
+      "path": "fragment/es_b4f8c78.pf_fragment",
+      "sha256": "5084174574e36e7e9af4004dee32fdba7057c1bee94a8cdbf69a13c199251b21"
+    },
+    {
       "path": "fragment/es_c3b03dd.pf_fragment",
       "sha256": "d7ddb6d920733b2b73e43ffc60f2a4f921c5906e6e25d7923fdba3884369bdd3"
     },
@@ -252,12 +262,12 @@
       "sha256": "3562771b6f8c99572d37c1af6c8cd3a4708921cdd6c5c7f69953ebef7e5f5738"
     },
     {
-      "path": "index/es_ebd4f62.pf_index",
-      "sha256": "fb20f9766d689c7cf068ab73239dd0b2ffacb6b9d1217bfbe7048f054a486e36"
+      "path": "index/es_66cdc27.pf_index",
+      "sha256": "744851184ab52e3056cab9474235342b199a72812baa22bbd75136f570a880ec"
     },
     {
       "path": "pagefind-entry.json",
-      "sha256": "3ba356caea32d18909b53b8c0f35787c140d02249c276a5d57db576a570920a6"
+      "sha256": "00ebb1acf8ddf963270d1cf011a60615ced72d40b137ce1de8f3e1a574c7f478"
     },
     {
       "path": "pagefind-highlight.js",
@@ -268,8 +278,8 @@
       "sha256": "4ca50d25bcab9e1c3afbc00ab5f7761114e83c8fc1b83d38655af1558b650c2a"
     },
     {
-      "path": "pagefind.es_fea1fc9780.pf_meta",
-      "sha256": "4285e12c48c24a1d56a45c7cb390545e71e455297acc6b653338e48eb257bdcc"
+      "path": "pagefind.es_353a21fe6d.pf_meta",
+      "sha256": "e1c3557f4289d68664e5ccd2ce2f4b7343f8b4a6099a4131c97365cd353bfdec"
     },
     {
       "path": "pagefind.js",
