@@ -29,6 +29,7 @@ jobs:
       - name: Comprobar comportamiento con contenido temporal
         run: |
           npm run test:references
+          npm run test:indexnow
           npm run test:home-blog
           npm run test:essays
           npm run test:related
