@@ -1,9 +1,7 @@
 name: Avisar cambios publicados a IndexNow
 
 on:
-  workflow_run:
-    workflows: [pages build and deployment]
-    types: [completed]
+  push:
     branches: [main]
   workflow_dispatch:
 
@@ -16,10 +14,7 @@ concurrency:
 
 jobs:
   notify:
-    if: >-
-      (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main') ||
-      (github.event.workflow_run.conclusion == 'success' &&
-       github.event.workflow_run.head_repository.full_name == github.repository)
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     permissions:
@@ -27,10 +22,8 @@ jobs:
     env:
       INDEXNOW_STATE_FILE: ${{ github.workspace }}/.indexnow-state/state.json
     steps:
-      - name: Leer la versión publicada
+      - name: Leer los cambios que se van a publicar
         uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
       - name: Preparar Node
         uses: actions/setup-node@v4
         with:

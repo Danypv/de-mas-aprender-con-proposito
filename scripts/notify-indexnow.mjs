@@ -38,13 +38,13 @@ export function changedUrls(previous, current) {
     .filter(address => previous.urls[address] !== current.urls[address]).sort();
 }
 
-async function retry(operation, pause) {
+async function retry(operation, pause, attempts = 3) {
   for (let attempt = 0; ; attempt++) {
     try {
       return await operation();
     } catch (error) {
-      if (attempt === 2) throw error;
-      await pause(5000 * (attempt + 1));
+      if (attempt === attempts - 1) throw error;
+      await pause(Math.min(5000 * (attempt + 1), 15000));
     }
   }
 }
@@ -63,7 +63,7 @@ export async function notifyIndexNow({ current, addresses, readFile, key, stateF
     if (response.status !== 200 || (await response.text()).trim() !== key) {
       throw Error('IndexNow: el archivo de verificación aún no está publicado.');
     }
-  }, pause);
+  }, pause, 21);
 
   for (const address of addresses) {
     const file = pagePath(address);
@@ -88,7 +88,7 @@ export async function notifyIndexNow({ current, addresses, readFile, key, stateF
         return;
       }
       throw Error(`IndexNow: falta confirmar el cambio publicado: ${address} (HTTP ${response.status}).`);
-    }, pause);
+    }, pause, 21);
   }
 
   for (let offset = 0; offset < addresses.length; offset += 10000) {
