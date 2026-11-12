@@ -12,7 +12,6 @@ authors:
 date: 2026-10-30T00:00:00.000Z
 collections:
   - ciencia-y-tecnologia
-  - filosofia
 type: link
 publication_type: academic_article
 summary: >-
@@ -32,6 +31,7 @@ featured: false
 cover: /assets/imagenes/blog/numan-ali-llntovr7ctk-unsplash.jpg
 cover_alt: Letras IA en la placa de circuito
 cover_caption: Foto de Numan Ali en Unsplash
+hide_citation: false
 author: Daniel Pérez Valencia
 author_url: ''
 citation_author: 'Pérez Valencia, D.'
