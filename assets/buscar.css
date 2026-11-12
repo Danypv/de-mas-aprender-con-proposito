@@ -14,7 +14,7 @@
   width:min(820px,calc(100% - 64px)); max-width:none; margin:0;
   max-height:calc(100vh - 128px); max-height:calc(100dvh - 128px);
   overflow:auto; overscroll-behavior:contain; padding:28px 36px 24px;
-  border:0; border-top:3px solid var(--amarillo,#ffb600);
+  border:0; border-top:3px solid var(--amarillo,#ffb600); border-radius:16px;
   color:var(--negro,#000); background:var(--blanco,#fff);
   box-shadow:0 12px 42px rgba(0,0,0,.18);
   font-family:var(--lectura,"Roboto",Arial,sans-serif); font-size:17px; line-height:1.65;
@@ -29,7 +29,7 @@
 #buscador-global .busqueda-campo { display:flex; align-items:center; gap:14px; padding:2px 0 10px; border-bottom:2px solid var(--negro,#000); }
 #buscador-global .busqueda-campo > svg { width:22px; height:22px; flex:none; }
 #buscador-global .busqueda-campo:focus-within { border-color:var(--amarillo,#ffb600); }
-#buscador-global input { box-sizing:border-box; min-width:0; width:100%; min-height:44px; padding:5px 4px; border:0; border-radius:0; color:inherit; background:#fff; font:inherit; font-size:22px; line-height:1.4; }
+#buscador-global input { box-sizing:border-box; min-width:0; width:100%; min-height:44px; padding:5px 4px; border:0; border-radius:12px; color:inherit; background:#fff; font:inherit; font-size:22px; line-height:1.4; }
 #buscador-global .busqueda-filtros { display:flex; flex-wrap:wrap; gap:0 18px; margin:0 0 16px; padding:14px 0 0; }
 #buscador-global .busqueda-filtros button { min-height:44px; margin:0; padding:6px 0; border:0; border-bottom:2px solid transparent; color:var(--gris,#57534d); background:transparent; font:inherit; font-size:14px; line-height:1.4; cursor:pointer; }
 #buscador-global .busqueda-filtros button[aria-pressed="true"] { color:var(--negro,#000); border-color:var(--amarillo,#ffb600); font-weight:500; }
@@ -44,7 +44,7 @@
 #buscador-global .busqueda-extracto { margin:0; color:var(--gris,#57534d); font-size:16px; line-height:1.7; }
 #buscador-global mark { padding:0 1px; color:var(--negro,#000); background:rgba(255,182,0,.22); }
 #buscador-global .busqueda-flecha { position:absolute; top:50px; right:0; font-size:22px; line-height:1; }
-#buscador-global .busqueda-accion { min-height:44px; margin:18px 0 0; padding:10px 14px; border:1px solid var(--linea,#dcd8cf); color:inherit; background:#fff; font:inherit; font-size:15px; cursor:pointer; }
+#buscador-global .busqueda-accion { min-height:44px; margin:18px 0 0; padding:10px 14px; border:1px solid var(--linea,#dcd8cf); border-radius:12px; color:inherit; background:#fff; font:inherit; font-size:15px; cursor:pointer; }
 #buscador-global .busqueda-accion:hover { border-color:var(--amarillo,#ffb600); }
 #buscador-global .busqueda-campo input:focus-visible,
 #buscador-global button:focus-visible,
