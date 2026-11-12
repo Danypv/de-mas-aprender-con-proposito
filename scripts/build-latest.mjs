@@ -48,7 +48,7 @@ const banner=latest.length?`<section class="novedades" id="novedades" aria-label
 if(!home.includes('<!-- LATEST_START -->'))throw Error('Falta el punto de inserción del banner');
 home=home.replace(/<!-- LATEST_START -->[\s\S]*?<!-- LATEST_END -->/,()=>`<!-- LATEST_START -->\n${banner}\n<!-- LATEST_END -->`);
 // Refresh component resources and replaced covers together after deployment.
-for(const file of ['assets/latest.css','assets/latest.js','/assets/colecciones.css','/assets/colecciones.js']){
+for(const file of ['assets/latest.css','assets/latest.js','/assets/colecciones.css','/assets/colecciones.js','/assets/ensayos.css']){
  const versioned=versionedAsset(root,file);
  if(versioned)home=home.replace(new RegExp('(href|src)="'+file.replaceAll('.','\\.')+'(?:\\?[^" ]*)?"','g'),`$1="${versioned}"`);
 }

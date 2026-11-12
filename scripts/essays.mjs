@@ -67,9 +67,14 @@ export function renderEssayBody(source,slug){
 export function themeOptions(items){
   return '<option value="">Todos los temas</option>'+essayCategories.map(c=>`<option value="${c.slug}"${items.some(item=>item.categories.includes(c.slug))?'':' disabled'}>${e(c.title)}</option>`).join('');
 }
+export function essayHomeSummary(summary){
+  const text=String(summary||'').replace(/\s+/g,' ').trim();
+  // Reuse the author's words; full summaries remain in articles and catalogues.
+  return text.match(/¿[^¿?]+\?/u)?.[0]||text.split(/(?<=[.!?])\s/u)[0];
+}
 export function updateHomeEssays(home,root){
   const items=readEssays(root).filter(item=>item.status==='published'),item=items[0];
-  const feature=item?`<article class="ensayos-portada">${item.cover?`<a href="${essayPath(item)}" class="ensayos-imagen"><img src="${e(item.cover)}" alt="${e(item.cover_alt)}" loading="lazy" decoding="async" width="960" height="540"></a>`:''}<div><p class="ensayos-tema">${e(categoryLabels(item).join(' · '))}</p><h3><a href="${essayPath(item)}">${e(item.title)}</a></h3><p class="ensayos-resumen">${e(item.summary)}</p><a class="enlace" href="${essayPath(item)}">Leer ensayo <span class="flecha" aria-hidden="true">→</span></a></div></article>`:'<p class="ensayos-vacio">Próximamente encontrarás aquí los primeros ensayos.</p>';
+  const feature=item?`<article class="ensayos-portada">${item.cover?`<a href="${essayPath(item)}" class="ensayos-imagen"><img src="${e(item.cover)}" alt="${e(item.cover_alt)}" loading="lazy" decoding="async" width="960" height="540"></a>`:''}<div><p class="ensayos-tema">${e(categoryLabels(item).join(' · '))}</p><h3><a href="${essayPath(item)}">${e(item.title)}</a></h3><p class="ensayos-resumen">${e(essayHomeSummary(item.summary))}</p><a class="enlace" href="${essayPath(item)}">Leer ensayo <span class="flecha" aria-hidden="true">→</span></a></div></article>`:'<p class="ensayos-vacio">Próximamente encontrarás aquí los primeros ensayos.</p>';
   const section=`<section class="seccion seccion-hueso ensayos-franja" id="ensayos" aria-labelledby="titulo-ensayos"><div class="contenedor"><div class="ensayos-encabezado"><div><p class="etiqueta">Ensayos</p><h2 id="titulo-ensayos">Pensar a fondo</h2><p class="ensayos-descripcion">Textos que desarrollan ideas y abren preguntas.</p></div><form class="ensayos-form" action="/ensayos/" method="get"><label for="ensayos-tema-portada">Explorar por tema</label><select id="ensayos-tema-portada" name="tema"${items.length?'':' disabled'}>${themeOptions(items)}</select><button type="submit" class="enlace">Ver todos los ensayos <span class="flecha" aria-hidden="true">→</span></button></form></div>${feature}</div></section>`;
   if(!home.includes('<!-- ESSAYS_START -->'))throw Error('Falta el espacio de la franja Ensayos');
   return home.replace(/<!-- ESSAYS_START -->[\s\S]*?<!-- ESSAYS_END -->/,()=>`<!-- ESSAYS_START -->\n${section}\n<!-- ESSAYS_END -->`);

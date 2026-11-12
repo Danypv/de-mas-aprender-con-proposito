@@ -4,12 +4,12 @@ import os from 'node:os';
 import assert from 'node:assert/strict';
 import {execFileSync} from 'node:child_process';
 import matter from 'gray-matter';
-import {essayCategories,renderEssayBody,readEssays} from './essays.mjs';
+import {essayCategories,renderEssayBody,readEssays,essayHomeSummary} from './essays.mjs';
 import {relatedInventory} from './related.mjs';
 
 const source=process.cwd(),root=fs.mkdtempSync(path.join(os.tmpdir(),'demas-essays-'));
 const text=Array.from({length:12},(_,i)=>`Párrafo ${i+1}. Esta reflexión desarrolla una idea sobre el deseo y la responsabilidad de juzgar con razones propias.`).join('\n\n');
-const base={title:'Platón y el eros',slug:'platon-y-el-eros',author:'Autora invitada',date:'2026-11-04',summary:'Una reflexión filosófica.',status:'published',categories:['filosofia'],author_url:'https://orcid.org/0000-0000-0000-0000'};
+const base={title:'Platón y el eros',slug:'platon-y-el-eros',author:'Autora invitada',date:'2026-11-04',summary:'¿Qué nos invita a pensar? Una reflexión filosófica que conserva su contexto completo.',status:'published',categories:['filosofia'],author_url:'https://orcid.org/0000-0000-0000-0000'};
 const write=(file,data)=>{const target=path.join(root,file);fs.mkdirSync(path.dirname(target),{recursive:true});fs.writeFileSync(target,data)};
 const save=(name,data,body=text)=>write(`content/essays/${name}.md`,matter.stringify(body,data));
 const run=name=>execFileSync(process.execPath,[`scripts/${name}.mjs`],{cwd:root,stdio:'pipe'});
@@ -17,6 +17,11 @@ const html=file=>fs.readFileSync(path.join(root,file),'utf8');
 const home=()=>html('index.html').match(/<!-- ESSAYS_START -->([\s\S]*?)<!-- ESSAYS_END -->/)[1];
 const build=()=>{for(const name of ['build-content','build-essays','build-readings','build-videos','build-podcasts','build-latest','build-sitemap','build-search','check-search'])run(name)};
 try{
+  assert.equal(essayHomeSummary(base.summary),'¿Qué nos invita a pensar?');
+  assert.equal(essayHomeSummary('Una introducción. ¿Por qué detenernos? Más contexto.'),'¿Por qué detenernos?');
+  assert.equal(essayHomeSummary('Una primera frase. Un desarrollo posterior.'),'Una primera frase.');
+  assert.equal(essayHomeSummary('  ¿Cómo\n conversar?   Más contexto.'),'¿Cómo conversar?');
+  assert.equal(essayHomeSummary('Una invitación sin punto final'),'Una invitación sin punto final');
   for(const dir of ['scripts','templates'])fs.cpSync(path.join(source,dir),path.join(root,dir),{recursive:true});
   fs.symlinkSync(path.join(source,'node_modules'),path.join(root,'node_modules'),'dir');
   fs.copyFileSync(path.join(source,'package.json'),path.join(root,'package.json'));
@@ -45,6 +50,9 @@ try{
   assert(article.includes('class="compartir"')&&article.includes('class="relacionados"'));
   assert(html('blog/articulo-afin/index.html').includes('class="relacionado" href="/ensayos/platon-y-el-eros/"'));
   assert(home().includes(base.title)&&!home().includes('Último ensayo'));
+  assert(home().includes('¿Qué nos invita a pensar?'));
+  assert(!home().includes('Una reflexión filosófica que conserva su contexto completo.'));
+  assert(article.includes(base.summary)&&html('ensayos/index.html').includes(base.summary),'El resumen completo permanece en el artículo y en el catálogo');
   assert(!fs.existsSync(path.join(root,'ensayos/privado/index.html')));
   let manifest=JSON.parse(html('assets/busqueda/manifest.json'));
   assert(manifest.entries.some(item=>item.url==='/ensayos/platon-y-el-eros/'&&item.section==='Ensayos'));

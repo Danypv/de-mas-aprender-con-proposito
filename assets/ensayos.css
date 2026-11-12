@@ -9,8 +9,9 @@
 .ensayos-form select:focus-visible{outline:3px solid var(--amarillo);outline-offset:4px}
 .ensayos-form button.enlace{display:inline-block;min-height:44px;margin:14px 0 0;padding:8px 0;border:0;background:transparent;cursor:pointer;text-align:left}
 .ensayos-portada{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:40px;align-items:center;margin-top:36px;padding-top:30px;border-top:1px solid var(--linea)}
-.ensayos-imagen{display:block;min-width:0}
-.ensayos-imagen img,.ensayos-catalogo .imagen-entrada{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:4px}
+.ensayos-imagen{display:block;min-width:0;border-radius:16px;overflow:hidden;transition:transform 220ms ease,box-shadow 220ms ease}
+.ensayos-imagen:focus-visible{border-radius:16px}
+.ensayos-imagen img,.ensayos-catalogo .imagen-entrada{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:16px}
 .ensayos-portada h3{font-size:clamp(1.4rem,2.2vw,1.8rem);max-width:26ch}
 .ensayos-portada h3 a{text-decoration:none}
 .ensayos-portada h3 a:hover{text-decoration:underline;text-decoration-color:var(--amarillo);text-underline-offset:5px}
@@ -22,3 +23,14 @@
 .ensayos-articulo .articulo .destacado-editorial{margin:2.2em 0;padding:24px 28px;border-left:4px solid var(--amarillo);color:var(--blanco);background:var(--negro-suave);font-size:1.1875rem;line-height:1.75}
 .ensayos-articulo .articulo{overflow-wrap:anywhere}
 @media(max-width:720px){.ensayos-encabezado,.ensayos-portada{grid-template-columns:1fr;gap:26px}.ensayos-portada{margin-top:28px;padding-top:24px}.ensayos-franja{padding:60px 0}.ensayos-franja .contenedor{width:calc(100% - 40px)}.ensayos-articulo .articulo .destacado-editorial{padding:22px 20px}.ensayos-portada h3{max-width:none}.ensayos-form select{font-size:1rem}}
+/* Small interaction cues share the collections' rounded editorial language. */
+.blog-franja .enlace::after,.ensayos-franja .enlace::after{transform:scaleX(.74);transition:transform 220ms ease}
+.blog-franja .enlace:focus-visible::after,.ensayos-franja .enlace:focus-visible::after{transform:scaleX(1)}
+@media(hover:hover) and (pointer:fine){
+  .ensayos-imagen:hover{transform:translateY(-3px);box-shadow:0 12px 24px rgba(0,0,0,.12)}
+  .blog-franja .enlace:hover::after,.ensayos-franja .enlace:hover::after{transform:scaleX(1)}
+}
+@media(prefers-reduced-motion:reduce){
+  .ensayos-imagen,.blog-franja .enlace::after,.ensayos-franja .enlace::after{transition:none}
+  .ensayos-imagen:hover{transform:none}
+}
