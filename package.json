@@ -29,6 +29,8 @@
     "build:essays": "node scripts/build-essays.mjs",
     "test:essays": "node --no-warnings scripts/test-essays.mjs",
     "test:home-blog": "node scripts/test-home-blog.mjs",
+    "test:home-media": "node scripts/test-home-media.mjs",
+    "test:footer": "node scripts/test-footer.mjs",
     "test:references": "node scripts/test-references.mjs",
     "test:indexnow": "node scripts/test-indexnow.mjs"
   },

@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
+import {sharedFooter} from './footer.mjs';
 
 const root=path.resolve(process.argv[2]||process.cwd());
 const origin='https://somosdemas.com';
@@ -27,6 +28,8 @@ for(const route of routes){
   }
 }
 const home=load('/');
+const footer=sharedFooter(root);
+for(const route of routes)assert(load(route).includes(footer),route+': pie compartido distinto o ausente');
 const title=home.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/)[1].replace(/<[^>]+>/g,'');
 assert.equal(title,'Aprender con propósito.');
 const slides=[...home.matchAll(/\bdata-slide(?:\s|>)/g)].length;

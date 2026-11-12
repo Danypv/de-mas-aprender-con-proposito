@@ -8,6 +8,8 @@ import matter from 'gray-matter';
 import {updateHomeCollections} from './home-collections.mjs';
 import {updateHomeEssays} from './essays.mjs';
 import {updateHomeBlog} from './home-blog.mjs';
+import {updateHomeMedia} from './home-media.mjs';
+import {buildSharedFooter} from './footer.mjs';
 const root=path.resolve(process.argv[2]||process.cwd());
 const homePath=path.join(root,'index.html');let home=fs.readFileSync(homePath,'utf8');
 const esc=v=>String(v??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
@@ -48,16 +50,19 @@ const banner=latest.length?`<section class="novedades" id="novedades" aria-label
 if(!home.includes('<!-- LATEST_START -->'))throw Error('Falta el punto de inserción del banner');
 home=home.replace(/<!-- LATEST_START -->[\s\S]*?<!-- LATEST_END -->/,()=>`<!-- LATEST_START -->\n${banner}\n<!-- LATEST_END -->`);
 // Refresh component resources and replaced covers together after deployment.
-for(const file of ['assets/latest.css','assets/latest.js','/assets/colecciones.css','/assets/colecciones.js','/assets/ensayos.css']){
+for(const file of ['assets/latest.css','assets/latest.js','/assets/colecciones.css','/assets/colecciones.js','/assets/ensayos.css','/assets/audiovisuales.css','/assets/sobre.css']){
  const versioned=versionedAsset(root,file);
  if(versioned)home=home.replace(new RegExp('(href|src)="'+file.replaceAll('.','\\.')+'(?:\\?[^" ]*)?"','g'),`$1="${versioned}"`);
 }
 home=updateHomeCollections(home,root);
 home=updateHomeEssays(home,root);
 home=updateHomeBlog(home,root);
+home=updateHomeMedia(home,root);
 fs.writeFileSync(homePath,home);console.log(`${latest.length} novedades generadas; solo contenidos publicados.`);
 
 console.log(`${buildRedirects(root)} redirecciones generadas.`);
 
 const related=buildRelated(root);
 console.log(`${related.blocks} bloques de recomendaciones entre ${related.publications} publicaciones.`);
+
+console.log(`${buildSharedFooter(root)} páginas y plantillas con el pie compartido.`);
