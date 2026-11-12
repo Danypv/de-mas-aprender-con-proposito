@@ -1,0 +1,37 @@
+/* Criterio compartido para las páginas internas. Solo modifica las esquinas. */
+:root {
+  --radio-recuadro: 16px;
+  --radio-control: 12px;
+}
+.articulo blockquote,
+.articulo .destacado-editorial,
+.fuente-lectura,
+.reproductor-audio,
+.video-enlace-externo,
+.entrada.destacada,
+.referencias,
+.citar-publicacion,
+.transcripcion,
+.portada-articulo img,
+.imagen-entrada,
+.miniatura-video,
+.miniatura-video img,
+.miniatura-marca,
+.podcast-portada,
+.video-player,
+.video-player iframe {
+  border-radius: var(--radio-recuadro);
+}
+.compartir .compartir-opcion,
+.compartir-enlace,
+.citar-publicacion button,
+.referencias > summary,
+.citar-publicacion > summary,
+.transcripcion > summary,
+.herramientas select,
+.coleccion-selector select,
+.coleccion-selector button,
+.ensayos-form select,
+.escuchar-principal {
+  border-radius: var(--radio-control);
+}

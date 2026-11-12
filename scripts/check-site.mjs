@@ -10,6 +10,7 @@ const routes=[...new Set(manifest.entries.map(item=>item.url.split('#')[0]))];
 const load=route=>fs.readFileSync(path.join(root,decodeURIComponent(route.slice(1)),'index.html'),'utf8');
 for(const route of routes){
   const html=load(route),head=html.split('</head>')[0];
+  if(route!=='/')assert(head.includes('href="/assets/bordes.css?'),`${route}: falta el estilo común de bordes`);
   assert(/<html\s[^>]*lang="es"/.test(html),`${route}: idioma`);
   const descriptions=[...head.matchAll(/<meta (?:name="description"|property="og:description") content="([^"]*)"/g)].map(m=>m[1]);
   assert.equal(descriptions.length,2,`${route}: descripciones`);assert.equal(descriptions[0],descriptions[1],`${route}: descripciones distintas`);
@@ -28,6 +29,9 @@ for(const route of routes){
   }
 }
 const home=load('/');
+for(const name of ['post','reading','essay','video','episode','collection','essays','videos','podcast']){
+  assert(fs.readFileSync(path.join(root,'templates',name+'.html'),'utf8').split('</head>')[0].includes('href="/assets/bordes.css?'),name+': plantilla sin el estilo común de bordes');
+}
 const footer=sharedFooter(root);
 for(const route of routes)assert(load(route).includes(footer),route+': pie compartido distinto o ausente');
 const title=home.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/)[1].replace(/<[^>]+>/g,'');
