@@ -38,6 +38,13 @@ try{
   assert(/<div hidden class="herramientas"/.test(page('podcast/series/serie-prueba/index.html')),'Dentro de una serie no se repite el filtro');
   fs.unlinkSync(path.join(fixture,'content/podcast-episodes/otro.md'));build();
   assert(/<div hidden class="herramientas"/.test(page('podcast/index.html')),'Una serie vacía no crea opciones de filtro');
+ save('podcast-episodes','audio.md',{...episode,featured:true});
+ save('podcast-episodes','spotify.md',{...episode,title:'Episodio nuevo',slug:'spotify-prueba',date:'2026-11-01',audio_url:undefined,spotify_url:'https://open.spotify.com/episode/123abc'});build();
+ assert(page('podcast/index.html').includes('<h2>Episodio nuevo</h2>'),'El episodio reciente encabeza el catálogo aunque otro esté marcado como destacado');
+ const rows=page('podcast/index.html').match(/<h3><a href="\/podcast\/episodios\/[^]*?<\/h3>/g)||[];
+ assert(rows[0].includes('spotify-prueba'),'La lista también muestra primero el episodio reciente');
+ fs.unlinkSync(path.join(fixture,'content/podcast-episodes/spotify.md'));build();
+ assert(page('podcast/index.html').includes('<h2>Episodio &lt;especial&gt; $&amp;</h2>'),'Retirar el más reciente recupera el siguiente');
  save('podcast-episodes','bad.md',{...episode,slug:'malo',audio_url:undefined});assert.throws(()=>readPodcasts(fixture));
  save('podcast-episodes','bad.md',{...episode,slug:'malo',audio_url:undefined,spotify_url:'https://example.org/episode/123abc'});assert.throws(()=>readPodcasts(fixture));
  save('podcast-episodes','bad.md',{...episode,slug:'malo',series:'no-existe'});assert.throws(()=>readPodcasts(fixture));

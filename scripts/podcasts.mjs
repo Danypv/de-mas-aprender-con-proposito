@@ -48,6 +48,6 @@ export function readPodcasts(root=process.cwd()) {
   const parent=series.find(s=>s.slug===episode.series);if(!parent)throw Error(`${episode.file}: la serie no existe`);
   if(episode.status==='published'&&parent.status!=='published')throw Error(`${episode.file}: aprueba también la serie antes de publicar el episodio`);
  }
- episodes.sort((a,b)=>new Date(b.date)-new Date(a.date)||a.title.localeCompare(b.title,'es'));
+ episodes.sort((a,b)=>new Date(b.date)-new Date(a.date)||a.slug.localeCompare(b.slug,'es'));
  return {series,episodes};
 }

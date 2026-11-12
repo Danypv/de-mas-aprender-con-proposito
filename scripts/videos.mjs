@@ -42,5 +42,5 @@ export function readVideos(root=process.cwd()){
    if(!/^\/assets\/imagenes\/blog\/[a-zA-Z0-9_./% -]+\.(jpe?g|png|webp)$/i.test(data.cover)||!local.startsWith(media+path.sep)||!fs.existsSync(local)||!String(data.cover_alt||'').trim())throw Error(`${file}: imagen o descripción no válida`);
   }
   return {...data,file,source,body:content};
- }).sort((a,b)=>Number(Boolean(b.featured))-Number(Boolean(a.featured))||new Date(b.date)-new Date(a.date)||a.title.localeCompare(b.title,'es'));
+ }).sort((a,b)=>new Date(b.date)-new Date(a.date)||a.slug.localeCompare(b.slug,'es'));
 }

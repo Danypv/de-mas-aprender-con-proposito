@@ -27,7 +27,7 @@ try{
  assert(!result.includes('Video privado')&&!result.includes('Video anterior'));
  assert(result.includes('href="/podcast/"')&&result.includes('Episodio publicado'));
  assert.deepEqual([...result.matchAll(/href="([^"]+)"/g)].map(match=>match[1]),['/podcast/','/videos/'],'Las tarjetas siempre abren el catálogo completo');
- assert(result.includes('Ver todos los podcasts')&&result.includes('Ver todos los videos'));
+ assert(result.includes('Ver podcasts')&&result.includes('Ver videos'));
  assert.equal(outside(result),outside(home));
  assert.equal(updateHomeMedia(result,root),result,'La generación es estable');
  save('videos','actual',{...base,slug:'actual',title:'Título corregido'});

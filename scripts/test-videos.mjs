@@ -28,6 +28,12 @@ try{
  const before=page('videos/index.html');assert.equal((before.match(/class="[^"]*video-resultado/g)||[]).length,4);assert.equal((before.match(/<h[23]>[\s\S]*?<\/h[23]>/g)||[]).filter(h=>h.includes('Video &lt;especial&gt;')).length,4);build();assert.equal(page('videos/index.html'),before);
  assert(!before.includes('id="buscar"'),'Los videos usan el buscador global');
  assert(/<div hidden class="herramientas"/.test(before),'Un solo formato no muestra un filtro redundante');
+ save('youtube.md',{...base,featured:true});
+ save('external.md',{...base,slug:'externo',title:'Video nuevo',date:'2026-11-01',source_url:'https://example.org/video'});build();
+ assert.equal(readVideos(fixture).filter(v=>v.status==='published')[0].slug,'externo','La fecha tiene prioridad sobre un destacado anterior');
+ assert(page('videos/index.html').includes('<h2>Video nuevo</h2>'),'El video reciente ocupa el primer bloque');
+ save('external.md',{...base,slug:'externo',title:'Video nuevo editado',date:'2026-09-01',source_url:'https://example.org/video'});build();
+ assert(!page('videos/index.html').includes('<h2>Video nuevo editado</h2>'),'Editar la fecha recalcula el primer video');
  save('ted.md',{...base,slug:'ted-prueba',format:'class',source_url:'https://www.ted.com/talks/una_charla'});build();
  assert(!/<div hidden class="herramientas"/.test(page('videos/index.html')),'Publicar otro formato habilita el filtro');
  for(const name of ['ted.md','external.md','no-embed.md'])fs.unlinkSync(path.join(fixture,'content/videos',name));build();const single=page('videos/index.html');assert(!single.includes('<section class="video-destacado'));assert.equal((single.match(/class="[^"]*video-resultado/g)||[]).length,1);
