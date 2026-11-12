@@ -14,6 +14,13 @@ try{
  put('templates/post.html',page('Plantilla'));put('alias/index.html','<html>Redirección sin pie</html>');
  assert.equal(buildSharedFooter(root),3);
  const canonical=sharedFooter(root),read=name=>fs.readFileSync(path.join(root,name),'utf8');
+ const social=canonical.match(/<nav class="pie-redes"[^>]*>([\s\S]*?)<\/nav>/)[1];
+ assert(social.includes('href="https://www.instagram.com/somosdemas.co/"'));
+ assert(social.includes('href="https://x.com/somosdemascom"'));
+ assert.equal((social.match(/class="pie-red-social"/g)||[]).length,2);
+ assert.equal((social.match(/target="_blank" rel="noopener noreferrer"/g)||[]).length,2);
+ assert(social.includes('aria-label="Instagram de DE+')&&social.includes('aria-label="X de DE+'));
+ assert(!social.replace(/<[^>]+>/g,'').trim(),'Solo se muestran los iconos, con nombres accesibles');
  for(const file of ['index.html','blog/entrada/index.html','templates/post.html']){
    const html=read(file);assert(html.includes(canonical));
    assert(html.includes('<main>Texto conservado <footer>Nota de autor</footer></main>'));

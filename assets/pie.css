@@ -15,8 +15,10 @@ footer.pie-pagina .pie-nav a:last-child{padding-right:0}
 footer.pie-pagina .pie-nav a+a::before{content:"";position:absolute;left:0;top:50%;height:14px;border-left:1px solid #ffb600;transform:translateY(-50%)}
 footer.pie-pagina .pie-inferior{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;padding-top:22px;border-top:1px solid #3b3b3b}
 footer.pie-pagina p{margin:0}
-footer.pie-pagina .pie-instagram-enlace{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:44px;font-family:var(--lectura,"Roboto",Arial,sans-serif);font-size:.9375rem;font-weight:500;line-height:1.5;white-space:nowrap;transition:color 160ms ease}
-footer.pie-pagina .pie-instagram-enlace svg{display:block;width:20px;height:20px;flex:none}
+footer.pie-pagina .pie-redes{display:flex;align-items:center;justify-content:center;gap:8px}
+footer.pie-pagina .pie-red-social{display:inline-flex;align-items:center;justify-content:center;flex:none;width:44px;height:44px;color:#fff;border-radius:12px;transition:color 160ms ease}
+footer.pie-pagina .pie-red-social svg{display:block;width:24px;height:24px;flex:none}
+footer.pie-pagina .pie-red-social:hover,footer.pie-pagina .pie-red-social:focus-visible{color:#ffb600}
 @media(max-width:780px){
  footer.pie-pagina>.contenedor{width:calc(100% - 40px)}
  footer.pie-pagina .pie-superior{flex-direction:column;align-items:center;gap:28px;padding-bottom:30px;text-align:center}
@@ -27,7 +29,7 @@ footer.pie-pagina .pie-instagram-enlace svg{display:block;width:20px;height:20px
  footer.pie-pagina .pie-nav a+a::before{height:13px}
  footer.pie-pagina .pie-inferior{flex-direction:column;align-items:center;gap:12px;padding-top:20px;text-align:center}
  footer.pie-pagina .pie-inferior>p{order:1}
- footer.pie-pagina .pie-inferior>.pie-instagram-enlace{order:2}
+ footer.pie-pagina .pie-inferior>.pie-redes{order:2}
  footer.pie-pagina .pie-inferior>a:last-child{order:3;margin-top:4px}
 }
-@media(prefers-reduced-motion:reduce){footer.pie-pagina .pie-instagram-enlace{transition:none}}
+@media(prefers-reduced-motion:reduce){footer.pie-pagina .pie-red-social{transition:none}}
