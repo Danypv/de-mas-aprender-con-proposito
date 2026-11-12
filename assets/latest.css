@@ -13,7 +13,8 @@
 .novedad-pie { display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:16px 22px; margin-top:auto; padding-top:14px; }
 .novedad-fecha { margin:0; padding-top:2px; color:#d7d7d5; font-family:var(--lectura); font-size:.8125rem; line-height:1.5; }
 .novedad-pie .enlace { flex:none; }
-.novedad-control { display:inline-flex; align-items:center; justify-content:center; min-width:44px; min-height:44px; padding:8px 12px; background:transparent; border:1px solid; font-family:var(--lectura); font-size:.9375rem; cursor:pointer; }
+.novedad-control { display:inline-flex; align-items:center; justify-content:center; min-width:44px; min-height:44px; padding:8px 12px; background:transparent; border:1px solid; border-radius:12px; font-family:var(--lectura); font-size:.9375rem; cursor:pointer; }
+.novedad-control:focus-visible { border-radius:12px; }
 .novedad-pausa { min-width:98px; }
 .novedades-controles[hidden] { display:none; }
 .novedad-punto { display:flex; align-items:center; justify-content:center; padding:0; background:transparent; border:0; cursor:pointer; }
