@@ -7,9 +7,9 @@ collections:
   - educacion
 type: full
 summary: >-
-  Un comentario a «La crisis en la educación», de Hannah Arendt. ¿Basta con
-  preparar a los estudiantes para adaptarse a los cambios? Educar exige también
-  enseñarles a comprender el mundo que les tocará transformar.
+  Un comentario a «La crisis en la educación», de Hannah Arendt. ¿Será
+  suficiente con preparar a los estudiantes para adaptarse a los cambios? Educar
+  exige también enseñarles a comprender el mundo que les tocará transformar.
 authors:
   - given: Daniel
     family: Pérez Valencia
