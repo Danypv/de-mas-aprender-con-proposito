@@ -180,8 +180,18 @@
       },
       "mainEntity": {
         "@type": "ItemList",
-        "numberOfItems": 0,
-        "itemListElement": []
+        "numberOfItems": 1,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@type": "WebPage",
+              "name": "Responder por el mundo",
+              "url": "https://somosdemas.com/lecturas/textos/responder-por-el-mundo/"
+            }
+          }
+        ]
       }
     },
     {
@@ -255,16 +265,20 @@
       <div class="contenedor">
         <div class="encabezado-lista">
           <h2>Lecturas</h2>
-          <p class="contador" aria-live="polite" aria-atomic="true">0 lecturas</p>
+          <p class="contador" aria-live="polite" aria-atomic="true">1 lectura</p>
         </div>
         <form class="coleccion-selector" action="/lecturas/" method="get"><label for="coleccion">Explorar por categoría<select id="coleccion" name="coleccion"><option value="/lecturas/">Todas las lecturas</option><option value="/lecturas/cine/">Arte y Cine</option><option value="/lecturas/ciencia-y-tecnologia/">Ciencia y tecnología</option><option value="/lecturas/educacion/" selected>Educación</option><option value="/lecturas/empresa-cultura-y-liderazgo/">Empresa, cultura y liderazgo</option><option value="/lecturas/filosofia/">Filosofía y ética</option><option value="/lecturas/historia-cultura-y-literatura/">Historia, cultura y literatura</option><option value="/lecturas/medicina-y-salud/">Medicina y salud</option><option value="/lecturas/teologia-y-espiritualidad/">Teología y espiritualidad</option></select></label><button type="submit">Ver lecturas <span aria-hidden="true">→</span></button></form><noscript><nav class="colecciones-nav" aria-label="Colecciones de lectura"><a href="/lecturas/">Todas las lecturas</a><a href="/lecturas/cine/">Arte y Cine</a><a href="/lecturas/ciencia-y-tecnologia/">Ciencia y tecnología</a><a href="/lecturas/educacion/" aria-current="page">Educación</a><a href="/lecturas/empresa-cultura-y-liderazgo/">Empresa, cultura y liderazgo</a><a href="/lecturas/filosofia/">Filosofía y ética</a><a href="/lecturas/historia-cultura-y-literatura/">Historia, cultura y literatura</a><a href="/lecturas/medicina-y-salud/">Medicina y salud</a><a href="/lecturas/teologia-y-espiritualidad/">Teología y espiritualidad</a></nav></noscript>
-        <p class="vacio">Esta colección está en preparación. Aquí encontrarás las lecturas seleccionadas cuando se publiquen.</p>
+        
         <div hidden class="herramientas" role="group" aria-label="Filtrar lecturas por tipo">
           <label for="tema">Tipo de lectura<select id="tema"><option value="">Todos los tipos</option></select></label>
         </div>
         <p class="vacio" id="sin-resultados" hidden>No hay lecturas de ese tipo en esta colección.</p>
         <div class="lista">
-          
+          <article class="entrada" data-categories="[&quot;Texto completo&quot;]">
+  <div class="meta">Texto completo<span class="fecha">13 de noviembre de 2026</span><span class="fecha">8 min de lectura</span></div>
+  <div><img class="imagen-entrada" src="/assets/imagenes/blog/photo-2026-11-13-14-11-17.jpg" alt="Conjunto de pinturas expuestas en el Museo de Antioquia. En el centro, una obra muestra a tres personas pintando en un taller, rodeada de retratos y naturalezas muertas." loading="lazy" decoding="async"><h3><a href="/lecturas/textos/responder-por-el-mundo/">Responder por el mundo</a></h3><p class="resumen">Un comentario a «La crisis en la educación», de Hannah Arendt. ¿Basta con preparar a los estudiantes para adaptarse a los cambios? Educar exige también enseñarles a comprender el mundo que les tocará transformar.</p><p class="firma">Daniel Pérez Valencia</p><p class="firma">Educación</p></div>
+  <a class="leer" href="/lecturas/textos/responder-por-el-mundo/">Leer texto <span class="flecha" aria-hidden="true">→</span></a>
+</article>
         </div>
       </div>
     </section>
