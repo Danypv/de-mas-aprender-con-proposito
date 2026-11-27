@@ -100,9 +100,12 @@ try {
   fs.writeFileSync(source, await sharp(jpeg).jpeg({ quality: 25 }).toBuffer());
   save(`<img src="${pathname}" alt="Ya comprimida">`);
   const efficient = await buildResponsiveImages(root, { minBytes: 0 });
-  assert.equal(efficient.optimized, 0, 'Una fuente eficiente no se sustituye por una copia de mayor peso');
-  assert(record().keepOriginal);
-  assert.equal(count(read(), 'picture'), 0);
+  assert.equal(efficient.optimized, 1, 'Las fuentes eficientes también tienen copias pequeñas para las tarjetas');
+  assert.equal(record().mime, 'image/jpeg');
+  assert(record().variants.at(-1).original, 'A tamaño completo se usa el original intacto');
+  assert(record().variants.every(variant => variant.bytes <= record().original.bytes), 'Ninguna resolución obliga a descargar una copia más pesada que el original');
+  assert.equal(checkResponsiveImages(root), 1);
+  assert.equal(count(read(), 'picture'), 1);
   assert.equal((await buildResponsiveImages(root, { minBytes: 0 })).changedPages, 0, 'La decisión de conservar el original también se reutiliza');
   console.log('Imágenes verificadas: tamaños por contexto, originales intactos, color, transparencia, orientación, caché, sustitución, recuperación, retirada, privacidad y fuentes externas.');
 } finally { fs.rmSync(root, { recursive: true, force: true }); }

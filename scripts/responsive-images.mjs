@@ -8,7 +8,7 @@ const origin = 'https://somosdemas.com';
 const directory = 'assets/imagenes/responsivas';
 const owner = 'DE+ responsive images v1\n';
 const widths = [160, 320, 480, 640, 960, 1200, 1600, 1920, 2560, 3200, 3840];
-const settings = { version: 1, sharp: sharp.versions.sharp, quality: 95, effort: 6, smartSubsample: true, alphaQuality: 100, widths };
+const settings = { version: 2, sharp: sharp.versions.sharp, quality: 95, effort: 6, smartSubsample: true, alphaQuality: 100, widths };
 const hash = value => createHash('sha256').update(value).digest('hex');
 const escape = value => String(value).replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;');
 const attribute = (node, name) => node.attrs?.find(item => item.name === name)?.value;
@@ -87,15 +87,23 @@ function safeOutput(root) {
 }
 
 function cachedVariants(root, item) {
-  return item?.variants?.length && /^[a-f0-9]{20}$/.test(item.id) && item.variants.every(variant =>
-    variant.url === `/${directory}/${item.id}/${variant.width}.webp` && Number.isInteger(variant.width) && variant.width > 0 && sameFile(path.join(root, variant.url), variant.sha256));
+  if (!item?.variants?.length || !/^[a-f0-9]{20}$/.test(item.id) || !['webp', 'jpeg', 'png'].includes(item.format)) return false;
+  const extension = item.format === 'jpeg' ? 'jpg' : item.format;
+  return item.variants.every(variant => {
+    if (!Number.isInteger(variant.width) || variant.width <= 0) return false;
+    if (variant.original) {
+      const original = originalFile(root, variant.url, origin);
+      return variant.url === item.original.url && variant.width === item.original.width && original && sameFile(original.file, variant.sha256);
+    }
+    return variant.url === `/${directory}/${item.id}/${variant.width}.${extension}` && sameFile(path.join(root, variant.url), variant.sha256);
+  });
 }
 
 async function prepare(root, source, previous, minBytes, keepEfficientOriginals, warn) {
   const data = fs.readFileSync(source.file);
   if (data.length < minBytes) return;
   const id = hash(Buffer.concat([Buffer.from(JSON.stringify({ ...settings, keepEfficientOriginals })), data])).slice(0, 20);
-  if (previous?.id === id && (previous.keepOriginal || cachedVariants(root, previous))) return previous;
+  if (previous?.id === id && cachedVariants(root, previous)) return previous;
   let metadata;
   try { metadata = await sharp(data).metadata(); }
   catch { warn(`Imágenes: ${source.pathname} se conserva en su formato original porque no se pudo optimizar.`); return; }
@@ -108,7 +116,7 @@ async function prepare(root, source, previous, minBytes, keepEfficientOriginals,
   if (fs.existsSync(folder) && fs.lstatSync(folder).isSymbolicLink()) throw Error('Imágenes: carpeta de una variante no válida.');
   fs.mkdirSync(folder, { recursive: true });
   fs.writeFileSync(path.join(folder, '.demas-image'), owner);
-  const variants = [];
+  let variants = [];
   for (const size of candidates) {
     const file = path.join(folder, `${size}.webp`);
     const info = await sharp(data).rotate().resize({ width: size, withoutEnlargement: true }).keepIccProfile()
@@ -116,13 +124,29 @@ async function prepare(root, source, previous, minBytes, keepEfficientOriginals,
     variants.push({ width: info.width, height: info.height, bytes: info.size, url: `/${directory}/${id}/${size}.webp`, sha256: hash(fs.readFileSync(file)) });
   }
   const history = previous?.id && previous.id !== id ? { previous: previous.id } : previous?.previous ? { previous: previous.previous } : {};
-  // A high-density screen must never be forced to download a larger re-encode
-  // of an already efficient source. Keep that original at every size instead.
+  const sourceDigest = hash(data);
+  const original = { width, height, bytes: data.length, sha256: sourceDigest,
+    url: source.pathname.split('/').map(encodeURIComponent).join('/') + '?v=' + sourceDigest.slice(0, 12) };
+  let format = 'webp';
+  // When WebP would be heavier at high density, use smaller copies in the
+  // original format and the untouched original as the largest candidate.
   if (keepEfficientOriginals && variants.some(variant => variant.bytes >= data.length)) {
-    fs.rmSync(folder, { recursive: true });
-    return { id, original: { width, height, bytes: data.length, sha256: hash(data) }, keepOriginal: true, variants: [], ...history };
+    for (const variant of variants) fs.rmSync(path.join(root, variant.url));
+    format = metadata.format;
+    if (!['jpeg', 'png', 'webp'].includes(format)) return;
+    const extension = format === 'jpeg' ? 'jpg' : format;
+    variants = [];
+    for (const size of candidates.filter(value => value < width)) {
+      const file = path.join(folder, `${size}.${extension}`);
+      let pipeline = sharp(data).rotate().resize({ width: size, withoutEnlargement: true }).keepIccProfile();
+      pipeline = format === 'jpeg' ? pipeline.jpeg({ quality: 95, mozjpeg: true }) : format === 'png' ? pipeline.png({ compressionLevel: 9 }) : pipeline.webp({ quality: 95, effort: 6, alphaQuality: 100 });
+      const info = await pipeline.toFile(file);
+      if (info.size >= data.length) { fs.rmSync(file); continue; }
+      variants.push({ width: info.width, height: info.height, bytes: info.size, url: `/${directory}/${id}/${size}.${extension}`, sha256: hash(fs.readFileSync(file)) });
+    }
+    variants.push({ width, height, bytes: data.length, url: original.url, sha256: sourceDigest, original: true });
   }
-  return { id, original: { width, height, bytes: data.length, sha256: hash(data) }, variants,
+  return { id, original, format, mime: `image/${format}`, variants,
     ...(previous?.id && previous.id !== id ? { previous: previous.id } : previous?.previous ? { previous: previous.previous } : {}) };
 }
 
@@ -145,12 +169,12 @@ export async function buildResponsiveImages(root = process.cwd(), { minBytes = 3
   for (const page of pageList) {
     const edits = page.images.flatMap(image => {
       const item = images[image.source.pathname];
-      if (!item || item.keepOriginal) return [];
+      if (!item) return [];
       const location = image.node.sourceCodeLocation;
       const img = page.html.slice(location.startOffset, location.endOffset);
       const srcset = item.variants.map(variant => `${variant.url} ${variant.width}w`).join(', ');
       optimized++;
-      return [{ start: location.startOffset, end: location.endOffset, value: `<picture data-demas-responsive="1" style="display:contents"><source type="image/webp" srcset="${escape(srcset)}" sizes="${escape(image.sizes)}">${img}</picture>` }];
+      return [{ start: location.startOffset, end: location.endOffset, value: `<picture data-demas-responsive="1" style="display:contents"><source type="${item.mime}" srcset="${escape(srcset)}" sizes="${escape(image.sizes)}">${img}</picture>` }];
     });
     const result = edits.sort((a, b) => b.start - a.start).reduce((html, edit) => html.slice(0, edit.start) + edit.value + html.slice(edit.end), page.html);
     if (result !== page.original) { fs.writeFileSync(page.file, result); changedPages++; }
@@ -164,7 +188,7 @@ export async function buildResponsiveImages(root = process.cwd(), { minBytes = 3
     const folder = path.join(output, entry.name), marker = path.join(folder, '.demas-image');
     if (fs.existsSync(marker) && fs.readFileSync(marker, 'utf8') === owner) fs.rmSync(folder, { recursive: true });
   }
-  return { images: Object.values(images).filter(item => !item.keepOriginal).length, preserved: Object.values(images).filter(item => item.keepOriginal).length, variants: Object.values(images).reduce((sum, item) => sum + item.variants.length, 0), optimized, changedPages };
+  return { images: Object.keys(images).length, variants: Object.values(images).reduce((sum, item) => sum + item.variants.filter(variant => !variant.original).length, 0), optimized, changedPages };
 }
 
 export function checkResponsiveImages(root = process.cwd()) {
@@ -179,7 +203,7 @@ export function checkResponsiveImages(root = process.cwd()) {
       const original = originalFile(root, attribute(img || {}, 'src'), page.url);
       const item = original && manifest.images?.[original.pathname];
       if (!item || !cachedVariants(root, item) || hash(fs.readFileSync(original.file)) !== item.original.sha256) throw Error(`Imágenes: variantes ausentes o desactualizadas en ${page.url.pathname}`);
-      if (attribute(source || {}, 'type') !== 'image/webp' || !attribute(source || {}, 'sizes') || attribute(source || {}, 'srcset') !== item.variants.map(variant => `${variant.url} ${variant.width}w`).join(', ')) throw Error('Imágenes: selección de resolución incompleta.');
+      if (attribute(source || {}, 'type') !== item.mime || !attribute(source || {}, 'sizes') || attribute(source || {}, 'srcset') !== item.variants.map(variant => `${variant.url} ${variant.width}w`).join(', ')) throw Error('Imágenes: selección de resolución incompleta.');
       count++;
     });
   }
