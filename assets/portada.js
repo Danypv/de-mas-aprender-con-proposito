@@ -81,17 +81,10 @@
     } finally { busy = false; schedule(); }
   }
 
-  // A network failure never replaces the current image with an empty slide.
+  // A failed first download leaves the brand background visible; never
+  // resurrect a photograph that the editor has removed.
   const first = slides[0].querySelector('img');
-  const fallback = () => {
-    if (first.dataset.fallback) return;
-    first.dataset.fallback = 'true';
-    for (const source of slides[0].querySelectorAll('source')) source.removeAttribute('srcset');
-    first.removeAttribute('srcset');
-    first.setAttribute('src', window.matchMedia('(max-width: 780px)').matches ? '/assets/imagenes/portada-cariatides-movil.webp' : '/assets/imagenes/portada-cariatides.webp');
-  };
-  first.addEventListener('error', fallback);
-  if (first.complete && !first.naturalWidth) fallback();
+  first.addEventListener('error', () => { first.style.visibility = 'hidden'; });
   button?.addEventListener('click', () => { paused = !paused; schedule(); });
   reduced.addEventListener('change', schedule);
   document.addEventListener('visibilitychange', schedule);
