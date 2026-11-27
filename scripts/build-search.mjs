@@ -4,8 +4,11 @@ import os from 'node:os';
 import { createHash } from 'node:crypto';
 import * as pagefind from 'pagefind';
 import { searchDocuments } from './search-catalog.mjs';
+import { buildResponsiveImages } from './responsive-images.mjs';
 
 const root = path.resolve(process.argv[2] || process.cwd());
+const images = await buildResponsiveImages(root);
+console.log(`Imágenes adaptables: ${images.images} originales conservados y ${images.optimized} usos actualizados.`);
 const { documents, publications } = searchDocuments(root);
 const engineVersion = JSON.parse(fs.readFileSync(new URL('../package.json',import.meta.resolve('pagefind')),'utf8')).version;
 const revision = createHash('sha256').update(JSON.stringify([1,engineVersion,documents.map(item => [item.url,item.content])])).digest('hex').slice(0,16);
