@@ -7,7 +7,7 @@ export const portadaConfig = 'content/settings/portada.json';
 const media = 'assets/imagenes/portada';
 const output = 'assets/imagenes/portada-generada';
 const marker = 'DE+ portada v1\n';
-const settings = { version: 1, sharp: sharp.versions.sharp, quality: 95, widths: [480, 780, 1200, 1600, 1920, 2560, 3200, 3840] };
+const settings = { version: 2, sharp: sharp.versions.sharp, quality: 95, widths: [480, 780, 1200, 1600, 1920, 2560, 3200, 3840] };
 const digest = value => createHash('sha256').update(value).digest('hex');
 const escape = value => String(value).replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;');
 const read = file => fs.readFileSync(file, 'utf8');
@@ -25,18 +25,17 @@ export function normalizePortada(data) {
   if (data.carousel !== undefined && typeof data.carousel !== 'boolean') throw Error('Portada: activa o desactiva el carrusel.');
   const interval = Number(data.interval ?? 10);
   if (!Number.isInteger(interval) || interval < 5 || interval > 60) throw Error('Portada: el intervalo debe ser de 5 a 60 segundos.');
-  if (!Array.isArray(data.images) || !data.images.length || data.images.length > 8) throw Error('Portada: añade entre una y ocho imágenes.');
+  if (!Array.isArray(data.images) || data.images.length > 8) throw Error('Portada: añade entre una y ocho imágenes.');
   const images = data.images.filter(item => item?.enabled !== false).map((item, index) => {
     if (!item || typeof item !== 'object') throw Error('Portada: imagen no válida.');
     const image = imagePath(item.image);
     const mobile_image = item.mobile_image ? imagePath(item.mobile_image) : '';
-    return { title: String(item.title || `Imagen ${index + 1}`).trim().slice(0, 160), image, mobile_image,
+    return { manual_framing: item.manual_framing === true, title: String(item.title || `Imagen ${index + 1}`).trim().slice(0, 160), image, mobile_image,
       desktop_x: position(item.desktop_x, 50, 'la posición horizontal en computador'),
       desktop_y: position(item.desktop_y, 50, 'la posición vertical en computador'),
       mobile_x: position(item.mobile_x, 50, 'la posición horizontal en teléfono'),
       mobile_y: position(item.mobile_y, 50, 'la posición vertical en teléfono') };
   });
-  if (!images.length) throw Error('Portada: conserva al menos una imagen activa.');
   return { carousel: data.carousel === true, interval, images };
 }
 
@@ -73,6 +72,26 @@ export async function syncPortada(editor, site) {
   if (data.status !== 'approved') return false;
   const config = normalizePortada(data);
   const sources = await validateSources(editor, config);
+  const keep = new Set(data.images.flatMap(item => [item.image, item.mobile_image].filter(Boolean)).map(imagePath));
+  const registryFile = path.join(site, 'content/settings/portada-managed.json');
+  let managed = {};
+  try { managed = JSON.parse(read(registryFile)); } catch { /* Bootstrap existing managed originals. */ }
+  const folder = path.join(site, media);
+  if (fs.existsSync(folder)) for (const name of fs.readdirSync(folder)) {
+    const file = path.join(folder, name);
+    if (fs.statSync(file).isFile() && /\.(?:jpe?g|png|webp)$/i.test(name)) managed['/' + media + '/' + name] = digest(fs.readFileSync(file));
+  }
+  for (const [url, sha] of Object.entries(managed)) {
+    imagePath(url);
+    if (keep.has(url) || referencedElsewhere(editor, url) || referencedElsewhere(site, url)) continue;
+    for (const base of [site, editor]) {
+      const target = path.resolve(base, '.' + url);
+      if (fs.existsSync(target) && digest(fs.readFileSync(target)) === sha) fs.rmSync(target);
+    }
+    if (!fs.existsSync(path.join(editor, url))) delete managed[url];
+  }
+  for (const url of sources) managed[url] = digest(fs.readFileSync(sourceFile(editor, url)));
+  writeChanged(registryFile, json(managed));
   for (const url of sources) {
     const destination = path.join(site, url);
     fs.mkdirSync(path.dirname(destination), { recursive: true });
@@ -80,6 +99,32 @@ export async function syncPortada(editor, site) {
   }
   writeChanged(path.join(site, portadaConfig), json(config));
   return true;
+}
+
+
+// Only content references protect a retired photo; the gallery and its own
+// generated manifests are excluded. Newly uploaded, unpublished files are never
+// candidates: cleanup is limited to previously managed public originals.
+function referencedElsewhere(root, url) {
+  function scan(folder) {
+    if (!fs.existsSync(folder)) return false;
+    return fs.readdirSync(folder, { withFileTypes: true }).some(entry => {
+      const file = path.join(folder, entry.name);
+      if (entry.isSymbolicLink()) return false;
+      if (entry.isDirectory()) return ['portada-generada', 'responsivas', 'busqueda'].includes(entry.name) ? false : scan(file);
+      if (!/\.(?:md|html|json|css|js|ya?ml)$/i.test(entry.name) || file === path.join(root, portadaConfig) || file.endsWith('portada-managed.json')) return false;
+      const text = read(file);
+      return [url, encodeURI(url), url.replaceAll('&', '&amp;')].some(value => text.includes(value));
+    });
+  }
+  return ['content', 'blog', 'ensayos', 'lecturas', 'podcast', 'videos', 'assets'].some(folder => scan(path.join(root, folder)));
+}
+
+async function automaticFocus(source, width, height) {
+  const oriented = await sharp(source).rotate().toBuffer();
+  const { info } = await sharp(oriented).resize(128, 128, { fit: 'cover', position: sharp.strategy.attention }).toBuffer({ resolveWithObject: true });
+  const clamp = value => Math.max(0, Math.min(100, value));
+  return { x: clamp(Number.isFinite(info.attentionX) ? 100 * info.attentionX / width : 50), y: clamp(Number.isFinite(info.attentionY) ? 100 * info.attentionY / height : 50) };
 }
 
 const urlFor = (id, filename) => `/${output}/${id}/${filename}`;
@@ -115,7 +160,7 @@ async function variants(root, url, previous) {
   }
   await sharp(source).rotate().resize({ width: Math.min(width, 720), withoutEnlargement: true }).keepIccProfile().blur(20).webp({ quality: 85 }).toFile(path.join(folder, 'difusa.webp'));
   const blur = record('difusa.webp', {});
-  return { id, width, height, sourceSha256: digest(source), images, blur: blur.url, files };
+  return { id, width, height, focus: await automaticFocus(source, width, height), sourceSha256: digest(source), images, blur: blur.url, files };
 }
 
 const srcset = item => item.images.map(image => `${image.url} ${image.width}w`).join(', ');
@@ -125,11 +170,14 @@ function photoHtml(photo, assets, index) {
   const eager = index === 0;
   const source = `${eager ? 'srcset' : 'data-srcset'}="${escape(srcset(mobile))}"`;
   const image = `${eager ? 'src' : 'data-src'}="${desktop.images.at(-1).url}" ${eager ? 'srcset' : 'data-srcset'}="${escape(srcset(desktop))}"`;
+  const stock = desktop.sourceSha256 === '5ccf4beeb4df8caae69d108a84eb998b98fd6f20e7b8328cd730a46405b8a59e' && mobile.sourceSha256 === '4cd7e160fefd2b215f4a23c648862cd85e8bd3baeace74669535a0813667fed0';
+  if (!photo.manual_framing && !stock) photo = { ...photo, desktop_x: desktop.focus.x, desktop_y: desktop.focus.y, mobile_x: mobile.focus.x, mobile_y: mobile.focus.y };
   const style = `--portada-x:${photo.desktop_x}%;--portada-y:${photo.desktop_y}%;--portada-movil-x:${photo.mobile_x}%;--portada-movil-y:${photo.mobile_y}%;--portada-difusa:url('${desktop.blur}');--portada-difusa-movil:url('${mobile.blur}')`;
   return `<div class="portada-foto" data-portada-foto data-activa="${eager}" style="${style}"><div class="capa capa-nitida"><picture><source media="(max-width: 780px)" ${source} sizes="${fallbackSizes(mobile, 800)}" data-aspecto="${mobile.width / mobile.height}"><img ${image} sizes="${fallbackSizes(desktop, 600)}" width="${desktop.width}" height="${desktop.height}" data-aspecto="${desktop.width / desktop.height}" alt="" decoding="async"${eager ? ' fetchpriority="high"' : ''}></picture></div><div class="capa capa-difusa"></div></div>`;
 }
 
 function headHtml(root, config, assets) {
+  if (!config.images.length) return `\n  <link rel="stylesheet" href="/assets/portada.css">\n  <script src="/assets/portada.js" defer></script>\n  `;
   const first = config.images[0], desktop = assets[first.image], mobile = assets[first.mobile_image || first.image];
   const version = file => digest(fs.readFileSync(path.join(root, file))).slice(0, 12);
   return `\n  <link rel="preload" as="image" href="${mobile.images.at(-1).url}" imagesrcset="${escape(srcset(mobile))}" imagesizes="${fallbackSizes(mobile, 800)}" media="(max-width: 780px)">\n  <link rel="preload" as="image" href="${desktop.images.at(-1).url}" imagesrcset="${escape(srcset(desktop))}" imagesizes="${fallbackSizes(desktop, 600)}" media="not all and (max-width: 780px)">\n  <link rel="stylesheet" href="/assets/portada.css?v=${version('assets/portada.css')}">\n  <script src="/assets/portada.js?v=${version('assets/portada.js')}" defer></script>\n  `;
@@ -158,15 +206,22 @@ export async function buildPortada(root = process.cwd()) {
   const assets = {};
   for (const url of sources) assets[url] = await variants(root, url, previous.assets?.[url]);
   const ids = [...new Set(Object.values(assets).map(item => item.id))].sort();
-  const oldIds = previous.ids && JSON.stringify(previous.ids) !== JSON.stringify(ids) ? previous.ids : previous.previous || [];
-  const manifest = { version: 1, settings, ids, previous: oldIds.filter(id => !ids.includes(id)), assets };
+  const sourceUrls = new Set(config.images.flatMap(item => [item.image, item.mobile_image].filter(Boolean)));
+  const history = {};
+  for (const url of sourceUrls) {
+    const old = previous.assets?.[url];
+    if (old && assets[url]?.id !== old.id) history[url] = [old.id];
+    else if (previous.history?.[url]) history[url] = previous.history[url];
+  }
+  const oldIds = [...new Set(Object.values(history).flat())];
+  const manifest = { version: 2, settings, ids, history, previous: oldIds.filter(id => !ids.includes(id)), assets };
   writeChanged(path.join(root, output, 'manifest.json'), json(manifest));
   const home = path.join(root, 'index.html'), before = read(home);
   const after = replaceBlock(replaceBlock(before, 'PORTADA_HEAD', headHtml(root, selected, assets)), 'PORTADA_IMAGES', imagesHtml(selected, assets));
   writeChanged(home, after);
   const retained = new Set([...ids, ...manifest.previous]);
   for (const entry of fs.readdirSync(path.join(root, output), { withFileTypes: true })) {
-    if (!entry.isDirectory() || !/^[a-f0-9]{20}$/.test(entry.name) || retained.has(entry.name)) continue;
+    if (!entry.isDirectory() || !/^[a-f0-9]{20}$/.test(entry.name) || retained.has(entry.name) || referencedElsewhere(root, '/' + output + '/' + entry.name + '/')) continue;
     const folder = path.join(root, output, entry.name), owner = path.join(folder, '.demas-portada');
     if (fs.existsSync(owner) && read(owner) === marker) fs.rmSync(folder, { recursive: true });
   }

@@ -38,7 +38,7 @@ try {
   save(path.join(site, media, 'primera.webp'), webp);
   save(path.join(site, media, 'movil.png'), portrait);
   save(path.join(site, media, 'segunda.png'), portrait);
-  const config = { carousel: false, interval: 10, images: [photo('primera.webp', { mobile_image: media + 'movil.png', desktop_x: 100, desktop_y: 32, mobile_x: 68, mobile_y: 30 }), photo('segunda.png')] };
+  const config = { carousel: false, interval: 10, images: [photo('primera.webp', { mobile_image: media + 'movil.png', manual_framing: true, desktop_x: 100, desktop_y: 32, mobile_x: 68, mobile_y: 30 }), photo('segunda.png')] };
   save(path.join(site, portadaConfig), config);
   assert.equal((await buildPortada(site)).images, 1);
   assert.equal(checkPortada(site), 1);
@@ -109,7 +109,28 @@ try {
   const publicBeforeError = read(path.join(site, portadaConfig));
   await assert.rejects(() => syncPortada(editor, site));
   assert.equal(read(path.join(site, portadaConfig)), publicBeforeError, 'Una imagen ausente no altera la portada publicada');
-  for (const invalid of [null, {}, { ...config, interval: 1 }, { ...config, carousel: 'true' }, { ...config, images: [] }, { ...config, images: [photo('../secreto.jpg')] }, { ...config, images: [photo('%2e%2e/secreto.jpg')] }, { ...config, images: [photo('primera.webp', { desktop_x: 101 })] }, { ...config, images: [photo('primera.webp', { enabled: false })] }]) assert.throws(() => normalizePortada(invalid));
+  for (const invalid of [null, {}, { ...config, interval: 1 }, { ...config, carousel: 'true' }, { ...config, images: [photo('../secreto.jpg')] }, { ...config, images: [photo('%2e%2e/secreto.jpg')] }, { ...config, images: [photo('primera.webp', { desktop_x: 101 })] }]) assert.throws(() => normalizePortada(invalid));
+  const cleanupSite = fixture('cleanup'), cleanupEditor = path.join(root, 'cleanup-editor');
+  const a = media + 'a.webp', b = media + 'b.webp', fresh = media + 'sin-publicar.webp';
+  for (const url of [a, b, fresh]) save(path.join(cleanupEditor, url), url === b ? replacement : webp);
+  const gallery = { status: 'approved', carousel: true, images: [photo('a.webp'), photo('b.webp')] };
+  const syncGallery = async () => { save(path.join(cleanupEditor, portadaConfig), gallery); await syncPortada(cleanupEditor, cleanupSite); await buildPortada(cleanupSite); };
+  await syncGallery();
+  const retiredId = manifest(cleanupSite).assets[a].id;
+  assert(manifest(cleanupSite).assets[a].focus.x >= 0 && manifest(cleanupSite).assets[a].focus.x <= 100);
+  save(path.join(cleanupEditor, 'content/posts/compartida.md'), `![Compartida](${a})`);
+  gallery.images = [photo('b.webp')];await syncGallery();
+  assert(fs.existsSync(path.join(cleanupEditor, a)) && fs.existsSync(path.join(cleanupSite, a)), 'Una referencia en otra publicación protege el original');
+  fs.unlinkSync(path.join(cleanupEditor, 'content/posts/compartida.md'));await syncGallery();
+  assert(!fs.existsSync(path.join(cleanupEditor, a)) && !fs.existsSync(path.join(cleanupSite, a)), 'Se retira el original de ambos repositorios');
+  assert(!fs.existsSync(path.join(cleanupSite, 'assets/imagenes/portada-generada', retiredId)), 'Se retiran las copias y los difuminados de una foto eliminada');
+  assert(fs.existsSync(path.join(cleanupEditor, fresh)), 'Las subidas nuevas aún no publicadas no se borran');
+  gallery.images = [];await syncGallery();
+  assert.equal(checkPortada(cleanupSite), 0);
+  assert(!home(cleanupSite).includes('data-portada-foto'));
+  assert(home(cleanupSite).includes('capa capa-velo'));
+  assert(!fs.existsSync(path.join(cleanupEditor, b)) && !fs.existsSync(path.join(cleanupSite, b)));
+  assert(!home(cleanupSite).includes('data-portada-pausa'));
   console.log('Portada: publicación, borradores, imágenes fijas, carrusel, orden, encuadres, originales, adaptación, caché, reparación y conservación del resto del sitio comprobados.');
 } finally { fs.rmSync(root, { recursive: true, force: true }); }
 
