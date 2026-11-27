@@ -6,6 +6,7 @@ topics:
 slug: estoicismo-una-filosofia-de-vida
 author: Massimo Pigliucci
 date: 2026-10-17T00:00:00.000Z
+upload_date: '2020-01-15'
 format: conversation
 categories:
   - Filosofía

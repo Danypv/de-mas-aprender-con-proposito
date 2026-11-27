@@ -8,6 +8,7 @@ author: Facundo Manes
 source_credit: Aprendemos Juntos 2030 · BBVA
 comment_author: Daniel Pérez Valencia
 date: 2026-10-17T00:00:00.000Z
+upload_date: '2019-03-13'
 format: conversation
 categories:
   - Ciencia y salud
