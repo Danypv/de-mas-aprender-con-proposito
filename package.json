@@ -32,11 +32,16 @@
     "test:home-media": "node scripts/test-home-media.mjs",
     "test:footer": "node scripts/test-footer.mjs",
     "test:references": "node scripts/test-references.mjs",
-    "test:indexnow": "node scripts/test-indexnow.mjs"
+    "test:indexnow": "node scripts/test-indexnow.mjs",
+    "build:images": "node scripts/build-images.mjs",
+    "check:images": "node scripts/check-images.mjs",
+    "test:images": "node scripts/test-images.mjs"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
     "markdown-it": "^14.3.3",
+    "parse5": "8.1.1",
+    "sharp": "0.35.5",
     "turndown": "^7.2.0"
   },
   "devDependencies": {

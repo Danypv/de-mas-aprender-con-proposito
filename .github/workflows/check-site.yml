@@ -44,6 +44,7 @@ jobs:
           npm run test:redirects
           npm run test:carousel
           npm run test:search
+          npm run test:images
       - name: Validar y generar las secciones
         run: |
           npm run check:content

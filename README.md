@@ -1,6 +1,16 @@
 # de-mas-aprender-con-proposito
 DE+ · Aprender con propósito. Filosofía, educación, lectura y cultura.
 
+## Imágenes adaptables
+
+La publicación prepara copias adaptables de alta calidad de las imágenes locales de más de 32 KB que se usan en páginas públicas. Los originales de `assets/imagenes/blog` permanecen intactos. Las copias conservan el encuadre, la proporción, la transparencia y el perfil de color; no se amplían por encima de la resolución original. Se usa WebP cuando reduce el peso. Si el original ya es más eficiente a gran resolución, se preparan copias pequeñas en su propio formato y se conserva el original como candidato de máxima resolución. Los logotipos, las imágenes externas, las animaciones y los archivos pequeños conservan su tratamiento anterior.
+
+`build:search` ejecuta antes la preparación de imágenes, después de generar todas las secciones y el sitemap. Por eso el mismo proceso funciona desde Pages CMS y en las comprobaciones del repositorio. También se puede ejecutar `npm run build:images`. Las páginas usan `picture`, con varias resoluciones y un tamaño según su contexto; el archivo original queda como alternativa. Se mantienen los atributos del `img` y los estilos existentes.
+
+Las copias están en `assets/imagenes/responsivas`, con direcciones que cambian al sustituir la imagen. El manifiesto permite reutilizar copias verificadas y conservar una generación anterior para páginas en caché. Al retirar la última referencia pública se eliminan las copias generadas, conservando los originales. Las fuentes sociales y los datos estructurados siguen señalando al original de mayor resolución.
+
+`npm run test:images` comprueba publicación, reemplazo, tamaños, orientación, transparencia, color, conservación de originales y retirada de las copias. `check:site` verifica también las variantes antes de publicar.
+
 El buscador global usa Pagefind y se actualiza en la publicación de Pages CMS. Después de generar los contenidos y el sitemap, ejecutar `npm run build:search` y `npm run check:search`. El índice incluye las publicaciones públicas, las series, las colecciones y la presentación del proyecto; excluye borradores y copias antiguas de páginas.
 
 `npm run test:search` comprueba texto completo, transcripciones y filtros con el motor real, además de nuevas publicaciones, ediciones, retiradas y cobertura. La interfaz comparte los estilos de DE+ y está disponible en todas las plantillas.
