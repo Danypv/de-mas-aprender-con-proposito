@@ -45,6 +45,7 @@ jobs:
           npm run test:carousel
           npm run test:search
           npm run test:images
+          npm run test:portada
       - name: Validar y generar las secciones
         run: |
           npm run check:content

@@ -1,0 +1,12 @@
+/* Only the decorative photographs in the existing cover are affected. */
+#inicio [data-portada] .portada-foto{position:absolute;inset:0;opacity:0;transition:opacity 1200ms ease;pointer-events:none}
+#inicio [data-portada] .portada-foto[data-activa="true"]{opacity:1}
+#inicio [data-portada] .capa-nitida{background-image:none}
+#inicio [data-portada] .capa-nitida picture,#inicio [data-portada] .capa-nitida img{display:block;width:100%;height:100%}
+#inicio [data-portada] .capa-nitida img{max-width:none;object-fit:cover;object-position:var(--portada-x) var(--portada-y)}
+#inicio [data-portada] .capa-difusa{background-image:var(--portada-difusa);background-position:var(--portada-x) var(--portada-y)}
+#inicio [data-portada]>.capa-velo{z-index:1}
+#inicio .portada-pausa{position:absolute;right:20px;bottom:16px;z-index:3;min-height:44px;padding:8px 14px;border:1px solid #ffffff66;border-radius:14px;color:#fff;background:#080a0bcc;font:500 .875rem var(--lectura);cursor:pointer}
+#inicio .portada-pausa[hidden]{display:none}
+@media(max-width:780px){#inicio [data-portada] .capa-nitida img{object-position:var(--portada-movil-x) var(--portada-movil-y)}#inicio [data-portada] .capa-difusa{background-image:var(--portada-difusa-movil);background-position:var(--portada-movil-x) var(--portada-movil-y)}}
+@media(prefers-reduced-motion:reduce){#inicio [data-portada] .portada-foto{transition:none}}

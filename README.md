@@ -38,3 +38,12 @@ El ciclo completo se ejecuta en el publicador privado de Pages CMS: aprobación,
 Las seis colecciones admiten `references` como texto Markdown opcional en el front matter. `scripts/references.mjs` genera un desplegable nativo cerrado después del contenido, solo cuando hay referencias. Conserva cursivas y enlaces; convierte URL y DOI completos en enlaces y aplica sangría francesa con `assets/referencias.css`. Las entradas se preparan en APA 7 y se pegan en orden alfabético, una por párrafo; no se generan ni se corrigen datos bibliográficos automáticamente.
 
 El buscador incluye el texto de las referencias aunque el desplegable esté cerrado. Editar o vaciar el campo renueva la página y el índice; eliminar la publicación desde Pages retira también sus referencias. `test:references`, `test:search` y el publicador privado comprueban estas rutas con contenido temporal. Los destacados y tiempos de lectura siguen calculándose solo sobre el cuerpo principal.
+# Portada editable desde Pages CMS
+
+La primera franja conserva su composición, textos, botones, degradado y reglas de móvil. El apartado **Portada · Imagen principal** del editor permite subir una o varias fotos, ordenar la lista y activar o desactivar el carrusel. Con el carrusel desactivado se muestra la primera imagen activa; con una sola foto no se genera movimiento ni un botón adicional.
+
+El publicador copia únicamente una configuración aprobada y sus imágenes. `build:search` prepara antes las fotos de portada con `scripts/portada.mjs`; por eso las publicaciones habituales conservan esta automatización. Se conservan los originales, los WebP ya optimizados y sus proporciones. Se puede indicar una foto o recorte alternativo para teléfono y ajustar por separado las posiciones horizontal y vertical, entre 0 y 100. Las versiones se eligen según el tamaño del marco, la proporción de la foto y la densidad de pantalla.
+
+El cambio entre imágenes usa un fundido de 1,2 segundos. El control de pausa aparece solo cuando hay varias fotos. La rotación respeta el movimiento reducido y se detiene fuera de pantalla, en pestañas ocultas, al leer con teclado y al mantener el ratón sobre la franja. La siguiente foto se carga cuando hace falta y una descarga fallida no vacía la portada. El carrusel de novedades funciona de forma independiente.
+
+`npm run test:portada` comprueba los dos modos, los encuadres, la carga diferida, la pausa y las sustituciones. `check:site` valida los archivos y la correspondencia con la configuración publicada.
