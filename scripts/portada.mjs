@@ -71,6 +71,14 @@ export async function syncPortada(editor, site) {
   const data = JSON.parse(read(file));
   if (data.status !== 'approved') return false;
   const config = normalizePortada(data);
+  // Replacing the main photo must not retain the previous phone-only photo.
+  // The initial caryatids pair is the sole preserved automatic preset.
+  for (const photo of config.images) {
+    if (!photo.manual_framing && digest(fs.readFileSync(sourceFile(editor, photo.image))) !== '5ccf4beeb4df8caae69d108a84eb998b98fd6f20e7b8328cd730a46405b8a59e') {
+      photo.mobile_image = '';
+      for (const original of data.images) if (original.image && imagePath(original.image) === photo.image) original.mobile_image = '';
+    }
+  }
   const sources = await validateSources(editor, config);
   const keep = new Set(data.images.flatMap(item => [item.image, item.mobile_image].filter(Boolean)).map(imagePath));
   const registryFile = path.join(site, 'content/settings/portada-managed.json');
