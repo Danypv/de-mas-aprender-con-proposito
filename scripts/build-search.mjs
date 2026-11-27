@@ -5,8 +5,10 @@ import { createHash } from 'node:crypto';
 import * as pagefind from 'pagefind';
 import { searchDocuments } from './search-catalog.mjs';
 import { buildResponsiveImages } from './responsive-images.mjs';
+import { buildPortada } from './portada.mjs';
 
 const root = path.resolve(process.argv[2] || process.cwd());
+await buildPortada(root);
 const images = await buildResponsiveImages(root);
 console.log(`Imágenes adaptables: ${images.images} originales conservados y ${images.optimized} usos actualizados.`);
 const { documents, publications } = searchDocuments(root);

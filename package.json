@@ -35,7 +35,9 @@
     "test:indexnow": "node scripts/test-indexnow.mjs",
     "build:images": "node scripts/build-images.mjs",
     "check:images": "node scripts/check-images.mjs",
-    "test:images": "node scripts/test-images.mjs"
+    "test:images": "node scripts/test-images.mjs",
+    "build:portada": "node scripts/build-portada.mjs",
+    "test:portada": "node scripts/test-portada.mjs"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

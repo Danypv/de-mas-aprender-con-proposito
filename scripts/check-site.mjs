@@ -3,6 +3,7 @@ import path from 'node:path';
 import assert from 'node:assert/strict';
 import {sharedFooter} from './footer.mjs';
 import {checkResponsiveImages} from './responsive-images.mjs';
+import {checkPortada} from './portada.mjs';
 
 const root=path.resolve(process.argv[2]||process.cwd());
 const origin='https://somosdemas.com';
@@ -50,4 +51,5 @@ const sitemap=fs.readFileSync(path.join(root,'sitemap.xml'),'utf8');
 assert.equal((sitemap.match(/<loc>/g)||[]).length,routes.length);
 for(const route of routes)assert(sitemap.includes(`<loc>${origin+route}</loc>`));
 console.log(`Imágenes verificadas: ${checkResponsiveImages(root)} usos con variantes y originales conservados.`);
+console.log(`Portada verificada: ${checkPortada(root)} imagen(es) configurada(s) desde Pages.`);
 console.log(`Sitio verificado: ${routes.length} páginas, metadatos, idioma, iconos, enlaces, anclas, titular, contador, sitemap y página 404.`);
