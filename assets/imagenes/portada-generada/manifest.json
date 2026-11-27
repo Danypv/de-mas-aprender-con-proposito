@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "settings": {
+    "version": 1,
+    "sharp": "0.35.5",
+    "quality": 95,
+    "widths": [
+      480,
+      780,
+      1200,
+      1600,
+      1920,
+      2560,
+      3200,
+      3840
+    ]
+  },
+  "ids": [
+    "0fdd5636c93e01c99e58",
+    "58db0e4870bfca045063"
+  ],
+  "previous": [],
+  "assets": {
+    "/assets/imagenes/portada/cariatides.webp": {
+      "id": "58db0e4870bfca045063",
+      "width": 1900,
+      "height": 1010,
+      "sourceSha256": "5ccf4beeb4df8caae69d108a84eb998b98fd6f20e7b8328cd730a46405b8a59e",
+      "images": [
+        {
+          "url": "/assets/imagenes/portada-generada/58db0e4870bfca045063/1900.webp",
+          "bytes": 140778,
+          "sha256": "5ccf4beeb4df8caae69d108a84eb998b98fd6f20e7b8328cd730a46405b8a59e",
+          "width": 1900,
+          "height": 1010
+        }
+      ],
+      "blur": "/assets/imagenes/portada-generada/58db0e4870bfca045063/difusa.webp",
+      "files": [
+        {
+          "url": "/assets/imagenes/portada-generada/58db0e4870bfca045063/1900.webp",
+          "bytes": 140778,
+          "sha256": "5ccf4beeb4df8caae69d108a84eb998b98fd6f20e7b8328cd730a46405b8a59e",
+          "width": 1900,
+          "height": 1010
+        },
+        {
+          "url": "/assets/imagenes/portada-generada/58db0e4870bfca045063/difusa.webp",
+          "bytes": 4314,
+          "sha256": "bdcd5711b7680d1403b5e88d43a208c64297924b61a5f991d5f5b39b735d1df3"
+        }
+      ]
+    },
+    "/assets/imagenes/portada/cariatides-movil.webp": {
+      "id": "0fdd5636c93e01c99e58",
+      "width": 900,
+      "height": 968,
+      "sourceSha256": "4cd7e160fefd2b215f4a23c648862cd85e8bd3baeace74669535a0813667fed0",
+      "images": [
+        {
+          "url": "/assets/imagenes/portada-generada/0fdd5636c93e01c99e58/900.webp",
+          "bytes": 111884,
+          "sha256": "4cd7e160fefd2b215f4a23c648862cd85e8bd3baeace74669535a0813667fed0",
+          "width": 900,
+          "height": 968
+        }
+      ],
+      "blur": "/assets/imagenes/portada-generada/0fdd5636c93e01c99e58/difusa.webp",
+      "files": [
+        {
+          "url": "/assets/imagenes/portada-generada/0fdd5636c93e01c99e58/900.webp",
+          "bytes": 111884,
+          "sha256": "4cd7e160fefd2b215f4a23c648862cd85e8bd3baeace74669535a0813667fed0",
+          "width": 900,
+          "height": 968
+        },
+        {
+          "url": "/assets/imagenes/portada-generada/0fdd5636c93e01c99e58/difusa.webp",
+          "bytes": 9778,
+          "sha256": "794b9b19134d2027c52c3771ac854bb60b5c6abeaf260e58aa71aa076e55ab06"
+        }
+      ]
+    }
+  }
+}

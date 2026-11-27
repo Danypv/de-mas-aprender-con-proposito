@@ -28,8 +28,10 @@
   <link rel="apple-touch-icon" href="/assets/marca/icono-180.png?v=de-mas-completo">
 
   <!-- PORTADA_HEAD_START -->
-  <link rel="preload" as="image" href="assets/imagenes/portada-cariatides-movil.webp" media="(max-width: 780px)">
-  <link rel="preload" as="image" href="assets/imagenes/portada-cariatides.webp" media="not all and (max-width: 780px)">
+  <link rel="preload" as="image" href="/assets/imagenes/portada-generada/0fdd5636c93e01c99e58/900.webp" imagesrcset="/assets/imagenes/portada-generada/0fdd5636c93e01c99e58/900.webp 900w" imagesizes="max(100vw, 744px)" media="(max-width: 780px)">
+  <link rel="preload" as="image" href="/assets/imagenes/portada-generada/58db0e4870bfca045063/1900.webp" imagesrcset="/assets/imagenes/portada-generada/58db0e4870bfca045063/1900.webp 1900w" imagesizes="max(100vw, 1129px)" media="not all and (max-width: 780px)">
+  <link rel="stylesheet" href="/assets/portada.css?v=45925245e1e2">
+  <script src="/assets/portada.js?v=9ead9eced25d" defer></script>
   <!-- PORTADA_HEAD_END -->
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/montserrat-extrabold.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/roboto-regular.woff2" crossorigin>
@@ -1274,11 +1276,8 @@
     <!-- ================= PORTADA ================= -->
     <section class="portada" id="inicio">
       <!-- PORTADA_IMAGES_START -->
-      <div class="capas" aria-hidden="true">
-        <div class="capa capa-nitida"></div>
-        <div class="capa capa-difusa"></div>
-        <div class="capa capa-velo"></div>
-      </div>
+      <div class="capas" aria-hidden="true" data-portada data-intervalo="10000"><div class="portada-foto" data-portada-foto data-activa="true" style="--portada-x:100%;--portada-y:32%;--portada-movil-x:68%;--portada-movil-y:30%;--portada-difusa:url('/assets/imagenes/portada-generada/58db0e4870bfca045063/difusa.webp');--portada-difusa-movil:url('/assets/imagenes/portada-generada/0fdd5636c93e01c99e58/difusa.webp')"><div class="capa capa-nitida"><picture><source media="(max-width: 780px)" srcset="/assets/imagenes/portada-generada/0fdd5636c93e01c99e58/900.webp 900w" sizes="max(100vw, 744px)" data-aspecto="0.9297520661157025"><img src="/assets/imagenes/portada-generada/58db0e4870bfca045063/1900.webp" srcset="/assets/imagenes/portada-generada/58db0e4870bfca045063/1900.webp 1900w" sizes="max(100vw, 1129px)" width="1900" height="1010" data-aspecto="1.881188118811881" alt="" decoding="async" fetchpriority="high"></picture></div><div class="capa capa-difusa"></div></div><div class="capa capa-velo"></div></div>
+      
       <!-- PORTADA_IMAGES_END -->
 
       <div class="contenedor portada-contenido">

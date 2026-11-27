@@ -1,0 +1,15 @@
+{
+  "carousel": false,
+  "interval": 10,
+  "images": [
+    {
+      "title": "Las cariátides de la Acrópolis",
+      "image": "/assets/imagenes/portada/cariatides.webp",
+      "mobile_image": "/assets/imagenes/portada/cariatides-movil.webp",
+      "desktop_x": 100,
+      "desktop_y": 32,
+      "mobile_x": 68,
+      "mobile_y": 30
+    }
+  ]
+}
