@@ -3,6 +3,7 @@
   "interval": 10,
   "images": [
     {
+      "manual_framing": false,
       "title": "Las cariátides de la Acrópolis",
       "image": "/assets/imagenes/portada/cariatides.webp",
       "mobile_image": "/assets/imagenes/portada/cariatides-movil.webp",
