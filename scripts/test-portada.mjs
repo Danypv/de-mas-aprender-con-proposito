@@ -98,9 +98,12 @@ try {
   assert.equal(await syncPortada(editor, site), false);
   assert.equal(read(path.join(site, portadaConfig)), oldPublicConfig);
   assert.deepEqual(fs.readFileSync(path.join(site, media, 'primera.webp')), replacement, 'El borrador no filtra una sustitución de imagen');
+  save(path.join(editor, media, 'anterior-movil.webp'), webp);
+  editorConfig.images[0].mobile_image = media + 'anterior-movil.webp';
   editorConfig.status = 'approved';
   save(path.join(editor, portadaConfig), editorConfig);
   assert(await syncPortada(editor, site));
+  assert.equal(JSON.parse(read(path.join(site, portadaConfig))).images[0].mobile_image, '', 'Una nueva foto principal no hereda el recorte móvil de la foto anterior');
   assert.deepEqual(fs.readFileSync(path.join(site, media, 'primera.webp')), webp);
   await buildPortada(site);
   assert.equal(checkPortada(site), 1);
