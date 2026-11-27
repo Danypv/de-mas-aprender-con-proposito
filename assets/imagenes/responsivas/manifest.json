@@ -1,0 +1,724 @@
+{
+  "version": 1,
+  "settings": {
+    "version": 2,
+    "sharp": "0.35.5",
+    "quality": 95,
+    "effort": 6,
+    "smartSubsample": true,
+    "alphaQuality": 100,
+    "widths": [
+      160,
+      320,
+      480,
+      640,
+      960,
+      1200,
+      1600,
+      1920,
+      2560,
+      3200,
+      3840
+    ],
+    "keepEfficientOriginals": true
+  },
+  "images": {
+    "/assets/imagenes/blog/alex-shute-6n3hwssdleq-unsplash.jpg": {
+      "id": "bee7551f0996118be29d",
+      "original": {
+        "width": 5795,
+        "height": 3627,
+        "bytes": 3108137,
+        "sha256": "6627a0f7adfb9c1f0d1c14e3eb43305a4d315c0af114f63602e8bc396f4a4480",
+        "url": "/assets/imagenes/blog/alex-shute-6n3hwssdleq-unsplash.jpg?v=6627a0f7adfb"
+      },
+      "format": "webp",
+      "mime": "image/webp",
+      "variants": [
+        {
+          "width": 160,
+          "height": 100,
+          "bytes": 8226,
+          "url": "/assets/imagenes/responsivas/bee7551f0996118be29d/160.webp",
+          "sha256": "95335456b3a851142aa6c8e30e2d1f16e79b311bfa5b313f49dc1efaffd7836e"
+        },
+        {
+          "width": 320,
+          "height": 200,
+          "bytes": 18166,
+          "url": "/assets/imagenes/responsivas/bee7551f0996118be29d/320.webp",
+          "sha256": "7e88fbde9999066db56ab5d2fc0d54be0c8689885beb8b1f29c126ca0c76770f"
+        },
+        {
+          "width": 480,
+          "height": 300,
+          "bytes": 30850,
+          "url": "/assets/imagenes/responsivas/bee7551f0996118be29d/480.webp",
+          "sha256": "6835c4be97763204943b2d5fcd6d0cf2c146b26e69d8912293c8b328880259a1"
+        },
+        {
+          "width": 640,
+          "height": 400,
+          "bytes": 45878,
+          "url": "/assets/imagenes/responsivas/bee7551f0996118be29d/640.webp",
+          "sha256": "29947aa8aaf1b98bf62df9b8fb58d9784497dbf314c6181d11e330afaa1cc64c"
+        },
+        {
+          "width": 960,
+          "height": 601,
+          "bytes": 85378,
+          "url": "/assets/imagenes/responsivas/bee7551f0996118be29d/960.webp",
+          "sha256": "84a62c5c5fd18c9de6f33bfcd97c215f179afe6e54dbf5a279c22d9c1d574926"
+        },
+        {
+          "width": 1200,
+          "height": 751,
+          "bytes": 119574,
+          "url": "/assets/imagenes/responsivas/bee7551f0996118be29d/1200.webp",
+          "sha256": "e1e10f082bc72c4e3740306924df8295c609fae57607cd341a0cb3e3846e460d"
+        },
+        {
+          "width": 1600,
+          "height": 1001,
+          "bytes": 210146,
+          "url": "/assets/imagenes/responsivas/bee7551f0996118be29d/1600.webp",
+          "sha256": "414222f6c1b7f8d7f1df75521c397b0c3627ec7fc752d8e219520b81350b67e9"
+        },
+        {
+          "width": 1920,
+          "height": 1202,
+          "bytes": 303504,
+          "url": "/assets/imagenes/responsivas/bee7551f0996118be29d/1920.webp",
+          "sha256": "7a1d7b40a1336c01f6d54c3469de8ee6f588ed4f6b983f07b85dbf4c9a612390"
+        },
+        {
+          "width": 2560,
+          "height": 1602,
+          "bytes": 581194,
+          "url": "/assets/imagenes/responsivas/bee7551f0996118be29d/2560.webp",
+          "sha256": "511714f97d87d36280980feb8f51b11cc92457111c434e632b996e9e1baa8e0c"
+        },
+        {
+          "width": 3200,
+          "height": 2003,
+          "bytes": 1017682,
+          "url": "/assets/imagenes/responsivas/bee7551f0996118be29d/3200.webp",
+          "sha256": "54d7f7f7c5dcf42483f02b0d39a08c8fa3a7ca296e05da5fdbb2237647fd0667"
+        },
+        {
+          "width": 3840,
+          "height": 2403,
+          "bytes": 1586742,
+          "url": "/assets/imagenes/responsivas/bee7551f0996118be29d/3840.webp",
+          "sha256": "e4d67016b262595713ac9157ba8ed5039386527634510a8fb4314373169dd2c9"
+        }
+      ]
+    },
+    "/assets/imagenes/blog/ignacio-brosa-zxsbuioeszs-unsplash.jpg": {
+      "id": "d0620ffbc9f41ff44212",
+      "original": {
+        "width": 2400,
+        "height": 1600,
+        "bytes": 852547,
+        "sha256": "0838c9a433f642564f5ffe364d6951450b57b7182b4c9d527020abcccb9a670b",
+        "url": "/assets/imagenes/blog/ignacio-brosa-zxsbuioeszs-unsplash.jpg?v=0838c9a433f6"
+      },
+      "format": "jpeg",
+      "mime": "image/jpeg",
+      "variants": [
+        {
+          "width": 160,
+          "height": 107,
+          "bytes": 9231,
+          "url": "/assets/imagenes/responsivas/d0620ffbc9f41ff44212/160.jpg",
+          "sha256": "55c4a6c60c00fc82d867d6a44bb8b5dac1c8b4581ccfd04fb404bdae13e2c078"
+        },
+        {
+          "width": 320,
+          "height": 213,
+          "bytes": 21892,
+          "url": "/assets/imagenes/responsivas/d0620ffbc9f41ff44212/320.jpg",
+          "sha256": "7ae481f4230a73d3062d7b49160a1489332ef2aef80f23b4a2b260f36ee4d235"
+        },
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 41543,
+          "url": "/assets/imagenes/responsivas/d0620ffbc9f41ff44212/480.jpg",
+          "sha256": "32242188916f4b8702a1cfcb9e69f36d76eca17634f7ae1b769b33d65e7ef1ff"
+        },
+        {
+          "width": 640,
+          "height": 427,
+          "bytes": 72905,
+          "url": "/assets/imagenes/responsivas/d0620ffbc9f41ff44212/640.jpg",
+          "sha256": "5e04c2bb0241df4065da49606c44c88340b25f2ee2bdb22a942eae392176d5bf"
+        },
+        {
+          "width": 960,
+          "height": 640,
+          "bytes": 171180,
+          "url": "/assets/imagenes/responsivas/d0620ffbc9f41ff44212/960.jpg",
+          "sha256": "a8178d856d65984ac586f735ec8b5efad9f6d671c149e80912e26f05e91028cb"
+        },
+        {
+          "width": 1200,
+          "height": 800,
+          "bytes": 280825,
+          "url": "/assets/imagenes/responsivas/d0620ffbc9f41ff44212/1200.jpg",
+          "sha256": "8382cc3b64ffb5c720cad63da89d860d7c367a9ae01f46cd8e428790b490eda6"
+        },
+        {
+          "width": 1600,
+          "height": 1067,
+          "bytes": 520234,
+          "url": "/assets/imagenes/responsivas/d0620ffbc9f41ff44212/1600.jpg",
+          "sha256": "5e879ef5472af354e3edd54dab6bbde4539f47b99a7dcdccdd966f3d3a15be74"
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "bytes": 755468,
+          "url": "/assets/imagenes/responsivas/d0620ffbc9f41ff44212/1920.jpg",
+          "sha256": "9bdc40d29f4acaa5565b73f48e7af8cba472dd9e349cc158d566a0cfff4d7d54"
+        },
+        {
+          "width": 2400,
+          "height": 1600,
+          "bytes": 852547,
+          "url": "/assets/imagenes/blog/ignacio-brosa-zxsbuioeszs-unsplash.jpg?v=0838c9a433f6",
+          "sha256": "0838c9a433f642564f5ffe364d6951450b57b7182b4c9d527020abcccb9a670b",
+          "original": true
+        }
+      ]
+    },
+    "/assets/imagenes/blog/lukas-rychvalsky-o0ghpkxe5gm-unsplash.jpg": {
+      "id": "41b3538de8a4eb1a1cd7",
+      "original": {
+        "width": 4769,
+        "height": 3179,
+        "bytes": 2605495,
+        "sha256": "97af5ab0f974ba9255296792e01f3589c22119cea17683efe4d6b54a3382d865",
+        "url": "/assets/imagenes/blog/lukas-rychvalsky-o0ghpkxe5gm-unsplash.jpg?v=97af5ab0f974"
+      },
+      "format": "webp",
+      "mime": "image/webp",
+      "variants": [
+        {
+          "width": 160,
+          "height": 107,
+          "bytes": 6762,
+          "url": "/assets/imagenes/responsivas/41b3538de8a4eb1a1cd7/160.webp",
+          "sha256": "c65979fba3eda6b3d9964a0e3ae2473abfdcfaec65e0f7d323f413f10049354d"
+        },
+        {
+          "width": 320,
+          "height": 213,
+          "bytes": 14030,
+          "url": "/assets/imagenes/responsivas/41b3538de8a4eb1a1cd7/320.webp",
+          "sha256": "13c7441417170fbaea6d604dc2ff8fc26c4ccec7d11abf599dcca5caaabf9b97"
+        },
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 24546,
+          "url": "/assets/imagenes/responsivas/41b3538de8a4eb1a1cd7/480.webp",
+          "sha256": "4d6d5fdaf6eebede0eae12d7305d77093b250999f9fd5fc3aef972c335ea3f34"
+        },
+        {
+          "width": 640,
+          "height": 426,
+          "bytes": 40354,
+          "url": "/assets/imagenes/responsivas/41b3538de8a4eb1a1cd7/640.webp",
+          "sha256": "9dfa61cc7b70d91eb2785e51ddf8f5b5190124ef434588b5d930f7872dee69b1"
+        },
+        {
+          "width": 960,
+          "height": 640,
+          "bytes": 81080,
+          "url": "/assets/imagenes/responsivas/41b3538de8a4eb1a1cd7/960.webp",
+          "sha256": "0fb6be0529f9df013fda747f7fa312bf78a8a444893b32eeac485ae8e87682d5"
+        },
+        {
+          "width": 1200,
+          "height": 800,
+          "bytes": 117880,
+          "url": "/assets/imagenes/responsivas/41b3538de8a4eb1a1cd7/1200.webp",
+          "sha256": "96482867bf2e14fb1276370a119e12058ec4a6a74a5a99ae968ac005b9a79937"
+        },
+        {
+          "width": 1600,
+          "height": 1067,
+          "bytes": 268412,
+          "url": "/assets/imagenes/responsivas/41b3538de8a4eb1a1cd7/1600.webp",
+          "sha256": "14950d8d5d446f8a5425e7bf3f4b6723b9c1e94ac58b6129b432935458454ca6"
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "bytes": 469344,
+          "url": "/assets/imagenes/responsivas/41b3538de8a4eb1a1cd7/1920.webp",
+          "sha256": "dc96676acbd000af29c103f11cf7a8a291b3abe9ae05a9db35a9f22295321db2"
+        },
+        {
+          "width": 2560,
+          "height": 1706,
+          "bytes": 1041610,
+          "url": "/assets/imagenes/responsivas/41b3538de8a4eb1a1cd7/2560.webp",
+          "sha256": "18cdba1f8f3c4922136621f9ebf5c5d3ae3bef1ac05c8916ad5b0a873df18d4f"
+        },
+        {
+          "width": 3200,
+          "height": 2133,
+          "bytes": 1776146,
+          "url": "/assets/imagenes/responsivas/41b3538de8a4eb1a1cd7/3200.webp",
+          "sha256": "fe19ec7b642c5a30a2bb6853acb48f95da19c0271006c47b0ad3d0aa2f3c1266"
+        },
+        {
+          "width": 3840,
+          "height": 2560,
+          "bytes": 2558310,
+          "url": "/assets/imagenes/responsivas/41b3538de8a4eb1a1cd7/3840.webp",
+          "sha256": "ddd30805ffbfb5e3746a356bd22f09bb7d19fd22d7dfc862a8bcfe9d142e4035"
+        }
+      ]
+    },
+    "/assets/imagenes/blog/markus-kammermann-pnpwc-pffuk-unsplash.jpg": {
+      "id": "cf28f4b8ed2dfcdc0808",
+      "original": {
+        "width": 2400,
+        "height": 1600,
+        "bytes": 750389,
+        "sha256": "e8162872ddb5f919ec6d6430e75820987346f6a603488f8b2c3f7218e9eaebdf",
+        "url": "/assets/imagenes/blog/markus-kammermann-pnpwc-pffuk-unsplash.jpg?v=e8162872ddb5"
+      },
+      "format": "jpeg",
+      "mime": "image/jpeg",
+      "variants": [
+        {
+          "width": 160,
+          "height": 107,
+          "bytes": 14334,
+          "url": "/assets/imagenes/responsivas/cf28f4b8ed2dfcdc0808/160.jpg",
+          "sha256": "38d0f957f6ec26a69c407ff83f250a51398b88e23dc4848e7319dc7c27902999"
+        },
+        {
+          "width": 320,
+          "height": 213,
+          "bytes": 41526,
+          "url": "/assets/imagenes/responsivas/cf28f4b8ed2dfcdc0808/320.jpg",
+          "sha256": "a49c1ac56fad9e80dcee3ec2233d78799ff46dbfcfba0434444849564c1f8a9e"
+        },
+        {
+          "width": 480,
+          "height": 320,
+          "bytes": 77750,
+          "url": "/assets/imagenes/responsivas/cf28f4b8ed2dfcdc0808/480.jpg",
+          "sha256": "87ceb90a6d010f0978360ab251222be0aedf9e72132bdda60c716d3144f82f5e"
+        },
+        {
+          "width": 640,
+          "height": 427,
+          "bytes": 126019,
+          "url": "/assets/imagenes/responsivas/cf28f4b8ed2dfcdc0808/640.jpg",
+          "sha256": "f51289d5fae23c6cf795ab9c3204d70692b0506fd96f4f7c409030ac704008d4"
+        },
+        {
+          "width": 960,
+          "height": 640,
+          "bytes": 236560,
+          "url": "/assets/imagenes/responsivas/cf28f4b8ed2dfcdc0808/960.jpg",
+          "sha256": "c1f7eb3103a0487fed3cb8af556ebba4d737e3a882bbf90d1ab878e2a8fa6a91"
+        },
+        {
+          "width": 1200,
+          "height": 800,
+          "bytes": 334613,
+          "url": "/assets/imagenes/responsivas/cf28f4b8ed2dfcdc0808/1200.jpg",
+          "sha256": "f557db0728dac32fe546c6f876ce95a4b48262c5b7a5282a4ec1dd90334a8764"
+        },
+        {
+          "width": 1600,
+          "height": 1067,
+          "bytes": 526166,
+          "url": "/assets/imagenes/responsivas/cf28f4b8ed2dfcdc0808/1600.jpg",
+          "sha256": "48b3b8e25e6f8419aa06b2b5288affd686c71c33adfb73360901edc616ced3ee"
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "bytes": 695017,
+          "url": "/assets/imagenes/responsivas/cf28f4b8ed2dfcdc0808/1920.jpg",
+          "sha256": "15a46790bd31b3f0c5bae254b89b5513172f9a2f94bddd4482d0efd719e7d869"
+        },
+        {
+          "width": 2400,
+          "height": 1600,
+          "bytes": 750389,
+          "url": "/assets/imagenes/blog/markus-kammermann-pnpwc-pffuk-unsplash.jpg?v=e8162872ddb5",
+          "sha256": "e8162872ddb5f919ec6d6430e75820987346f6a603488f8b2c3f7218e9eaebdf",
+          "original": true
+        }
+      ]
+    },
+    "/assets/imagenes/blog/mia-rauffer-qfzc8d33py-unsplash.jpg": {
+      "id": "a03439e4cc7f2b9d0986",
+      "original": {
+        "width": 4987,
+        "height": 3740,
+        "bytes": 3001178,
+        "sha256": "454ceb316258ff3194599bf7f93d13b0f647544fa5c788a263f99db973a54831",
+        "url": "/assets/imagenes/blog/mia-rauffer-qfzc8d33py-unsplash.jpg?v=454ceb316258"
+      },
+      "format": "webp",
+      "mime": "image/webp",
+      "variants": [
+        {
+          "width": 160,
+          "height": 120,
+          "bytes": 10902,
+          "url": "/assets/imagenes/responsivas/a03439e4cc7f2b9d0986/160.webp",
+          "sha256": "21e0f0fc08e7aceb9c25031327266d562bef9979fac5e01d0de614466b8bb79f"
+        },
+        {
+          "width": 320,
+          "height": 240,
+          "bytes": 28408,
+          "url": "/assets/imagenes/responsivas/a03439e4cc7f2b9d0986/320.webp",
+          "sha256": "59c06d2e74f0377a1aaa95f05e0f0c28ce0b2c2c0694bb1e3dc16d5be20de24f"
+        },
+        {
+          "width": 480,
+          "height": 360,
+          "bytes": 52484,
+          "url": "/assets/imagenes/responsivas/a03439e4cc7f2b9d0986/480.webp",
+          "sha256": "5d3f426125d7521ebc4241c5616a95adaee6d69e3461d656f284cfae96dbf1eb"
+        },
+        {
+          "width": 640,
+          "height": 480,
+          "bytes": 86798,
+          "url": "/assets/imagenes/responsivas/a03439e4cc7f2b9d0986/640.webp",
+          "sha256": "653bd5452661bfb32a855d60a5da615b21a0919bc34fcbed288e87cba2cb482e"
+        },
+        {
+          "width": 960,
+          "height": 720,
+          "bytes": 163344,
+          "url": "/assets/imagenes/responsivas/a03439e4cc7f2b9d0986/960.webp",
+          "sha256": "c11bb1a12c6775502c0b9005aa047a11d951c1a900368bf5957b2db897acd7ac"
+        },
+        {
+          "width": 1200,
+          "height": 900,
+          "bytes": 228146,
+          "url": "/assets/imagenes/responsivas/a03439e4cc7f2b9d0986/1200.webp",
+          "sha256": "514d4a174adbd617b255e27fac7b23f254e43f002a7d1be75e76bb7a0cd85b27"
+        },
+        {
+          "width": 1600,
+          "height": 1200,
+          "bytes": 369384,
+          "url": "/assets/imagenes/responsivas/a03439e4cc7f2b9d0986/1600.webp",
+          "sha256": "cc19e4c3f6666c4804e2ed92e19e20642c294e751bf5f34317ab621532ce38af"
+        },
+        {
+          "width": 1920,
+          "height": 1440,
+          "bytes": 561074,
+          "url": "/assets/imagenes/responsivas/a03439e4cc7f2b9d0986/1920.webp",
+          "sha256": "b52a70ba98edb189fc8c2ddb4799adcd9784ca953463b3f00e376dee1bf6fa9b"
+        },
+        {
+          "width": 2560,
+          "height": 1920,
+          "bytes": 1092046,
+          "url": "/assets/imagenes/responsivas/a03439e4cc7f2b9d0986/2560.webp",
+          "sha256": "dcaef3e03c5adfee849c4c8aa760dc809c5e7163639b76b29733c36d03dea427"
+        },
+        {
+          "width": 3200,
+          "height": 2400,
+          "bytes": 1782226,
+          "url": "/assets/imagenes/responsivas/a03439e4cc7f2b9d0986/3200.webp",
+          "sha256": "49f4faa9448f8aa0827355dacd17a19cfe56ddf08f72230db53055133c6634c8"
+        },
+        {
+          "width": 3840,
+          "height": 2880,
+          "bytes": 2496186,
+          "url": "/assets/imagenes/responsivas/a03439e4cc7f2b9d0986/3840.webp",
+          "sha256": "b05ccc1edd667073129ae415fb4f5ff2db6ea2091b228777d940f81385a8b08a"
+        }
+      ]
+    },
+    "/assets/imagenes/blog/numan-ali-llntovr7ctk-unsplash.jpg": {
+      "id": "f9f2b77d2cda83be56ce",
+      "original": {
+        "width": 6240,
+        "height": 3510,
+        "bytes": 1245114,
+        "sha256": "e3f863ff2aeeba2ffcf218291a55db098debf41ed20d9e7ebae7c023ca9190f6",
+        "url": "/assets/imagenes/blog/numan-ali-llntovr7ctk-unsplash.jpg?v=e3f863ff2aee"
+      },
+      "format": "webp",
+      "mime": "image/webp",
+      "variants": [
+        {
+          "width": 160,
+          "height": 90,
+          "bytes": 10136,
+          "url": "/assets/imagenes/responsivas/f9f2b77d2cda83be56ce/160.webp",
+          "sha256": "217d8374ffe41850d605452720fb383ce448e5ea75bb5cbf84ab554d91641469"
+        },
+        {
+          "width": 320,
+          "height": 180,
+          "bytes": 24360,
+          "url": "/assets/imagenes/responsivas/f9f2b77d2cda83be56ce/320.webp",
+          "sha256": "dac40185b3ef5245745e4c87cfffaf4785864276da50affe26a4f86670442e5e"
+        },
+        {
+          "width": 480,
+          "height": 270,
+          "bytes": 38562,
+          "url": "/assets/imagenes/responsivas/f9f2b77d2cda83be56ce/480.webp",
+          "sha256": "d4020033e4bd66a98119654a85e9ba4b15db99249b8c28b02c8d944c1a3008c4"
+        },
+        {
+          "width": 640,
+          "height": 359,
+          "bytes": 52418,
+          "url": "/assets/imagenes/responsivas/f9f2b77d2cda83be56ce/640.webp",
+          "sha256": "e0b0c8e279240c79966abf5cac5240bc7c5be61817826717758a1ec96e62ac33"
+        },
+        {
+          "width": 960,
+          "height": 540,
+          "bytes": 83222,
+          "url": "/assets/imagenes/responsivas/f9f2b77d2cda83be56ce/960.webp",
+          "sha256": "7493a81087769a908b44e88e7546fc4c1a339041e32b7c32677b6a03a3fe3aa6"
+        },
+        {
+          "width": 1200,
+          "height": 675,
+          "bytes": 106312,
+          "url": "/assets/imagenes/responsivas/f9f2b77d2cda83be56ce/1200.webp",
+          "sha256": "9a5032d6e79ab5dc0998e8d04e5fb5bee40814c2cde0bd15f6183958344caeb8"
+        },
+        {
+          "width": 1600,
+          "height": 900,
+          "bytes": 147052,
+          "url": "/assets/imagenes/responsivas/f9f2b77d2cda83be56ce/1600.webp",
+          "sha256": "d0c4467e26b97b8c1c825aba23f92e469ea20729c6075e820523086e67c96121"
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "bytes": 183202,
+          "url": "/assets/imagenes/responsivas/f9f2b77d2cda83be56ce/1920.webp",
+          "sha256": "ebe2d1c490dd272a160d03ca1591d7e18e685b6b5bd1809a20028a461a7a39e4"
+        },
+        {
+          "width": 2560,
+          "height": 1440,
+          "bytes": 274924,
+          "url": "/assets/imagenes/responsivas/f9f2b77d2cda83be56ce/2560.webp",
+          "sha256": "cac8a17278f16876ee586686769f498f1dea0097df63dac61fbded55441ffffb"
+        },
+        {
+          "width": 3200,
+          "height": 1800,
+          "bytes": 382476,
+          "url": "/assets/imagenes/responsivas/f9f2b77d2cda83be56ce/3200.webp",
+          "sha256": "bbb730e5c31e0199c37aa73566ff9f3c63009b6026cea079a3f4c943c3bc36b8"
+        },
+        {
+          "width": 3840,
+          "height": 2160,
+          "bytes": 538000,
+          "url": "/assets/imagenes/responsivas/f9f2b77d2cda83be56ce/3840.webp",
+          "sha256": "f41e4116ac61af8b479f9285126a9d95c8f7da2668e6cb13ee6681443fac4ae2"
+        }
+      ]
+    },
+    "/assets/imagenes/blog/photo-2026-11-07-12-16-22.jpg": {
+      "id": "10b2ae3760a38918ee81",
+      "original": {
+        "width": 1600,
+        "height": 1200,
+        "bytes": 242557,
+        "sha256": "1c3bf6d6e7e1597b5bba676018b0b8ae8332caee1d76d6522fd03adf884d4c00",
+        "url": "/assets/imagenes/blog/photo-2026-11-07-12-16-22.jpg?v=1c3bf6d6e7e1"
+      },
+      "format": "jpeg",
+      "mime": "image/jpeg",
+      "variants": [
+        {
+          "width": 160,
+          "height": 120,
+          "bytes": 7883,
+          "url": "/assets/imagenes/responsivas/10b2ae3760a38918ee81/160.jpg",
+          "sha256": "ef256e8e5b91928269aa343ce0f4e0a247fd338cb649e27458bb3f4325153a98"
+        },
+        {
+          "width": 320,
+          "height": 240,
+          "bytes": 26196,
+          "url": "/assets/imagenes/responsivas/10b2ae3760a38918ee81/320.jpg",
+          "sha256": "553bda8e70c6eda895669e19addb7a21a4bcd23770e4d6889c11d0474a3b4a3b"
+        },
+        {
+          "width": 480,
+          "height": 360,
+          "bytes": 54417,
+          "url": "/assets/imagenes/responsivas/10b2ae3760a38918ee81/480.jpg",
+          "sha256": "2311731e7697f6ceba2909fb761d436b910854790849b5e6fd85684f8eda83c7"
+        },
+        {
+          "width": 640,
+          "height": 480,
+          "bytes": 91367,
+          "url": "/assets/imagenes/responsivas/10b2ae3760a38918ee81/640.jpg",
+          "sha256": "de0e52e93e20ebd2f327a4fb0a3d36de39c62b239c0c8c97968aea3f310eb5ac"
+        },
+        {
+          "width": 960,
+          "height": 720,
+          "bytes": 184151,
+          "url": "/assets/imagenes/responsivas/10b2ae3760a38918ee81/960.jpg",
+          "sha256": "b4868a0ad1f5134ac8cad675d0290c46a34807a3380fca7f06fb6ccd3de3a78d"
+        },
+        {
+          "width": 1600,
+          "height": 1200,
+          "bytes": 242557,
+          "url": "/assets/imagenes/blog/photo-2026-11-07-12-16-22.jpg?v=1c3bf6d6e7e1",
+          "sha256": "1c3bf6d6e7e1597b5bba676018b0b8ae8332caee1d76d6522fd03adf884d4c00",
+          "original": true
+        }
+      ]
+    },
+    "/assets/imagenes/blog/photo-2026-11-13-14-11-17.jpg": {
+      "id": "800d6cb261ff73a9fad6",
+      "original": {
+        "width": 1280,
+        "height": 960,
+        "bytes": 181328,
+        "sha256": "efafaa2a98707e6ee698d9917ee0cb034a5a9aec397316e2a70e272fcc5b61dd",
+        "url": "/assets/imagenes/blog/photo-2026-11-13-14-11-17.jpg?v=efafaa2a9870"
+      },
+      "format": "jpeg",
+      "mime": "image/jpeg",
+      "variants": [
+        {
+          "width": 160,
+          "height": 120,
+          "bytes": 9863,
+          "url": "/assets/imagenes/responsivas/800d6cb261ff73a9fad6/160.jpg",
+          "sha256": "f5f37cb7afaaf7027d7e1e8bda02fe461ad297c7d01f1bb815c7eb16b6c1c8d1"
+        },
+        {
+          "width": 320,
+          "height": 240,
+          "bytes": 32378,
+          "url": "/assets/imagenes/responsivas/800d6cb261ff73a9fad6/320.jpg",
+          "sha256": "e0bbe714686b97c0d03893eeb33ada5a5401443db015dd93d56906ac074201c3"
+        },
+        {
+          "width": 480,
+          "height": 360,
+          "bytes": 66488,
+          "url": "/assets/imagenes/responsivas/800d6cb261ff73a9fad6/480.jpg",
+          "sha256": "64a088f79b90dab2142c12e646b90a7480385bdc42fe2da5a64eaa6137a7dc0c"
+        },
+        {
+          "width": 640,
+          "height": 480,
+          "bytes": 109584,
+          "url": "/assets/imagenes/responsivas/800d6cb261ff73a9fad6/640.jpg",
+          "sha256": "bc910a09c18ae119692ecc6a92d25b9b9fa9d43683be877818a4f2910e464b6d"
+        },
+        {
+          "width": 1280,
+          "height": 960,
+          "bytes": 181328,
+          "url": "/assets/imagenes/blog/photo-2026-11-13-14-11-17.jpg?v=efafaa2a9870",
+          "sha256": "efafaa2a98707e6ee698d9917ee0cb034a5a9aec397316e2a70e272fcc5b61dd",
+          "original": true
+        }
+      ]
+    },
+    "/assets/imagenes/blog/portada-editorial-en-fondo-claro.png": {
+      "id": "b7e915b1ea7a1f008435",
+      "original": {
+        "width": 1672,
+        "height": 941,
+        "bytes": 1150408,
+        "sha256": "89d1fbb5e5d6b5ceace4e06019239bbc97f61d20864641cb3c7865c384120e79",
+        "url": "/assets/imagenes/blog/portada-editorial-en-fondo-claro.png?v=89d1fbb5e5d6"
+      },
+      "format": "webp",
+      "mime": "image/webp",
+      "variants": [
+        {
+          "width": 160,
+          "height": 90,
+          "bytes": 1430,
+          "url": "/assets/imagenes/responsivas/b7e915b1ea7a1f008435/160.webp",
+          "sha256": "a2d109217f1686a2d347954ba0fa7fc2e9775c29d59147b4ee360e07ecb9b710"
+        },
+        {
+          "width": 320,
+          "height": 180,
+          "bytes": 3722,
+          "url": "/assets/imagenes/responsivas/b7e915b1ea7a1f008435/320.webp",
+          "sha256": "72266ee32758588bd2e8b6613f46e917c729b37150cb9a2efd514281f031024b"
+        },
+        {
+          "width": 480,
+          "height": 270,
+          "bytes": 7252,
+          "url": "/assets/imagenes/responsivas/b7e915b1ea7a1f008435/480.webp",
+          "sha256": "d34b4b43c827bca51f5870ce47c06f3a12b8ef038faaad82506ac4b17b315172"
+        },
+        {
+          "width": 640,
+          "height": 360,
+          "bytes": 11552,
+          "url": "/assets/imagenes/responsivas/b7e915b1ea7a1f008435/640.webp",
+          "sha256": "ad9db9c4f0550ceb914cbe1064127bdb7f8b8c1d8fa6b6102f05188ccefbd380"
+        },
+        {
+          "width": 960,
+          "height": 540,
+          "bytes": 22926,
+          "url": "/assets/imagenes/responsivas/b7e915b1ea7a1f008435/960.webp",
+          "sha256": "84842f6b63adffe17d12c7c3a82d8cdbe64417ebf37d9268fc8c78853b2462c3"
+        },
+        {
+          "width": 1200,
+          "height": 675,
+          "bytes": 36682,
+          "url": "/assets/imagenes/responsivas/b7e915b1ea7a1f008435/1200.webp",
+          "sha256": "2ffae42bb27b10251039e72de33045e915b7cdd8e09df818631cbd0f4506ebff"
+        },
+        {
+          "width": 1600,
+          "height": 900,
+          "bytes": 65866,
+          "url": "/assets/imagenes/responsivas/b7e915b1ea7a1f008435/1600.webp",
+          "sha256": "72c197c184dc56eb5454f366a088ea1d2d468353acf84e3178e7db82cda7df39"
+        },
+        {
+          "width": 1672,
+          "height": 941,
+          "bytes": 71038,
+          "url": "/assets/imagenes/responsivas/b7e915b1ea7a1f008435/1672.webp",
+          "sha256": "168bede4356a0c24245907ab2ac5219336441a805e12045bbe5cc2a43dac3032"
+        }
+      ]
+    }
+  }
+}
