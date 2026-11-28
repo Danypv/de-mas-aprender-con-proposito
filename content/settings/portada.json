@@ -27,20 +27,20 @@
       "title": "Arriero",
       "image": "/assets/imagenes/portada/arriero.jpg",
       "mobile_image": "",
-      "desktop_x": 50,
-      "desktop_y": 50,
-      "mobile_x": 50,
-      "mobile_y": 50
+      "desktop_x": 100,
+      "desktop_y": 32,
+      "mobile_x": 68,
+      "mobile_y": 30
     },
     {
       "manual_framing": false,
       "title": "Imagen 4",
       "image": "/assets/imagenes/portada/guayacan-arbol.jpg",
       "mobile_image": "",
-      "desktop_x": 50,
-      "desktop_y": 50,
-      "mobile_x": 50,
-      "mobile_y": 50
+      "desktop_x": 100,
+      "desktop_y": 32,
+      "mobile_x": 68,
+      "mobile_y": 30
     },
     {
       "manual_framing": false,
