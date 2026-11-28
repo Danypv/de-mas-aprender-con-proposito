@@ -16,8 +16,12 @@
     ]
   },
   "ids": [
+    "3c21810b5bac2ccd497c",
     "48cef44e63248f1fe3d4",
-    "4cd8635345042051ac36"
+    "4cd8635345042051ac36",
+    "a93484b08e318cdf2cb7",
+    "ad4fbbfa75e3704da200",
+    "ee7fce2bd31bdd8fb06d"
   ],
   "history": {
     "/assets/imagenes/portada/cariatides.webp": [
@@ -97,6 +101,310 @@
           "url": "/assets/imagenes/portada-generada/4cd8635345042051ac36/difusa.webp",
           "bytes": 9778,
           "sha256": "794b9b19134d2027c52c3771ac854bb60b5c6abeaf260e58aa71aa076e55ab06"
+        }
+      ]
+    },
+    "/assets/imagenes/portada/delfos-grecia.jpg": {
+      "id": "ad4fbbfa75e3704da200",
+      "width": 1280,
+      "height": 960,
+      "focus": {
+        "x": 35,
+        "y": 30
+      },
+      "sourceSha256": "f6214f7f4db1c3f9194afbbef49c57f556821707f9db0708089e7062f1045085",
+      "images": [
+        {
+          "url": "/assets/imagenes/portada-generada/ad4fbbfa75e3704da200/480.webp",
+          "bytes": 59474,
+          "sha256": "014064d46523c8ae9b75a089f7f0c91462a74d5471b3c3e6d0fa8faa54c70931",
+          "width": 480,
+          "height": 360
+        },
+        {
+          "url": "/assets/imagenes/portada-generada/ad4fbbfa75e3704da200/780.webp",
+          "bytes": 137636,
+          "sha256": "0408fb29cace39073f369a298e9f663be39e91f3c99bb2ce24ae8a0d1ca01ac8",
+          "width": 780,
+          "height": 585
+        },
+        {
+          "url": "/assets/imagenes/portada-generada/ad4fbbfa75e3704da200/1200.webp",
+          "bytes": 293240,
+          "sha256": "3172ecd177a43d98787edfac05e380a56147f75c5404beae899769a5276d4dbc",
+          "width": 1200,
+          "height": 900
+        },
+        {
+          "url": "/assets/imagenes/portada-generada/ad4fbbfa75e3704da200/1280.webp",
+          "bytes": 306762,
+          "sha256": "1bebe062b6856b3b7f9ea94617b98105a449a55dbbe9d9fa5965259fe3c95185",
+          "width": 1280,
+          "height": 960
+        }
+      ],
+      "blur": "/assets/imagenes/portada-generada/ad4fbbfa75e3704da200/difusa.webp",
+      "files": [
+        {
+          "url": "/assets/imagenes/portada-generada/ad4fbbfa75e3704da200/480.webp",
+          "bytes": 59474,
+          "sha256": "014064d46523c8ae9b75a089f7f0c91462a74d5471b3c3e6d0fa8faa54c70931",
+          "width": 480,
+          "height": 360
+        },
+        {
+          "url": "/assets/imagenes/portada-generada/ad4fbbfa75e3704da200/780.webp",
+          "bytes": 137636,
+          "sha256": "0408fb29cace39073f369a298e9f663be39e91f3c99bb2ce24ae8a0d1ca01ac8",
+          "width": 780,
+          "height": 585
+        },
+        {
+          "url": "/assets/imagenes/portada-generada/ad4fbbfa75e3704da200/1200.webp",
+          "bytes": 293240,
+          "sha256": "3172ecd177a43d98787edfac05e380a56147f75c5404beae899769a5276d4dbc",
+          "width": 1200,
+          "height": 900
+        },
+        {
+          "url": "/assets/imagenes/portada-generada/ad4fbbfa75e3704da200/1280.webp",
+          "bytes": 306762,
+          "sha256": "1bebe062b6856b3b7f9ea94617b98105a449a55dbbe9d9fa5965259fe3c95185",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "url": "/assets/imagenes/portada-generada/ad4fbbfa75e3704da200/difusa.webp",
+          "bytes": 5160,
+          "sha256": "6c69aee72c84ef05cd6bf42aa04a42834301379ff69022c90142f79084d73dcf"
+        }
+      ]
+    },
+    "/assets/imagenes/portada/arriero.jpg": {
+      "id": "ee7fce2bd31bdd8fb06d",
+      "width": 1280,
+      "height": 960,
+      "focus": {
+        "x": 38.125,
+        "y": 30
+      },
+      "sourceSha256": "80a1888106f3b703387356549578f3d1520238e76416f900b35716ecb78c7d29",
+      "images": [
+        {
+          "url": "/assets/imagenes/portada-generada/ee7fce2bd31bdd8fb06d/480.webp",
+          "bytes": 104480,
+          "sha256": "4e76e9b032e98fcbddb161ac60d1866ebef34cedadf56a94d85d9041ad60b337",
+          "width": 480,
+          "height": 360
+        },
+        {
+          "url": "/assets/imagenes/portada-generada/ee7fce2bd31bdd8fb06d/780.webp",
+          "bytes": 250846,
+          "sha256": "edd10cf9ed40556f03230c58090a5205b0ad330e016d949bc18cdb204f697e16",
+          "width": 780,
+          "height": 585
+        },
+        {
+          "url": "/assets/imagenes/portada-generada/ee7fce2bd31bdd8fb06d/1200.webp",
+          "bytes": 548156,
+          "sha256": "1655d7f97bf142b024f7e364e3303371f5ffb1f99b327395900963535783d04c",
+          "width": 1200,
+          "height": 900
+        },
+        {
+          "url": "/assets/imagenes/portada-generada/ee7fce2bd31bdd8fb06d/1280.webp",
+          "bytes": 574544,
+          "sha256": "b698f5e9ad2f2567a3819abc435d5299fdbc75e58d7ac2262a6b754755366ad1",
+          "width": 1280,
+          "height": 960
+        }
+      ],
+      "blur": "/assets/imagenes/portada-generada/ee7fce2bd31bdd8fb06d/difusa.webp",
+      "files": [
+        {
+          "url": "/assets/imagenes/portada-generada/ee7fce2bd31bdd8fb06d/480.webp",
+          "bytes": 104480,
+          "sha256": "4e76e9b032e98fcbddb161ac60d1866ebef34cedadf56a94d85d9041ad60b337",
+          "width": 480,
+          "height": 360
+        },
+        {
+          "url": "/assets/imagenes/portada-generada/ee7fce2bd31bdd8fb06d/780.webp",
+          "bytes": 250846,
+          "sha256": "edd10cf9ed40556f03230c58090a5205b0ad330e016d949bc18cdb204f697e16",
+          "width": 780,
+          "height": 585
+        },
+        {
+          "url": "/assets/imagenes/portada-generada/ee7fce2bd31bdd8fb06d/1200.webp",
+          "bytes": 548156,
+          "sha256": "1655d7f97bf142b024f7e364e3303371f5ffb1f99b327395900963535783d04c",
+          "width": 1200,
+          "height": 900
+        },
+        {
+          "url": "/assets/imagenes/portada-generada/ee7fce2bd31bdd8fb06d/1280.webp",
+          "bytes": 574544,
+          "sha256": "b698f5e9ad2f2567a3819abc435d5299fdbc75e58d7ac2262a6b754755366ad1",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "url": "/assets/imagenes/portada-generada/ee7fce2bd31bdd8fb06d/difusa.webp",
+          "bytes": 7970,
+          "sha256": "b2f1c1cd662d04d2645354fff705cf20f099e1404f8386707b6395d4717467de"
+        }
+      ]
+    },
+    "/assets/imagenes/portada/guayacan-arbol.jpg": {
+      "id": "a93484b08e318cdf2cb7",
+      "width": 1280,
+      "height": 960,
+      "focus": {
+        "x": 43.125,
+        "y": 6.666666666666667
+      },
+      "sourceSha256": "515c32b35fe1f67305f22cfc13ed6abf2e8d624ee23a3df711b154a9cc30a145",
+      "images": [
+        {
+          "url": "/assets/imagenes/portada-generada/a93484b08e318cdf2cb7/480.webp",
+          "bytes": 90532,
+          "sha256": "c48cc2352fdec8dee4e9623fb5c0cca725a78daf95a441209ac0475058c3e0f7",
+          "width": 480,
+          "height": 360
+        },
+        {
+          "url": "/assets/imagenes/portada-generada/a93484b08e318cdf2cb7/780.webp",
+          "bytes": 229922,
+          "sha256": "fb7ecfcff9866e7b7b46460aadce43e517cd3a2e3d1c80e12f1d4582f27855f5",
+          "width": 780,
+          "height": 585
+        },
+        {
+          "url": "/assets/imagenes/portada-generada/a93484b08e318cdf2cb7/1200.webp",
+          "bytes": 514138,
+          "sha256": "82ffcb97ad26da286c98d966c66824e286eec89eada230b0e9a8b46462eb6760",
+          "width": 1200,
+          "height": 900
+        },
+        {
+          "url": "/assets/imagenes/portada-generada/a93484b08e318cdf2cb7/1280.webp",
+          "bytes": 562558,
+          "sha256": "17ba5fcc357164980b4984f70d0aac6b5f4dc6ae550288f9b15aeb47240feaf8",
+          "width": 1280,
+          "height": 960
+        }
+      ],
+      "blur": "/assets/imagenes/portada-generada/a93484b08e318cdf2cb7/difusa.webp",
+      "files": [
+        {
+          "url": "/assets/imagenes/portada-generada/a93484b08e318cdf2cb7/480.webp",
+          "bytes": 90532,
+          "sha256": "c48cc2352fdec8dee4e9623fb5c0cca725a78daf95a441209ac0475058c3e0f7",
+          "width": 480,
+          "height": 360
+        },
+        {
+          "url": "/assets/imagenes/portada-generada/a93484b08e318cdf2cb7/780.webp",
+          "bytes": 229922,
+          "sha256": "fb7ecfcff9866e7b7b46460aadce43e517cd3a2e3d1c80e12f1d4582f27855f5",
+          "width": 780,
+          "height": 585
+        },
+        {
+          "url": "/assets/imagenes/portada-generada/a93484b08e318cdf2cb7/1200.webp",
+          "bytes": 514138,
+          "sha256": "82ffcb97ad26da286c98d966c66824e286eec89eada230b0e9a8b46462eb6760",
+          "width": 1200,
+          "height": 900
+        },
+        {
+          "url": "/assets/imagenes/portada-generada/a93484b08e318cdf2cb7/1280.webp",
+          "bytes": 562558,
+          "sha256": "17ba5fcc357164980b4984f70d0aac6b5f4dc6ae550288f9b15aeb47240feaf8",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "url": "/assets/imagenes/portada-generada/a93484b08e318cdf2cb7/difusa.webp",
+          "bytes": 6178,
+          "sha256": "c4bfe137c0cef72dee22ef6b0f83aab4a87a3fe7488846e894074ccfccab9b87"
+        }
+      ]
+    },
+    "/assets/imagenes/portada/photo-2026-11-27-22-25-22-1.jpg": {
+      "id": "3c21810b5bac2ccd497c",
+      "width": 1280,
+      "height": 960,
+      "focus": {
+        "x": 26.5625,
+        "y": 30
+      },
+      "sourceSha256": "5a6b453219f8bbdf9bb20fcdcf3f0fc709d820d7cf755d4273d0df459fe32d4d",
+      "images": [
+        {
+          "url": "/assets/imagenes/portada-generada/3c21810b5bac2ccd497c/480.webp",
+          "bytes": 85090,
+          "sha256": "2f7432c227f1d649521b152b5e3e3095bdda5f6a8e53aa51685daba5ad308e45",
+          "width": 480,
+          "height": 360
+        },
+        {
+          "url": "/assets/imagenes/portada-generada/3c21810b5bac2ccd497c/780.webp",
+          "bytes": 205474,
+          "sha256": "4b1d2f7875b301e0925e5d650d3802a14cb2af39d2d0ac09781b0cc47634380a",
+          "width": 780,
+          "height": 585
+        },
+        {
+          "url": "/assets/imagenes/portada-generada/3c21810b5bac2ccd497c/1200.webp",
+          "bytes": 431612,
+          "sha256": "8b6c978a12a05695f6e0c963829d1579442de0f13bb219d55d98cfdeee6084a0",
+          "width": 1200,
+          "height": 900
+        },
+        {
+          "url": "/assets/imagenes/portada-generada/3c21810b5bac2ccd497c/1280.webp",
+          "bytes": 463820,
+          "sha256": "153847e74a18cf72a9a3c05b3532d31e85c0e8bbdc347268930f82723d35649c",
+          "width": 1280,
+          "height": 960
+        }
+      ],
+      "blur": "/assets/imagenes/portada-generada/3c21810b5bac2ccd497c/difusa.webp",
+      "files": [
+        {
+          "url": "/assets/imagenes/portada-generada/3c21810b5bac2ccd497c/480.webp",
+          "bytes": 85090,
+          "sha256": "2f7432c227f1d649521b152b5e3e3095bdda5f6a8e53aa51685daba5ad308e45",
+          "width": 480,
+          "height": 360
+        },
+        {
+          "url": "/assets/imagenes/portada-generada/3c21810b5bac2ccd497c/780.webp",
+          "bytes": 205474,
+          "sha256": "4b1d2f7875b301e0925e5d650d3802a14cb2af39d2d0ac09781b0cc47634380a",
+          "width": 780,
+          "height": 585
+        },
+        {
+          "url": "/assets/imagenes/portada-generada/3c21810b5bac2ccd497c/1200.webp",
+          "bytes": 431612,
+          "sha256": "8b6c978a12a05695f6e0c963829d1579442de0f13bb219d55d98cfdeee6084a0",
+          "width": 1200,
+          "height": 900
+        },
+        {
+          "url": "/assets/imagenes/portada-generada/3c21810b5bac2ccd497c/1280.webp",
+          "bytes": 463820,
+          "sha256": "153847e74a18cf72a9a3c05b3532d31e85c0e8bbdc347268930f82723d35649c",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "url": "/assets/imagenes/portada-generada/3c21810b5bac2ccd497c/difusa.webp",
+          "bytes": 5934,
+          "sha256": "b11245331e84f22befc1f64df406ee87c35defd946416790d7febeef13608207"
         }
       ]
     }
