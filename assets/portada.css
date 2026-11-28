@@ -8,5 +8,13 @@
 #inicio [data-portada]>.capa-velo{z-index:1}
 #inicio .portada-pausa{position:absolute;right:20px;bottom:16px;z-index:3;min-height:44px;padding:8px 14px;border:1px solid #ffffff66;border-radius:14px;color:#fff;background:#080a0bcc;font:500 .875rem var(--lectura);cursor:pointer}
 #inicio .portada-pausa[hidden]{display:none}
+/* Desktop keeps the whole composition in the right-hand image area.
+   A separate soft background fills the remaining space; phone framing is unchanged. */
+@media(min-width:781px){
+  #inicio [data-portada] .capa-difusa{display:block;z-index:0;-webkit-mask-image:none;mask-image:none;background-position:center;opacity:.55}
+  #inicio [data-portada] .capa-nitida{left:40%;z-index:1}
+  #inicio [data-portada] .capa-nitida img{object-fit:contain;object-position:center}
+  #inicio [data-portada]>.capa-velo{z-index:2}
+}
 @media(max-width:780px){#inicio [data-portada] .capa-nitida img{object-position:var(--portada-movil-x) var(--portada-movil-y)}#inicio [data-portada] .capa-difusa{background-image:var(--portada-difusa-movil);background-position:var(--portada-movil-x) var(--portada-movil-y)}}
 @media(prefers-reduced-motion:reduce){#inicio [data-portada] .portada-foto{transition:none}}
